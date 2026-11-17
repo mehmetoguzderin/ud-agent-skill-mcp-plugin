@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "treebank_review",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "git_snapshot": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "required": [
+        "revision",
+        "path",
+        "files"
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "peer_treebank_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "base_snapshot": {
+              "$ref": "#/$defs/git_snapshot"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "base_revision",
+    "peer_treebank_paths",
+    "ud_context_path"
+  ]
+}

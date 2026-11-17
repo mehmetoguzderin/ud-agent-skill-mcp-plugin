@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sentence_segmentation_change_plan",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "empty_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_segmentation_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target_file_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/empty_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "source_segmentation_paths",
+    "target_file_paths",
+    "ud_context_path"
+  ]
+}

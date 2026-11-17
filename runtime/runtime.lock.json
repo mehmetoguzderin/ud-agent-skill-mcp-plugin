@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "format_revision": 2,
+  "product_version": "0.1.0-beta.1",
+  "state": "frozen",
+  "packs": {
+    "core": {
+      "images": {
+        "linux/amd64": {
+          "config_digest": "sha256:e3f448a330dbb93ab6f48a4319f2040a71588c8d9825418ed5d7ad95e9544228",
+          "diff_ids": [
+            "sha256:2516bb9d00ac2390203eafdfbb9cf7fae88c43936af3ee4d05b153686635333a",
+            "sha256:2789a58916f4ef1f460e10e821272cc38e3421e2f880e9a5c05896b8abb101b8"
+          ],
+          "digest": "sha256:5088d34e882fff0ea239d8ba3a8e97766e19b058c29cb05dea4ffbeaea42dfe8",
+          "engine_descriptor_digests": [
+            "sha256:3312e9cdd61ba557257881976e729793c1eba7174ec639df98f25bce2c4f0381",
+            "sha256:5088d34e882fff0ea239d8ba3a8e97766e19b058c29cb05dea4ffbeaea42dfe8"
+          ],
+          "reference": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-core@sha256:5088d34e882fff0ea239d8ba3a8e97766e19b058c29cb05dea4ffbeaea42dfe8",
+          "transports": [
+            {
+              "format": "docker-archive",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-core-linux-amd64.docker.tar",
+              "sha256": "sha256:a53e32cda26ec45d0fb5c2e41dea0732a677e3bec4f3ce7dbab1cec9f76b73cb",
+              "size_bytes": 67022336
+            },
+            {
+              "format": "oci-archive",
+              "index_digest": "sha256:1df60ecf15f7b0cad59d643964594652d2fb6cd0dde1fbda74942c40f96e2b8c",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-core-linux-amd64.oci.tar",
+              "sha256": "sha256:5519ee8e13b5d2a1e0f7c8a5fc208d12acf529c1135dcd21a6a078fb1cf0bd72",
+              "size_bytes": 67031040
+            }
+          ]
+        },
+        "linux/arm64": {
+          "config_digest": "sha256:f8b06a4d9312dad89243bf66f45c91ecc38d6569be5406a256c95b949ed8aae4",
+          "diff_ids": [
+            "sha256:c8163fd84624ac602945f5aa2fce267219eed14f847361e539273828fd1c8bf5",
+            "sha256:ab2d38222debac9b17b92141db9d9237473f075f09f718918c47539bde6017a7"
+          ],
+          "digest": "sha256:0f0362ad209ed33f21a71ea0ced7164ff46d67e8aca5401ac25fb4b40db41f7e",
+          "engine_descriptor_digests": [
+            "sha256:0f0362ad209ed33f21a71ea0ced7164ff46d67e8aca5401ac25fb4b40db41f7e",
+            "sha256:6c5f9718317baa197bb40f321f64335ac1a815f4e4bef44013539bd096def45e"
+          ],
+          "reference": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-core@sha256:0f0362ad209ed33f21a71ea0ced7164ff46d67e8aca5401ac25fb4b40db41f7e",
+          "transports": [
+            {
+              "format": "docker-archive",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-core-linux-arm64.docker.tar",
+              "sha256": "sha256:0533b62ddaa1872a0c6cc1f01bdb95d3541165fdaf2c451c973cb56a26e20db0",
+              "size_bytes": 67042816
+            },
+            {
+              "format": "oci-archive",
+              "index_digest": "sha256:6be34d4250891d9e2c69ea76cbb3379a4911a0234e8472ebccd6e0a71d483261",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-core-linux-arm64.oci.tar",
+              "sha256": "sha256:252edf830103fae3af78e537112c6dde2baebbb7efc0105df61b00fe4fbc88b1",
+              "size_bytes": 67051520
+            }
+          ]
+        }
+      },
+      "index_digest": "sha256:6f65e3dd5950a6f6f7def5b93f0dc88a1ac1a82172b73f14d6afef536a96e6fa",
+      "index_transport": {
+        "format": "oci-archive",
+        "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-core.oci.tar",
+        "sha256": "sha256:fd924e01501029393abe8495aec56edfba0a1a88654e02c109ae5c74e7d96ae8",
+        "size_bytes": 134062080
+      },
+      "platforms": {
+        "linux/amd64": "sha256:5088d34e882fff0ea239d8ba3a8e97766e19b058c29cb05dea4ffbeaea42dfe8",
+        "linux/arm64": "sha256:0f0362ad209ed33f21a71ea0ced7164ff46d67e8aca5401ac25fb4b40db41f7e"
+      },
+      "context_sha256": "sha256:e2d248a0fbec2f2e3c41f3d1b92dde09b24efe63116d0f32855a7c1de7814b1a",
+      "context_manifest": {
+        "path": "runtime/contexts/e2d248a0fbec2f2e3c41f3d1b92dde09b24efe63116d0f32855a7c1de7814b1a/context.json",
+        "sha256": "sha256:d120aac2adafb887c5f8058272e170e6ecab73b006747d4bdbd2a980598fba82",
+        "size_bytes": 62635
+      }
+    },
+    "render": {
+      "images": {
+        "linux/amd64": {
+          "config_digest": "sha256:85e02ec1586658dc2ee6c9d1c83b30f8693a90805303d9d6ef611b9e57c68a32",
+          "diff_ids": [
+            "sha256:2516bb9d00ac2390203eafdfbb9cf7fae88c43936af3ee4d05b153686635333a",
+            "sha256:2789a58916f4ef1f460e10e821272cc38e3421e2f880e9a5c05896b8abb101b8",
+            "sha256:54284a59110060e210c3bae07ce5306d35a093ee2ac49e02ac47e2a52c8416dc",
+            "sha256:067ebe308da9dec93f041de936b56b45e0f7f841b69a2b7b4e4494011a3e6b6d",
+            "sha256:8e96ade3e5d423d55dde77803a5d91ed1728814702c9a34ff34f3c185a1827f3",
+            "sha256:1763f4fb6b2a57206dc43152760bff41dc8d1502829a5fda136cd5a08f139db6"
+          ],
+          "digest": "sha256:4a3dfee0c062ed5b016d43cf0454e99595890ff2e4a8f4f57f07e289a62b0530",
+          "engine_descriptor_digests": [
+            "sha256:4a3dfee0c062ed5b016d43cf0454e99595890ff2e4a8f4f57f07e289a62b0530",
+            "sha256:edfcee5365c061406cc9a6ee69cfb26d7c737336bbd4c9db5a6009e81e20064e"
+          ],
+          "reference": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-render@sha256:4a3dfee0c062ed5b016d43cf0454e99595890ff2e4a8f4f57f07e289a62b0530",
+          "transports": [
+            {
+              "format": "docker-archive",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-render-linux-amd64.docker.tar",
+              "sha256": "sha256:705a19a854c6a5af54467f631a2a5941a1c7aa191669624b9a1a32c606319f07",
+              "size_bytes": 454957056
+            },
+            {
+              "format": "oci-archive",
+              "index_digest": "sha256:0e3fa4e68c8d1f5b35d287a8de0bf4a15307d38fb4f533df61c6cca79c53bb36",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-render-linux-amd64.oci.tar",
+              "sha256": "sha256:37cabfbfd2cbf2ea1573dc5fb3c9942b4df452f79052980de06dd8fbad2ee858",
+              "size_bytes": 454963200
+            }
+          ]
+        },
+        "linux/arm64": {
+          "config_digest": "sha256:f210c5aa0fcaaf9f35da1b0c4eb1f06502ace5fe414a40875802d140f55a1fc0",
+          "diff_ids": [
+            "sha256:c8163fd84624ac602945f5aa2fce267219eed14f847361e539273828fd1c8bf5",
+            "sha256:ab2d38222debac9b17b92141db9d9237473f075f09f718918c47539bde6017a7",
+            "sha256:7c8b9db8ac336ad6ec5e379850f3a4e543fc225d0a1a982878cb4d91e1ffadc0",
+            "sha256:58f9eb0c0d9f83d90ddcd5d746f7de3864047961b0fc068bd44c8dc8c8d429ba",
+            "sha256:79fe9db9be6a368d7f9afb2667805700750d2da804a733a1c67b46c170880b8e",
+            "sha256:a7c91ca6a4823ace0d5e3f54904ce722f34299c8f4a51f68cd94e38b3bb4ccf8"
+          ],
+          "digest": "sha256:6beefd922db8773009c57618bd1e2236672d6e7e2e1170aa849340474d0577fd",
+          "engine_descriptor_digests": [
+            "sha256:485697b7ea24ec02c00a2d39fe399f894a25ed3643027f5ebee7baf263ef7979",
+            "sha256:6beefd922db8773009c57618bd1e2236672d6e7e2e1170aa849340474d0577fd"
+          ],
+          "reference": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-render@sha256:6beefd922db8773009c57618bd1e2236672d6e7e2e1170aa849340474d0577fd",
+          "transports": [
+            {
+              "format": "docker-archive",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-render-linux-arm64.docker.tar",
+              "sha256": "sha256:5beafd41705c1aa2db98128167fed8ff6d8d2e50019b279b254f0fe79bbbbf15",
+              "size_bytes": 455763968
+            },
+            {
+              "format": "oci-archive",
+              "index_digest": "sha256:08852f81c2326e9cf2f976005a7ef60eceddcb4e6a2aed86f155a0e959232851",
+              "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-render-linux-arm64.oci.tar",
+              "sha256": "sha256:fab9ef7712837bf0d90bd2229a63440734afdf7eaf67e9b59cd8fb43c0d7d54b",
+              "size_bytes": 455772160
+            }
+          ]
+        }
+      },
+      "index_digest": "sha256:12d9a6f588dff59beda4a89a222c1e5c8a3910a93cec6a70eeb7013bfd08a21a",
+      "index_transport": {
+        "format": "oci-archive",
+        "path": ".artifacts/public-beta-workers-linux-dual-final-source/ud-agent-render.oci.tar",
+        "sha256": "sha256:88a17f16961a44398a20543ea906a5bbb589f1132da5c611a62322684947eaa0",
+        "size_bytes": 910714880
+      },
+      "platforms": {
+        "linux/amd64": "sha256:4a3dfee0c062ed5b016d43cf0454e99595890ff2e4a8f4f57f07e289a62b0530",
+        "linux/arm64": "sha256:6beefd922db8773009c57618bd1e2236672d6e7e2e1170aa849340474d0577fd"
+      },
+      "context_sha256": "sha256:e2d248a0fbec2f2e3c41f3d1b92dde09b24efe63116d0f32855a7c1de7814b1a",
+      "context_manifest": {
+        "path": "runtime/contexts/e2d248a0fbec2f2e3c41f3d1b92dde09b24efe63116d0f32855a7c1de7814b1a/context.json",
+        "sha256": "sha256:d120aac2adafb887c5f8058272e170e6ecab73b006747d4bdbd2a980598fba82",
+        "size_bytes": 62635
+      },
+      "seccomp_profile": {
+        "path": "runtime/policies/render-seccomp.json",
+        "sha256": "sha256:6ae589f2d1422f98c64a691ffbaac96bf30451568d298ec76b5fb7c32c4a6a4a",
+        "size_bytes": 22875
+      }
+    }
+  },
+  "native_helpers": {
+    "darwin/arm64": {
+      "guard": {
+        "path": "runtime/helpers/darwin/arm64/ud-agent-guard",
+        "sha256": "sha256:553caeec987ca1eb3557912365faa8a880373125fe9e0c02223ecfefd3b67018",
+        "size_bytes": 966704
+      }
+    },
+    "linux/arm64": {
+      "guard": {
+        "path": "runtime/helpers/linux/arm64/ud-agent-guard",
+        "sha256": "sha256:c604ae6fa59c7910c99aa70f1e17c110b9dc72ff7f52e2a8546653401e07f762",
+        "size_bytes": 5486504
+      }
+    },
+    "linux/x64": {
+      "guard": {
+        "path": "runtime/helpers/linux/x64/ud-agent-guard",
+        "sha256": "sha256:7f5e11dfa1c58dd318506b9e3e23e4fe8d2f73d0a3d5a6945d1d35aa9e61d995",
+        "size_bytes": 5341208
+      }
+    },
+    "win32/arm64": {
+      "guard": {
+        "path": "runtime/helpers/win32/arm64/ud-agent-guard.exe",
+        "sha256": "sha256:1e42d45fd89d59694ff5d2f0e11319e188dc8740cec3d4081925bef1a653241e",
+        "size_bytes": 4956160
+      }
+    },
+    "win32/x64": {
+      "guard": {
+        "path": "runtime/helpers/win32/x64/ud-agent-guard.exe",
+        "sha256": "sha256:ddb8d4400b0c32acee5c5e5deabf8a14236fed2f71b4479d08025004a984e884",
+        "size_bytes": 5143040
+      }
+    }
+  },
+  "userspace_sha256": "sha256:90e018e58fc71d4f7eeb24c5bf35d2a44a3700a90a00e0ad41db68d7d25645db",
+  "provider_receipts": {
+    "apple-container/darwin/arm64": {
+      "executable_sha256": "sha256:2e4fdec2272867e2627d4c851a7457e86bf1b8db2d06d8a670f1419f2e85f1df",
+      "init_image": {
+        "config_digest": "sha256:cddba7c3de6b0e9390096694653c2f3172d59a8d0820059f18d78d229a8841f3",
+        "context_sha256": "sha256:850f67d3fd52710012026b0b5ddb0bf612baa4d3b5d43800e59b77ee0e0eec1e",
+        "diff_ids": [
+          "sha256:9af1a45b9c0dfe96423db5f2fa33ac1a70bbb6cd401bd2d0bdbf086098002658"
+        ],
+        "digest": "sha256:0551f11dd3e83d8662e12506c4f0385780a0e9c58042edd0797ac055c5433257",
+        "reference": "localhost/ud-agent-skill-mcp-plugin-init@sha256:0551f11dd3e83d8662e12506c4f0385780a0e9c58042edd0797ac055c5433257",
+        "transport_sha256": "sha256:0d691b21fd846e9f7effc6c1a386f95fcae6ba3d41e4c97f74ce309b4b231508",
+        "transport_size_bytes": 66908160
+      },
+      "kernel": {
+        "path": "runtime/providers/apple-container/darwin-arm64/kernel/vmlinux",
+        "sha256": "sha256:98a1005f8cc395e99b85775b9dce2b239190520b102bf549f4225104dcd7f511"
+      },
+      "lazy_assets": {
+        "files": [
+          {
+            "path": "runtime/images/init-linux-arm64.tar",
+            "sha256": "sha256:0d691b21fd846e9f7effc6c1a386f95fcae6ba3d41e4c97f74ce309b4b231508",
+            "size_bytes": 66908160
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/apple-LICENSE.txt",
+            "sha256": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "size_bytes": 11357
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/apple-NOTICE.md",
+            "sha256": "sha256:3af54d132e70dfaad11be4d5492765c59a33e40899ec19b6d98a6ce154522cf3",
+            "size_bytes": 12498
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/bin/container",
+            "sha256": "sha256:2e4fdec2272867e2627d4c851a7457e86bf1b8db2d06d8a670f1419f2e85f1df",
+            "size_bytes": 33513440
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/bin/container-apiserver",
+            "sha256": "sha256:25e9e842382883390677fafb8a42cd035c398bb2fbd7d4a9ad1ac1bc9c9cd6ad",
+            "size_bytes": 31840608
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/bin/uninstall-container.sh",
+            "sha256": "sha256:51a840ab040bec9855ac66ad7c27b3b48771f69e779cb6d614895a3185a3dbb9",
+            "size_bytes": 2700
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/bin/update-container.sh",
+            "sha256": "sha256:d7c11bde8814f9ee1b6ecb27067d627cb780cc89c1ed300fc9b755c214be9dd3",
+            "size_bytes": 5230
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/kernel/vmlinux",
+            "sha256": "sha256:98a1005f8cc395e99b85775b9dce2b239190520b102bf549f4225104dcd7f511",
+            "size_bytes": 30564864
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/build/bin/build",
+            "sha256": "sha256:7f511ce7310eae23ea0f5ba3de7d12ac53fb1830e3bb2f7c3c284a4fa4b62359",
+            "size_bytes": 33529984
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/build/config.toml",
+            "sha256": "sha256:db4bdbdde2288556eea66a7fe38b75fad9705cbbd262d30a6d3ddce41c314023",
+            "size_bytes": 94
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/builder/bin/builder",
+            "sha256": "sha256:3f1531a8bf4c5ac0fe64c6d9ab67a792aab63969fc1c23a28769061f28c6d4b0",
+            "size_bytes": 31785472
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/builder/config.toml",
+            "sha256": "sha256:8eec374aa325862e7d164bc41fd925e37bc52f9276b2a77a69802428cff765c7",
+            "size_bytes": 77
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/cluster/bin/cluster",
+            "sha256": "sha256:dfbc6a3012ad77e1bf40b3d1ac6041a11e2433481ee5f2d6aa486c7a22b97582",
+            "size_bytes": 31565872
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/cluster/config.toml",
+            "sha256": "sha256:439ddca993d3cf300a6f63709303a0f15401f6a5eab8f954888afa97554c68ff",
+            "size_bytes": 107
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/cluster/resources/cluster-shim",
+            "sha256": "sha256:c6a49edad53b5f216fae1636df6d5335dc24df9c2ca0a3171de409a4ad202a98",
+            "size_bytes": 84417584
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/cluster/resources/kindnet.yaml",
+            "sha256": "sha256:859f206b01d433aecce18518bd9864e56529f7abf2675d6e9a26d30b15e1a7f8",
+            "size_bytes": 3061
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/cluster-hoststore/bin/cluster-hoststore",
+            "sha256": "sha256:82beab3b0d2d7c78e041e1d57e7e5bb3bdc54f6a38c03a1bfed5b56ec91f572f",
+            "size_bytes": 58952592
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/cluster-hoststore/config.toml",
+            "sha256": "sha256:fb1599108273254fa63338822887ac6e673feef1ac86cec345db96c7e063901f",
+            "size_bytes": 315
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-core-clusters/bin/container-core-clusters",
+            "sha256": "sha256:74ff7be930dbe0b4c5e5f11613e1603564143e40f5deb6228fbf1291d33fdba4",
+            "size_bytes": 58237664
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-core-clusters/config.toml",
+            "sha256": "sha256:4e5ebbf17304c1041f86abb6b4b411a2fa02f15b097c0d6a1c8b1868b280df7c",
+            "size_bytes": 294
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-core-images/bin/container-core-images",
+            "sha256": "sha256:1f3e9b6205ffd4c91b210e6717f946943805d45b7ab375f8fb9d746aefc6b2d1",
+            "size_bytes": 31428224
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-core-images/config.toml",
+            "sha256": "sha256:89ebf5415177298d36f4c67c8c03db26fac1377b428f30a5ccf96407d8f63f9d",
+            "size_bytes": 266
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-network-vmnet/bin/container-network-vmnet",
+            "sha256": "sha256:27673c3b07089c64593c726b0df10043bcd61d9e10c343a4d63c2c2df8baa139",
+            "size_bytes": 30633808
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-network-vmnet/config.toml",
+            "sha256": "sha256:7ec0d522dcf9c9bc78b1e0843916bd0a98cfec45ef5b35f04fb8407ecda3db3e",
+            "size_bytes": 198
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-runtime-linux/bin/container-runtime-linux",
+            "sha256": "sha256:52fdefe596468d443e97ea1fc1e89d56ad08f41fae381db9728c4bb630006355",
+            "size_bytes": 31632464
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/container-runtime-linux/config.toml",
+            "sha256": "sha256:d609af652f3e0224cb7f0cef315f873081506d010d2d1a8ff33508980e3427a7",
+            "size_bytes": 198
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/machine-apiserver/bin/machine-apiserver",
+            "sha256": "sha256:2f053e621196a79bfd299a6867d7a776deb3b409cf6d636589da9023a8669b39",
+            "size_bytes": 31578720
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/machine-apiserver/config.toml",
+            "sha256": "sha256:819edb0d3c20517e8a56e11a9623b3804c6821d3920da3fa66d989f766103b6a",
+            "size_bytes": 281
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/libexec/container/plugins/machine-apiserver/resources/init",
+            "sha256": "sha256:859596156afec20d4dfd3d0a706577e6fc6933f6640de1ef087cd6d9f59a90a9",
+            "size_bytes": 1339
+          },
+          {
+            "path": "runtime/providers/apple-container/darwin-arm64/linux-GPL-2.0.txt",
+            "sha256": "sha256:8780e78a1a737e127f25a65f6d95269bffd36158dc261114de7859b490bfc5aa",
+            "size_bytes": 18600
+          }
+        ],
+        "sha256": "sha256:f90a55ce83814e659c3a4b5eb429e298c56cf64558492f4495d4a6d73678c68b",
+        "size": 247000863,
+        "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-provider-apple-container-darwin-arm64.tar.gz"
+      },
+      "schema_version": 1
+    },
+    "wslc/win32/arm64": {
+      "executable_sha256": "sha256:cb10a3267ec701996ce77cb10eea1be7f9e67752699350b6afd6a8053c2dd79a",
+      "lazy_assets": {
+        "files": [
+          {
+            "path": "runtime/providers/wslc/win32-arm64/LICENSE.txt",
+            "sha256": "sha256:c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+            "size_bytes": 1141
+          },
+          {
+            "path": "runtime/providers/wslc/win32-arm64/NOTICE.txt",
+            "sha256": "sha256:576461e303d0c245365d288412b7290680ca1054a5213a8bce1fd6f9e3707f5b",
+            "size_bytes": 139603
+          },
+          {
+            "path": "runtime/providers/wslc/win32-arm64/WSL-NOTICE.txt",
+            "sha256": "sha256:576461e303d0c245365d288412b7290680ca1054a5213a8bce1fd6f9e3707f5b",
+            "size_bytes": 139603
+          },
+          {
+            "path": "runtime/providers/wslc/win32-arm64/bin/wslc.exe",
+            "sha256": "sha256:cb10a3267ec701996ce77cb10eea1be7f9e67752699350b6afd6a8053c2dd79a",
+            "size_bytes": 10840432
+          },
+          {
+            "path": "runtime/providers/wslc/win32-arm64/bin/wslcsdk.dll",
+            "sha256": "sha256:447561431dc6dd71285d9ecb1abd12b7be20d940a17cfd6cd39b2ac8e91ca28b",
+            "size_bytes": 7800648
+          },
+          {
+            "path": "runtime/providers/wslc/win32-arm64/include/wslcsdk.h",
+            "sha256": "sha256:5a87e64c03185f71f8d5e90bfe93bc29049fabb419dd4c0f8715f2f7651e238c",
+            "size_bytes": 29395
+          }
+        ],
+        "sha256": "sha256:d8b4b68f018cab4a234f65d81d796c78037e9e2a492ac46d4f3b3f49ad9d8a40",
+        "size": 5266023,
+        "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-provider-wslc-win32-arm64.tar.gz"
+      },
+      "schema_version": 1,
+      "sdk": "runtime/providers/wslc/win32-arm64/bin/wslcsdk.dll",
+      "sdk_sha256": "sha256:447561431dc6dd71285d9ecb1abd12b7be20d940a17cfd6cd39b2ac8e91ca28b"
+    },
+    "wslc/win32/x64": {
+      "executable_sha256": "sha256:7ec9c1fb62903a17a7e6b783ac16ba1f959bf49055dfc3ba7a8865fd0bf44401",
+      "lazy_assets": {
+        "files": [
+          {
+            "path": "runtime/providers/wslc/win32-x64/LICENSE.txt",
+            "sha256": "sha256:c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+            "size_bytes": 1141
+          },
+          {
+            "path": "runtime/providers/wslc/win32-x64/NOTICE.txt",
+            "sha256": "sha256:576461e303d0c245365d288412b7290680ca1054a5213a8bce1fd6f9e3707f5b",
+            "size_bytes": 139603
+          },
+          {
+            "path": "runtime/providers/wslc/win32-x64/WSL-NOTICE.txt",
+            "sha256": "sha256:576461e303d0c245365d288412b7290680ca1054a5213a8bce1fd6f9e3707f5b",
+            "size_bytes": 139603
+          },
+          {
+            "path": "runtime/providers/wslc/win32-x64/bin/wslc.exe",
+            "sha256": "sha256:7ec9c1fb62903a17a7e6b783ac16ba1f959bf49055dfc3ba7a8865fd0bf44401",
+            "size_bytes": 9082184
+          },
+          {
+            "path": "runtime/providers/wslc/win32-x64/bin/wslcsdk.dll",
+            "sha256": "sha256:3c7cf0af5315b500b54d4fd40c21cc5d81d8176dee25d361c354e93d93e65383",
+            "size_bytes": 6644080
+          },
+          {
+            "path": "runtime/providers/wslc/win32-x64/include/wslcsdk.h",
+            "sha256": "sha256:5a87e64c03185f71f8d5e90bfe93bc29049fabb419dd4c0f8715f2f7651e238c",
+            "size_bytes": 29395
+          }
+        ],
+        "sha256": "sha256:16cf46cafdaec612f64909d0d40601bc1201f4a7b0f7783a4ce914b137079813",
+        "size": 5203530,
+        "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-provider-wslc-win32-x64.tar.gz"
+      },
+      "schema_version": 1,
+      "sdk": "runtime/providers/wslc/win32-x64/bin/wslcsdk.dll",
+      "sdk_sha256": "sha256:3c7cf0af5315b500b54d4fd40c21cc5d81d8176dee25d361c354e93d93e65383"
+    }
+  }
+}

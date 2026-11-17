@@ -1,0 +1,33 @@
+{
+  "dependency_source_sha256": {
+    "quality/reviews/python-operator-repairs-domain-review-v1.json": "97ba2b7b84385f174be7cae8f1ffb36f6ece0b27cfc30cd769425a1e04b185c2",
+    "quality/reviews/python-operator-repairs-root-f11.json": "8ab0677c37a180b64f5a32f99460e3752cc6686d6e37f40191f7e83471f6ba89",
+    "scripts/quality/oci-exec.py": "209a5d141ddee2e3806d0f2ce162b7175ab744240e8453a513569ba663c56cab",
+    "scripts/release/bind-render-sources.py": "8e059908367c31c4f455f54a9373b0a1a38f32f56c452c9344a89c46623011a3",
+    "scripts/release/materialize-replay-inputs.py": "58c59dd6daf08f83216b642bc57ec4e7b2961f8a846ca112ecdea172efdc20d8",
+    "workers/ud/src/ud_agent/domain/_common.py": "bf4bc43f1ea09986eeb3e2b0e06f2aca17a75010d9a31aae449ff179c20929db",
+    "workers/ud/src/ud_agent/domain/validation.py": "ccc8eaf80d68aa08833ce5f71ce5a795fc95203baf7134505f2e945f36a2df98",
+    "workers/ud/src/ud_agent/project_rules.py": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb"
+  },
+  "format_revision": 2,
+  "packets": [
+    {
+      "path": "quality/reviews/python-operator-repairs-domain-review-v1.json",
+      "reviewer": "domain_completion",
+      "sha256": "97ba2b7b84385f174be7cae8f1ffb36f6ece0b27cfc30cd769425a1e04b185c2",
+      "size_bytes": 25902
+    },
+    {
+      "path": "quality/reviews/python-operator-repairs-root-f11.json",
+      "reviewer": "root",
+      "sha256": "8ab0677c37a180b64f5a32f99460e3752cc6686d6e37f40191f7e83471f6ba89",
+      "size_bytes": 7736
+    }
+  ],
+  "qualification": "exact per-packet independent typed-operator validity review; no mutant outcomes, exclusions or equivalence acceptance",
+  "registry_path": "quality/python-operator-repairs.json",
+  "registry_sha256": "e62e22bc68cb8246cedc6b60825ed55d914496a71476bc673da45478151b383c",
+  "registry_version": "ud-python-typed-project-contracts-1",
+  "reviewer": "source-bound-review-packets",
+  "schema_version": 1
+}

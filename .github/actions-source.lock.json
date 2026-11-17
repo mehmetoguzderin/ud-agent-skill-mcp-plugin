@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "qualification": "direct-action-source-commit-inventory",
+  "actions": [
+    {
+      "repository": "actions/cache",
+      "commit": "55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "mutation-sdk",
+          "step": 4
+        }
+      ]
+    },
+    {
+      "repository": "actions/checkout",
+      "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "mutation-sdk",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native-arm",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "node24",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/release-publish.yml",
+          "job": "verify",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/release-publish.yml",
+          "job": "publish",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/release-verify.yml",
+          "job": "verify",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/runtime-matrix.yml",
+          "job": "provider",
+          "step": 0
+        },
+        {
+          "workflow": ".github/workflows/upstream-canary.yml",
+          "job": "observe",
+          "step": 0
+        }
+      ]
+    },
+    {
+      "repository": "actions/download-artifact",
+      "commit": "9000827ccba6bdab643e8b6fd33ac0654aef8333",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native",
+          "step": 11
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native-arm",
+          "step": 11
+        },
+        {
+          "workflow": ".github/workflows/release-publish.yml",
+          "job": "verify",
+          "step": 2
+        },
+        {
+          "workflow": ".github/workflows/release-publish.yml",
+          "job": "publish",
+          "step": 3
+        },
+        {
+          "workflow": ".github/workflows/runtime-matrix.yml",
+          "job": "provider",
+          "step": 4
+        }
+      ]
+    },
+    {
+      "repository": "actions/setup-node",
+      "commit": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "mutation-sdk",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native-arm",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "node24",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/release-publish.yml",
+          "job": "verify",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/release-publish.yml",
+          "job": "publish",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/release-verify.yml",
+          "job": "verify",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/runtime-matrix.yml",
+          "job": "provider",
+          "step": 1
+        },
+        {
+          "workflow": ".github/workflows/upstream-canary.yml",
+          "job": "observe",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "repository": "actions/setup-python",
+      "commit": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "mutation-sdk",
+          "step": 2
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native",
+          "step": 2
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native-arm",
+          "step": 2
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "node24",
+          "step": 2
+        },
+        {
+          "workflow": ".github/workflows/release-publish.yml",
+          "job": "publish",
+          "step": 2
+        },
+        {
+          "workflow": ".github/workflows/runtime-matrix.yml",
+          "job": "provider",
+          "step": 2
+        }
+      ]
+    },
+    {
+      "repository": "actions/upload-artifact",
+      "commit": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "mutation-sdk",
+          "step": 6
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "mutation-sdk",
+          "step": 7
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native",
+          "step": 15
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native-arm",
+          "step": 15
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "node24",
+          "step": 11
+        },
+        {
+          "workflow": ".github/workflows/runtime-matrix.yml",
+          "job": "provider",
+          "step": 8
+        },
+        {
+          "workflow": ".github/workflows/upstream-canary.yml",
+          "job": "observe",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "repository": "astral-sh/setup-uv",
+      "commit": "68559e99cc807c1eb7e9238fd43a15bba460eec2",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native",
+          "step": 3
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native-arm",
+          "step": 3
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "node24",
+          "step": 3
+        }
+      ]
+    },
+    {
+      "repository": "dtolnay/rust-toolchain",
+      "commit": "b725eda525362e7cf34af9a7243cac1e3f01a7ec",
+      "uses": [
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native",
+          "step": 4
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "native-arm",
+          "step": 4
+        },
+        {
+          "workflow": ".github/workflows/ci.yml",
+          "job": "node24",
+          "step": 4
+        }
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "e176e7f1745387c78c5e4843c982ad4bb8f6d866ad948bbff7ee59d601c35ed8",
+      "size_bytes": 12208
+    },
+    {
+      "path": ".github/workflows/release-publish.yml",
+      "sha256": "219882a60850d1caf6d03ddbec1195009832cbe554c27445066c0416d60c0774",
+      "size_bytes": 3542
+    },
+    {
+      "path": ".github/workflows/release-verify.yml",
+      "sha256": "d4af2e50a06aab090c0425153515f18dd841b420db8f746ce7dae55de04e9962",
+      "size_bytes": 584
+    },
+    {
+      "path": ".github/workflows/runtime-matrix.yml",
+      "sha256": "5ef0eaa54a6227e088477b47e48811588487252ec0a55a8017830d50f00a00eb",
+      "size_bytes": 3411
+    },
+    {
+      "path": ".github/workflows/upstream-canary.yml",
+      "sha256": "90b982a2b6e717a57b8633203954303ac155ada5b6c1ece5833238958c4ff3e0",
+      "size_bytes": 970
+    }
+  ],
+  "local_actions_emulation": {
+    "path": "quality/act.lock.json",
+    "sha256": "d60bfa66a3602255c6814c07f7228c6d6825683fb3879dba9baae57c0047bbdd",
+    "size_bytes": 1240
+  },
+  "policy": "Workflow steps use exact source commits. Runner image/emulation identities are recorded separately; no cross-build or act result is native provider certification."
+}

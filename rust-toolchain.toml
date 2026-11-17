@@ -1,0 +1,5 @@
+[toolchain]
+# Ordinary native original tests use the already installed host toolchain.
+# Release cross-builds and the protected Linux mutation SDK pin1.99.1 separately.
+channel = "1.99.0"
+profile = "minimal"

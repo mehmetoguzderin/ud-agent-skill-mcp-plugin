@@ -1,0 +1,247 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      native_targets:
+        description: 'Native targets as a JSON array; [] skips these jobs'
+        type: string
+        default: '["linux-x64","macos-arm64","windows-x64","windows-arm64"]'
+      linux_arm64:
+        description: Run Linux ARM64 originals and bounded mutations
+        type: boolean
+        default: true
+      node24:
+        description: Run Node 24 compatibility
+        type: boolean
+        default: true
+      sdk_run_id:
+        description: 'Reuse the verified SDK artifact from this run ID; empty prepares it'
+        type: string
+        default: ''
+      sdk_run_attempt:
+        description: Attempt that produced the reused SDK artifact
+        type: string
+        default: '1'
+permissions:
+  contents: read
+  actions: read
+env:
+  # Hosted CI deliberately tests the release compiler; ordinary local original
+  # tests use rust-toolchain.toml without installing another host toolchain.
+  RUSTUP_TOOLCHAIN: 1.99.1
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  mutation-sdk:
+    name: Verify or prepare native ARM mutation SDK
+    if: github.event_name != 'push' && (github.event_name != 'workflow_dispatch' || inputs.linux_arm64) && inputs.sdk_run_id == ''
+    runs-on: ubuntu-26.04-arm
+    # A cache miss builds the exact locked tools once. This cold setup is
+    # separate from the warm bounded gate and is not its timing claim.
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+          architecture: arm64
+      - name: Identify the locked SDK inputs
+        id: sdk-key
+        shell: bash
+        run: echo "key=$(python3 scripts/quality/prepare-mutation-runtime.py --ci-cache-key)" >> "$GITHUB_OUTPUT"
+      - name: Restore only the exact SDK cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          # A warm SDK load needs only these verified outputs. Caching the
+          # entire build directory retained duplicate archives and toolchains.
+          path: |
+            .artifacts/mutation-ci-sdk/sdk-image.tar
+            .artifacts/mutation-ci-sdk/ci-sdk.json
+            .artifacts/mutation-ci-sdk/input-receipt.json
+          key: ud-agent-mutation-sdk-linux-arm64-${{ steps.sdk-key.outputs.key }}
+      - name: Verify cached inputs or build the locked native SDK
+        # Native SDK setup retains an image and BuildKit cache together. Its
+        # explicit allowance keeps the total and free-space bounds unchanged.
+        run: python3 scripts/quality/prepare-mutation-runtime.py --ensure-ci --asset-root "$PWD/.artifacts/mutation-ci-sdk" --output "$PWD/.artifacts/mutation-ci-context" --download --transient-bytes 12000000000
+      - name: Transfer the verified SDK to this run's ARM test job
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mutation-sdk-linux-arm64-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            .artifacts/mutation-ci-sdk/sdk-image.tar
+            .artifacts/mutation-ci-sdk/ci-sdk.json
+            .artifacts/mutation-ci-sdk/input-receipt.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
+      - name: Preserve failed SDK preparation diagnostics
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mutation-sdk-diagnostics
+          path: .artifacts/mutation-ci-sdk/*.log
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 3
+  native:
+    name: ${{ matrix.target }}
+    if: ${{ toJSON(fromJSON(inputs.native_targets || '["linux-x64","macos-arm64","windows-x64","windows-arm64"]')) != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ${{ fromJSON(inputs.native_targets || '["linux-x64","macos-arm64","windows-x64","windows-arm64"]') }}
+    runs-on: ${{ fromJSON('{"linux-x64":"ubuntu-26.04","macos-arm64":"macos-26","windows-x64":"windows-2025-vs2026","windows-arm64":"windows-11-vs2026-arm"}')[matrix.target] }}
+    timeout-minutes: ${{ startsWith(matrix.target, 'windows-') && 60 || 45 }}
+    steps: &native-steps
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+          architecture: ${{ endsWith(matrix.target, '-arm64') && 'arm64' || 'x64' }}
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        if: github.event_name != 'push'
+        with:
+          version: '0.13.7'
+          enable-cache: false
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec
+        if: github.event_name != 'push'
+        with:
+          toolchain: 1.99.1
+      - name: Assert native architecture
+        shell: bash
+        env:
+          EXPECTED_PLATFORM: ${{ startsWith(matrix.target, 'windows-') && 'windows' || startsWith(matrix.target, 'macos-') && 'macos' || 'linux' }}
+          EXPECTED_ARCH: ${{ endsWith(matrix.target, '-arm64') && 'arm64' || 'x64' }}
+        run: node scripts/quality/assert-platform.mjs
+      - name: Install locked development dependencies
+        run: npm ci --ignore-scripts
+      - name: Check source contracts, types, and handlers
+        if: github.event_name == 'push'
+        run: npm run check
+      - name: Install locked Python development dependencies
+        if: github.event_name != 'push'
+        # Hosted toolcache executables are world-writable. Use uv's private
+        # managed runtime so native executable admission remains unchanged.
+        run: uv sync --locked --all-groups --managed-python --python 3.15.2
+      - name: Prefetch locked Rust dependencies
+        if: github.event_name != 'push'
+        shell: bash
+        run: |
+          cargo fetch --locked
+          cargo fetch --locked --manifest-path scripts/quality/rust-assertion-parser/Cargo.toml
+      - name: Record original runtime executable metadata
+        if: github.event_name != 'push'
+        shell: bash
+        run: |
+          node -e 'const fs=require("node:fs"),p=fs.realpathSync(process.execPath),s=fs.statSync(p);console.log(JSON.stringify({tool:"node",path:p,uid:s.uid,mode:s.mode.toString(8),links:s.nlink}));'
+          uv run --no-sync --offline python -c 'import json,os,sys; p=os.path.realpath(sys.executable); s=os.stat(p); print(json.dumps(dict(tool="python",path=p,uid=s.st_uid,mode=oct(s.st_mode),links=s.st_nlink)))'
+      - name: Receive the selected run's verified native ARM SDK
+        if: github.event_name != 'push' && matrix.target == 'linux-arm64'
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: mutation-sdk-linux-arm64-${{ inputs.sdk_run_id || github.run_id }}-${{ inputs.sdk_run_id && inputs.sdk_run_attempt || github.run_attempt }}
+          path: .artifacts/mutation-ci-sdk
+          run-id: ${{ inputs.sdk_run_id || github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Verify and import the exact native ARM SDK image
+        if: github.event_name != 'push' && matrix.target == 'linux-arm64'
+        id: mutation-image
+        shell: bash
+        run: |
+          python3 scripts/quality/prepare-mutation-runtime.py --load-ci-image --asset-root "$PWD/.artifacts/mutation-ci-sdk" --transient-bytes 12000000000
+          python3 -c 'import json,os; value=json.load(open(".artifacts/mutation-ci-sdk/ci-sdk.json")); open(os.environ["GITHUB_OUTPUT"],"a").write("image="+value["image_id"]+"\n")'
+      - name: Complete original tests and bounded mutations on native Linux ARM64
+        if: github.event_name != 'push' && matrix.target == 'linux-arm64'
+        run: npm run test:mutation -- --image "${{ steps.mutation-image.outputs.image }}"
+      - name: Complete original tests on other native targets
+        if: github.event_name != 'push' && matrix.target != 'linux-arm64'
+        run: npm test
+      - name: Preserve failed test and mutation-discovery diagnostics
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: original-test-diagnostics-${{ matrix.target }}
+          path: |
+            .artifacts/original-tests/
+            .artifacts/mutation/**/*.log
+            .artifacts/mutation/runs/*/summary.json
+            .artifacts/mutation/runs/*/original-baseline/
+            .artifacts/mutation/sessions/*/discovery/*/runner.json
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 3
+  native-arm:
+    name: ${{ matrix.target }}
+    if: ${{ !cancelled() && (github.event_name == 'push' || ((github.event_name != 'workflow_dispatch' || inputs.linux_arm64) && (needs.mutation-sdk.result == 'success' || inputs.sdk_run_id != ''))) }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [linux-arm64]
+    runs-on: ubuntu-26.04-arm
+    needs: mutation-sdk
+    timeout-minutes: 45
+    steps: *native-steps
+  node24:
+    name: npm compatibility on Node 24
+    if: github.event_name != 'workflow_dispatch' || inputs.node24
+    runs-on: ubuntu-26.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.2'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14.10'
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        if: github.event_name != 'push'
+        with:
+          version: '0.13.7'
+          enable-cache: false
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec
+        if: github.event_name != 'push'
+        with:
+          toolchain: 1.99.1
+      - run: npm ci --ignore-scripts
+      - name: Check source contracts, types, and handlers on Node 24
+        if: github.event_name == 'push'
+        run: npm run check
+      - run: uv sync --locked --all-groups --managed-python --python 3.14.10
+        if: github.event_name != 'push'
+      - name: Prefetch locked Rust dependencies
+        if: github.event_name != 'push'
+        shell: bash
+        run: |
+          cargo fetch --locked
+          cargo fetch --locked --manifest-path scripts/quality/rust-assertion-parser/Cargo.toml
+      - name: Record original runtime executable metadata
+        if: github.event_name != 'push'
+        shell: bash
+        run: |
+          node -e 'const fs=require("node:fs"),p=fs.realpathSync(process.execPath),s=fs.statSync(p);console.log(JSON.stringify({tool:"node",path:p,uid:s.uid,mode:s.mode.toString(8),links:s.nlink}));'
+          uv run --no-sync --offline python -c 'import json,os,sys; p=os.path.realpath(sys.executable); s=os.stat(p); print(json.dumps(dict(tool="python",path=p,uid=s.st_uid,mode=oct(s.st_mode),links=s.st_nlink)))'
+      - run: npm test
+        if: github.event_name != 'push'
+      - name: Preserve failed original-test diagnostics
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: original-test-diagnostics-node24
+          path: .artifacts/original-tests/
+          include-hidden-files: true
+          if-no-files-found: ignore
+          retention-days: 3

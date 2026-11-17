@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/schema/candidate-v1.json",
+  "type": "object",
+  "required": ["schema_version", "status", "product_version", "source_tree_sha256", "artifacts"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "status": {"enum": ["local_candidate", "accepted_candidate"]},
+    "production_ready": {"type": "boolean"},
+    "signing_profile": {"const": "publisher-beta"},
+    "product_version": {"type": "string", "minLength": 1},
+    "source_tree_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "publisher_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "runtime_lock_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "runtime_lock_path": {"type": "string", "minLength": 1},
+    "runtime_lock_size": {"type": "integer", "minimum": 0},
+    "artifacts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/file"}},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/file"}},
+    "blockers": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "required": ["path", "sha256", "size"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "suite_id": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "size": {"type": "integer", "minimum": 0},
+        "platform": {"type": "string"},
+        "oci_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "signature": {"type": "object", "required": ["key_id", "signature"], "properties": {"key_id": {"type": "string"}, "signature": {"type": "string"}}}
+      }
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "local_candidate"}}, "required": ["status"]}, "then": {"required": ["production_ready", "blockers"], "properties": {"production_ready": {"const": false}, "blockers": true}}},
+    {
+      "if": {"required": ["signing_profile"], "properties": {"signing_profile": true}},
+      "then": {"properties": {"status": {"const": "accepted_candidate"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "accepted_candidate"}}, "required": ["status"]},
+      "then": {
+        "required": ["source_commit", "publisher_commit", "runtime_lock_sha256", "runtime_lock_path", "runtime_lock_size", "evidence"],
+        "properties": {
+          "source_commit": true, "publisher_commit": true, "runtime_lock_sha256": true, "runtime_lock_path": true, "runtime_lock_size": true,
+          "artifacts": {"type": "array", "items": {"type": "object", "required": ["id"], "properties": {"id": true}}},
+          "evidence": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["suite_id"], "properties": {"suite_id": true}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "accepted_candidate"}}, "required": ["status"], "not": {"required": ["signing_profile"], "properties": {"signing_profile": true}}},
+      "then": {"properties": {
+        "artifacts": {"type": "array", "items": {"type": "object", "required": ["signature"], "properties": {"signature": true}}},
+        "evidence": {"type": "array", "items": {"type": "object", "required": ["signature"], "properties": {"signature": true}}}
+      }}
+    }
+  ]
+}

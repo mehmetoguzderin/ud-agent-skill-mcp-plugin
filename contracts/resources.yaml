@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "implementation": "packages/coordinator/src/server.ts",
+  "resources": [
+    {
+      "kind": "catalog",
+      "uri": "ud://catalog/v1",
+      "templates": [],
+      "authorized": false,
+      "pagination": null
+    },
+    {
+      "kind": "contexts",
+      "uri": "ud://contexts/{id}",
+      "templates": [
+        "ud://contexts/{id}{?cursor}",
+        "ud://contexts/{id}"
+      ],
+      "authorized": true,
+      "pagination": "immutable cursor bound to scope and retained bytes"
+    },
+    {
+      "kind": "reports",
+      "uri": "ud://reports/{id}",
+      "templates": [
+        "ud://reports/{id}{?cursor}",
+        "ud://reports/{id}"
+      ],
+      "authorized": true,
+      "pagination": "immutable cursor bound to scope and retained bytes"
+    },
+    {
+      "kind": "plans",
+      "uri": "ud://plans/{id}",
+      "templates": [
+        "ud://plans/{id}{?cursor}",
+        "ud://plans/{id}"
+      ],
+      "authorized": true,
+      "pagination": "immutable cursor bound to scope and retained bytes"
+    },
+    {
+      "kind": "operations",
+      "uri": "ud://operations/{id}",
+      "templates": [
+        "ud://operations/{id}{?cursor}",
+        "ud://operations/{id}"
+      ],
+      "authorized": true,
+      "pagination": "immutable cursor bound to scope and retained bytes"
+    },
+    {
+      "kind": "artifacts",
+      "uri": "ud://artifacts/{id}",
+      "templates": [
+        "ud://artifacts/{id}{?cursor}",
+        "ud://artifacts/{id}"
+      ],
+      "authorized": true,
+      "pagination": "immutable cursor bound to scope and retained bytes"
+    }
+  ],
+  "retention": {
+    "maximum_resource_bytes": 67108864,
+    "page_bytes": 65536,
+    "maximum_store_bytes": 536870912,
+    "maximum_resources": 10000,
+    "maximum_days": 30
+  },
+  "semantic_authority": [
+    "packages/coordinator/src/resources.ts",
+    "packages/coordinator/src/continuations.ts"
+  ]
+}

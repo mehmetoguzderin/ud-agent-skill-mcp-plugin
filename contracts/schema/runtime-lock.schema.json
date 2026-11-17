@@ -1,0 +1,787 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UD Agent immutable runtime lock",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "product_version",
+    "state",
+    "packs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "format_revision": {
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "product_version": {
+      "const": "0.1.0-beta.1"
+    },
+    "state": {
+      "enum": [
+        "unbuilt",
+        "frozen"
+      ]
+    },
+    "userspace_sha256": {
+      "$ref": "#/$defs/digest"
+    },
+    "native_helpers": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(darwin|linux|win32)/(arm64|x64)$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "guard"
+        ],
+        "properties": {
+          "guard": {
+            "$ref": "#/$defs/file"
+          }
+        }
+      }
+    },
+    "packs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "core": {
+          "$ref": "#/$defs/pack"
+        },
+        "render": {
+          "$ref": "#/$defs/pack"
+        }
+      }
+    },
+    "provider_receipts": {
+      "type": "object",
+      "maxProperties": 6,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^apple-container/darwin/arm64$": {
+          "$ref": "#/$defs/apple_provider"
+        },
+        "^lima-nerdctl/darwin/(arm64|x64)$": {
+          "$ref": "#/$defs/lima_provider"
+        },
+        "^wslc/win32/(arm64|x64)$": {
+          "$ref": "#/$defs/wslc_provider"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*[\\\\:\\u0000])(?!.*//).+$"
+    },
+    "file": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "size_bytes"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 21474836480
+        }
+      }
+    },
+    "transport": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/file"
+        },
+        {
+          "type": "object",
+          "required": [
+            "format"
+          ],
+          "properties": {
+            "format": {
+              "enum": [
+                "oci-archive",
+                "docker-archive"
+              ]
+            },
+            "index_digest": {
+              "$ref": "#/$defs/digest",
+              "description": "SHA-256 of this OCI archive's exact index.json bytes; independent of the pack's multiarchitecture index digest."
+            }
+          },
+          "dependentSchemas": {
+            "index_digest": {
+              "properties": {
+                "format": {
+                  "const": "oci-archive"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "image": {
+      "type": "object",
+      "required": [
+        "digest",
+        "reference"
+      ],
+      "properties": {
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "reference": {
+          "type": "string",
+          "pattern": "^ghcr\\.io/mehmetoguzderin/[a-z0-9._/-]+@sha256:[0-9a-f]{64}$"
+        },
+        "config_digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "diff_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/digest"
+          }
+        },
+        "transports": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/transport"
+          }
+        },
+        "transport_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "transport_size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 21474836480
+        },
+        "engine_descriptor_digests": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/digest"
+          }
+        },
+        "context_sha256": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "dependentRequired": {
+        "config_digest": [
+          "diff_ids"
+        ],
+        "diff_ids": [
+          "config_digest"
+        ],
+        "transport_sha256": [
+          "transport_size_bytes"
+        ],
+        "transport_size_bytes": [
+          "transport_sha256"
+        ],
+        "engine_descriptor_digests": [
+          "config_digest",
+          "diff_ids",
+          "transports"
+        ]
+      }
+    },
+    "pack": {
+      "type": "object",
+      "properties": {
+        "index_digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "context_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "context_manifest": {
+          "$ref": "#/$defs/file"
+        },
+        "platforms": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "linux/amd64": {
+              "$ref": "#/$defs/digest"
+            },
+            "linux/arm64": {
+              "$ref": "#/$defs/digest"
+            }
+          }
+        },
+        "images": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "linux/amd64": {
+              "$ref": "#/$defs/image"
+            },
+            "linux/arm64": {
+              "$ref": "#/$defs/image"
+            }
+          }
+        },
+        "index_transport": {
+          "$ref": "#/$defs/transport"
+        },
+        "seccomp_profile": {
+          "$ref": "#/$defs/file"
+        }
+      }
+    },
+    "absolute_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32768,
+      "pattern": "^(?:/|[A-Za-z]:[\\\\/]|\\\\\\\\)(?!.*[\\u0000-\\u001f]).+$"
+    },
+    "provider_asset_path": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/path"
+        },
+        {
+          "$ref": "#/$defs/absolute_path"
+        }
+      ]
+    },
+    "guest_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?!.*(?:^|/)\\.{1,2}(?:/|$))/(?!.*[\\\\\\u0000-\\u001f]).+$"
+    },
+    "provider_asset": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/provider_asset_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "additionalProperties": false
+    },
+    "apple_provider": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "executable_sha256",
+        "kernel",
+        "init_image"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "executable_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "kernel": {
+          "$ref": "#/$defs/provider_asset"
+        },
+        "init_image": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/init_image"
+            },
+            {
+              "type": "object",
+              "required": [
+                "context_sha256",
+                "config_digest",
+                "diff_ids"
+              ],
+              "properties": {
+                "context_sha256": {
+                  "$ref": "#/$defs/digest"
+                },
+                "config_digest": true,
+                "diff_ids": true
+              }
+            }
+          ]
+        },
+        "lazy_assets": {
+          "$ref": "#/$defs/provider_assets"
+        }
+      },
+      "additionalProperties": false
+    },
+    "lima_provisioning": {
+      "type": "object",
+      "required": [
+        "template_path",
+        "template_sha256",
+        "offline_ready",
+        "assets"
+      ],
+      "properties": {
+        "template_path": {
+          "$ref": "#/$defs/path"
+        },
+        "template_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "offline_ready": {
+          "type": "boolean"
+        },
+        "assets": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "path",
+              "sha256",
+              "size_bytes"
+            ],
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{0,63}$"
+              },
+              "path": {
+                "$ref": "#/$defs/path"
+              },
+              "sha256": {
+                "$ref": "#/$defs/digest"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 21474836480
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "generated_config": {
+          "type": "object",
+          "required": [
+            "networks_sha256"
+          ],
+          "properties": {
+            "networks_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "lima_provider": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "executable_sha256",
+        "instance",
+        "nerdctl",
+        "nerdctl_sha256",
+        "containerd",
+        "containerd_sha256",
+        "address",
+        "guest_uid",
+        "guest_home",
+        "architecture"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "executable_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "instance": {
+          "type": "string",
+          "pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
+        },
+        "nerdctl": {
+          "$ref": "#/$defs/guest_path"
+        },
+        "nerdctl_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "containerd": {
+          "$ref": "#/$defs/guest_path"
+        },
+        "containerd_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "ctr": {
+          "$ref": "#/$defs/guest_path"
+        },
+        "ctr_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "address": {
+          "$ref": "#/$defs/guest_path"
+        },
+        "guest_uid": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967295
+        },
+        "guest_home": {
+          "$ref": "#/$defs/guest_path"
+        },
+        "architecture": {
+          "enum": [
+            "amd64",
+            "arm64"
+          ]
+        },
+        "home": {
+          "$ref": "#/$defs/absolute_path"
+        },
+        "provisioning": {
+          "$ref": "#/$defs/lima_provisioning"
+        },
+        "lazy_assets": {
+          "$ref": "#/$defs/provider_assets"
+        },
+        "nsenter": {
+          "$ref": "#/$defs/guest_path"
+        },
+        "nsenter_sha256": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "additionalProperties": false,
+      "dependentRequired": {
+        "ctr": [
+          "ctr_sha256"
+        ],
+        "ctr_sha256": [
+          "ctr"
+        ],
+        "nsenter": [
+          "nsenter_sha256"
+        ],
+        "nsenter_sha256": [
+          "nsenter"
+        ]
+      }
+    },
+    "wslc_provider": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "executable_sha256",
+        "sdk",
+        "sdk_sha256"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "executable_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "sdk": {
+          "$ref": "#/$defs/provider_asset_path"
+        },
+        "sdk_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "lazy_assets": {
+          "$ref": "#/$defs/provider_assets"
+        }
+      },
+      "additionalProperties": false
+    },
+    "init_image": {
+      "type": "object",
+      "required": [
+        "digest",
+        "reference"
+      ],
+      "properties": {
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "reference": {
+          "type": "string",
+          "pattern": "^(?:ghcr\\.io/mehmetoguzderin/[a-z0-9._/-]+|localhost/ud-agent-skill-mcp-plugin-init)@sha256:[0-9a-f]{64}$"
+        },
+        "config_digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "diff_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/digest"
+          }
+        },
+        "transports": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/transport"
+          }
+        },
+        "transport_sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "transport_size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 21474836480
+        },
+        "engine_descriptor_digests": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/digest"
+          }
+        },
+        "context_sha256": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "dependentRequired": {
+        "config_digest": [
+          "diff_ids"
+        ],
+        "diff_ids": [
+          "config_digest"
+        ],
+        "transport_sha256": [
+          "transport_size_bytes"
+        ],
+        "transport_size_bytes": [
+          "transport_sha256"
+        ],
+        "engine_descriptor_digests": [
+          "config_digest",
+          "diff_ids",
+          "transports"
+        ]
+      }
+    },
+    "provider_assets": {
+      "type": "object",
+      "required": [
+        "url",
+        "sha256",
+        "size",
+        "files"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://github\\.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0\\.1\\.0-beta\\.1/ud-agent-provider-(?:apple-container|lima-nerdctl|wslc)-(?:darwin|win32)-(?:arm64|x64)\\.tar\\.gz$"
+        },
+        "sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967296
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20000,
+          "items": {
+            "$ref": "#/$defs/file"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "format_revision"
+        ],
+        "properties": {
+          "format_revision": {
+            "const": 2
+          },
+          "state": {
+            "const": "frozen"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "packs": {
+            "type": "object",
+            "required": [
+              "core",
+              "render"
+            ],
+            "properties": {
+              "core": {
+                "type": "object",
+                "required": [
+                  "index_digest",
+                  "context_sha256",
+                  "platforms",
+                  "images",
+                  "index_transport"
+                ],
+                "properties": {
+                  "index_digest": true,
+                  "context_sha256": true,
+                  "platforms": {
+                    "type": "object",
+                    "required": [
+                      "linux/amd64",
+                      "linux/arm64"
+                    ],
+                    "properties": {
+                      "linux/amd64": true,
+                      "linux/arm64": true
+                    }
+                  },
+                  "images": {
+                    "type": "object",
+                    "required": [
+                      "linux/amd64",
+                      "linux/arm64"
+                    ],
+                    "properties": {
+                      "linux/amd64": {
+                        "type": "object",
+                        "required": [
+                          "config_digest",
+                          "diff_ids",
+                          "transports"
+                        ],
+                        "properties": {
+                          "config_digest": true,
+                          "diff_ids": true,
+                          "transports": true
+                        }
+                      },
+                      "linux/arm64": {
+                        "type": "object",
+                        "required": [
+                          "config_digest",
+                          "diff_ids",
+                          "transports"
+                        ],
+                        "properties": {
+                          "config_digest": true,
+                          "diff_ids": true,
+                          "transports": true
+                        }
+                      }
+                    }
+                  },
+                  "index_transport": true
+                }
+              },
+              "render": {
+                "type": "object",
+                "required": [
+                  "index_digest",
+                  "context_sha256",
+                  "platforms",
+                  "images",
+                  "index_transport"
+                ],
+                "properties": {
+                  "index_digest": true,
+                  "context_sha256": true,
+                  "platforms": {
+                    "type": "object",
+                    "required": [
+                      "linux/amd64",
+                      "linux/arm64"
+                    ],
+                    "properties": {
+                      "linux/amd64": true,
+                      "linux/arm64": true
+                    }
+                  },
+                  "images": {
+                    "type": "object",
+                    "required": [
+                      "linux/amd64",
+                      "linux/arm64"
+                    ],
+                    "properties": {
+                      "linux/amd64": {
+                        "type": "object",
+                        "required": [
+                          "config_digest",
+                          "diff_ids",
+                          "transports"
+                        ],
+                        "properties": {
+                          "config_digest": true,
+                          "diff_ids": true,
+                          "transports": true
+                        }
+                      },
+                      "linux/arm64": {
+                        "type": "object",
+                        "required": [
+                          "config_digest",
+                          "diff_ids",
+                          "transports"
+                        ],
+                        "properties": {
+                          "config_digest": true,
+                          "diff_ids": true,
+                          "transports": true
+                        }
+                      }
+                    }
+                  },
+                  "index_transport": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

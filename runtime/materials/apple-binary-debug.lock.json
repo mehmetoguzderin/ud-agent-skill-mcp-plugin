@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "repository": "apple/container",
+  "source_commit": "a15b46097aa4c2325da13c1fb5192b9274aab083",
+  "version": "1.7.1",
+  "archive": {
+    "url": "https://github.com/apple/container/releases/download/1.7.1/container-dSYM.zip",
+    "sha256": "68a8424403c46971f371369ca9adb1f471ab89f92fb537b3ba098bacecd2c0ae",
+    "size_bytes": 270149411
+  },
+  "scope": "Released symbol metadata; UUID matching is required for each binary. This is not a reproducible-build or compiler-source assertion."
+}

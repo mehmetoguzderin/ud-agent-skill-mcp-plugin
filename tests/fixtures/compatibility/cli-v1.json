@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "arguments": [
+        "--version"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "ud-agent: Unknown command: --version\n"
+    },
+    {
+      "arguments": [
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "ud-agent [mcp]\nud-agent connect HOST [--working-tree PATH] [--check | --remove | --dry-run] [--no-skills]\nud-agent doctor [--working-tree PATH] [--engine NAME] [--offline] [--fix] [--json]\nud-agent check [--working-tree PATH] [--required-tools NAME,...] [--engine NAME] [--offline]\nud-agent setup [--working-tree PATH] [--required-tools NAME,...] [--engine NAME] [--mode MODE] [--network MODE] [--dry-run]\nud-agent validate --working-tree PATH [--lang CODE] [--level 1-5] [--no-setup]\nud-agent tools [--query TEXT] [--json]\nud-agent describe TOOL [--path INPUT_JSON_POINTER] [--json]\nud-agent read-resource URI [--allow-root PATH ...] [--json]\nud-agent call TOOL --input FILE [--allow-root PATH ...]\nud-agent shell-aliases --bin DIR [--dry-run] [--json]\nud-agent clean [--cache] --dry-run | ud-agent clean --cache [--engine NAME | --all]\nud-agent uninstall --owned-runtime [--dry-run] [--engine NAME | --all]\n\nMCP uses your host's project roots. Use --allow-root PATH for an explicit grant,\nor --discover-workspace for bounded discovery in a treebank folder.\nUD_AGENT_ALLOWED_ROOTS also accepts the legacy JSON array of workspace grants.\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "unknown-command"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "ud-agent: Unknown command: unknown-command\n"
+    }
+  ]
+}

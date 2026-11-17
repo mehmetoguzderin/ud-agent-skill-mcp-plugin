@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "product_version": "0.1.0-beta.1",
+  "state": "example",
+  "platforms": {
+    "darwin/arm64": {
+      "packs": ["core"],
+      "worker": "runtime/pack/worker",
+      "upstream": "runtime/pack/upstream",
+      "context": "runtime/pack/context/context.json",
+      "bootstrap": "runtime/pack/worker/ud_agent/userspace_bootstrap.py",
+      "guard": "runtime/pack/guard",
+      "requirements": "runtime/pack/requirements.txt",
+      "wheels": "runtime/pack/wheels",
+      "python_download": {
+        "version": "3.14.10",
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10%2B20261026-aarch64-apple-darwin-install_only_stripped.tar.gz",
+        "sha256": "sha256:95eb8c87d16af37c54e9765e31d8c56c0d8ffa9968ea0f704f73a9b83f84e9f9",
+        "size": 26753457
+      },
+      "files": [
+        {
+          "path": "runtime/pack/context/context.json",
+          "sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "size": 0
+        }
+      ]
+    }
+  }
+}

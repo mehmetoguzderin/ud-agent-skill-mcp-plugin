@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "format_revision": 2,
+  "active": true,
+  "operator_version": "ud-graph-typed-operators-2",
+  "registry": {
+    "path": "quality/python-graph-operator-proposals-v2.json",
+    "sha256": "79f9abb8f23a1c2b8d12505550155422c3b15d27d135a38ba535c8e79a658837"
+  },
+  "review": {
+    "path": "quality/reviews/python-graph-operators-root-review-v2.json",
+    "sha256": "2f527a9e7eab2fb282a7d32573eb67e4f1a45abac9f953e8bd83d93f232440e1"
+  },
+  "qualification": "Operator regeneration only; no outcome accepted and full source-bound protected execution remains required."
+}

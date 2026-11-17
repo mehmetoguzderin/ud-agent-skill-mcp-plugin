@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "feature_agreement_report",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "empty_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "relation_filter": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "deprel": {
+              "type": "string"
+            },
+            "upos": {
+              "type": "string"
+            },
+            "head": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "feature_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation_filter": {
+      "$ref": "#/$defs/relation_filter"
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/empty_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "feature_name",
+    "relation_filter",
+    "ud_context_path"
+  ]
+}

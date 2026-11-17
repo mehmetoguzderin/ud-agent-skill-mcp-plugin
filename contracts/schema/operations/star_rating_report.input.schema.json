@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "star_rating_report",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {},
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "language_code": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "ud_context_path"
+  ]
+}

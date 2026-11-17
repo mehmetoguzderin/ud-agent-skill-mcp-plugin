@@ -1,0 +1,528 @@
+[
+  {
+    "Image": {
+      "Name": "import@sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+      "Labels": null,
+      "Target": {
+        "mediaType": "application/vnd.oci.image.manifest.v1+json",
+        "digest": "sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+        "size": 3534
+      },
+      "CreatedAt": "2026-11-09T04:08:40.691664127Z",
+      "UpdatedAt": "2026-11-09T04:08:40.691664127Z"
+    },
+    "ManifestDesc": {
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "digest": "sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+      "size": 3534
+    },
+    "Manifest": {
+      "schemaVersion": 2,
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "config": {
+        "mediaType": "application/vnd.oci.image.config.v1+json",
+        "digest": "sha256:7ec1d9505c530b58affe84030bbbca3c7785f901130ab3b40671ba6058a736b0",
+        "size": 10545
+      },
+      "layers": [
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:acd43e9bebc37bc4ba7a5f47bd7598913337803e53d468f37d940f11f5d5f1ef",
+          "size": 30214037
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:ef8201317da3d347fda745bf801c8c2a5f0655fa13c176e93bb25a0b52aa82be",
+          "size": 1270237
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:aa7731a0a62721d25fb16971b220770e350a9cc563e6d212a45696c69d051a87",
+          "size": 13058846
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:405d5f23d33fc68792d0c7c40f677c70e8acb48ea3ceb1c985d64a6d3895fe7f",
+          "size": 249
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:a006cc22e20c5b5fa4a972a21f06be2f41b2041d194e13cddbbcce1f76f54d7b",
+          "size": 22632803
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:3bcbce4084f74601532830ad4619e9fe6ceadde30fb9c0e72d4ba33dab6cdd4f",
+          "size": 2038404
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:43536e6f310938bbc17b8a487469f4302a38b6baac3316ae234f2dde2c5b78bd",
+          "size": 406
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:1cabc8b5ddf8b28b13051152e3af77dda313ba12b271323d2a632d1f1cddc66e",
+          "size": 1174400
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:83080e54d048322d5da171287c7c77e9b338cb4d7ee97c292eddd5c274d37128",
+          "size": 134642
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:82f3fac1b3d5f09ef1f4a63aca739303b2bf424ec19cf3e98813a9854085ffcd",
+          "size": 229975
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:f107e44927b77dede1366d5cacb68853619d16669a52b5dbe2f58921d3c4f4ac",
+          "size": 16403
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:79d9cedaa5ea477a91fca083a6199fc2d21121ddb7c1f0c0b88a4228964cc6ac",
+          "size": 540525
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:af3f21447fb1c8694b3f3de7d438d3aba2655c12422a4bf1728b0dd2af7c6fb1",
+          "size": 694606
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:a347ac457752472c01de2b8f2c467466c2b8321793e84c94a68e72009fde9154",
+          "size": 2367
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:acc9c018dd17eb7ebea170e238a8def9585fd9ffb283453e60a521878c158c81",
+          "size": 155607
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:93b4ba03d0c7975e761882ac4a8ab897f228aa5b525444b0976b5e37ba91debd",
+          "size": 1924518
+        },
+        {
+          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+          "digest": "sha256:997150e2b2272f9a07bddd2a1dcb327d8a5a5d804a73eae883681e93a0cb23b4",
+          "size": 94
+        }
+      ]
+    },
+    "ImageConfigDesc": {
+      "mediaType": "application/vnd.oci.image.config.v1+json",
+      "digest": "sha256:7ec1d9505c530b58affe84030bbbca3c7785f901130ab3b40671ba6058a736b0",
+      "size": 10545
+    },
+    "ImageConfig": {
+      "created": "2026-11-09T03:23:22.664921087Z",
+      "architecture": "arm64",
+      "os": "linux",
+      "config": {
+        "User": "10001:10001",
+        "Env": [
+          "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "LANG=C.UTF-8",
+          "PYTHON_VERSION=3.15.2",
+          "PYTHON_SHA256=8b5536d280142ecf6cdfe15d12a21ba1c65e300bbf7b28a8d0cdb849575797de",
+          "PYTHONDONTWRITEBYTECODE=1",
+          "PYTHONUNBUFFERED=1",
+          "SOURCE_DATE_EPOCH=315532800",
+          "PYTHONPATH=/opt/ud-agent/worker:/opt/ud-agent/upstream/udtools/src",
+          "UD_AGENT_PERL=/opt/ud-agent/perl/bin/perl",
+          "UD_AGENT_DEFAULT_CONTEXT=/opt/ud-agent/context/context.json",
+          "UD_AGENT_CONTEXT_ASSET_ROOT=/opt/ud-agent"
+        ],
+        "Entrypoint": [
+          "python",
+          "-m",
+          "ud_agent.worker"
+        ],
+        "WorkingDir": "/work",
+        "Labels": {
+          "org.opencontainers.image.source": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin",
+          "org.opencontainers.image.title": "UD Agent core worker candidate",
+          "org.opencontainers.image.version": "0.1.0-beta.1",
+          "org.ud-agent.release-qualified": "false"
+        }
+      },
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e",
+          "sha256:2b0bcc4cbe7ecd1ba58b3bb0a4d2740d57b713e9b944a6049caa172aa05b1d9d",
+          "sha256:cbdb98da82e6b88ae37e024d26a7737c4e8226c5505a613d1e23284479487c69",
+          "sha256:907c00193c8fcd614d68121c983c4070d5ab4a9dfbc7ecba87783e692a27814b",
+          "sha256:3dc5d8de7cc1bce32abc195770559aaa7fbd1eab7c553367d92070ca1518efc2",
+          "sha256:32f6c1354226b7ce06d1f50202599db251f8ad9f2c7b4b054ab244c39ac8bab1",
+          "sha256:da53e0fb52877ae4a9c081f13bd767700de82cc33c25da54eed938983738b84c",
+          "sha256:a2b3aa35b373964529aa0e662febbfcffd0e233ff33c8ec658aabe57d7c1095f",
+          "sha256:9804cf3bb037aa53688ddd470b05bcf23e239d90c1238af80b3f8ea72fb3e278",
+          "sha256:ef9ea405971b100f9325ee1596c4cc4f5f5f41d2016d19121c0227de2b33530f",
+          "sha256:8c0074a6db627169f600d8993950c3153b0087c1c5d503179c22ca296546ac8a",
+          "sha256:786198bfd41cc9f9ad2067d7c981c470a44e16c89b2f46daf005e7e67909abef",
+          "sha256:78685ef88f33f0d586273c1acc6edc35c511bb3109d02653e155558092898b33",
+          "sha256:6962013e60c4986acbe4ecca95a05269a2a07955ed86a54af53493467f76e08f",
+          "sha256:89a7dc11c9e2d634339d18af786f621c18b28e783819841c4c33287b4c4f4342",
+          "sha256:d78daebac50939f57f79e63911dda1901e4c263fa4b14bb8a1f996d1659fe9e1",
+          "sha256:76868fd167b0c0349b41fb4afcf010f8043c4fb4a4c961402d3dadcd8fc5e8d3"
+        ]
+      },
+      "history": [
+        {
+          "created": "2026-11-04T21:23:39Z",
+          "created_by": "# debian.sh --arch 'arm64' out/ 'trixie' '@1793827419'",
+          "comment": "debuerreotype 0.17"
+        },
+        {
+          "created": "2026-11-05T07:55:21.468877716Z",
+          "created_by": "ENV PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-05T07:55:21.468877716Z",
+          "created_by": "ENV LANG=C.UTF-8",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-05T07:55:21.468877716Z",
+          "created_by": "RUN /bin/sh -c set -eux; \tapt-get update; \tapt-get install -y --no-install-recommends \t\tca-certificates \t\tnetbase \t\ttzdata \t; \tapt-get dist-clean # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-05T07:55:21.468877716Z",
+          "created_by": "ENV PYTHON_VERSION=3.15.2",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-05T07:55:21.468877716Z",
+          "created_by": "ENV PYTHON_SHA256=8b5536d280142ecf6cdfe15d12a21ba1c65e300bbf7b28a8d0cdb849575797de",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-05T08:03:35.252943094Z",
+          "created_by": "RUN /bin/sh -c set -eux; \t\tsavedAptMark=\"$(apt-mark showmanual)\"; \tapt-get update; \tapt-get install -y --no-install-recommends \t\tdpkg-dev \t\tg++ \t\tgcc \t\tgnupg \t\tlibbluetooth-dev \t\tlibbz2-dev \t\tlibc6-dev \t\tlibdb-dev \t\tlibffi-dev \t\tlibgdbm-dev \t\tliblzma-dev \t\tlibmpdec-dev \t\tlibncursesw5-dev \t\tlibreadline-dev \t\tlibsqlite3-dev \t\tlibssl-dev \t\tlibzstd-dev \t\tmake \t\ttk-dev \t\tuuid-dev \t\twget \t\txz-utils \t\tzlib1g-dev \t; \t\twget -O python.tar.xz \"https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz\"; \techo \"$PYTHON_SHA256 *python.tar.xz\" | sha256sum -c -; \tmkdir -p /usr/src/python; \ttar --extract --directory /usr/src/python --strip-components=1 --file python.tar.xz; \trm python.tar.xz; \t\tcd /usr/src/python; \tgnuArch=\"$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)\"; \t./configure \t\t--build=\"$gnuArch\" \t\t--enable-loadable-sqlite-extensions \t\t--enable-optimizations \t\t--enable-option-checking=fatal \t\t--enable-shared \t\t$(test \"${gnuArch%%-*}\" != 'riscv64' && echo '--with-lto') \t\t--with-ensurepip \t; \tnproc=\"$(nproc)\"; \tEXTRA_CFLAGS=\"$(dpkg-buildflags --get CFLAGS)\"; \tLDFLAGS=\"$(dpkg-buildflags --get LDFLAGS)\"; \tLDFLAGS=\"${LDFLAGS:-} -Wl,--strip-all\"; \tarch=\"$(dpkg --print-architecture)\"; arch=\"${arch##*-}\"; \tcase \"$arch\" in \t\tamd64|arm64) \t\t\tEXTRA_CFLAGS=\"${EXTRA_CFLAGS:-} -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer\"; \t\t\t;; \t\ti386) \t\t\t;; \t\t*) \t\t\tEXTRA_CFLAGS=\"${EXTRA_CFLAGS:-} -fno-omit-frame-pointer\"; \t\t\t;; \tesac; \tmake -j \"$nproc\" \t\t\"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\" \t\t\"LDFLAGS=${LDFLAGS:-}\" \t; \trm python; \tmake -j \"$nproc\" \t\t\"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\" \t\t\"LDFLAGS=${LDFLAGS:-} -Wl,-rpath='\\$\\$ORIGIN/../lib'\" \t\tpython \t; \tmake install; \t\tcd /; \trm -rf /usr/src/python; \t\tfind /usr/local -depth \t\t\\( \t\t\t\\( -type d -a \\( -name test -o -name tests -o -name idle_test \\) \\) \t\t\t-o \\( -type f -a \\( -name '*.pyc' -o -name '*.pyo' -o -name 'libpython*.a' \\) \\) \t\t\\) -exec rm -rf '{}' + \t; \t\tldconfig; \t\tapt-mark auto '.*' > /dev/null; \tapt-mark manual $savedAptMark; \tfind /usr/local -type f -executable -not \\( -name '*tkinter*' \\) -exec ldd '{}' ';' \t\t| awk '/=>/ { so = $(NF-1); if (index(so, \"/usr/local/\") == 1) { next }; gsub(\"^/(usr/)?\", \"\", so); printf \"*%s\\n\", so }' \t\t| sort -u \t\t| xargs -rt dpkg-query --search \t\t| awk 'sub(\":$\", \"\", $1) { print $1 }' \t\t| sort -u \t\t| xargs -r apt-mark manual \t; \tapt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \tapt-get dist-clean; \t\texport PYTHONDONTWRITEBYTECODE=1; \tpython3 --version; \tpip3 --version # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-05T08:03:35.364352014Z",
+          "created_by": "RUN /bin/sh -c set -eux; \tfor src in idle3 pip3 pydoc3 python3 python3-config; do \t\tdst=\"$(echo \"$src\" | tr -d 3)\"; \t\t[ -s \"/usr/local/bin/$src\" ]; \t\t[ ! -e \"/usr/local/bin/$dst\" ]; \t\tln -svT \"$src\" \"/usr/local/bin/$dst\"; \tdone # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-05T08:03:35.364352014Z",
+          "created_by": "CMD [\"python3\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-09T01:28:32.487282388Z",
+          "created_by": "ARG TARGETARCH=arm64",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-09T01:28:32.487282388Z",
+          "created_by": "LABEL org.opencontainers.image.title=UD Agent core worker candidate org.opencontainers.image.version=0.1.0-beta.1 org.opencontainers.image.source=https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin org.ud-agent.release-qualified=false",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-09T01:28:32.487282388Z",
+          "created_by": "ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 SOURCE_DATE_EPOCH=315532800 PYTHONPATH=/opt/ud-agent/worker:/opt/ud-agent/upstream/udtools/src UD_AGENT_PERL=/opt/ud-agent/perl/bin/perl UD_AGENT_DEFAULT_CONTEXT=/opt/ud-agent/context/context.json UD_AGENT_CONTEXT_ASSET_ROOT=/opt/ud-agent",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-09T01:28:32.487282388Z",
+          "created_by": "COPY perl/arm64/ /opt/ud-agent/perl/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T01:28:32.534108805Z",
+          "created_by": "COPY wheels/ /tmp/ud-agent-wheels/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T01:28:32.552361305Z",
+          "created_by": "COPY requirements.txt /tmp/ud-agent-requirements.txt # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T02:44:17.326446418Z",
+          "created_by": "RUN |1 TARGETARCH=arm64 /bin/sh -c python -m pip --isolated install --disable-pip-version-check --no-index --no-deps --no-compile --require-hashes --find-links=/tmp/ud-agent-wheels -r /tmp/ud-agent-requirements.txt     && rm -rf /tmp/ud-agent-wheels /tmp/ud-agent-requirements.txt # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:18.128609751Z",
+          "created_by": "COPY worker/ /opt/ud-agent/worker/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:18.16504796Z",
+          "created_by": "COPY upstream/ /opt/ud-agent/upstream/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:18.182012293Z",
+          "created_by": "COPY docs-automation/ /opt/ud-agent/docs-automation/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:18.263987126Z",
+          "created_by": "COPY docs/ /opt/ud-agent/docs/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:18.29387221Z",
+          "created_by": "COPY context/ /opt/ud-agent/context/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:18.307335001Z",
+          "created_by": "COPY licenses/ /opt/ud-agent/licenses/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:18.322049835Z",
+          "created_by": "COPY input-manifest.json /opt/ud-agent/input-manifest.json # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:22.631761004Z",
+          "created_by": "RUN |1 TARGETARCH=arm64 /bin/sh -c chmod -R a-w /opt/ud-agent     && mkdir -p /input     && chown 10001:10001 /input     && chmod 0700 /input     && python -c 'import ud_agent.worker, udtools, udapi, regex; print(\"worker dependencies import successfully\")'     && python -c 'from pathlib import Path; import subprocess; from ud_agent.perl_runtime import command; subprocess.run(command(Path(\"/opt/ud-agent/perl/bin/perl\"),Path(\"/opt/ud-agent/upstream/udlib.pm\"),Path(\"/opt/ud-agent/upstream\")),check=True)' # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:22.664921087Z",
+          "created_by": "WORKDIR /work",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-11-09T03:23:22.664921087Z",
+          "created_by": "USER 10001:10001",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-09T03:23:22.664921087Z",
+          "created_by": "ENTRYPOINT [\"python\" \"-m\" \"ud_agent.worker\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ]
+    },
+    "size": 289304576,
+    "Snapshots": [
+      {
+        "Kind": "Committed",
+        "Name": "sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e",
+          "containerd.io/snapshot/diff-id": "sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e"
+        },
+        "Created": "2026-11-09T04:08:39.128662448Z",
+        "Updated": "2026-11-09T04:08:39.128662448Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:2b0bcc4cbe7ecd1ba58b3bb0a4d2740d57b713e9b944a6049caa172aa05b1d9d",
+        "Parent": "sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:2b0bcc4cbe7ecd1ba58b3bb0a4d2740d57b713e9b944a6049caa172aa05b1d9d",
+          "containerd.io/snapshot/diff-id": "sha256:4724a032bb47601062518e7b117ab208aff5e6d480fb949a0ec7c1b7c6c522fa",
+          "containerd.io/snapshot/parent-chain-id": "sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e"
+        },
+        "Created": "2026-11-09T04:08:39.484583928Z",
+        "Updated": "2026-11-09T04:08:39.484583928Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:cbdb98da82e6b88ae37e024d26a7737c4e8226c5505a613d1e23284479487c69",
+        "Parent": "sha256:2b0bcc4cbe7ecd1ba58b3bb0a4d2740d57b713e9b944a6049caa172aa05b1d9d",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:cbdb98da82e6b88ae37e024d26a7737c4e8226c5505a613d1e23284479487c69",
+          "containerd.io/snapshot/diff-id": "sha256:e0ecf7026e05bdcd13be7b07eb2900df5c18f6a03cfd335f38ed2b6262f26406",
+          "containerd.io/snapshot/parent-chain-id": "sha256:2b0bcc4cbe7ecd1ba58b3bb0a4d2740d57b713e9b944a6049caa172aa05b1d9d"
+        },
+        "Created": "2026-11-09T04:08:39.782016071Z",
+        "Updated": "2026-11-09T04:08:39.782016071Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:907c00193c8fcd614d68121c983c4070d5ab4a9dfbc7ecba87783e692a27814b",
+        "Parent": "sha256:cbdb98da82e6b88ae37e024d26a7737c4e8226c5505a613d1e23284479487c69",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:907c00193c8fcd614d68121c983c4070d5ab4a9dfbc7ecba87783e692a27814b",
+          "containerd.io/snapshot/diff-id": "sha256:790966f62f43fc33168c2223ca5e0fc0e53b95d0fc20b7b10722b71933b9fa6f",
+          "containerd.io/snapshot/parent-chain-id": "sha256:cbdb98da82e6b88ae37e024d26a7737c4e8226c5505a613d1e23284479487c69"
+        },
+        "Created": "2026-11-09T04:08:39.793732466Z",
+        "Updated": "2026-11-09T04:08:39.793732466Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:3dc5d8de7cc1bce32abc195770559aaa7fbd1eab7c553367d92070ca1518efc2",
+        "Parent": "sha256:907c00193c8fcd614d68121c983c4070d5ab4a9dfbc7ecba87783e692a27814b",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:3dc5d8de7cc1bce32abc195770559aaa7fbd1eab7c553367d92070ca1518efc2",
+          "containerd.io/snapshot/diff-id": "sha256:9d80eb1a5c63d85fd04c1b24ee78e148fa28a4e8d42f71efc6101a55ce7d8461",
+          "containerd.io/snapshot/parent-chain-id": "sha256:907c00193c8fcd614d68121c983c4070d5ab4a9dfbc7ecba87783e692a27814b"
+        },
+        "Created": "2026-11-09T04:08:40.3438555Z",
+        "Updated": "2026-11-09T04:08:40.3438555Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:32f6c1354226b7ce06d1f50202599db251f8ad9f2c7b4b054ab244c39ac8bab1",
+        "Parent": "sha256:3dc5d8de7cc1bce32abc195770559aaa7fbd1eab7c553367d92070ca1518efc2",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:32f6c1354226b7ce06d1f50202599db251f8ad9f2c7b4b054ab244c39ac8bab1",
+          "containerd.io/snapshot/diff-id": "sha256:14d283f78ba99fc3bf5cd13ca54ab51eaaf3cdbe98ffe07ffc4bc3172bec0718",
+          "containerd.io/snapshot/parent-chain-id": "sha256:3dc5d8de7cc1bce32abc195770559aaa7fbd1eab7c553367d92070ca1518efc2"
+        },
+        "Created": "2026-11-09T04:08:40.374415196Z",
+        "Updated": "2026-11-09T04:08:40.374415196Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:da53e0fb52877ae4a9c081f13bd767700de82cc33c25da54eed938983738b84c",
+        "Parent": "sha256:32f6c1354226b7ce06d1f50202599db251f8ad9f2c7b4b054ab244c39ac8bab1",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:da53e0fb52877ae4a9c081f13bd767700de82cc33c25da54eed938983738b84c",
+          "containerd.io/snapshot/diff-id": "sha256:be5dc9881886379e29d63d4ccfa2c548105bda229318f79804da1ac5ed03a63e",
+          "containerd.io/snapshot/parent-chain-id": "sha256:32f6c1354226b7ce06d1f50202599db251f8ad9f2c7b4b054ab244c39ac8bab1"
+        },
+        "Created": "2026-11-09T04:08:40.381423172Z",
+        "Updated": "2026-11-09T04:08:40.381423172Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:a2b3aa35b373964529aa0e662febbfcffd0e233ff33c8ec658aabe57d7c1095f",
+        "Parent": "sha256:da53e0fb52877ae4a9c081f13bd767700de82cc33c25da54eed938983738b84c",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:a2b3aa35b373964529aa0e662febbfcffd0e233ff33c8ec658aabe57d7c1095f",
+          "containerd.io/snapshot/diff-id": "sha256:afa9896ad346f878e9ea29858268669128406eae13ed0214d1e136e55cc49ed9",
+          "containerd.io/snapshot/parent-chain-id": "sha256:da53e0fb52877ae4a9c081f13bd767700de82cc33c25da54eed938983738b84c"
+        },
+        "Created": "2026-11-09T04:08:40.429845639Z",
+        "Updated": "2026-11-09T04:08:40.429845639Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:9804cf3bb037aa53688ddd470b05bcf23e239d90c1238af80b3f8ea72fb3e278",
+        "Parent": "sha256:a2b3aa35b373964529aa0e662febbfcffd0e233ff33c8ec658aabe57d7c1095f",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:9804cf3bb037aa53688ddd470b05bcf23e239d90c1238af80b3f8ea72fb3e278",
+          "containerd.io/snapshot/diff-id": "sha256:5f5d85e116300eb09c1f3636b9c188d0469f56be64d0d158c4049a619a522d3d",
+          "containerd.io/snapshot/parent-chain-id": "sha256:a2b3aa35b373964529aa0e662febbfcffd0e233ff33c8ec658aabe57d7c1095f"
+        },
+        "Created": "2026-11-09T04:08:40.445187119Z",
+        "Updated": "2026-11-09T04:08:40.445187119Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:ef9ea405971b100f9325ee1596c4cc4f5f5f41d2016d19121c0227de2b33530f",
+        "Parent": "sha256:9804cf3bb037aa53688ddd470b05bcf23e239d90c1238af80b3f8ea72fb3e278",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:ef9ea405971b100f9325ee1596c4cc4f5f5f41d2016d19121c0227de2b33530f",
+          "containerd.io/snapshot/diff-id": "sha256:27cc7dce35de6be26e48c455c8698379e933604bffb546da603ac90427adf2b0",
+          "containerd.io/snapshot/parent-chain-id": "sha256:9804cf3bb037aa53688ddd470b05bcf23e239d90c1238af80b3f8ea72fb3e278"
+        },
+        "Created": "2026-11-09T04:08:40.45792359Z",
+        "Updated": "2026-11-09T04:08:40.45792359Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:8c0074a6db627169f600d8993950c3153b0087c1c5d503179c22ca296546ac8a",
+        "Parent": "sha256:ef9ea405971b100f9325ee1596c4cc4f5f5f41d2016d19121c0227de2b33530f",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:8c0074a6db627169f600d8993950c3153b0087c1c5d503179c22ca296546ac8a",
+          "containerd.io/snapshot/diff-id": "sha256:e14d801ea1bdf4abd7b6388e8b5748cb39669dd62d1643c85fffb448afc68322",
+          "containerd.io/snapshot/parent-chain-id": "sha256:ef9ea405971b100f9325ee1596c4cc4f5f5f41d2016d19121c0227de2b33530f"
+        },
+        "Created": "2026-11-09T04:08:40.465348698Z",
+        "Updated": "2026-11-09T04:08:40.465348698Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:786198bfd41cc9f9ad2067d7c981c470a44e16c89b2f46daf005e7e67909abef",
+        "Parent": "sha256:8c0074a6db627169f600d8993950c3153b0087c1c5d503179c22ca296546ac8a",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:786198bfd41cc9f9ad2067d7c981c470a44e16c89b2f46daf005e7e67909abef",
+          "containerd.io/snapshot/diff-id": "sha256:b8ca9c9016248b6d8e4bd1bffe0086113e3c3bf3b896d59b75cfe2fa17fe8772",
+          "containerd.io/snapshot/parent-chain-id": "sha256:8c0074a6db627169f600d8993950c3153b0087c1c5d503179c22ca296546ac8a"
+        },
+        "Created": "2026-11-09T04:08:40.501432032Z",
+        "Updated": "2026-11-09T04:08:40.501432032Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:78685ef88f33f0d586273c1acc6edc35c511bb3109d02653e155558092898b33",
+        "Parent": "sha256:786198bfd41cc9f9ad2067d7c981c470a44e16c89b2f46daf005e7e67909abef",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:78685ef88f33f0d586273c1acc6edc35c511bb3109d02653e155558092898b33",
+          "containerd.io/snapshot/diff-id": "sha256:5ed4dff2fd6200bcc7db5dd0bd3782d0af887179bb3d2bbac09c2f104912e358",
+          "containerd.io/snapshot/parent-chain-id": "sha256:786198bfd41cc9f9ad2067d7c981c470a44e16c89b2f46daf005e7e67909abef"
+        },
+        "Created": "2026-11-09T04:08:40.527965013Z",
+        "Updated": "2026-11-09T04:08:40.527965013Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:6962013e60c4986acbe4ecca95a05269a2a07955ed86a54af53493467f76e08f",
+        "Parent": "sha256:78685ef88f33f0d586273c1acc6edc35c511bb3109d02653e155558092898b33",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:6962013e60c4986acbe4ecca95a05269a2a07955ed86a54af53493467f76e08f",
+          "containerd.io/snapshot/diff-id": "sha256:4128425385ea29dd33b10468c415cf7e292faeaea569e18bc3c5f48cefbc1cb0",
+          "containerd.io/snapshot/parent-chain-id": "sha256:78685ef88f33f0d586273c1acc6edc35c511bb3109d02653e155558092898b33"
+        },
+        "Created": "2026-11-09T04:08:40.538709503Z",
+        "Updated": "2026-11-09T04:08:40.538709503Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:89a7dc11c9e2d634339d18af786f621c18b28e783819841c4c33287b4c4f4342",
+        "Parent": "sha256:6962013e60c4986acbe4ecca95a05269a2a07955ed86a54af53493467f76e08f",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:89a7dc11c9e2d634339d18af786f621c18b28e783819841c4c33287b4c4f4342",
+          "containerd.io/snapshot/diff-id": "sha256:1d2d7dc88ebcffc44458ca3700a6fd7efb16e75f7c8cb942c6b5bd5f46af0654",
+          "containerd.io/snapshot/parent-chain-id": "sha256:6962013e60c4986acbe4ecca95a05269a2a07955ed86a54af53493467f76e08f"
+        },
+        "Created": "2026-11-09T04:08:40.551276372Z",
+        "Updated": "2026-11-09T04:08:40.551276372Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:d78daebac50939f57f79e63911dda1901e4c263fa4b14bb8a1f996d1659fe9e1",
+        "Parent": "sha256:89a7dc11c9e2d634339d18af786f621c18b28e783819841c4c33287b4c4f4342",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:d78daebac50939f57f79e63911dda1901e4c263fa4b14bb8a1f996d1659fe9e1",
+          "containerd.io/snapshot/diff-id": "sha256:2f427f5a17242247e90633e9b0fcb0bdcb5acdd637acc6e46fee24bf52384576",
+          "containerd.io/snapshot/parent-chain-id": "sha256:89a7dc11c9e2d634339d18af786f621c18b28e783819841c4c33287b4c4f4342"
+        },
+        "Created": "2026-11-09T04:08:40.672416362Z",
+        "Updated": "2026-11-09T04:08:40.672416362Z"
+      },
+      {
+        "Kind": "Committed",
+        "Name": "sha256:76868fd167b0c0349b41fb4afcf010f8043c4fb4a4c961402d3dadcd8fc5e8d3",
+        "Parent": "sha256:d78daebac50939f57f79e63911dda1901e4c263fa4b14bb8a1f996d1659fe9e1",
+        "Labels": {
+          "containerd.io/snapshot.ref": "sha256:76868fd167b0c0349b41fb4afcf010f8043c4fb4a4c961402d3dadcd8fc5e8d3",
+          "containerd.io/snapshot/diff-id": "sha256:b37f4a250f9736d7952a8791e66595bdefbc6e86d33826fb417fdbf54f1c4c17",
+          "containerd.io/snapshot/parent-chain-id": "sha256:d78daebac50939f57f79e63911dda1901e4c263fa4b14bb8a1f996d1659fe9e1"
+        },
+        "Created": "2026-11-09T04:08:40.687801889Z",
+        "Updated": "2026-11-09T04:08:40.687801889Z"
+      }
+    ]
+  }
+]

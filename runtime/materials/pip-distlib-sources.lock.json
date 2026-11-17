@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "qualification": "exact-pip-distlib-publisher-source-component-inputs",
+  "components": [
+    {
+      "name": "pip",
+      "version": "26.2.2",
+      "metadata": {
+        "path": "pip-26.2.2.json",
+        "sha256": "d0b07879e414dc3347bf20a492a9e8a15cfb1962e3cae3843b93453d9940f5f9",
+        "size_bytes": 6683,
+        "url": "https://pypi.org/pypi/pip/26.2.2/json"
+      },
+      "source": {
+        "path": "pip-26.2.2.tar.gz",
+        "sha256": "3a8e5c800492787f33a4114ef54444546c340df428974ebba17e0fd47e11af2f",
+        "size_bytes": 1863336,
+        "url": "https://files.pythonhosted.org/packages/fa/e8/0842d757e483e895e670f655084cfe8b8c72580c6769a76b30b2789a0608/pip-26.2.2.tar.gz"
+      }
+    },
+    {
+      "name": "distlib",
+      "version": "0.4.2",
+      "metadata": {
+        "path": "distlib-0.4.2.json",
+        "sha256": "cfa0bd767e7404b477248df43da51f4aa44c0c6ddd4c940a7e8c5f9d9b93a93f",
+        "size_bytes": 7459,
+        "url": "https://pypi.org/pypi/distlib/0.4.2/json"
+      },
+      "source": {
+        "path": "distlib-0.4.2.tar.gz",
+        "sha256": "baeb401c90f27acd15c4861ae0847d1e731c27ac3dbf4210643ba61fa1e813db",
+        "size_bytes": 614914,
+        "url": "https://files.pythonhosted.org/packages/46/8d/873e9252ea2c0e0c857884e0a2899ec43ade132345df1925ef24cbe64f18/distlib-0.4.2.tar.gz"
+      }
+    }
+  ],
+  "wheel": {
+    "name": "pip",
+    "version": "26.2.2",
+    "path": "blobs/fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70",
+    "sha256": "fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70",
+    "size_bytes": 1819850,
+    "url": "https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/pip-26.2.2-py3-none-any.whl"
+  }
+}

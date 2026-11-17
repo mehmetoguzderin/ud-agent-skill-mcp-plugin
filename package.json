@@ -1,0 +1,51 @@
+{
+  "name": "@mehmetoguzderin/ud-agent-skill-mcp-plugin",
+  "version": "0.1.0-beta.1",
+  "description": "Local Universal Dependencies (UD) and CONLL-U (conllu) validation, editing, and analysis with agentic skills, MCP, CLI, and plugin.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "repository": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin",
+  "mcpName": "io.github.mehmetoguzderin/ud-agent-skill-mcp-plugin",
+  "engines": {
+    "node": ">=24 <27"
+  },
+  "scripts": {
+    "eval:local": "node scripts/quality/run-local-model-evals.mjs",
+    "generate": "python3 scripts/generate/contracts.py && node scripts/generate/public-contracts.mjs && node scripts/generate/host-adapters.mjs --write && node scripts/generate/maintenance.mjs && python3 scripts/generate/implementation-inventory.py",
+    "build": "tsc -p tsconfig.json",
+    "check": "node scripts/quality/check.mjs",
+    "test": "node scripts/quality/test.mjs",
+    "test:evidence": "node scripts/quality/original-acceptance.mjs",
+    "test:mutation": "node scripts/quality/mutation-gate.mjs --profile bounded",
+    "test:mutation:exhaustive": "node scripts/quality/mutation-gate.mjs --profile exhaustive",
+    "release:prepare": "node scripts/release/prepare.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "ajv": "8.20.0",
+    "jsonc-parser": "3.3.1",
+    "smol-toml": "1.9.1",
+    "yaml": "2.9.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0",
+    "@stryker-mutator/core": "10.1.1",
+    "@stryker-mutator/vitest-runner": "10.1.1",
+    "@types/node": "26.6.6",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "typescript-compat": "npm:typescript@6.0.3",
+    "vitest": "5.1.0"
+  },
+  "overrides": {
+    "@stryker-mutator/core": {
+      "minimatch": "11.0.5",
+      "typed-rest-client": {
+        "qs": "6.17.1"
+      }
+    }
+  }
+}

@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Manual::Tooling::TestBuilder - This section maps Test::Builder methods to Test2 concepts.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Tooling::TestBuilder - This section maps Test::Builder methods to Test2 concepts.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#CONTEXT">CONTEXT</a></li>
+  <li><a href="#TEST-BUILDER-METHODS">TEST BUILDER METHODS</a></li>
+  <li><a href="#LEVEL">LEVEL</a></li>
+  <li><a href="#TODO">TODO</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Manual::Tooling::TestBuilder - This section maps Test::Builder methods to Test2 concepts.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>With Test::Builder tools were encouraged to use methods on the Test::Builder singleton object. Test2 has a different approach, every tool should get a new <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/API/Context.html">Test2::API::Context</a> object, and call methods on that. This document maps several concepts from Test::Builder to Test2.</p>
+
+<h1 id="CONTEXT">CONTEXT</h1>
+
+<p>First thing to do, stop using the Test::Builder singleton, in fact stop using or even loading Test::Builder. Instead of Test::Builder each tool you write should follow this template:</p>
+
+<pre><code>use Test2::API qw/context/;
+
+sub my_tool {
+    my $ctx  = context();
+
+    ... do work ...
+
+    $ctx-&gt;ok(1, &quot;a passing assertion&quot;);
+
+    $ctx-&gt;release;
+
+    return $whatever;
+}</code></pre>
+
+<p>The original Test::Builder style was this:</p>
+
+<pre><code>use Test::Builder;
+my $tb = Test::Builder-&gt;new; # gets the singleton
+
+sub my_tool {
+    ... do work ...
+
+    $tb-&gt;ok(1, &quot;a passing assertion&quot;);
+
+    return $whatever;
+}</code></pre>
+
+<h1 id="TEST-BUILDER-METHODS">TEST BUILDER METHODS</h1>
+
+<dl>
+
+<dt id="tb-BAIL_OUT-reason">$tb-&gt;BAIL_OUT($reason)</dt>
+<dd>
+
+<p>The context object has a &#39;bail&#39; method:</p>
+
+<pre><code>$ctx-&gt;bail($reason)</code></pre>
+
+</dd>
+<dt id="tb-diag-string">$tb-&gt;diag($string)</dt>
+<dd>
+
+</dd>
+<dt id="tb-note-string">$tb-&gt;note($string)</dt>
+<dd>
+
+<p>The context object has diag and note methods:</p>
+
+<pre><code>$ctx-&gt;diag($string);
+$ctx-&gt;note($string);</code></pre>
+
+</dd>
+<dt id="tb-done_testing">$tb-&gt;done_testing</dt>
+<dd>
+
+<p>The context object has a done_testing method:</p>
+
+<pre><code>$ctx-&gt;done_testing;</code></pre>
+
+<p>Unlike the Test::Builder version, no arguments are allowed.</p>
+
+</dd>
+<dt id="tb-like">$tb-&gt;like</dt>
+<dd>
+
+</dd>
+<dt id="tb-unlike">$tb-&gt;unlike</dt>
+<dd>
+
+<p>These are not part of context, instead look at <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Compare.html">Test2::Compare</a> and <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Compare.html">Test2::Tools::Compare</a>.</p>
+
+</dd>
+<dt id="tb-ok-bool-name">$tb-&gt;ok($bool, $name)</dt>
+<dd>
+
+<pre><code># Preferred
+$ctx-&gt;pass($name);
+$ctx-&gt;fail($name, @diag);
+
+# Discouraged, but supported:
+$ctx-&gt;ok($bool, $name, \@failure_diags)</code></pre>
+
+</dd>
+<dt id="tb-subtest">$tb-&gt;subtest</dt>
+<dd>
+
+<p>use the <code>Test2::API::run_subtest()</code> function instead. See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/API.html">Test2::API</a> for documentation.</p>
+
+</dd>
+<dt id="tb-todo_start">$tb-&gt;todo_start</dt>
+<dd>
+
+</dd>
+<dt id="tb-todo_end">$tb-&gt;todo_end</dt>
+<dd>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Basic.html#skip-why">&quot;skip($why)&quot; in Test2::Tools::Basic</a>, and <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Todo.html">Test2::Todo</a> instead.</p>
+
+</dd>
+<dt id="tb-output-tb-failure_output-and-tb-todo_output">$tb-&gt;output, $tb-&gt;failure_output, and $tb-&gt;todo_output</dt>
+<dd>
+
+<p>These are handled via formatters now. See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Formatter.html">Test2::Formatter</a> and <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Formatter/TAP.html">Test2::Formatter::TAP</a>.</p>
+
+</dd>
+</dl>
+
+<h1 id="LEVEL">LEVEL</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/Builder.html">Test::Builder</a> had the <code>$Test::Builder::Level</code> variable that you could modify in order to set the stack depth. This was useful if you needed to nest tools and wanted to make sure your file and line number were correct. It was also frustrating and prone to errors. Some people never even discovered the level variable and always had incorrect line numbers when their tools would fail.</p>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> uses the context system, which solves the problem a better way. The top-most tool get a context, and holds on to it until it is done. Any tool nested under the first will find and use the original context instead of generating a new one. This means the level problem is solved for free, no variables to mess with.</p>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> is also smart enough to honor <code>$Test::Builder::Level</code> if it is set.</p>
+
+<h1 id="TODO">TODO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/Builder.html">Test::Builder</a> used the <code>$TODO</code> package variable to set the TODO state. This was confusing, and easy to get wrong. See <a>Test2::Tools::Todo</a> for the modern way to accomplish a TODO state.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Manual.html">Test2::Manual</a> - Primary index of the manual.</p>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Manual can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Tooling::TestBuilder - This section maps Test::Builder methods to Test2 concepts.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

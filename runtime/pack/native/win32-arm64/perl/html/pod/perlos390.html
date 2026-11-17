@@ -1,0 +1,310 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>perlos390 - building and installing Perl for z/OS (previously called OS/390)</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perlos390 - building and installing Perl for z/OS (previously called OS/390)</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#EBCDIC-vs-ASCII">EBCDIC vs ASCII</a></li>
+      <li><a href="#EBCDIC-perl">EBCDIC perl</a></li>
+      <li><a href="#Tools">Tools</a></li>
+      <li><a href="#Building-EBCDIC-Perl-on-z-OS">Building EBCDIC Perl on z/OS</a>
+        <ul>
+          <li><a href="#Getting-perl-source">Getting perl source</a></li>
+          <li><a href="#Configuring-perl">Configuring perl</a></li>
+          <li><a href="#Building-perl">Building perl</a></li>
+          <li><a href="#Testing-perl">Testing perl</a></li>
+          <li><a href="#Known-Bugs">Known Bugs</a>
+            <ul>
+              <li><a href="#Bugs-in-both-EBCDIC-and-ASCII-versions">Bugs in both EBCDIC and ASCII versions</a></li>
+              <li><a href="#Bugs-only-in-the-EBCDIC-mode">Bugs only in the EBCDIC mode</a></li>
+              <li><a href="#Bugs-only-in-the-ASCII-mode">Bugs only in the ASCII mode</a></li>
+            </ul>
+          </li>
+          <li><a href="#Installing-perl">Installing perl</a></li>
+        </ul>
+      </li>
+      <li><a href="#Optimization">Optimization</a></li>
+      <li><a href="#Installing-other-modules">Installing other modules</a></li>
+      <li><a href="#Running-EBCDIC-Perl-on-z-OS">Running EBCDIC Perl on z/OS</a></li>
+    </ul>
+  </li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>perlos390 - building and installing Perl for z/OS (previously called OS/390)</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>This document will help you Configure, build, test and install Perl on z/OS Unix System Services.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Perl 5.44 on z/OS has been tested on z/OS 3.1 using &quot;Unix System Services&quot;. There have been extensive changes in the build process (such as using a different compiler) from earlier releases, which were tested on earlier versions of z/OS. It could well be that this release of Perl will work on different z/OS versions.</p>
+
+<h2 id="EBCDIC-vs-ASCII">EBCDIC vs ASCII</h2>
+
+<p>The native character set for z/OS is EBCDIC (code page 1047 in North America), but recent z/OS releases have added the ability for it to handle ASCII as well. And an open source project now exists to port many open source tools, such as <code>git</code>, and yes <code>Perl</code> to take advantage of these new capabilities. (A blog post about its early development is here <a href="https://makingdeveloperslivesbetter.wordpress.com/2022/01/18/enabling-open-source-for-z-os-perl/">https://makingdeveloperslivesbetter.wordpress.com/2022/01/18/enabling-open-source-for-z-os-perl/</a>.)</p>
+
+<p>Hiding a machine&#39;s character set without sacrificing too much performance requires extensive wizardry, not all of which is transparent, and not all of which yet works. The project is being actively developed with significant contributions by IBM of staff and machine time. The project is called <b>Open Source for z/OS</b>. <a href="https://zopen-community">https://zopen-community</a> brings you to its landing page.</p>
+
+<p>Basically, files and streams need to have extra information about their character set. This can easily require manual intervention to get things to work. For background, including what steps you must do to get this to work on your inputs, see <a href="https://makingdeveloperslivesbetter.wordpress.com/2022/01/07/is-z-os-ascii-or-ebcdic-yes/">https://makingdeveloperslivesbetter.wordpress.com/2022/01/07/is-z-os-ascii-or-ebcdic-yes/</a></p>
+
+<p>You can obtain this Perl port at <a href="https://zopen-community/perlport">https://zopen-community/perlport</a>. At the moment this is written, one configuration of perl is available: dynamic loading, unthreaded, non-debugging. You can customize it to some extent by modifying the file <i>buildenv</i>. Refer to <a href="#Configuring-perl">&quot;Configuring perl&quot;</a> below for hints on that. Also, refer to <a href="#Known-Bugs">&quot;Known Bugs&quot;</a> below.</p>
+
+<h2 id="EBCDIC-perl">EBCDIC perl</h2>
+
+<p>The rest of this document describes how to build a perl that runs native EBCDIC on z/OS.</p>
+
+<p>z/OS Unix System Services has a native shell much like <code>ksh</code> or <code>bash</code>, and Unix commands that are similar to ones in Linux, such as <code>sed</code>. Available options for these may differ from the Linux ones.</p>
+
+<p>There aren&#39;t any known 32-bit z/OS systems in existence anymore, so this document describes how to build a 64-bit EBCDIC Perl.</p>
+
+<p>Most CPAN modules have been written assuming ASCII. They may or may not work on EBCDIC. What we have found is that many do work, either mostly or completely, but may not appear to pass all their tests. Often the failures are in edge cases that may not come up in mainstream uses. Also any given failure may not actually be a real failure, but a problem with the test. This is because the typical test compares results with expected values which the test&#39;s author often hard-coded assuming ASCII, so the test is wrong, and the code is correct. Also, some failures may not be important for you. For example, if you do a plain <code>sort</code>, ASCII will have the digits first, uppercase letters next, and lowercase last. EBCDIC sorts the opposite. If your application really needs ASCII ordering, the module won&#39;t give the proper results; but often you just need a consistent sorting, and for that purpose the module could work perfectly well.</p>
+
+<p>Perl itself is shipped with some CPAN modules included. Some of these do not yet work fully on EBCDIC, and therefore testing of them is suppressed. See <a href="#Bugs-only-in-the-EBCDIC-mode">&quot;Bugs only in the EBCDIC mode&quot;</a></p>
+
+<h2 id="Tools">Tools</h2>
+
+<p>The tools required for building perl are available as:</p>
+
+<ul>
+
+<li><p>native commands on z/OS</p>
+
+<p>z/OS has versions of many tools that come with the Linux OS. Some of these don&#39;t have as many options as replacements available in the next group:</p>
+
+</li>
+<li><p>through the zopen community</p>
+
+<p><code>gunzip</code> and <code>clang</code> for example. Also you can get <code>bash</code> itself.</p>
+
+</li>
+<li><p>at no cost from IBM</p>
+
+<p><a href="https://www.ibm.com/products/open-enterprise-foundation-zos">https://www.ibm.com/products/open-enterprise-foundation-zos</a>. These include GNU make, which you will need.</p>
+
+</li>
+</ul>
+
+<h2 id="Building-EBCDIC-Perl-on-z-OS">Building EBCDIC Perl on z/OS</h2>
+
+<h3 id="Getting-perl-source">Getting perl source</h3>
+
+<p>You&#39;ll first need a tarball. At the moment this is written, there are no EBCDIC tarballs published, but it is easy to create one given that you have access to a system with any relatively modern perl.</p>
+
+<p>Get an ASCII tarball. Choose one of the following:</p>
+
+<dl>
+
+<dt id="Official-stable-release">Official stable release</dt>
+<dd>
+
+<p>Go to <a href="https://www.perl.org/get.html">https://www.perl.org/get.html</a> and choose any one of the &quot;Download latest Linuxy stable source&quot; buttons. The name of that tarball will be something like <i>perl-V.R.M,tar,gz</i>, where V.R.M is the version/release/modification of the perl you are downloading. Do</p>
+
+<pre><code>gunzip perl-V.R.M.tar.gz
+pax -r -f perl-V.R.M.tar</code></pre>
+
+<p>(or <code>tar</code> instead of <code>pax</code>)</p>
+
+<p>This will create a directory named <i>perl-V.R.M</i>, which you can rename to be whatever you want. The instructions below assume you choose <i>perl</i>.</p>
+
+</dd>
+<dt id="Development-release">Development release</dt>
+<dd>
+
+<p>If instead you want the latest unstable development release, clone Perl:</p>
+
+<pre><code>git clone https://github.com/Perl/perl5.git perl</code></pre>
+
+</dd>
+</dl>
+
+<p>Either way, after getting the <code>perl</code> directory populated, do</p>
+
+<pre><code>cd perl
+perl Porting/makerel -e</code></pre>
+
+<p>This will use whatever perl already is on the system to create an EBCDIC tarball named <i>perl-V.R.M.tar.gz</i>.</p>
+
+<p>Use <code>scp</code> or <code>sftp</code> to copy the tarball to the target z/OS system. Then, from the directory where it is located, do</p>
+
+<pre><code>gunzip perl-V.R.M.tar.gz
+pax -r -f perl-V.R.M.tar
+mv perl-V.R.M perl
+cd perl</code></pre>
+
+<p>(You likely can&#39;t use <code>tar</code> instead of <code>pax</code> here.)</p>
+
+<h3 id="Configuring-perl">Configuring perl</h3>
+
+<p>Now it is time to Configure it to your needs. If you need a dynamically loading perl (see below), first do:</p>
+
+<pre><code>export PATH=$PWD:$PATH
+export LIBPATH=$PWD:$LIBPATH</code></pre>
+
+<p>Then run Configure</p>
+
+<pre><code>./Configure -Dprefix=/path-to/install/directory -des \
+                              OTHER-OPTIONS-AS-BELOW</code></pre>
+
+<p><code>-d</code> means to use the default configuration values. This is important, as we have set those up specifically for z/OS.</p>
+
+<p><code>-e</code> means to continue on to the bitter end, not stopping the process early.</p>
+
+<p><code>-s</code> means to avoid unnecessary output verbiage. This parameter is optional.</p>
+
+<p>If the perl is an unstable development release, add <code>-Dusedevel</code> as one of the <code>OTHER-OPTIONS-AS-BELOW</code></p>
+
+<p>If you think you may want to debug the perl, add <code>-DDEBUGGING -Aoptimize=-g3 -Aoptimize=-ggdb3</code>.</p>
+
+<p>To silence some unnecessary compilation warnings, you can add <code>-Accflags=-Wno-deprecated</code>.</p>
+
+<p>To optimize the resultant perl binary, add <code>-Aoptimize=-O2</code>, or <code>-O3</code>, both of which have been tested on z/OS 3.1.</p>
+
+<p>If you will want to use modules from CPAN (like <code>DBI</code> (and <code>DBD</code>s), <code>JSON::XS</code>, and <code>Text::CSV_XS</code>), consider using dynamic loading. This isn&#39;t necessary if all such modules you might want are written only in Perl, but if some of them are compiled (meaning they contain XS code), you&#39;ll either need to recompile all of perl when you add one, or set it up initially to use dynamic loading. To do this, add <code>-Dusedl</code> to the Configure options.</p>
+
+<p>When Configure is run using the z/OS native shell, you&#39;ll see a message like</p>
+
+<pre><code>(I see you are using the Korn shell.  Some ksh&#39;s blow up on Configure,
+mainly on older exotic systems.  If yours does, try the Bourne shell
+instead.)</code></pre>
+
+<p>The native shell looks like <code>ksh</code>, and it works fine, so just ignore the message.</p>
+
+<p><i>Configure</i> currently will output errors in finding the header dependencies various object files have. This just means that they may be recompiled unnecessarily.</p>
+
+<h3 id="Building-perl">Building perl</h3>
+
+<p>Run GNU make to build Perl</p>
+
+<pre><code>make</code></pre>
+
+<p>This will currently likely crash in making the Encode module. To work around that, execute the following command</p>
+
+<pre><code>chtag -tc IBM-1047 cpan/Encode/Makefile</code></pre>
+
+<p>and rerun <code>make</code>. You may have to repeat this a second time.</p>
+
+<h3 id="Testing-perl">Testing perl</h3>
+
+<pre><code>TEST_JOBS=n make test_harness</code></pre>
+
+<p>where <i>n</i> is the number of tests to run in parallel. On hardware that is single core, 2 or 3 work well. A common value (if you aren&#39;t crowding out other users) is to set <i>n</i> to twice the number of cores available, plus 1.</p>
+
+<p>Some tests currently fail.</p>
+
+<p>The failing tests in <code>Test-Simple</code>, <code>Pod-Html</code>, <i>op/signatures</i>, and <i>io/nargv.t</i> are false alarms.</p>
+
+<p>The failing tests in <i>XS-APItest/t/utf8_warn00.t</i> show that the generated warning for a particular very edge case is not exactly as expected and is somewhat misleading.</p>
+
+<h3 id="Known-Bugs">Known Bugs</h3>
+
+<p>If zopen is installed on your machine, it is important to get the <code>PATH</code> variable correct. When running the zopen port of Perl, its directories should come first. When running the EBCDIC perl, the zopen directories should either not be in the PATH variable, or come last. For example, <i>/bin/echo</i> needs to have precedence over the zopen version in this case.</p>
+
+<h4 id="Bugs-in-both-EBCDIC-and-ASCII-versions">Bugs in both EBCDIC and ASCII versions</h4>
+
+<p>ExtUtils::MakeMaker does not work properly on perls built for dynamic loading.</p>
+
+<h4 id="Bugs-only-in-the-EBCDIC-mode">Bugs only in the EBCDIC mode</h4>
+
+<p>Some cpan modules shipped with perl do not yet work fully on EBCDIC, and therefore testing of them is suppressed. You can see which by examining <i>t/TEST</i> and searching for EBCDIC. Almost all of the problems with these are in the cases where their input is from some other encoding. These could be because they communicate with a remote ASCII system, or read from a file containing some other encoding. So, for example, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Pod/Simple.html">Pod::Simple</a> works fine on files encoded in EBCDIC, but will fail miserably for files encoded in a Cyrillic encoding.</p>
+
+<p>Fixes for these are under active development.</p>
+
+<h4 id="Bugs-only-in-the-ASCII-mode">Bugs only in the ASCII mode</h4>
+
+<p>Currently, in the zopen port of Perl, there are some issues when using UTF-8 locales; some of these lead to segfaults.</p>
+
+<h3 id="Installing-perl">Installing perl</h3>
+
+<pre><code>make install</code></pre>
+
+<p>will install perl into the directory you gave in the command</p>
+
+<pre><code>./Configure -Dprefix=/path-to/install/directory ...</code></pre>
+
+<h2 id="Optimization">Optimization</h2>
+
+<p>Perl is now built using the <code>clang</code> compiler. Previous releases used different compilers, and for them, optimization seemed iffy, so we recommended against doing it. (And we didn&#39;t revisit that advice with newer releases to see if things had gotten fixed, so that recommendation may have been outdated.) But with <code>clang</code> it does seem to work, and <a href="#Configuring-perl">&quot;Configuring perl&quot;</a> above gives instructions for enabling it.</p>
+
+<h2 id="Installing-other-modules">Installing other modules</h2>
+
+<p>Pure Perl (that is non XS) modules may be installed via the usual:</p>
+
+<pre><code>perl Makefile.PL
+make
+make test
+make install</code></pre>
+
+<p>If you built perl with dynamic loading capability, then that would also be the way to build XS based extensions. However, if you built perl with static linking you can still build XS based extensions for z/OS but you will need to follow the instructions in ExtUtils::MakeMaker for building statically linked perl binaries. In the simplest configurations building a static perl + XS extension boils down to:</p>
+
+<pre><code>perl Makefile.PL
+make
+make perl
+make test
+make install
+make -f Makefile.aperl inst_perl MAP_TARGET=perl</code></pre>
+
+<h2 id="Running-EBCDIC-Perl-on-z-OS">Running EBCDIC Perl on z/OS</h2>
+
+<p>To run the 64-bit Dynamic Perl environment, update your PATH and LIBPATH to include the location you installed Perl into, and then run the perl you installed as perlV.R.M where V/R/M is the Version/Release/Modification level of the current development level.</p>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<p>David Fiander and Peter Prymmer with thanks to Dennis Longnecker and William Raffloer for valuable reports, LPAR and PTF feedback. Thanks to Mike MacIsaac and Egon Terwedow for SG24-5944-00. Thanks to Ignasi Roca for pointing out the floating point problems. Thanks to John Goodyear for dynamic loading help.</p>
+
+<p>Mike Fulton and Karl Williamson have provided updates for UTF8, DLL, 64-bit and ASCII/EBCDIC Bi-Modal support</p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>Updated 25 May 2026 to reflect Perl v5.44 and <a href="https://zopen-community">https://zopen-community</a>.</p>
+
+<p>Updated 24 December 2021 to enable initial ASCII support.</p>
+
+<p>Updated 03 October 2019 for perl-5.33.3+</p>
+
+<p>Updated 28 November 2001 for broken URLs.</p>
+
+<p>Updated 12 March 2001 to mention //&#39;SYS1.TCPPARMS(TCPDATA)&#39;.</p>
+
+<p>Updated 24 January 2001 to mention dynamic loading.</p>
+
+<p>Updated 15 January 2001 for the 5.7.1 release of Perl.</p>
+
+<p>Updated 12 November 2000 for the 5.7.1 release of Perl.</p>
+
+<p>This document was podified for the 5.005_03 release of Perl 11 March 1999.</p>
+
+<p>This document was originally written by David Fiander for the 5.005 release of Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perlos390 - building and installing Perl for z/OS (previously called OS/390)</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "state": "frozen-inputs",
+  "version": "157.0.8103.38",
+  "platform": "darwin/arm64",
+  "url": "https://storage.googleapis.com/chrome-for-testing-public/157.0.8103.38/mac-arm64/chrome-headless-shell-mac-arm64.zip",
+  "sha256": "e6a6b13551aa12f951d0891d79282606b13742837c8fa0505e1272bae116ce82",
+  "size_bytes": 104773711
+}

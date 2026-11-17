@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "families": [
+    {
+      "kind": "node",
+      "sources": ".artifacts/source-materials-data/locked-language-sources/receipt.json",
+      "rust_sources": ".artifacts/source-materials-data/rust-runtime-sources-node-v4/receipt.json"
+    },
+    {
+      "kind": "private-perl",
+      "pack": ".artifacts/native-perl/darwin-arm64-source",
+      "receipt": ".artifacts/native-perl/darwin-arm64-source-receipt.json",
+      "sources": [
+        ".artifacts/source-materials-data/locked-language-sources/receipt.json"
+      ],
+      "platform": "darwin/arm64"
+    },
+    {
+      "kind": "rust",
+      "rust_sources": ".artifacts/source-materials-data/rust-runtime-sources-node-v4/receipt.json",
+      "package_sources": ".artifacts/source-materials-data/package-sources-uv/receipt.json",
+      "provider_sources": ".artifacts/source-materials-data/provider-sources-binary-v2/receipt.json",
+      "native_inputs": ".artifacts/native-inputs-19567be4/INPUTS.json",
+      "stl_binding": "runtime/materials/stl-source-binding.lock.json"
+    },
+    {
+      "kind": "locked-source-members",
+      "sources": ".artifacts/source-materials-data/locked-language-sources/receipt.json"
+    },
+    {
+      "kind": "coordinator-bundle",
+      "package_sources": ".artifacts/source-materials-data/package-sources-uv/receipt.json",
+      "cargo_locks": [
+        ".artifacts/source-materials-data/provider-sources-binary-v2/locks/uv.Cargo.lock"
+      ]
+    },
+    {
+      "kind": "python-wheels",
+      "sources": ".artifacts/source-materials-data/locked-language-sources/receipt.json",
+      "wheel_roots": [
+        ".artifacts/public-beta-workers-linux-arm64-final-source/core-context/wheels",
+        ".artifacts/public-beta-workers-linux-amd64-final-source/core-context/wheels"
+      ]
+    },
+    {
+      "kind": "private-perl",
+      "platform": "linux/x64",
+      "pack": ".artifacts/linux-dual-compose-worktree/.artifacts/native-perl/linux-x64-source",
+      "receipt": ".artifacts/linux-dual-compose-worktree/.artifacts/native-perl/linux-x64-source-receipt.json",
+      "sources": [
+        ".artifacts/source-materials-data/locked-language-sources/receipt.json"
+      ],
+      "elf": {
+        "inventory": ".artifacts/source-materials-data/private-perl-elf-amd64/receipt.json",
+        "sources": ".artifacts/source-materials-data/private-perl-elf-sources-amd64/receipt.json",
+        "private_runtime": ".artifacts/linux-dual-compose-worktree/.artifacts/native-perl/linux-x64-source-receipt.json",
+        "keyring": ".artifacts/lima-product/ubuntu/ubuntu-archive-keyring.gpg",
+        "proof": ".artifacts/source-materials-data/private-perl-elf-source-binding-amd64.json"
+      }
+    },
+    {
+      "kind": "private-perl",
+      "platform": "linux/arm64",
+      "pack": ".artifacts/native-perl/linux-arm64-source",
+      "receipt": ".artifacts/native-perl/linux-arm64-source-receipt.json",
+      "sources": [
+        ".artifacts/source-materials-data/locked-language-sources/receipt.json"
+      ],
+      "elf": {
+        "inventory": ".artifacts/source-materials-data/private-perl-elf-arm64-v2/receipt.json",
+        "sources": ".artifacts/source-materials-data/private-perl-elf-sources/receipt.json",
+        "private_runtime": ".artifacts/native-perl/linux-arm64-source-receipt.json",
+        "keyring": ".artifacts/lima-product/ubuntu/ubuntu-archive-keyring.gpg",
+        "proof": ".artifacts/source-materials-data/private-perl-elf-source-binding-current-4.json"
+      }
+    },
+    {
+      "kind": "private-perl",
+      "platform": "win32/x64",
+      "pack": ".artifacts/native-perl/public-beta-release-x64",
+      "receipt": ".artifacts/native-perl/public-beta-release-x64-receipt.json",
+      "sources": [
+        ".artifacts/source-materials-data/locked-language-sources/receipt.json",
+        ".artifacts/source-materials-data/windows-perl-provider-sources/receipt.json"
+      ],
+      "runtime_only": {
+        "input_pack": ".artifacts/native-perl/public-beta-open-x64",
+        "input_receipt": ".artifacts/native-perl/public-beta-open-x64-receipt.json"
+      }
+    },
+    {
+      "kind": "private-perl",
+      "platform": "win32/arm64",
+      "pack": ".artifacts/native-perl/public-beta-release-arm64",
+      "receipt": ".artifacts/native-perl/public-beta-release-arm64-receipt.json",
+      "sources": [
+        ".artifacts/source-materials-data/locked-language-sources/receipt.json",
+        ".artifacts/source-materials-data/windows-perl-provider-sources/receipt.json"
+      ],
+      "runtime_only": {
+        "input_pack": ".artifacts/native-perl/public-beta-open-arm64",
+        "input_receipt": ".artifacts/native-perl/public-beta-open-arm64-receipt.json"
+      }
+    },
+    {
+      "kind": "oci-os-packages",
+      "pack": "core",
+      "platform": "linux/arm64",
+      "inventory": ".artifacts/public-beta-debian-inventory-arm64-core-dual/receipt.json",
+      "sources": ".artifacts/public-beta-debian-source-arm64-core-dual/receipt.json",
+      "keyring": ".artifacts/public-beta-debian-inventory-arm64-core-dual/archive-keyring.gpg"
+    },
+    {
+      "kind": "oci-os-packages",
+      "pack": "core",
+      "platform": "linux/amd64",
+      "inventory": ".artifacts/public-beta-debian-inventory-amd64-core/receipt.json",
+      "sources": ".artifacts/public-beta-debian-source-amd64-core/receipt.json",
+      "keyring": ".artifacts/public-beta-debian-inventory-amd64-core/archive-keyring.gpg"
+    },
+    {
+      "kind": "oci-os-packages",
+      "pack": "render",
+      "platform": "linux/arm64",
+      "inventory": ".artifacts/public-beta-debian-inventory-arm64-render-dual/receipt.json",
+      "sources": ".artifacts/public-beta-debian-source-arm64-render-dual/receipt.json",
+      "keyring": ".artifacts/public-beta-debian-inventory-arm64-render-dual/archive-keyring.gpg"
+    },
+    {
+      "kind": "oci-os-packages",
+      "pack": "render",
+      "platform": "linux/amd64",
+      "inventory": ".artifacts/public-beta-debian-inventory-amd64-render-dual/receipt.json",
+      "sources": ".artifacts/public-beta-debian-source-amd64-render-dual/receipt.json",
+      "keyring": ".artifacts/public-beta-debian-inventory-amd64-render-dual/archive-keyring.gpg"
+    },
+    {
+      "kind": "runtime-source-members",
+      "sources": ".artifacts/source-materials-data/python-runtime-sources/receipt.json"
+    },
+    {
+      "kind": "oci-python-provider",
+      "pack": "core",
+      "platform": "linux/arm64",
+      "sources": ".artifacts/source-materials-data/python-runtime-sources/receipt.json",
+      "provenance": ".artifacts/source-materials-data/core-image-provenance-v1/receipt.json"
+    },
+    {
+      "kind": "oci-python-provider",
+      "pack": "render",
+      "platform": "linux/arm64",
+      "sources": ".artifacts/source-materials-data/python-runtime-sources/receipt.json",
+      "provenance": ".artifacts/source-materials-data/core-image-provenance-v1/receipt.json"
+    },
+    {
+      "kind": "oci-python-provider",
+      "pack": "core",
+      "platform": "linux/amd64",
+      "sources": ".artifacts/source-materials-data/python-runtime-sources/receipt.json",
+      "provenance": ".artifacts/source-materials-data/core-image-provenance-v1/receipt.json"
+    },
+    {
+      "kind": "oci-python-provider",
+      "pack": "render",
+      "platform": "linux/amd64",
+      "sources": ".artifacts/source-materials-data/python-runtime-sources/receipt.json",
+      "provenance": ".artifacts/source-materials-data/core-image-provenance-v1/receipt.json"
+    },
+    {
+      "kind": "pip-runtime",
+      "original_sources": ".artifacts/source-materials-data/pip-distlib-original-1",
+      "wheel_base": ".artifacts/source-materials-data/python-runtime-sources"
+    },
+    {
+      "kind": "provider-runtime"
+    },
+    {
+      "kind": "packaged-data"
+    },
+    {
+      "kind": "native-render"
+    },
+    {
+      "kind": "authored-worker-metadata",
+      "contexts": {
+        "linux/arm64": ".artifacts/public-beta-workers-linux-arm64-final-source/core-context",
+        "linux/amd64": ".artifacts/public-beta-workers-linux-amd64-final-source/core-context"
+      }
+    }
+  ]
+}

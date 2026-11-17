@@ -1,0 +1,43 @@
+{
+  "compiler": {
+    "name": "Zig",
+    "target": "aarch64-windows-gnu",
+    "version": "0.17.1"
+  },
+  "license": "LGPL-2.1-or-later AND LicenseRef-Public-Domain",
+  "license_receipts": {
+    "licenses/7zip-License.txt": "9ac2b4a97ab5d523965534d8b2d5868e511b39096d51fff458ab72c38b80fccc",
+    "licenses/LGPL-2.1.txt": "1e7e6bae5a5bde32f1ae5a7c37a082d1ab03cf89354f7f936ac40be9e39a6531",
+    "licenses/LLVM-libcxx.txt": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "licenses/LLVM-libcxxabi.txt": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "licenses/LLVM-libunwind.txt": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d",
+    "licenses/Zig-MIT.txt": "5c537d6853e005298a285d508cff9ac7192cea23576c840d485b2b586a7ff177",
+    "licenses/mingw-w64-COPYING.txt": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f"
+  },
+  "licenses": [
+    "licenses/7zip-License.txt",
+    "licenses/LGPL-2.1.txt",
+    "licenses/Zig-MIT.txt",
+    "licenses/LLVM-libcxx.txt",
+    "licenses/LLVM-libcxxabi.txt",
+    "licenses/LLVM-libunwind.txt",
+    "licenses/mingw-w64-COPYING.txt"
+  ],
+  "name": "7-Zip standalone 7z decoder",
+  "program": {
+    "path": "decoder/7zdec.exe",
+    "sha256": "b68304c0d7213eda6996ffe4da5ce40a9bb3b8effcfddbc78c5c8f7d46b5a8a7",
+    "size_bytes": 1009152
+  },
+  "schema_version": 1,
+  "scope": "Upstream Alone7z standalone command, single-threaded build, Unicode and native extended-length paths; no RAR/unRAR objects, no vendor installer execution. Source archive and exact reproducible build recipe accompany distribution.",
+  "source": {
+    "commit": "d3296e39e1f1f92c7b41c0c3848e65640428d42d",
+    "path": "runtime/sources/7z2606-src.tar.xz",
+    "repository": "https://github.com/ip7z/7zip",
+    "sha256": "a4e374c8f864f51df48c2cfd0e1413ec3b2ea030deae852d6a655402ebb61ac4",
+    "size_bytes": 1567328,
+    "url": "https://github.com/ip7z/7zip/releases/download/26.06/7z2606-src.tar.xz"
+  },
+  "version": "26.06"
+}

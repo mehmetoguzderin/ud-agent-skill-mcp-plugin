@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-11-08T18:25:52Z",
+  "sources": [
+    {"repository":"UniversalDependencies/tools","branch":"master","commit":"4d0f1a789fbc5838cb6db1e9aafbd4596492c7a7","archive_sha256":"00ca9587764ab3acc11548bf27e1c328db7d4d3e81eee3808f193ce48bb2516c"},
+    {"repository":"UniversalDependencies/docs-automation","branch":"master","commit":"0570acf86600982c0b4e53d41c08aafd83526d5d","archive_sha256":"2fd1f7f51ffe9b58c225b4b9c8720a1804e687e9ac9b4773141e8fa325deaa53"},
+    {"repository":"UniversalDependencies/docs","branch":"pages-source","commit":"055d55d40bb330d63c497e4aa1cc82197fdbf47f","archive_sha256":"a20b9ca1ba8c7bf576a0425c7bef2e8da87bdfd52e39cc1525193a44944f4f90"},
+    {"repository":"UniversalDependencies/UD_English-EWT","branch":"dev","commit":"6b021622f3ab7902730f313fa5955a8b8cdd52b8","archive_sha256":"a6b52f6224f0b42c515b4a917d247264eb4f8a870778de19a8c682f7d2b50d43"},
+    {"repository":"UniversalDependencies/LICENSE","branch":"master","commit":"1382e94fe9fbc62ef77ae2204bd62a2609cb6fca","archive_sha256":"585baaa7af72377dfe48859aca4094f695474b07dc146270b6dc22113cfd6122"}
+  ],
+  "tools_rule_sha256": {
+    "upos.json": "3c4c4f4157c5fa97ee8744e5bbfc7acf3c7c941d5b87a79d43da431ffeb73981",
+    "feats.json": "8b9a00a1ca8ff577d664191bb8a9c2a127e811242247ac3ad3e5f2c966a8c60a",
+    "udeprels.json": "46ff0dc8b9e9eaf578362ba7a95ab03a8ed62131ec0db0cd3bf27452d4754703",
+    "deprels.json": "17c6a4a721cbb5bc4fe13da812700df3e795e3fadd66c09af8c63ea2ef44e4be",
+    "edeprels.json": "07688170c8d5c14e4fd218b427e6ef24784837ac7ca681a6c21c35092864e26b",
+    "data.json": "1b65bdc9eb33ce38727a82ed9f6fc59c68080f5573a073718cad6ba44fd1391f",
+    "tospace.json": "5eccff5aae84fdd2854667f6a817503dcb1e687072fad3c573601b58ef6e7341"
+  }
+}

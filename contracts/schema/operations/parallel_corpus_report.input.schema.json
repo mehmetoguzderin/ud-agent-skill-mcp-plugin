@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "parallel_corpus_report",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "empty_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "peer_treebank_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "alignment_spec_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/empty_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "peer_treebank_paths",
+    "alignment_spec_path",
+    "ud_context_path"
+  ]
+}

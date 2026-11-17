@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "version": "0.2.97",
+  "darwin_arm64": {
+    "archive": "act_Darwin_arm64.tar.gz",
+    "archive_sha256": "6dbb1ef34a7e34bb1ee0db188d1682ea35b82d9d9012626497f6c659e55a7cb5",
+    "binary_sha256": "c1c0f8e70ae06a67526f478134f1976ac20c8432ca37d09f8f289cb0630a2bd4",
+    "checksums_sha256": "81a3ac10150b59575b8fedeb232a4f569814559040af7fa6ec4c74a2fb632d96",
+    "release": "https://github.com/nektos/act/releases/tag/v0.2.97"
+  },
+  "linux_runner": {
+    "image": "ghcr.io/catthehacker/ubuntu@sha256:62d572b92f9f32d3427b6d220ad1f9dca9c7b6ffad37d295425037dbff78abaf",
+    "observed_os": "Ubuntu 24.04.4 LTS",
+    "arm64_manifest": "sha256:f05db75c09fd27e3a7c36a48e3b91c6fe2633d386d37bfb099d1aedd23c9c86d",
+    "amd64_manifest": "sha256:dff4ec57d90046a7283aafc314298380be82bfeccb9ad0f1b36c4ebe74aabe78",
+    "nonroot_image": "ghcr.io/catthehacker/ubuntu@sha256:7cf0c248d11d5fa156acd3738965fe118ad686da273edb4891474b812eecd4c0",
+    "nonroot_arm64_manifest": "sha256:2685a0c49d59035ae3407fcb51881687382bdee83eb240f0bb542f2fcbbca376",
+    "nonroot_amd64_manifest": "sha256:82f33c30e8990460932286e442483edd7974ef3e73166287b19162e633194153",
+    "nonroot_uid": 1001
+  },
+  "qualification": "local_actions_emulation_only"
+}

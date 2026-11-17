@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FindBin - Locate directory of original Perl script</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;FindBin - Locate directory of original Perl script</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#EXPORTABLE-VARIABLES">EXPORTABLE VARIABLES</a></li>
+  <li><a href="#KNOWN-ISSUES">KNOWN ISSUES</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>FindBin - Locate directory of original Perl script</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use FindBin;
+use lib &quot;$FindBin::Bin/../lib&quot;;
+
+use FindBin qw($Bin);
+use lib &quot;$Bin/../lib&quot;;</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Locates the full path to the script bin directory to allow the use of paths relative to the bin directory.</p>
+
+<p>This allows a user to setup a directory tree for some software with directories <code>&lt;root&gt;/bin</code> and <code>&lt;root&gt;/lib</code>, and then the above example will allow the use of modules in the lib directory without knowing where the software tree is installed.</p>
+
+<p>If <code>perl</code> is invoked using the <code>-e</code> option or the Perl script is read from <code>STDIN</code>, then <code>FindBin</code> sets both <code>$Bin</code> and <code>$RealBin</code> to the current directory.</p>
+
+<h1 id="EXPORTABLE-VARIABLES">EXPORTABLE VARIABLES</h1>
+
+<dl>
+
+<dt id="Bin-or-Dir"><code>$Bin</code> or <code>$Dir</code></dt>
+<dd>
+
+<p>Path to the bin <b>directory</b> from where script was invoked</p>
+
+</dd>
+<dt id="Script"><code>$Script</code></dt>
+<dd>
+
+<p><b>Basename</b> of the script from which <code>perl</code> was invoked</p>
+
+</dd>
+<dt id="RealBin-or-RealDir"><code>$RealBin</code> or <code>$RealDir</code></dt>
+<dd>
+
+<p><code>$Bin</code> with all links resolved</p>
+
+</dd>
+<dt id="RealScript"><code>$RealScript</code></dt>
+<dd>
+
+<p><code>$Script</code> with all links resolved</p>
+
+</dd>
+</dl>
+
+<p>You can also use the <code>ALL</code> tag to export all of the above variables together:</p>
+
+<pre><code>use FindBin &#39;:ALL&#39;;</code></pre>
+
+<h1 id="KNOWN-ISSUES">KNOWN ISSUES</h1>
+
+<p>If there are two modules using <code>FindBin</code> from different directories under the same interpreter, this won&#39;t work. Since <code>FindBin</code> uses a <code>BEGIN</code> block, it&#39;ll be executed only once, and only the first caller will get it right. This is a problem under <code>mod_perl</code> and other persistent Perl environments, where you shouldn&#39;t use this module. Which also means that you should avoid using <code>FindBin</code> in modules that you plan to put on CPAN. Call the <code>again</code> function to make sure that <code>FindBin</code> will work:</p>
+
+<pre><code>use FindBin;
+FindBin::again(); # or FindBin-&gt;again;</code></pre>
+
+<p>In former versions of <code>FindBin</code> there was no <code>again</code> function. The workaround was to force the <code>BEGIN</code> block to be executed again:</p>
+
+<pre><code>delete $INC{&#39;FindBin.pm&#39;};
+require FindBin;</code></pre>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<p><code>FindBin</code> is supported as part of the core perl distribution. Please submit bug reports at <a href="https://github.com/Perl/perl5/issues">https://github.com/Perl/perl5/issues</a>.</p>
+
+<p>Graham Barr &lt;<i>gbarr@pobox.com</i>&gt; Nick Ing-Simmons &lt;<i>nik@tiuk.ti.com</i>&gt;</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright (c) 1995 Graham Barr &amp; Nick Ing-Simmons. All rights reserved. This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;FindBin - Locate directory of original Perl script</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

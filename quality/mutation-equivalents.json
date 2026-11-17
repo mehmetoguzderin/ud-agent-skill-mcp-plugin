@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "equivalents": [
+    {
+      "tool": "stryker",
+      "id": "packages/coordinator/src/docker-policy.ts#55",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "336d6cda78044a3ba1e965e0a2b56a8c32fd2b89bd077c81e07c866e69a4d184",
+      "author": "/root/domain_completion",
+      "reviewed_by": "independent primary agent /root",
+      "reviewed_at": "2026-11-09T00:21:03.858478+00:00",
+      "proof": "Equivalent for the native JSON contract. The unchanged primitive-string split and five-flag/four-literal checks leave one size slot. Any newly matched size= suffix starts at index j>0, so its '=' at j+4>=5 remains in the slice passed to Number; a decimal Number conversion containing '=' is NaN, and the unchanged finite upper bound rejects it. Original matches have identical numeric conversion and result.",
+      "review": {
+        "path": "quality/reviews/docker-policy-root-review.json",
+        "sha256": "49cec4591ac39e4736263500e8473d9c4d4f25e051f9803017ebdfea7a08e129"
+      }
+    },
+    {
+      "tool": "stryker",
+      "id": "packages/coordinator/src/docker-policy.ts#63",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "65422a9f471897bafd3b2e501dfcbd44e96df7a776a2982447198655826da880",
+      "author": "/root/domain_completion",
+      "reviewed_by": "independent primary agent /root",
+      "reviewed_at": "2026-11-09T00:21:03.858478+00:00",
+      "proof": "Equivalent. Four distinct required literal flags in exactly five array positions leave at most one size match. With no size match, String(undefined).slice(5) is 'ined', Number returns NaN and the remaining <=67108864 predicate is false. With one size match the removed conjunction is true. No other count is reachable; the flags array is created locally from a primitive string.",
+      "review": {
+        "path": "quality/reviews/docker-policy-root-review.json",
+        "sha256": "49cec4591ac39e4736263500e8473d9c4d4f25e051f9803017ebdfea7a08e129"
+      }
+    },
+    {
+      "tool": "stryker",
+      "id": "packages/coordinator/src/docker-policy.ts#71",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "17f56f62fbc9fc919a39b18cd76d9e1161d029ecf7f863558867085e5e0483d0",
+      "author": "/root/domain_completion",
+      "reviewed_by": "independent primary agent /root",
+      "reviewed_at": "2026-11-09T00:21:03.858478+00:00",
+      "proof": "Equivalent under the caller's parsed-native-JSON inspection contract. For primitive string IDs the selector produces the same value. For every non-string JSON ID the following unchanged typeof rejection short-circuits before observing the local selector value. Selecting an object does not coerce it. JSON objects that shadow toString/valueOf are therefore also rejected without conversion. Executable getters/proxies are outside this JSON contract.",
+      "review": {
+        "path": "quality/reviews/docker-policy-root-review.json",
+        "sha256": "49cec4591ac39e4736263500e8473d9c4d4f25e051f9803017ebdfea7a08e129"
+      }
+    },
+    {
+      "tool": "stryker",
+      "id": "packages/coordinator/src/docker-policy.ts#75",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "dc4ae0544ed44648de6ff7006762ce95bc0f4583a6a9fcbf3b2af6e64f541c1d",
+      "author": "/root/domain_completion",
+      "reviewed_by": "independent primary agent /root",
+      "reviewed_at": "2026-11-09T00:21:03.858478+00:00",
+      "proof": "Equivalent. The mutated fallback value is selected only for a non-string ID, and the unchanged following typeof disjunct immediately records identity failure before the local fallback can be used. String IDs never select that fallback. Neither value escapes the function or changes violation ordering.",
+      "review": {
+        "path": "quality/reviews/docker-policy-root-review.json",
+        "sha256": "49cec4591ac39e4736263500e8473d9c4d4f25e051f9803017ebdfea7a08e129"
+      }
+    },
+    {
+      "tool": "stryker",
+      "id": "packages/coordinator/src/docker-policy.ts#87",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "5c6369eb8e08f536aad136bb588d3bfc521a9f8208bdae0132c1e26e387819a5",
+      "author": "/root/domain_completion",
+      "reviewed_by": "independent primary agent /root",
+      "reviewed_at": "2026-11-09T00:21:03.858478+00:00",
+      "proof": "Equivalent. The unchanged total selector maps every non-string native ID to the primitive empty string. If the first rejection disjunct becomes false, the unchanged 64-hex regular expression rejects that empty string, without invoking any conversion method on the native value. String IDs already made the original type disjunct false. All subsequent observations and violation order are identical.",
+      "review": {
+        "path": "quality/reviews/docker-policy-root-review.json",
+        "sha256": "49cec4591ac39e4736263500e8473d9c4d4f25e051f9803017ebdfea7a08e129"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/repository_bridge.pl#2886:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/repository_bridge.pl",
+      "source_sha256": "bea257e9f681279cb21be56fa77abe9e9d0233dec322e638e6fc12a1bf309208",
+      "definition_sha256": "695ba3d4a86b206007c00d413bedfe3f6a5468b5aa168552f1f4b49ea20e56d2",
+      "author": "/root/acceptance_release",
+      "reviewed_by": "independent domain-completion agent /root/domain_completion",
+      "reviewed_at": "2026-11-09T01:12:47.993407+00:00",
+      "proof": "The terminal eval success sentinel changes from integer1 to integer2. The enclosingcompleted value is observed only by a truthiness guard; both values are true. The sentinel is evaluated after all successful stdout behavior and has no side effect. On every exceptional path eval returnsundef and the sentinel isnotreached, so fixedfailure protocol/exitstatus is unchanged. No actual report/token data includes this private sentinel.",
+      "review": {
+        "path": "quality/reviews/perl-domain-extra-review.json",
+        "sha256": "5ce32f2344d5a5af9204e1b32b217762fb534368f3f6d3a610af87531e948430"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "scripts/quality/perl_tokens.pl#1888:integer_boundary_1",
+      "file": "scripts/quality/perl_tokens.pl",
+      "source_sha256": "9d594208275077b5b8bfe19da00a4467eaeebdcc02f1c124b4cdb8354adc45b7",
+      "definition_sha256": "f1e651983d90f4a145321e647139cc6647944b1c085c1f1c8d83c98dac8c9681",
+      "author": "/root/acceptance_release",
+      "reviewed_by": "independent domain-completion agent /root/domain_completion",
+      "reviewed_at": "2026-11-09T01:12:47.993442+00:00",
+      "proof": "The terminal eval success sentinel changes from integer1 to integer2. The enclosingcompleted value is observed only by a truthiness guard; both values are true. The sentinel is evaluated after all successful stdout behavior and has no side effect. On every exceptional path eval returnsundef and the sentinel isnotreached, so fixedfailure protocol/exitstatus is unchanged. No actual report/token data includes this private sentinel.",
+      "review": {
+        "path": "quality/reviews/perl-domain-extra-review.json",
+        "sha256": "5ce32f2344d5a5af9204e1b32b217762fb534368f3f6d3a610af87531e948430"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#276:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "9f126d47c01d4d6d4a1bc6ce9ba7cbaac89a9e15b07f8205acab2b3dc4dc6de8",
+      "author": "acceptance_release",
+      "reviewed_by": "domain_completion",
+      "reviewed_at": "2026-11-09T05:26:33.904049+00:00",
+      "proof": "The only changed JSON::PP setting is acceptance of a non-reference top-level value. Every decoded request immediately passes the same guard: decode exceptions or any value whose ref is not HASH produce invalid_json and exit1. Thus every additional scalar admitted by allow_nonref(1) reaches exactly the invalid_json outcome that allow_nonref(0) produces through its caught decode exception. Arrays and objects retain identical decoding behavior. Both encode sites always receive HASH references (the fixed failure envelope or the graph result), so encoding is unchanged. Stream frames call the same guarded main routine, and malformed bytes still use the same invalid_json envelope. The claim concerns documented bounded protocol output and exit status, not internal JSON::PP exception text, which is never exposed.",
+      "review": {
+        "path": "quality/reviews/perl-domain-allow-nonref-review.json",
+        "sha256": "2b448f0bb7c842c9e147f190f3c0b34629c66da59362d232129584f45e53e3a2"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1482:integer_boundary_-1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "b448d6771dbae25606de6f23d9ffed665fceb3c540b0897134701d3804c5164a",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.160837+00:00",
+      "proof": "The virtual-root entry is created with key 0 before input nodes are processed. The node grammar excludes 0, so the postincrement duplicate detector never reads or modifies that entry. Every other observation of the nodes hash uses exists or keys; the scalar value of the virtual-root entry is never used or serialized. Initial values 0 and 1 therefore produce exactly the same accepted nodes, edges, root inclusion and output.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1482:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "8f7bfff9ad0c4b8bd8f43c2ba71352db791b117784450d619daf340a51efb696",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161066+00:00",
+      "proof": "The virtual-root entry is created with key 0 before input nodes are processed. The node grammar excludes 0, so the postincrement duplicate detector never reads or modifies that entry. Every other observation of the nodes hash uses exists or keys; the scalar value of the virtual-root entry is never used or serialized. Initial values 1 and 2 therefore produce exactly the same accepted nodes, edges, root inclusion and output.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1622:operator_++",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "949ee254d07c9cb4e141e11e84e46212a7ed3ddee2826e929b1b610ae80794e8",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161113+00:00",
+      "proof": "For every valid nonzero node ID, the first visit observes an undefined hash value as numeric zero and inserts the key. Postincrement returns 0 then stores 1; postdecrement returns 0 then stores -1. Both accept the first visit and reject the next visit because both 1 and -1 are true. fail exits on that second visit, so no later counter value can affect the request. Outside this duplicate guard only exists and keys observe the hash, and counter values are never serialized. Root key 0 is excluded by the preceding node grammar.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#2333:operator_++",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "e17f798538e17924700ea3b1de588e4e4f7e0c7247d8406f57fc68beaadf30d8",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161155+00:00",
+      "proof": "The seen hash starts empty and is used only by this duplicate-edge guard. The first occurrence returns numeric zero under either postincrement or postdecrement and is accepted. The next occurrence returns 1 or -1, both true, and fail terminates before another occurrence. Neither stored counter value is otherwise read or serialized. All edge-shape and identity validation precedes this guard unchanged.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#2599:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "8623819cd8eba098d1e424191e6e1404bea6a475c7d185d1aa0d56b546d91c3f",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161194+00:00",
+      "proof": "The terminal require-eval sentinel is consumed only as the left operand of or fail. Both integer 1 and integer 2 are true and have no side effect. On require failure eval exits before either sentinel and the same prerequisite error is emitted. The sentinel does not enter Graph construction or any response.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3660:operator_||",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "cb53aef6f030346c557f5f05d936037dc8e3344b9d57c59b0ada697e0a360fdb",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161231+00:00",
+      "proof": "The inner eval has an unconditional defined hash-reference final expression. A successful eval clears the exception indicator and returns that reference, making both operands false. An ordinary exception returns undef with a true exception indicator, making both operands true. Both conjunction and disjunction therefore choose the same branch on reachable pinned-module paths. Even a false-overloaded exception object would reach encoding of undef only in the mutant; allow_nonref(0) rejects it before print, and the enclosing eval emits the identical fixed graph_execution_failed response. There is no successful undefined result path.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3974:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "9381b8551aacd50fff438fc2de6211dfde7fa65c9eaa19ce7f86fe7781c9d4d6",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161269+00:00",
+      "proof": "The loop condition changes from constant integer 1 to constant integer 2. Both are always true in Perl, neither evaluates a side effect, and every loop exit remains the unchanged explicit last or fail. No loop result is consumed.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4144:string_value",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "ec59bbe922c227ca0b9146923a3ddee39aee9b386e2c251eaad9bf76b9ede760",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161307+00:00",
+      "proof": "This exact fail message belongs to an unreachable guard. empty_reads starts at zero and is incremented only when count equals zero. On its first such observation it becomes 1, so the greater-than-1 test is false, and the very next statement exits the loop. Nonzero reads never increment it. Undefined reads already exit through the preceding fail. Thus the message is never evaluated with this single mutation; changing it cannot affect any response.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4183:operator_++",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "d7d37215b4888e2ec2bfa89819d365e22bd19107161c013ad5a635fc89b044c5",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161344+00:00",
+      "proof": "empty_reads starts at zero and is touched only on a zero-byte read. The first prefix increment yields 1 and the mutated prefix decrement yields -1; neither is greater than 1. The next unchanged statement immediately exits the loop on that same zero-byte read. Nonzero reads do not modify the counter and undefined reads fail earlier. Its value is never used afterward, so no second update or observable difference is reachable.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4200:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "fb9d899c2c9d5eb95ecc891c045eaa079f74a126d103d3a031cd7897a65a9d4e",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161382+00:00",
+      "proof": "empty_reads starts at zero, increments only on a zero-byte read, and the loop exits immediately after that first zero-byte read. Its only compared value is therefore 1. Neither comparison 1>1 nor 1>2 can trigger the error; all other reads and the final stream checks are unchanged.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4984:string_value",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "5bbd35d9e1713e6d2096e49da4ac46e91d26ab5fb91bb13b623c8bd88b2464b6",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161419+00:00",
+      "proof": "Only the private exception text raised by the warning handler changes. Perl die with an empty argument still raises an exception using the current exception or a source-location message. Both versions unwind the same eval and emit the fixed graph_execution_failed JSON and exit status. No exception detail from this handler is printed or serialized. The pinned Graph.pm and Node.pm closure contains no nested eval or exception-text observation that could expose this private text.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    },
+    {
+      "tool": "ppi-perl",
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#5102:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "f87224d2bd5067cc4a7dc60fbf7387f58724b91ca58b14da9068b6266117d999",
+      "author": "/root/acceptance_release and /root/domain_completion",
+      "reviewed_by": "independent root agent /root; mutation generator and Perl bridge author excluded",
+      "reviewed_at": "2026-11-09T06:31:45.161455+00:00",
+      "proof": "The terminal outer-eval sentinel changes from 1 to 2 after main or stream has already emitted its output. The only observation of completed is a truthiness test; both integers are true. Exceptional paths never reach the sentinel and retain the same failure response and exit status.",
+      "review": {
+        "path": "quality/reviews/perl-current-root-review.json",
+        "sha256": "2d28e1cc88e019138c31008262ec53965b0cd468223327992f6f91969e6f5397"
+      }
+    }
+  ]
+}

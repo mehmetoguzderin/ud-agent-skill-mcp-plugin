@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "qualification": "actual native ARM nerdctl2.4.2/containerd2.4.2 JSON captured from product-owned offline setup; no hosted registry identity fabricated",
+  "source": ".artifacts/lima-product/installed-public-ud-installed-lima-30Ghir/native-inventory.json",
+  "source_sha256": "d34a49674c3cdf19def793a3ed4babf27c185f589774d9bf2b0166c08c55f0fc",
+  "host": "darwin/arm64",
+  "guest": "linux/arm64",
+  "nerdctl_sha256": "sha256:5f5c41cc9530af3001a7c0b733028165972df64f6cfe22d904b0d486c4c920b0",
+  "files": {
+    "manifest.json": "62d89a39fb94c93c070eb731b4f2ad7c17335fdd3a53fa39d2418a97845f9975",
+    "index.json": "6a0ce842fa545ae979c729ececd70b813841a657eef89cb160c3c2b2dafff17c"
+  },
+  "containerd_sha256": "sha256:f19fa4eb5b1a3e05e75d67b402abb497ebf8290aa1124a60ee9ab32f294beb7c",
+  "image": {
+    "config_digest": "sha256:7ec1d9505c530b58affe84030bbbca3c7785f901130ab3b40671ba6058a736b0",
+    "diff_ids": [
+      "sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e",
+      "sha256:4724a032bb47601062518e7b117ab208aff5e6d480fb949a0ec7c1b7c6c522fa",
+      "sha256:e0ecf7026e05bdcd13be7b07eb2900df5c18f6a03cfd335f38ed2b6262f26406",
+      "sha256:790966f62f43fc33168c2223ca5e0fc0e53b95d0fc20b7b10722b71933b9fa6f",
+      "sha256:9d80eb1a5c63d85fd04c1b24ee78e148fa28a4e8d42f71efc6101a55ce7d8461",
+      "sha256:14d283f78ba99fc3bf5cd13ca54ab51eaaf3cdbe98ffe07ffc4bc3172bec0718",
+      "sha256:be5dc9881886379e29d63d4ccfa2c548105bda229318f79804da1ac5ed03a63e",
+      "sha256:afa9896ad346f878e9ea29858268669128406eae13ed0214d1e136e55cc49ed9",
+      "sha256:5f5d85e116300eb09c1f3636b9c188d0469f56be64d0d158c4049a619a522d3d",
+      "sha256:27cc7dce35de6be26e48c455c8698379e933604bffb546da603ac90427adf2b0",
+      "sha256:e14d801ea1bdf4abd7b6388e8b5748cb39669dd62d1643c85fffb448afc68322",
+      "sha256:b8ca9c9016248b6d8e4bd1bffe0086113e3c3bf3b896d59b75cfe2fa17fe8772",
+      "sha256:5ed4dff2fd6200bcc7db5dd0bd3782d0af887179bb3d2bbac09c2f104912e358",
+      "sha256:4128425385ea29dd33b10468c415cf7e292faeaea569e18bc3c5f48cefbc1cb0",
+      "sha256:1d2d7dc88ebcffc44458ca3700a6fd7efb16e75f7c8cb942c6b5bd5f46af0654",
+      "sha256:2f427f5a17242247e90633e9b0fcb0bdcb5acdd637acc6e46fee24bf52384576",
+      "sha256:b37f4a250f9736d7952a8791e66595bdefbc6e86d33826fb417fdbf54f1c4c17"
+    ],
+    "digest": "sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+    "engine_descriptor_digests": [
+      "sha256:5ef02c48f4793308783fc7d265a9a5e4d164fb7fb87ab20d58002a13eaaec15b",
+      "sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6"
+    ],
+    "reference": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-core@sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+    "transports": [
+      {
+        "format": "docker-archive",
+        "path": ".artifacts/worker-build-completion-6-arm64/transports/ud-agent-core-linux-arm64.docker.tar",
+        "sha256": "sha256:7ba772a065253d2520e270cba9a9887087ddcce82490164533a8dc1e10dc2034",
+        "size_bytes": 74121728
+      },
+      {
+        "format": "oci-archive",
+        "index_digest": "sha256:f56d72f031dbfb173022f3175993b27be95719ca1504ae9e051159c8a917e826",
+        "path": ".artifacts/worker-build-completion-6-arm64/transports/ud-agent-core-linux-arm64.oci.tar",
+        "sha256": "sha256:55bba48c9d3cea2ab91f1f41dbc23d18d31454d6493e7bfd0259d0096a8dd4e0",
+        "size_bytes": 74127360
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+* text=auto eol=lf
+*.rs text eol=lf
+*.py text eol=lf
+*.ts text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+# Upstream notices and source excerpts are pinned to their original bytes.
+licenses/** -text
+runtime/contexts/** -text
+runtime/pack/** -text
+*.conllu -text
+tests/fixtures/** -text
+*.tar -text
+*.gz -text
+*.xz -text
+*.zip -text
+*.tgz -text
+*.png -text
+*.pdf -text
+*.woff2 -text

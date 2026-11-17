@@ -1,0 +1,11 @@
+import { describe, expect, it } from 'vitest';
+import { validateBuildReceipt } from '../../scripts/runtime/finalize-windows-uv.mjs';
+function receipt() {
+  return { schema_version: 1, qualification: 'locally-built-original-uv-unaccepted', source_commit: '316c827e058c16b71d5c507a20729c2995a7bcce', version: '0.13.7', rust: '1.99.1', producer_sha256: 'c'.repeat(64), publisher_redistribution_authority: 'unverified-external', records: ['aarch64-pc-windows-msvc', 'x86_64-pc-windows-msvc'].map(target => ({ target, target_execution: false, path: `target/${target}/release/uv.exe`, sha256: 'a'.repeat(64), size_bytes: 100, map: { path: target + '.map', sha256: 'b'.repeat(64), size_bytes: 200 }, command: ['cargo-xwin', 'xwin', 'rustc', '--offline', '--locked', '--release', '--target', target, '--bin', 'uv', '--config', `target.${target}.rustflags=["-C","target-feature=+crt-static"]`] })) };
+}
+describe('original Windows uv source-build receipt', () => {
+  it('retains exact source/version and both unexecuted static-CRT target identities', () => { const value = receipt(); expect(validateBuildReceipt(value)).toBe(value); expect(value.records.map(row => row.target_execution)).toEqual([false, false]); });
+  it('rejects omissions, duplicates, relabeled source/version and invented native execution', () => {
+    for (const change of [value => value.records.pop(), value => value.records[1] = value.records[0], value => value.source_commit = '0'.repeat(40), value => value.version = '0.13.8', value => value.qualification = 'passed-native', value => value.publisher_redistribution_authority = 'verified', value => value.records[0].target_execution = true, value => value.records[0].path = '../uv.exe', value => value.records[0].map.path = '../map', value => value.records[0].command = value.records[0].command.filter(arg => !arg.includes('crt-static')), value => value.records[0].command.splice(value.records[0].command.indexOf('--offline'), 1), value => value.records[0].command[value.records[0].command.indexOf('--target') + 1] = 'x86_64-pc-windows-msvc', value => value.records[0].size_bytes = 0]) { const value = receipt(); change(value); expect(() => validateBuildReceipt(value)).toThrow(); }
+  });
+});

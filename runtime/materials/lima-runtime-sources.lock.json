@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "qualification": "frozen-lima-runtime-original-source-identities",
+  "scope": "Exact original sources and source-closed C runtime inputs; build execution and publisher authority remain separate.",
+  "main_sources": [
+    {
+      "repository": "containerd/containerd",
+      "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+      "sha256": "e38df0eeb40d2304f3450edb148aee838cb0a57f3976a47c78870f92c80f1796",
+      "size_bytes": 12237056,
+      "url": "https://codeload.github.com/containerd/containerd/tar.gz/b7a25261e029d68978bbf290df0a62fc819b3c51"
+    },
+    {
+      "repository": "containerd/nerdctl",
+      "commit": "94bc03df5247ece1781c4b115a44ef3d4b1e0e65",
+      "sha256": "7285bd50a769ffa1721ca77a45cfc7785a0f4291ccd9798ac17abca1d67f5a0a",
+      "size_bytes": 1684075,
+      "url": "https://codeload.github.com/containerd/nerdctl/tar.gz/94bc03df5247ece1781c4b115a44ef3d4b1e0e65"
+    },
+    {
+      "repository": "rootless-containers/rootlesskit",
+      "commit": "888c3189e9cdf34dcdb19011e1c7c34eb94b5393",
+      "sha256": "e560e4d46b8e168ea02d34d1cd95306eaa6361568a09d8b8ac92d37f4f5e7c59",
+      "size_bytes": 110696,
+      "url": "https://codeload.github.com/rootless-containers/rootlesskit/tar.gz/888c3189e9cdf34dcdb19011e1c7c34eb94b5393"
+    },
+    {
+      "repository": "opencontainers/runc",
+      "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+      "sha256": "5386e1968f70cc1482b4b2a93dc1a88ea7fa5517fba49b9e0fafe614d5a4c97a",
+      "size_bytes": 2666129,
+      "url": "https://codeload.github.com/opencontainers/runc/tar.gz/29dd3dc2b13b4123162e5fe132504bb4b15569f1"
+    }
+  ],
+  "runtime_sources": [
+    {
+      "role": "zig-source",
+      "sha256": "1e89bf06610b769a8c77676c6c8d54b093a0db60f4891f2f91014829012f0e24",
+      "size_bytes": 23183076,
+      "url": "https://ziglang.org/download/0.17.1/zig-0.17.1.tar.xz"
+    },
+    {
+      "role": "go-source",
+      "sha256": "4e408abae126d916b6164627193f2c54f0e3ca1312d693b86db45f862ab238b1",
+      "size_bytes": 35109201,
+      "url": "https://go.dev/dl/go1.27.1.src.tar.gz"
+    },
+    {
+      "role": "libseccomp-source",
+      "sha256": "501f66c667225d53791b97e1d7cf85ab764c297d04881f60f38f451c4b0ee1be",
+      "size_bytes": 656231,
+      "url": "https://github.com/seccomp/libseccomp/releases/download/v2.6.1/libseccomp-2.6.1.tar.gz"
+    }
+  ]
+}

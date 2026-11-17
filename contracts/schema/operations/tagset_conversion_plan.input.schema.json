@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "tagset_conversion_plan",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {},
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_tagset": {
+      "type": "string"
+    },
+    "target_tagset": {
+      "type": "string"
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mapping": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "source_column": {
+              "enum": [
+                "UPOS",
+                "XPOS"
+              ]
+            },
+            "target_column": {
+              "enum": [
+                "UPOS",
+                "XPOS"
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "file_paths",
+    "source_tagset",
+    "target_tagset",
+    "ud_context_path"
+  ]
+}

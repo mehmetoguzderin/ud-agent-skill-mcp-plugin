@@ -1,0 +1,163 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Manual::Tooling::Nesting - Tutorial for using other tools within your own.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Tooling::Nesting - Tutorial for using other tools within your own.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#NAIVE-WAY">NAIVE WAY</a>
+    <ul>
+      <li><a href="#WHATS-WRONG-WITH-IT">WHAT&#39;S WRONG WITH IT?</a></li>
+      <li><a href="#HOW-TO-FIX-IT">HOW TO FIX IT</a>
+        <ul>
+          <li><a href="#THE-OLD-WAY-DO-NOT-DO-THIS-ANYMORE">THE OLD WAY (DO NOT DO THIS ANYMORE)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Manual::Tooling::Nesting - Tutorial for using other tools within your own.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Sometimes you find yourself writing the same test pattern over and over, in such cases you may want to encapsulate the logic in a new test function that calls several tools together. This sounds easy enough, but can cause headaches if not done correctly.</p>
+
+<h1 id="NAIVE-WAY">NAIVE WAY</h1>
+
+<p>Lets say you find yourself writing the same test pattern over and over for multiple objects:</p>
+
+<pre><code>my $obj1 = $class1-&gt;new;
+is($obj1-&gt;foo, &#39;foo&#39;, &quot;got foo&quot;);
+is($obj1-&gt;bar, &#39;bar&#39;, &quot;got bar&quot;);
+
+my $obj2 = $class1-&gt;new;
+is($obj2-&gt;foo, &#39;foo&#39;, &quot;got foo&quot;);
+is($obj2-&gt;bar, &#39;bar&#39;, &quot;got bar&quot;);
+
+... 10x more times for classes 2-12</code></pre>
+
+<p>The naive way to do this is to write a <code>check_class()</code> function like this:</p>
+
+<pre><code>sub check_class {
+    my $class = shift;
+    my $obj = $class-&gt;new;
+    is($obj-&gt;foo, &#39;foo&#39;, &quot;got foo&quot;);
+    is($obj-&gt;bar, &#39;bar&#39;, &quot;got bar&quot;);
+}
+
+check_class($class1);
+check_class($class2);
+check_class($class3);
+...</code></pre>
+
+<p>This will appear to work fine, and you might not notice any problems, <i>so long as the tests are passing.</i></p>
+
+<h2 id="WHATS-WRONG-WITH-IT">WHAT&#39;S WRONG WITH IT?</h2>
+
+<p>The problems with the naive approach become obvious if things start to fail. The diagnostics that tell you what file and line the failure occurred on will be wrong. The failure will be reported to the line <i>inside</i> <code>check_class</code>, not to the line where <code>check_class()</code> was called. This is problem because it leaves you with no idea which class is failing.</p>
+
+<h2 id="HOW-TO-FIX-IT">HOW TO FIX IT</h2>
+
+<p>Luckily this is extremely easy to fix. You need to acquire a context object at the start of your function, and release it at the end... yes it is that simple.</p>
+
+<pre><code>use Test2::API qw/context/;
+
+sub check_class {
+    my $class = shift;
+
+    my $ctx = context();
+
+    my $obj = $class-&gt;new;
+    is($obj-&gt;foo, &#39;foo&#39;, &quot;got foo&quot;);
+    is($obj-&gt;bar, &#39;bar&#39;, &quot;got bar&quot;);
+
+    $ctx-&gt;release;
+}</code></pre>
+
+<p>See, that was easy. With these 2 additional lines we know have proper file+line reporting. The nested tools will find the context we acquired here, and know to use its file and line numbers.</p>
+
+<h3 id="THE-OLD-WAY-DO-NOT-DO-THIS-ANYMORE">THE OLD WAY (DO NOT DO THIS ANYMORE)</h3>
+
+<p>With <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/Builder.html">Test::Builder</a> there was a global variables called <code>$Test::Builder::Level</code> which helped solve this problem:</p>
+
+<pre><code>sub check_class {
+    my $class = shift;
+
+    local $Test::Builder::Level = $Test::Builder::Level + 1;
+
+    my $obj = $class-&gt;new;
+    is($obj-&gt;foo, &#39;foo&#39;, &quot;got foo&quot;);
+    is($obj-&gt;bar, &#39;bar&#39;, &quot;got bar&quot;);
+}</code></pre>
+
+<p>This variable worked well enough (and will still work) but was not very discoverable. Another problem with this variable is that it becomes cumbersome if you have a more deeply nested code structure called the nested tools, you might need to count stack frames, and hope they never change due to a third party module. The context solution has no such caveats.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Manual.html">Test2::Manual</a> - Primary index of the manual.</p>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Manual can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Tooling::Nesting - Tutorial for using other tools within your own.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

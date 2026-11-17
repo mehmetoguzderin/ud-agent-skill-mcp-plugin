@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "plugins": {
+    "ud-agent-skill-mcp-plugin": {
+      "version": "0.1.0-beta.1",
+      "components": {
+        "mcpServers": [
+          {
+            "name": "ud",
+            "description": "stdio"
+          }
+        ],
+        "skills": [
+          {
+            "name": "ud-validate",
+            "description": "Universal Dependencies validate workflow."
+          },
+          {
+            "name": "ud-edit",
+            "description": "Universal Dependencies edit workflow."
+          },
+          {
+            "name": "ud-investigate",
+            "description": "Universal Dependencies investigate workflow."
+          },
+          {
+            "name": "ud-compare",
+            "description": "Universal Dependencies compare workflow."
+          },
+          {
+            "name": "ud-rules-docs",
+            "description": "Universal Dependencies rules-docs workflow."
+          },
+          {
+            "name": "ud-release",
+            "description": "Universal Dependencies release workflow."
+          }
+        ]
+      }
+    }
+  }
+}

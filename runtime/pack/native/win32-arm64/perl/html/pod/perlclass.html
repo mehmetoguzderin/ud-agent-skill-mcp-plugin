@@ -1,0 +1,421 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>perlclass - Perl class syntax reference</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perlclass - Perl class syntax reference</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#History">History</a></li>
+    </ul>
+  </li>
+  <li><a href="#KEYWORDS">KEYWORDS</a>
+    <ul>
+      <li><a href="#class">class</a></li>
+      <li><a href="#field">field</a></li>
+      <li><a href="#method">method</a></li>
+    </ul>
+  </li>
+  <li><a href="#ATTRIBUTES">ATTRIBUTES</a>
+    <ul>
+      <li><a href="#Class-attributes">Class attributes</a>
+        <ul>
+          <li><a href="#isa">:isa</a></li>
+        </ul>
+      </li>
+      <li><a href="#Field-attributes">Field attributes</a>
+        <ul>
+          <li><a href="#param">:param</a></li>
+          <li><a href="#reader">:reader</a></li>
+          <li><a href="#writer">:writer</a></li>
+        </ul>
+      </li>
+      <li><a href="#Method-attributes">Method attributes</a></li>
+    </ul>
+  </li>
+  <li><a href="#OBJECT-LIFECYCLE">OBJECT LIFECYCLE</a>
+    <ul>
+      <li><a href="#Construction">Construction</a></li>
+      <li><a href="#Adjustment">Adjustment</a></li>
+      <li><a href="#Lifetime">Lifetime</a></li>
+      <li><a href="#Destruction">Destruction</a></li>
+    </ul>
+  </li>
+  <li><a href="#TODO">TODO</a></li>
+  <li><a href="#KNOWN-BUGS">KNOWN BUGS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>perlclass - Perl class syntax reference</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use v5.38;
+use feature &#39;class&#39;;
+
+class My::Example 1.234 {
+    field $x;
+
+    ADJUST {
+        $x = &quot;Hello, world&quot;;
+    }
+
+    method print_message {
+        say $x;
+    }
+}
+
+My::Example-&gt;new-&gt;print_message;</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This document describes the syntax of Perl&#39;s <code>class</code> feature, which provides native keywords for object-oriented programming.</p>
+
+<h2 id="History">History</h2>
+
+<p>Since Perl 5, support for objects revolved around the concept of <i>blessing</i> references with a package name (see <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlfunc.html#bless-REF-CLASSNAME">&quot;bless REF,CLASSNAME&quot; in perlfunc</a>). Such a reference could then be used to call subroutines from the package it was blessed with (or any of its parents). This system, while bare-bones, was flexible enough to allow creation of multiple more advanced, community-driven systems for object orientation. For more information, see <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlmod.html">perlmod</a> and <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlobj.html">perlobj</a>.</p>
+
+<p>The <code>class</code> feature is a core implementation of a class syntax that is similar to what one would find in other programming languages. It is not a wrapper around <code>bless</code>, but a completely new system built right into the perl interpreter.</p>
+
+<h1 id="KEYWORDS">KEYWORDS</h1>
+
+<p>Enabling the <code>class</code> feature allows the usage of the following new keywords in the current lexical scope:</p>
+
+<h2 id="class">class</h2>
+
+<pre><code>class NAME BLOCK
+
+class NAME VERSION BLOCK
+
+class NAME VERSION : ATTRIBUTES... BLOCK
+
+class NAME;
+
+class NAME VERSION;
+
+class NAME VERSION : ATTRIBUTES...;</code></pre>
+
+<p>The <code>class</code> keyword declares a new package (see <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlmod.html#Packages">&quot;Packages&quot; in perlmod</a>) that is intended to be a class. All other keywords from the <code>class</code> feature should be used within the scope of this declaration.</p>
+
+<pre><code>class WithVersion 1.000 {
+    # class definition goes here
+}</code></pre>
+
+<p>Classes can be declared in either block or statement syntax. If a block is used, the body of the block contains the implementation of the class. If the statement form is used, the remainder of the current scope or file is used up until the next <code>class</code> or <code>package</code> statement.</p>
+
+<p>A <code>class</code> declaration can optionally have a version number, similar to the <code>package</code> keyword. It can also optionally have attributes. If both are specified, the version number must come first, before the attributes.</p>
+
+<p><code>class</code> and <code>package</code> declarations are similar, but classes automatically get a constructor named <code>new</code> - you don&#39;t have to (and should not) write one. Additionally, in the class BLOCK you are allowed to declare fields and methods.</p>
+
+<h2 id="field">field</h2>
+
+<pre><code>field VARIABLE_NAME;
+
+field VARIABLE_NAME = EXPR;
+
+field VARIABLE_NAME : ATTRIBUTES;
+
+field VARIABLE_NAME : ATTRIBUTES = EXPR;</code></pre>
+
+<p>Fields are variables that are visible in the scope of the class - more specifically within <a href="#method">&quot;method&quot;</a> and <a href="#Adjustment">ADJUST</a> blocks. Each class instance gets its own storage of fields, independent of other instances.</p>
+
+<p>A field behaves like a normal lexically scoped variable. It has a sigil and is private to the class (though creation of an accessor method will make it accessible from the outside). The main difference is that different instances access different values in the same scope.</p>
+
+<pre><code>class WithFields {
+    field $scalar = 42;
+    field @array  = qw(this is just an array);
+    field %hash   = (species =&gt; &#39;Martian&#39;, planet =&gt; &#39;Mars&#39;);
+}</code></pre>
+
+<p>Fields may optionally have initializing expressions. If present, the expression will be evaluated within the constructor of each object instance. During each evaluation, the expression can use the value of any previously-set field, as well as any other variables in scope.</p>
+
+<pre><code>class WithACounter {
+    my $next_count = 1;
+    field $count = $next_count++;
+}</code></pre>
+
+<p>When combined with the <code>:param</code> field attribute, the defaulting expression can use any of the <code>=</code>, <code>//=</code> or <code>||=</code> operators. Expressions using <code>=</code> will apply whenever the caller did not pass the corresponding parameter to the constructor at all. Expressions using <code>//=</code> will also apply if the caller did pass the parameter but the value was undefined, and expressions using <code>||=</code> will apply if the value was false.</p>
+
+<p>During a field initializing expression, the instance is not yet constructed and so the <code>$self</code> lexical is not available. However, the special <code>__CLASS__</code> token may be used to obtain the name of the class being constructed, for example in order to invoke class methods on it to help in constructing values for fields.</p>
+
+<pre><code>class WithCustomField {
+    use constant DEFAULT_X =&gt; 10;
+    field $x = __CLASS__-&gt;DEFAULT_X;
+}</code></pre>
+
+<p>This allows subclasses to override the method with different behaviour.</p>
+
+<pre><code>class DifferentCustomField :isa(WithCustomField) {
+    sub DEFAULT_X { rand &gt; 0.5 ? 20 : 30 }
+}</code></pre>
+
+<p>When an instance of <code>DifferentCustomField</code> is constructed, the <code>__CLASS__</code> expression in the base will yield the correct class name, and so invoke this overridden method instead.</p>
+
+<h2 id="method">method</h2>
+
+<pre><code>method METHOD_NAME SIGNATURE BLOCK
+
+method METHOD_NAME BLOCK
+
+method SIGNATURE BLOCK
+
+method BLOCK</code></pre>
+
+<p>Methods are subroutines intended to be called in the context of class objects.</p>
+
+<p>A variable named <code>$self</code> populated with the current object instance will automatically be created in the lexical scope of <code>method</code>.</p>
+
+<p>Methods always act as if <code>use feature &#39;signatures&#39;</code> is in effect, but <code>$self</code> will not appear in the arguments list as far as the signature is concerned.</p>
+
+<pre><code>class WithMethods {
+    field $greetings;
+
+    ADJUST {
+        $greetings = &quot;Hello&quot;;
+    }
+
+    method greet($name = &quot;someone&quot;) {
+        say &quot;$greetings, $name&quot;;
+    }
+}</code></pre>
+
+<p>Just like regular subroutines, methods <i>can</i> be anonymous:</p>
+
+<pre><code>class AnonMethodFactory {
+
+    method get_anon_method {
+        return method {
+            return &#39;this is an anonymous method&#39;;
+        };
+    }
+}</code></pre>
+
+<p>Methods can also be declared as lexical subroutines, using the <code>my</code> prefix. This creates a subroutine that is lexically visible within the current scope, but does not appear in the symbol table. The effect is that of a <i>private</i> method; one that can be called from within the class&#39;s own code, but not from outside.</p>
+
+<p>To invoke these lexical subroutines as methods, it is best to use the <code>-&gt;&amp;</code> operator. This bypasses method lookup by name, and directly invokes a lexical subroutine as if it was a method.</p>
+
+<pre><code>class LexicalMethod {
+    my method abc ($x, $y) {
+        say &quot;Internal method abc invoked with x=$x y=$y&quot;;
+    }
+
+    method xyz {
+        $self-&gt;&amp;abc(&quot;x&quot;, &quot;y&quot;);
+    }
+}
+
+# The `abc` method is not visible from here</code></pre>
+
+<h1 id="ATTRIBUTES">ATTRIBUTES</h1>
+
+<p>Specific aspects of the keywords mentioned above are managed using <i>attributes</i>. Attributes all start with a colon, and one or more of them can be appended after the item&#39;s name, separated by a space.</p>
+
+<h2 id="Class-attributes">Class attributes</h2>
+
+<h3 id="isa">:isa</h3>
+
+<p>Classes may inherit from <b>one</b> superclass, by using the <code>:isa</code> class attribute.</p>
+
+<pre><code>class Example::Base { ... }
+
+class Example::Subclass :isa(Example::Base) { ... }</code></pre>
+
+<p>Inherited methods are visible and may be invoked. Fields are always lexical and therefore not visible by inheritance.</p>
+
+<p>The <code>:isa</code> attribute may request a minimum version of the base class. As with <code>use MODULE VERSION</code>, if the actual version of the base class is too low, compilation will fail.</p>
+
+<pre><code>class Example::Subclass :isa(Example::Base 2.345) { ... }</code></pre>
+
+<p>The <code>:isa</code> attribute will attempt to <code>require</code> the named module if it is not already loaded.</p>
+
+<h2 id="Field-attributes">Field attributes</h2>
+
+<h3 id="param">:param</h3>
+
+<p>A scalar field with a <code>:param</code> attribute will take its value from a named parameter passed to the constructor. By default the parameter will have the same name as the field (minus its leading <code>$</code> sigil), but a different name can be specified in the attribute.</p>
+
+<pre><code>field $x :param;
+field $y :param(the_y_value);</code></pre>
+
+<p>If there is no defaulting expression, then the parameter is required by the constructor; the caller must pass it or an exception is thrown. With a defaulting expression this becomes optional.</p>
+
+<h3 id="reader">:reader</h3>
+
+<p>A field with a <code>:reader</code> attribute will generate a reader accessor method automatically. The generated method will have an empty (i.e. zero-argument) signature, and its body will simply return the value of the field variable.</p>
+
+<pre><code>field $s :reader;
+
+# Equivalent to
+field $s;
+method s () { return $s; }</code></pre>
+
+<p>By default the accessor method will have the same name as the field (minus the leading sigil), but a different name can be specified in the attribute&#39;s value.</p>
+
+<pre><code>field $x :reader(get_x);
+
+# Generates a method
+method get_x () { return $x; }</code></pre>
+
+<p>Reader methods can be applied to non-scalar fields. When invoked in list context, they yield the contents of the field; in scalar context they yield the count of elements, as if the field variable had been placed in scalar context.</p>
+
+<pre><code>field @users :reader;
+...
+
+scalar $instance-&gt;users;</code></pre>
+
+<h3 id="writer">:writer</h3>
+
+<p>A field with a <code>:writer</code> attribute will generate a writer accessor method automatically. The generated method will have a signature that consumes exactly one argument, and its body will assign that scalar argument to the field and return the invocant object itself.</p>
+
+<pre><code>field $s :writer;
+
+# Equivalent to
+field $s;
+method set_s($new) { $s = $new; return $self; }</code></pre>
+
+<p>By default the accessor method will have the name of the field minus the leading sigil with the string <code>set_</code> prefixed to it, but a different name can be specified in the attribute&#39;s value.</p>
+
+<pre><code>field $x :writer(write_x);
+
+# Generates a method
+method write_x ($new) { ... }</code></pre>
+
+<p>Currently, writer accessors can only be applied to scalar fields. Attempts to apply this attribute to a non-scalar field will result in a fatal exception at compile-time. This may be relaxed in a future version to allow writers on array or hash fields. For now, these will have to be created manually.</p>
+
+<h2 id="Method-attributes">Method attributes</h2>
+
+<p>None yet.</p>
+
+<h1 id="OBJECT-LIFECYCLE">OBJECT LIFECYCLE</h1>
+
+<h2 id="Construction">Construction</h2>
+
+<p>Each object begins its life with a constructor call. The constructor is always named <code>new</code> and is invoked like a method call on the class name:</p>
+
+<pre><code>my $object = My::Class-&gt;new(%arguments);</code></pre>
+
+<p>During object construction, class fields are looked up in the <code>%arguments</code> hash and populated where possible.</p>
+
+<h2 id="Adjustment">Adjustment</h2>
+
+<p>Object adjustment is a way to run arbitrary user-defined code during object construction. This is done by placing code in <code>ADJUST</code> blocks. Every time an object is constructed, its <code>ADJUST</code> blocks are executed (in the order in which they are declared).</p>
+
+<pre><code>class WellAdjusted {
+    field $x :param;
+    ADJUST {
+        say &quot;Hello!&quot;;
+    }
+    ADJUST {
+        say &quot;x = $x&quot;;
+    }
+}
+
+my $object = WellAdjusted-&gt;new(x =&gt; 42);
+# Output:
+#   Hello!
+#   x = 42</code></pre>
+
+<p><code>ADJUST</code> blocks are syntactically similar to <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlmod.html#BEGIN-UNITCHECK-CHECK-INIT-and-END"><code>BEGIN</code> or <code>INIT</code> blocks</a>, which only run once. However, <code>ADJUST</code> blocks, like methods, have access to <code>$self</code> (a lexical variable holding the object being constructed) as well as all object fields created up to that point.</p>
+
+<h2 id="Lifetime">Lifetime</h2>
+
+<p>After the construction phase, the object is ready to be used.</p>
+
+<p>Using <code>blessed</code> (<code>Scalar::Util::blessed</code> or <code>builtin::blessed</code>) on the object will return the name of the class, while <code>reftype</code> (<code>Scalar::Util::reftype</code> or <code>builtin::reftype</code>) will return the string <code>&#39;OBJECT&#39;</code>.</p>
+
+<h2 id="Destruction">Destruction</h2>
+
+<p>An object is destroyed when the last reference to it goes away, just as with other data structures in Perl.</p>
+
+<h1 id="TODO">TODO</h1>
+
+<p>This feature is still experimental and very incomplete. The following list gives an overview of features still to be added or changed:</p>
+
+<ul>
+
+<li><p>Roles</p>
+
+<p>Some syntax for declaring a role (likely a <code>role</code> keyword), and for consuming a role into a class (likely a <code>:does()</code> attribute).</p>
+
+</li>
+<li><p>Parameters to ADJUST blocks</p>
+
+<p>Some syntax for declaring that an <code>ADJUST</code> block can consume named parameters, which become part of the class constructor&#39;s API. This might be inspired by a similar plan to add named arguments to subroutine signatures.</p>
+
+<pre><code>class X {
+    ADJUST (:$alpha, :$beta = 123) {
+       ...
+    }
+}
+
+my $obj = X-&gt;new(alpha =&gt; 456);</code></pre>
+
+</li>
+<li><p>ADJUST blocks as true blocks</p>
+
+<p>Currently, every ADJUST block is wrapped in its own CV (subroutine) that gets invoked with the full ENTERSUB overhead. It should be possible to use the same mechanism that makes all field initializer expressions appear within the same CV on ADJUST blocks as well, merging them all into a single CV per class. This will make it faster to invoke if a class has more than one of them.</p>
+
+</li>
+<li><p>Metaprogramming</p>
+
+<p>An extension of the metaprogramming API (currently proposed by <a href="https://github.com/Perl/PPCs/pull/25">PPC0022</a>) which adds knowledge of classes, methods, fields, ADJUST blocks, and other such class-related details.</p>
+
+</li>
+<li><p>Extension Customisation</p>
+
+<p>Ways in which out-of-core modules can interact with the class system, including an ability for them to provide new class or field attributes.</p>
+
+</li>
+</ul>
+
+<h1 id="KNOWN-BUGS">KNOWN BUGS</h1>
+
+<p>The following unresolved bugs exist in the experimental <code>class</code> feature:</p>
+
+<ul>
+
+<li><p>It&#39;s possible to craft a class with leaky encapsulation, which can cause a segmentation fault. [<a href="https://github.com/Perl/perl5/issues/20956">GH #20956</a>]</p>
+
+</li>
+<li><p>Declaring fields after declaring a nested subclass corrupts the object storage. [<a href="https://github.com/Perl/perl5/issues/24393">GH #24393</a>]</p>
+
+</li>
+<li><p>Fields cannot be used by anonymous <code>method</code> expressions during <code>BEGIN</code> phasers or as part of a <code>use</code> statement. [<a href="https://github.com/Perl/perl5/issues/24418">GH #24418</a>]</p>
+
+</li>
+</ul>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<p>Paul Evans</p>
+
+<p>Bartosz Jarzyna</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perlclass - Perl class syntax reference</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

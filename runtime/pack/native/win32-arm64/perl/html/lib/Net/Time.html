@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Net::Time - time and daytime network client interface</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Net::Time - time and daytime network client interface</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#Functions">Functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#EXPORTS">EXPORTS</a></li>
+  <li><a href="#KNOWN-BUGS">KNOWN BUGS</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+  <li><a href="#LICENCE">LICENCE</a></li>
+  <li><a href="#VERSION">VERSION</a></li>
+  <li><a href="#DATE">DATE</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Net::Time - time and daytime network client interface</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use Net::Time qw(inet_time inet_daytime);
+
+print inet_time();          # use default host from Net::Config
+print inet_time(&#39;localhost&#39;);
+print inet_time(&#39;localhost&#39;, &#39;tcp&#39;);
+
+print inet_daytime();       # use default host from Net::Config
+print inet_daytime(&#39;localhost&#39;);
+print inet_daytime(&#39;localhost&#39;, &#39;tcp&#39;);</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><code>Net::Time</code> provides subroutines that obtain the time on a remote machine.</p>
+
+<h2 id="Functions">Functions</h2>
+
+<dl>
+
+<dt id="inet_time-host-protocol-timeout"><code>inet_time([$host[, $protocol[, $timeout]]])</code></dt>
+<dd>
+
+<p>Obtain the time on <code>$host</code>, or some default host if <code>$host</code> is not given or not defined, using the protocol as defined in RFC868. The optional argument <code>$protocol</code> should define the protocol to use, either <code>tcp</code> or <code>udp</code>. The result will be a time value in the same units as returned by time() or <i>undef</i> upon failure.</p>
+
+</dd>
+<dt id="inet_daytime-host-protocol-timeout"><code>inet_daytime([$host[, $protocol[, $timeout]]])</code></dt>
+<dd>
+
+<p>Obtain the time on <code>$host</code>, or some default host if <code>$host</code> is not given or not defined, using the protocol as defined in RFC867. The optional argument <code>$protocol</code> should define the protocol to use, either <code>tcp</code> or <code>udp</code>. The result will be an ASCII string or <i>undef</i> upon failure.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXPORTS">EXPORTS</h1>
+
+<p>The following symbols are, or can be, exported by this module:</p>
+
+<dl>
+
+<dt id="Default-Exports">Default Exports</dt>
+<dd>
+
+<p><i>None</i>.</p>
+
+</dd>
+<dt id="Optional-Exports">Optional Exports</dt>
+<dd>
+
+<p><code>inet_time</code>, <code>inet_daytime</code>.</p>
+
+</dd>
+<dt id="Export-Tags">Export Tags</dt>
+<dd>
+
+<p><i>None</i>.</p>
+
+</dd>
+</dl>
+
+<h1 id="KNOWN-BUGS">KNOWN BUGS</h1>
+
+<p><i>None</i>.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Graham Barr &lt;<a href="mailto:gbarr@pobox.com">gbarr@pobox.com</a>&gt;.</p>
+
+<p>Steve Hay &lt;<a href="mailto:shay@cpan.org">shay@cpan.org</a>&gt; is now maintaining libnet as of version 1.22_02.</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright (C) 1995-2004 Graham Barr. All rights reserved.</p>
+
+<p>Copyright (C) 2014, 2020 Steve Hay. All rights reserved.</p>
+
+<h1 id="LICENCE">LICENCE</h1>
+
+<p>This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself, i.e. under the terms of either the GNU General Public License or the Artistic License, as specified in the <i>LICENCE</i> file.</p>
+
+<h1 id="VERSION">VERSION</h1>
+
+<p>Version 3.15</p>
+
+<h1 id="DATE">DATE</h1>
+
+<p>20 March 2023</p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>See the <i>Changes</i> file.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Net::Time - time and daytime network client interface</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

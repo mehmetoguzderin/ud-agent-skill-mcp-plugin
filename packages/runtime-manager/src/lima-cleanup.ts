@@ -1,0 +1,48 @@
+import { createHash } from 'node:crypto';
+import { lstat, readdir, rm, rmdir } from 'node:fs/promises';
+import path from 'node:path';
+import { boundedRead, durableWrite, fsyncDirectory, openStateAuthority } from '../../workspace/src/journal.js';
+import { guardedIdentity } from '../../workspace/src/guard.js';
+import { verifyArchive } from './receipt.js';
+type Identity = { device: string; inode: string };
+type Entry = Identity & { relative: string; sha256: string; size: number };
+type Directory = Identity & { relative: '_config' | '_assets' };
+type Journal = { schema_version: 1; home: string; identity: Identity; policy_sha256: string; phase: 'planned' | 'completed'; files: Entry[]; directories: Directory[] };
+const SHA = /^sha256:[0-9a-f]{64}$/;
+function object(value: unknown): Record<string, unknown> { if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('LIMA_AUXILIARY_STATE_INVALID'); return value as Record<string, unknown>; }
+function same(a: unknown, b: Identity): boolean { return !!a && typeof a === 'object' && !Array.isArray(a) && (a as Identity).device === b.device && (a as Identity).inode === b.inode; }
+async function exists(file: string): Promise<boolean> { try { await lstat(file); return true; } catch (error) { if ((error as NodeJS.ErrnoException).code === 'ENOENT') return false; throw error; } }
+/** Remove only source-bound imports and journal-bound generated SSH/config files. */
+export async function cleanOwnedLimaFiles(state: string, home: string, guard: string, provisioning: Record<string, unknown>, dryRun: boolean): Promise<{ paths: string[]; protected: string[] }> {
+  const native = await openStateAuthority(state, guard); const homeIdentity = await guardedIdentity(guard, home); const wantedAssets = new Map<string, { sha256: string; size: number }>();
+  if (!Array.isArray(provisioning.assets)) throw new Error('LIMA_AUXILIARY_POLICY_INVALID');
+  for (const raw of provisioning.assets) { const value = object(raw); if (typeof value.sha256 !== 'string' || !SHA.test(value.sha256) || !Number.isSafeInteger(value.size_bytes) || (value.size_bytes as number) < 1 || (value.size_bytes as number) > 4 * 1024 ** 3) throw new Error('LIMA_AUXILIARY_POLICY_INVALID'); wantedAssets.set(value.sha256.slice(7), { sha256: value.sha256, size: value.size_bytes as number }); }
+  const policy = `sha256:${createHash('sha256').update(JSON.stringify({ assets: [...wantedAssets].sort(), generated: provisioning.generated_config ?? null })).digest('hex')}`;
+  const journalFile = path.join(state, 'lima-aux-cleanup.json'); let saved: Journal | undefined; const result = { paths: [] as string[], protected: [] as string[] };
+  try { const value = object(JSON.parse((await boundedRead(journalFile, 65536, native)).toString('utf8'))); const item = value as unknown as Journal; if (Object.keys(value).sort().join(',') !== 'directories,files,home,identity,phase,policy_sha256,schema_version' || item.schema_version !== 1 || item.home !== home || item.policy_sha256 !== policy || !same(item.identity, homeIdentity) || !['planned', 'completed'].includes(item.phase) || !Array.isArray(item.files) || item.files.length > 131 || !Array.isArray(item.directories) || item.directories.length > 2 || new Set(item.directories.map(directory => directory?.relative)).size !== item.directories.length || item.files.some(file => !file || !/^_(?:config\/(?:user|user\.pub|networks\.yaml)|assets\/[0-9a-f]{64})$/.test(file.relative) || !SHA.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 1 || file.size > 4 * 1024 ** 3 || file.relative.startsWith('_assets/') && (wantedAssets.get(file.relative.slice(8))?.sha256 !== file.sha256 || wantedAssets.get(file.relative.slice(8))?.size !== file.size) || !/^\d+$/.test(file.device) || !/^\d+$/.test(file.inode)) || new Set(item.files.map(file => file.relative)).size !== item.files.length || item.directories.some(directory => !directory || !['_config', '_assets'].includes(directory.relative) || !/^\d+$/.test(directory.device) || !/^\d+$/.test(directory.inode))) throw new Error('LIMA_AUXILIARY_STATE_INVALID'); saved = item; } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
+  if (!saved) {
+    saved = { schema_version: 1, home, identity: homeIdentity, policy_sha256: policy, phase: 'planned', files: [], directories: [] };
+    for (const relative of ['_config', '_assets'] as const) {
+      const directory = path.join(home, relative); if (!await exists(directory)) continue; const info = await lstat(directory); if (!info.isDirectory() || info.isSymbolicLink() || typeof process.getuid === 'function' && info.uid !== process.getuid()) throw new Error('LIMA_AUXILIARY_DIRECTORY_CHANGED');
+      const directoryIdentity = await guardedIdentity(guard, directory); const names = await readdir(directory); if (names.length > 10000) throw new Error('LIMA_AUXILIARY_INVENTORY_LIMIT');
+      let configFiles = new Map<string, Record<string, unknown>>();
+      if (relative === '_config' && names.length) { try { const config = object(JSON.parse((await boundedRead(path.join(state, 'lima-generated-config.json'), 16384, native)).toString('utf8'))); if (config.schema_version !== 1 || config.home !== home || !same(object(config.directory) as Identity, directoryIdentity) || !Array.isArray(config.files) || (config.files.length < 2 || config.files.length > 3)) throw new Error('LIMA_GENERATED_CONFIG_CHANGED'); configFiles = new Map(config.files.map(raw => { const file = object(raw); if (!['networks.yaml', 'user', 'user.pub'].includes(file.name as string)) throw new Error('LIMA_GENERATED_CONFIG_CHANGED'); return [file.name as string, file]; })); if (configFiles.size !== config.files.length || !configFiles.has('user') || !configFiles.has('user.pub')) throw new Error('LIMA_GENERATED_CONFIG_CHANGED'); const defaults = provisioning.generated_config === undefined ? undefined : object(provisioning.generated_config); if (defaults && configFiles.has('networks.yaml') && configFiles.get('networks.yaml')?.sha256 !== defaults.networks_sha256) throw new Error('LIMA_GENERATED_CONFIG_CHANGED'); } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; result.protected.push('_config'); continue; } }
+      saved.directories.push({ relative, ...directoryIdentity });
+      for (const name of names) {
+        const file = path.join(directory, name); const info = await lstat(file, { bigint: true }); const defaults = provisioning.generated_config === undefined ? undefined : object(provisioning.generated_config); const capturedNetwork = relative === '_config' && name === 'networks.yaml' && !configFiles.has(name) && typeof defaults?.networks_sha256 === 'string' ? { sha256: defaults.networks_sha256, size: Number(info.size), device: info.dev.toString(), inode: info.ino.toString() } : undefined;
+        const wanted = relative === '_assets' ? wantedAssets.get(name) : configFiles.get(name) ?? capturedNetwork; if (!wanted) { result.protected.push(`${relative}/${name}`); continue; }
+        const expected = wanted as { sha256: unknown; size: unknown; device?: unknown; inode?: unknown };
+        if (!info.isFile() || info.isSymbolicLink() || info.nlink !== 1n || typeof expected.sha256 !== 'string' || !SHA.test(expected.sha256) || !Number.isSafeInteger(expected.size) || info.size !== BigInt(expected.size as number) || typeof process.getuid === 'function' && info.uid !== BigInt(process.getuid()) || relative === '_config' && (expected.device !== info.dev.toString() || expected.inode !== info.ino.toString())) throw new Error('LIMA_AUXILIARY_FILE_CHANGED');
+        await verifyArchive(file, expected.sha256); saved.files.push({ relative: `${relative}/${name}`, sha256: expected.sha256, size: expected.size as number, device: info.dev.toString(), inode: info.ino.toString() });
+      }
+    }
+    if (!dryRun) await durableWrite(journalFile, Buffer.from(JSON.stringify(saved)), native);
+  }
+  const remaining: Entry[] = [];
+  for (const file of saved.files) { const target = path.join(home, file.relative); if (!await exists(target)) continue; const info = await lstat(target, { bigint: true }); if (!info.isFile() || info.isSymbolicLink() || info.dev.toString() !== file.device || info.ino.toString() !== file.inode || info.size !== BigInt(file.size)) throw new Error('LIMA_AUXILIARY_FILE_CHANGED'); await verifyArchive(target, file.sha256); remaining.push(file); }
+  for (const directory of saved.directories) if (await exists(path.join(home, directory.relative)) && !same(directory, await guardedIdentity(guard, path.join(home, directory.relative)))) throw new Error('LIMA_AUXILIARY_DIRECTORY_CHANGED');
+  for (const file of remaining) { result.paths.push(file.relative); if (!dryRun) { await rm(path.join(home, file.relative)); await fsyncDirectory(path.dirname(path.join(home, file.relative)), await openStateAuthority(path.dirname(path.join(home, file.relative)), guard)); } }
+  for (const directory of saved.directories) { const target = path.join(home, directory.relative); if (!await exists(target)) continue; const names = await readdir(target); if (names.length) { for (const name of names) if (!saved!.files.some(file => file.relative === `${directory.relative}/${name}`) || !dryRun) result.protected.push(`${directory.relative}/${name}`); continue; } result.paths.push(directory.relative); if (!dryRun) { await rmdir(target); await fsyncDirectory(home, await openStateAuthority(home, guard)); } }
+  if (!dryRun) { saved.phase = 'completed'; await durableWrite(journalFile, Buffer.from(JSON.stringify(saved)), native); }
+  return { paths: [...new Set(result.paths)], protected: [...new Set(result.protected)] };
+}

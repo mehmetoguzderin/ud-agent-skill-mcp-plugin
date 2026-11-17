@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>stable - Experimental features made easy, once we know they're stable</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;stable - Experimental features made easy, once we know they're stable</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#VERSION">VERSION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>stable - Experimental features made easy, once we know they&#39;re stable</p>
+
+<h1 id="VERSION">VERSION</h1>
+
+<p>version 0.036</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use stable &#39;lexical_subs&#39;, &#39;bitwise&#39;;
+my sub is_odd($value) { $value &amp; 1 }</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/experimental.html">experimental</a> pragma makes it easy to turn on experiments while turning off associated warnings. You should read about it, if you don&#39;t already know what it does.</p>
+
+<p>Seeing <code>use experimental</code> in code might be scary. In fact, it probably should be! Code that uses experimental features might break in the future if the perl development team decides that the experiment needs to be altered. When experiments become stable, because the developers decide they&#39;re a success, the warnings associated with them go away. When that happens, they can generally be turned on with <code>use feature</code>.</p>
+
+<p>This is great, if you are using a version of perl where the feature you want is already stable. If you&#39;re using an older perl, though, it might be the case that you want to use an experimental feature that still warns, even though there&#39;s no risk in using it, because subsequent versions of perl have that feature unchanged and now stable.</p>
+
+<p>Here&#39;s an example: The <code>postderef</code> feature was added in perl 5.20.0. In perl 5.24.0, it was marked stable. Using it would no longer trigger a warning. The behavior of the feature didn&#39;t change between 5.20.0 and 5.24.0. That means that it&#39;s perfectly safe to use the feature on 5.20 or 5.22, even though there&#39;s a warning.</p>
+
+<p>In that case, you could very justifiably add <code>use experimental &#39;postderef&#39;</code> but the casual reader may still be worried at seeing that. The <code>stable</code> pragma exists to turn on experimental features only when it&#39;s known that their behavior in the running perl is their stable behavior.</p>
+
+<p>If you try to use an experimental feature that isn&#39;t stable or available on the running version of perl, an exception will be thrown. You should also take care that you&#39;ve required the version of <code>stable</code> that you need!</p>
+
+<p>If it&#39;s not immediately obvious why, here&#39;s a bit of explanation:</p>
+
+<ul>
+
+<li><p><code>stable</code> comes with perl, starting with perl v5.38.</p>
+
+</li>
+<li><p>Imagine that v5.38 adds a feature called &quot;florps&quot;. It will stop being experimental in v5.42.</p>
+
+</li>
+<li><p>The version of <code>stable</code> that comes with perl v5.38 can&#39;t know that the <i>florps</i> experiment will succeed, so you can&#39;t <code>use stable &#39;florps&#39;</code> on the version of stable ships with v5.38, because it can&#39;t see the future!</p>
+
+</li>
+<li><p>You&#39;ll need to write <code>use stable 1.234 &#39;florps&#39;</code> to say that you need version 1.234 of stable, which is when <i>florps</i> became known to stable.</p>
+
+</li>
+</ul>
+
+<p>Sure, it&#39;s a little weird, but it&#39;s worth it! The documentation of this pragma will tell you what version of <code>stable</code> you need to require in order to use various features. See below.</p>
+
+<p>At present there are only a few &quot;stable&quot; features:</p>
+
+<ul>
+
+<li><p><code>bitwise</code> - stable as of perl 5.22, available via stable 0.031</p>
+
+</li>
+<li><p><code>isa</code> - stable as of perl 5.32, available via stable 0.031</p>
+
+</li>
+<li><p><code>lexical_subs</code> - stable as of perl 5.22, available via stable 0.031</p>
+
+<p>Lexical subroutines were actually added in 5.18, and their design did not change, but significant bugs makes them unsafe to use before 5.22.</p>
+
+</li>
+<li><p><code>postderef</code> - stable as of perl 5.20, available via stable 0.031</p>
+
+</li>
+<li><p><code>const_attr</code> - stable as of perl 5.22, available via stable 0.032</p>
+
+</li>
+<li><p><code>for_list</code> - stable as of perl 5.36, available via stable 0.032</p>
+
+</li>
+</ul>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlexperiment.html">perlexperiment</a> contains more information about experimental features.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Leon Timmermans &lt;fawaka@gmail.com&gt;</p>
+
+<h1 id="COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</h1>
+
+<p>This software is copyright (c) 2013 by Leon Timmermans.</p>
+
+<p>This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;stable - Experimental features made easy, once we know they're stable</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "state": "frozen",
+  "apple_container": {
+    "version": "1.7.1",
+    "package": "container-1.7.1-installer-signed.pkg",
+    "binary_path": "Payload/bin/container",
+    "publisher_team_id": "UPBK2H6LZM",
+    "signing_identifier": "com.apple.container.cli",
+    "source_commit": "a15b46097aa4c2325da13c1fb5192b9274aab083",
+    "license": "Apache-2.0",
+    "kernel": {
+      "archive": "kata-static-4.3.1-arm64.tar.zst",
+      "member": "opt/kata/share/kata-containers/vmlinux-6.18.56-208-debug",
+      "source_url": "https://github.com/kata-containers/kata-containers/releases/tag/4.3.1",
+      "license": "GPL-2.0-only"
+    },
+    "init_image": {
+      "repository": "ghcr.io/apple/containerization/vminit",
+      "version": "0.34.0",
+      "index_digest": "sha256:42904e78cad3e398a4dc8fa4484ccfd51152af21c43eedb923616f360b4d9015",
+      "manifest_digest": "sha256:976264a8b126bb4cb16bdbcf60d8f9c1b20a18ed6b232be8c75236a3a2be721f",
+      "config_digest": "sha256:e389217815d7df7e1eff559e51a237c5607a38638b38eab0309672a716226397",
+      "license": "Apache-2.0"
+    }
+  },
+  "wslc": {
+    "version": "3.0.3",
+    "source_commit": "15ea3b3846c5f18318722d1381186b2ff6ed72eb",
+    "sdk": "Microsoft.WSL.Containers.3.0.3.nupkg",
+    "license": "MIT",
+    "architectures": {
+      "arm64": {
+        "installer": "wsl.3.0.3.0.arm64.msi"
+      },
+      "x64": {
+        "installer": "wsl.3.0.3.0.x64.msi"
+      }
+    },
+    "extractor_image": "sha256:72a5c8961079bf388a5d8dec2bb169c2969054ac8500c623114487104405d56c",
+    "maintained_source_commit": "19cd15ea579fe09e29fcef8d9b947a588da3a765",
+    "source_role": "binary-release-tag",
+    "maintained_source_role": "independent-maintained-source-input"
+  },
+  "downloads": {
+    "container-1.7.1-installer-signed.pkg": {
+      "url": "https://github.com/apple/container/releases/download/1.7.1/container-1.7.1-installer-signed.pkg",
+      "sha256": "sha256:b6739caf3d47ca53a78f1a7edf32521420a75c7941838c3cefa75f30b80f5a97",
+      "size_bytes": 169630704
+    },
+    "Microsoft.WSL.Containers.3.0.3.nupkg": {
+      "url": "https://github.com/microsoft/WSL/releases/download/3.0.3/Microsoft.WSL.Containers.3.0.3.nupkg",
+      "sha256": "sha256:d31f78cc4816ccccc0dc196ecf4d2b27911b8ed677b4b9cc697274e941b6511b",
+      "size_bytes": 4486142
+    },
+    "wsl.3.0.3.0.arm64.msi": {
+      "url": "https://github.com/microsoft/WSL/releases/download/3.0.3/wsl.3.0.3.0.arm64.msi",
+      "sha256": "sha256:2937c7ce840bb35ec6e97f052189bdfff27f8c3463bfdd231df9a958212787a3",
+      "size_bytes": 341086208
+    },
+    "wsl.3.0.3.0.x64.msi": {
+      "url": "https://github.com/microsoft/WSL/releases/download/3.0.3/wsl.3.0.3.0.x64.msi",
+      "sha256": "sha256:ae977286974255bd26bf925f00f40f5692c6b2084155cbc0563c09aea091f211",
+      "size_bytes": 367575040
+    },
+    "kata-static-4.3.1-arm64.tar.zst": {
+      "url": "https://github.com/kata-containers/kata-containers/releases/download/4.3.1/kata-static-4.3.1-arm64.tar.zst",
+      "sha256": "sha256:2c5bf7cde334ad5307d482f45cceda496f91c9b6b96f5278c47f4f4eac1bbae6",
+      "size_bytes": 676287269
+    },
+    "apple-LICENSE.txt": {
+      "url": "https://raw.githubusercontent.com/apple/container/a15b46097aa4c2325da13c1fb5192b9274aab083/LICENSE",
+      "sha256": "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size_bytes": 11357
+    },
+    "apple-NOTICE.md": {
+      "url": "https://raw.githubusercontent.com/apple/container/a15b46097aa4c2325da13c1fb5192b9274aab083/NOTICE.md",
+      "sha256": "sha256:3af54d132e70dfaad11be4d5492765c59a33e40899ec19b6d98a6ce154522cf3",
+      "size_bytes": 12498
+    },
+    "wsl-LICENSE.txt": {
+      "url": "https://raw.githubusercontent.com/microsoft/WSL/19cd15ea579fe09e29fcef8d9b947a588da3a765/LICENSE",
+      "sha256": "sha256:c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "size_bytes": 1141
+    },
+    "linux-GPL-2.0.txt": {
+      "url": "https://raw.githubusercontent.com/gregkh/linux/v6.18.56/LICENSES/preferred/GPL-2.0",
+      "sha256": "sha256:8780e78a1a737e127f25a65f6d95269bffd36158dc261114de7859b490bfc5aa",
+      "size_bytes": 18600
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "qualification": "proposed-caught-boundary-classification-only",
+  "source_tree_sha256": "49207dfa635e44f04cc12c5c73ae0c33a651af5d20460bd9f32150cf4e3d3d1d",
+  "source": "packages/launcher/src/windows_metadata_policy.rs",
+  "source_sha256": "cad86bd7dc42fdf85c6abb6e1a9bf945fdcf6314a014dce54f2ddfc298bf33a1",
+  "definition": {
+    "tool": "cargo-mutants",
+    "version": "27.1.0",
+    "diff": "--- packages/launcher/src/windows_metadata_policy.rs\n+++ replace || with && in validate_security\n@@ -1,17 +1,17 @@\n //! Bounds validation runs before passing serialized recovery data to Win32.\n use std::io;\n pub const MAX_METADATA: usize = 256 * 1024;\n fn bad() -> io::Error { io::Error::new(io::ErrorKind::InvalidInput, \"invalid Windows recovery metadata\") }\n fn u16_at(bytes: &[u8], offset: usize) -> io::Result<usize> { Ok(u16::from_le_bytes(bytes.get(offset..offset + 2).ok_or_else(bad)?.try_into().map_err(|_| bad())?) as usize) }\n fn u32_at(bytes: &[u8], offset: usize) -> io::Result<usize> { Ok(u32::from_le_bytes(bytes.get(offset..offset + 4).ok_or_else(bad)?.try_into().map_err(|_| bad())?) as usize) }\n \n pub fn validate_security(bytes: &[u8]) -> io::Result<()> {\n-    if bytes.len() < 20 || bytes.len() > MAX_METADATA || bytes[0] != 1 || u16_at(bytes, 2)? & 0x8000 == 0 { return Err(bad()); }\n+    if bytes.len() < 20 && /* ~ changed by cargo-mutants ~ */ bytes.len() > MAX_METADATA || bytes[0] != 1 || u16_at(bytes, 2)? & 0x8000 == 0 { return Err(bad()); }\n     let mut ranges = Vec::new();\n     for field in [4, 8, 12, 16] {\n         let offset = u32_at(bytes, field)?;\n         if offset == 0 { continue; }\n         if offset < 20 || offset % 4 != 0 { return Err(bad()); }\n         let size = if field < 12 {\n             let head = bytes.get(offset..offset + 8).ok_or_else(bad)?;\n             if head[0] != 1 || head[1] > 15 { return Err(bad()); }\n",
+    "file": "packages/launcher/src/windows_metadata_policy.rs",
+    "function": {
+      "function_name": "validate_security",
+      "return_type": "-> io::Result<()>",
+      "span": {
+        "end": {
+          "column": 2,
+          "line": 43
+        },
+        "start": {
+          "column": 1,
+          "line": 8
+        }
+      }
+    },
+    "genre": "BinaryOperator",
+    "name": "packages/launcher/src/windows_metadata_policy.rs:9:25: replace || with && in validate_security",
+    "package": "ud-agent-launcher",
+    "replacement": "&&",
+    "span": {
+      "end": {
+        "column": 27,
+        "line": 9
+      },
+      "start": {
+        "column": 25,
+        "line": 9
+      }
+    }
+  },
+  "definition_sha256": "55df7c3525897903f9a6f8936cf38dd510014b7097bbe4790407e54d12325454",
+  "test_name": "boundary_proof::hostile_empty_security_is_total",
+  "test_sha256": "037a90da8671afade567c3d1357cb6838c47570ff8f472cb1980f98b9dc76f9a",
+  "event": {
+    "schema_version": 1,
+    "event": "caught-boundary-panic",
+    "source_sha256": "cad86bd7dc42fdf85c6abb6e1a9bf945fdcf6314a014dce54f2ddfc298bf33a1",
+    "definition_sha256": "55df7c3525897903f9a6f8936cf38dd510014b7097bbe4790407e54d12325454",
+    "test": "boundary_proof::hostile_empty_security_is_total",
+    "boundary": "validate_security",
+    "input_hex": "",
+    "contract": "hostile bytes return InvalidInput without panic",
+    "expected": "Err(InvalidInput)",
+    "observed": "caught panic"
+  },
+  "variants": [
+    "baseline",
+    "caught",
+    "uncaught",
+    "missing-record",
+    "wrong-boundary"
+  ],
+  "guard": "native macOS sandbox-exec, write only own variant directory, no network; subprocess closes inherited nonstdio FDs"
+}

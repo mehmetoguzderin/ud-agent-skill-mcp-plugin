@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "qualification": "exact-independent-STL-correspondence-binding-not-SDK-or-publisher-authority",
+  "proof": {
+    "path": "runtime/materials/uv-stl-source-components.json",
+    "sha256": "0eed86afd451d1f3a3676240ba124548ee6c8691d0830a7c95bab015b1d0209d",
+    "size_bytes": 514738
+  },
+  "review": {
+    "path": "quality/reviews/stl-source-correspondence-root-review.json",
+    "sha256": "52a56cf4f96abec83c19dd334c328e1860929ce41339557bf83765df3627682e",
+    "size_bytes": 3118
+  },
+  "source_contract": {
+    "path": "runtime/materials/msvc-stl-sources.lock.json",
+    "sha256": "176da8f630db10110354d90d4f27cee82e7fbbaae2653793734cb9e306346797",
+    "size_bytes": 595
+  },
+  "source_archive": {
+    "path": ".artifacts/source-materials-data/msvc-original-terms/stl-14.51.tar.gz",
+    "sha256": "146b945530b65c6fc954e05a55cfadab7348ff5842e1731ffff520d2de0922f0",
+    "size_bytes": 4930678
+  },
+  "uv_root": ".artifacts/windows-uv-source-static-2"
+}

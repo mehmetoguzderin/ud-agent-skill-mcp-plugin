@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "purpose": "release-candidate",
+  "protected_ref": "refs/remotes/origin/main",
+  "keys": [],
+  "evidence_keys": [],
+  "review_keys": [],
+  "inventory_keys": [],
+  "redistribution_keys": [],
+  "publisher_beta": {
+    "product_version": "0.1.0-beta.1",
+    "keys": [
+      {
+        "id": "mehmetoguzderin-beta-1",
+        "status": "active",
+        "algorithm": "ed25519",
+        "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAwX7GqzsfH2R1XKO2SUAL4BKZJOZcgsm2PkZbEcjG0Eo=\n-----END PUBLIC KEY-----\n"
+      }
+    ]
+  },
+  "note": "The publisher key covers 0.1.0-beta.1. Independent production and redistribution roles await provisioning."
+}

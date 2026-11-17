@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Math::BigInt::Calc - pure Perl module to support Math::BigInt</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Math::BigInt::Calc - pure Perl module to support Math::BigInt</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#OPTIONS">OPTIONS</a></li>
+  <li><a href="#METHODS">METHODS</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Math::BigInt::Calc - pure Perl module to support Math::BigInt</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code># to use it with Math::BigInt
+use Math::BigInt lib =&gt; &#39;Calc&#39;;
+
+# to use it with Math::BigFloat
+use Math::BigFloat lib =&gt; &#39;Calc&#39;;
+
+# to use it with Math::BigRat
+use Math::BigRat lib =&gt; &#39;Calc&#39;;
+
+# explicitly set base length and whether to &quot;use integer&quot;
+use Math::BigInt::Calc base_len =&gt; 4, use_int =&gt; 1;
+use Math::BigInt lib =&gt; &#39;Calc&#39;;</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Math::BigInt::Calc inherits from Math::BigInt::Lib.</p>
+
+<p>In this library, the numbers are represented interenally in base B = 10**N, where N is the largest possible integer that does not cause overflow in the intermediate computations. The base B elements are stored in an array, with the least significant element stored in array element zero. There are no leading zero elements, except a single zero element when the number is zero. For instance, if B = 10000, the number 1234567890 is represented internally as [7890, 3456, 12].</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<p>When the module is loaded, it computes the maximum exponent, i.e., power of 10, that can be used with and without &quot;use integer&quot; in the computations. The default is to use this maximum exponent. If the combination of the &#39;base_len&#39; value and the &#39;use_int&#39; value exceeds the maximum value, an error is thrown.</p>
+
+<dl>
+
+<dt id="base_len">base_len</dt>
+<dd>
+
+<p>The base length can be specified explicitly with the &#39;base_len&#39; option. The value must be a positive integer.</p>
+
+<pre><code>use Math::BigInt::Calc base_len =&gt; 4;  # use 10000 as internal base</code></pre>
+
+</dd>
+<dt id="use_int">use_int</dt>
+<dd>
+
+<p>This option is used to specify whether &quot;use integer&quot; should be used in the internal computations. The value is interpreted as a boolean value, so use 0 or &quot;&quot; for false and anything else for true. If the &#39;base_len&#39; is not specified together with &#39;use_int&#39;, the current value for the base length is used.</p>
+
+<pre><code>use Math::BigInt::Calc use_int =&gt; 1;   # use &quot;use integer&quot; internally</code></pre>
+
+</dd>
+</dl>
+
+<h1 id="METHODS">METHODS</h1>
+
+<p>This overview constains only the methods that are specific to <code>Math::BigInt::Calc</code>. For the other methods, see <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Math/BigInt/Lib.html">Math::BigInt::Lib</a>.</p>
+
+<dl>
+
+<dt id="base_len1">_base_len()</dt>
+<dd>
+
+<p>Specify the desired base length and whether to enable &quot;use integer&quot; in the computations.</p>
+
+<pre><code>Math::BigInt::Calc -&gt; _base_len($base_len, $use_int);</code></pre>
+
+<p>Note that it is better to specify the base length and whether to use integers as options when the module is loaded, for example like this</p>
+
+<pre><code>use Math::BigInt::Calc base_len =&gt; 6, use_int =&gt; 1;</code></pre>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Math/BigInt/Lib.html">Math::BigInt::Lib</a> for a description of the API.</p>
+
+<p>Alternative libraries <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Math/BigInt/FastCalc.html">Math::BigInt::FastCalc</a>, <a>Math::BigInt::GMP</a>, <a>Math::BigInt::Pari</a>, <a>Math::BigInt::GMPz</a>, and <a>Math::BigInt::BitVect</a>.</p>
+
+<p>Some of the modules that use these libraries <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Math/BigInt.html">Math::BigInt</a>, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Math/BigFloat.html">Math::BigFloat</a>, and <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Math/BigRat.html">Math::BigRat</a>.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Math::BigInt::Calc - pure Perl module to support Math::BigInt</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

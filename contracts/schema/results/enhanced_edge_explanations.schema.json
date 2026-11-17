@@ -1,0 +1,503 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "enhanced_edge_explanations result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "operation",
+    "operation_id",
+    "execution",
+    "scope",
+    "inputs",
+    "provenance",
+    "result",
+    "diagnostics",
+    "artifacts",
+    "coverage",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "operation": {
+      "const": "enhanced_edge_explanations"
+    },
+    "operation_id": {
+      "const": "077"
+    },
+    "execution": {
+      "type": "object",
+      "required": [
+        "status",
+        "elapsed_ms"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "completed",
+            "rejected",
+            "incomplete"
+          ]
+        },
+        "elapsed_ms": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "scope": {
+      "type": "object"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "product_version"
+      ],
+      "properties": {
+        "product_version": {
+          "const": "0.1.0-beta.1"
+        }
+      }
+    },
+    "result": {
+      "type": "object"
+    },
+    "diagnostics": {
+      "type": "array"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "uri",
+          "mime_type",
+          "size_bytes",
+          "sha256",
+          "retention"
+        ],
+        "properties": {
+          "uri": {
+            "type": "string",
+            "pattern": "^ud://"
+          },
+          "mime_type": {
+            "type": "string"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "retention": {
+            "type": "object",
+            "required": [
+              "expires_at"
+            ],
+            "properties": {
+              "expires_at": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "relative_path": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content_base64": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "relative_path",
+            "mime_type",
+            "size_bytes",
+            "sha256",
+            "content_base64"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "filename",
+            "mime_type",
+            "size_bytes",
+            "sha256",
+            "content"
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "required": [
+                "uri",
+                "mime_type",
+                "size_bytes",
+                "sha256",
+                "retention"
+              ],
+              "properties": {
+                "uri": {
+                  "type": "string",
+                  "pattern": "^ud://"
+                },
+                "mime_type": {
+                  "type": "string"
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "retention": {
+                  "type": "object",
+                  "required": [
+                    "expires_at"
+                  ],
+                  "properties": {
+                    "expires_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": [
+                "relative_path"
+              ],
+              "properties": {
+                "relative_path": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "export": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "candidate",
+            "complete",
+            "incomplete"
+          ]
+        },
+        "output_dir_path": {
+          "type": "string"
+        },
+        "requires_host_export": {
+          "type": "boolean"
+        },
+        "requires_broker_export": {
+          "type": "boolean"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "output_dir_path",
+        "artifacts"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "execution": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "const": "completed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "execution"
+        ]
+      },
+      "then": {
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/$defs/export"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "requires_host_export": {
+                        "type": "boolean"
+                      },
+                      "edge_count": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "requires_host_export",
+                      "edge_count"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "required": [
+                  "status",
+                  "report_resource",
+                  "summary"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "resource"
+                  },
+                  "report_resource": {
+                    "type": "object",
+                    "required": [
+                      "uri",
+                      "mime_type",
+                      "size_bytes",
+                      "sha256",
+                      "retention"
+                    ],
+                    "properties": {
+                      "uri": {
+                        "type": "string",
+                        "pattern": "^ud://"
+                      },
+                      "mime_type": {
+                        "type": "string"
+                      },
+                      "size_bytes": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      },
+                      "retention": {
+                        "type": "object",
+                        "required": [
+                          "expires_at"
+                        ],
+                        "properties": {
+                          "expires_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "summary": {
+                    "type": "object"
+                  }
+                }
+              }
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "requires_host_export"
+                  ],
+                  "properties": {
+                    "requires_host_export": {
+                      "const": false
+                    }
+                  }
+                },
+                "then": {
+                  "type": "object",
+                  "required": [
+                    "exports",
+                    "export_transaction"
+                  ],
+                  "properties": {
+                    "exports": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "path",
+                          "sha256",
+                          "size_bytes"
+                        ],
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "size_bytes": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    },
+                    "export_transaction": {
+                      "type": "object",
+                      "required": [
+                        "status"
+                      ],
+                      "properties": {
+                        "status": {
+                          "const": "completed"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "requires_broker_export"
+                  ],
+                  "properties": {
+                    "requires_broker_export": {
+                      "const": false
+                    }
+                  }
+                },
+                "then": {
+                  "type": "object",
+                  "required": [
+                    "exports",
+                    "export_transaction"
+                  ],
+                  "properties": {
+                    "exports": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "path",
+                          "sha256",
+                          "size_bytes"
+                        ],
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "size_bytes": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    },
+                    "export_transaction": {
+                      "type": "object",
+                      "required": [
+                        "status"
+                      ],
+                      "properties": {
+                        "status": {
+                          "const": "completed"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

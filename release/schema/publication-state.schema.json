@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "manifest_sha256", "targets"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "targets": {"type": "object", "additionalProperties": {"type": "object", "required": ["state", "sha256", "size"], "additionalProperties": false,
+      "properties": {"state": {"const": "verified"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "size": {"type": "integer", "minimum": 0}}}}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mehmetoguzderin/ud-agent-skill-mcp-plugin",
+  "description": "Local Universal Dependencies and CoNLL-U validation, editing and analysis with six agent skills.",
+  "version": "0.1.0-beta.1",
+  "repository": {
+    "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@mehmetoguzderin/ud-agent-skill-mcp-plugin",
+      "version": "0.1.0-beta.1",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

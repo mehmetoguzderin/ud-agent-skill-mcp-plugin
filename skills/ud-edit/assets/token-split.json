@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "description": "Authored example with explicitly chosen linguistic annotations. Preserve surface text through a new MWT; this is not an automatic rule for other contractions.",
+  "source_conllu": "# sent_id = a\n# text = I can't go.\n1\tI\tI\tPRON\t_\t_\t3\tnsubj\t3:nsubj\t_\n2\tcan't\tcan\tAUX\t_\t_\t3\taux\t3:aux\t_\n3\tgo\tgo\tVERB\t_\t_\t0\troot\t0:root\tSpaceAfter=No\n4\t.\t.\tPUNCT\t_\t_\t3\tpunct\t3:punct\t_\n\n",
+  "request": {
+    "operation": "token_split",
+    "arguments": {
+      "working_tree_path": "/absolute/treebank",
+      "token_ref": {
+        "tree_ref": {
+          "file_path": "sample.conllu",
+          "sent_id": "a"
+        },
+        "token_id": "2"
+      },
+      "replacement_words": [
+        "can",
+        "not"
+      ],
+      "annotation_map": {
+        "id_mapping": {
+          "a#1": [
+            "a#1"
+          ],
+          "a#2": [
+            "a#2",
+            "a#3"
+          ],
+          "a#3": [
+            "a#4"
+          ],
+          "a#4": [
+            "a#5"
+          ]
+        },
+        "created": [
+          "a#2-3"
+        ],
+        "sentences": [
+          {
+            "sent_id": "a",
+            "conllu": "# sent_id = a\n# text = I can't go.\n1\tI\tI\tPRON\t_\t_\t4\tnsubj\t4:nsubj\t_\n2-3\tcan't\t_\t_\t_\t_\t_\t_\t_\t_\n2\tcan\tcan\tAUX\t_\t_\t4\taux\t4:aux\t_\n3\tnot\tnot\tPART\t_\t_\t4\tadvmod\t4:advmod\t_\n4\tgo\tgo\tVERB\t_\t_\t0\troot\t0:root\tSpaceAfter=No\n5\t.\t.\tPUNCT\t_\t_\t4\tpunct\t4:punct\t_\n\n"
+          }
+        ],
+        "decisions": {
+          "basic": "explicit",
+          "enhanced": "explicit",
+          "surface": "explicit",
+          "metadata": "explicit"
+        }
+      },
+      "ud_context_path": "",
+      "edit_options": {
+        "mode": "preview",
+        "expected_sentence_sha256": "f84e7fb6996ff439ab67f08d510bbd500718622a29e05b10be7a82a64856740f"
+      }
+    }
+  },
+  "expected_candidate_conllu": "# sent_id = a\n# text = I can't go.\n1\tI\tI\tPRON\t_\t_\t4\tnsubj\t4:nsubj\t_\n2-3\tcan't\t_\t_\t_\t_\t_\t_\t_\t_\n2\tcan\tcan\tAUX\t_\t_\t4\taux\t4:aux\t_\n3\tnot\tnot\tPART\t_\t_\t4\tadvmod\t4:advmod\t_\n4\tgo\tgo\tVERB\t_\t_\t0\troot\t0:root\tSpaceAfter=No\n5\t.\t.\tPUNCT\t_\t_\t4\tpunct\t4:punct\t_\n\n"
+}

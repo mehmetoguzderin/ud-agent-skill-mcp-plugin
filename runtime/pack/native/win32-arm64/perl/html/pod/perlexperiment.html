@@ -1,0 +1,643 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>perlexperiment - A listing of experimental features in Perl</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perlexperiment - A listing of experimental features in Perl</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#Current-experiments">Current experiments</a></li>
+      <li><a href="#Accepted-features">Accepted features</a></li>
+      <li><a href="#Removed-features">Removed features</a></li>
+      <li><a href="#Features-abandoned-in-place">Features abandoned in place</a></li>
+    </ul>
+  </li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+  <li><a href="#LICENSE">LICENSE</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>perlexperiment - A listing of experimental features in Perl</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This document lists the current and past experimental features in the perl core. Although all of these are documented with their appropriate topics, this succinct listing gives you an overview and basic facts about their status.</p>
+
+<p>So far we&#39;ve merely tried to find and list the experimental features and infer their inception, versions, etc. There&#39;s a lot of speculation here.</p>
+
+<h2 id="Current-experiments">Current experiments</h2>
+
+<dl>
+
+<dt id="Pluggable-keywords">Pluggable keywords</dt>
+<dd>
+
+<p>Introduced in Perl 5.11.2</p>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlapi.html#PL_keyword_plugin">&quot;PL_keyword_plugin&quot; in perlapi</a> for the mechanism.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/13199">[perl #13199]</a>.</p>
+
+</dd>
+<dt id="Aliasing-via-reference">Aliasing via reference</dt>
+<dd>
+
+<p>Introduced in Perl 5.22.0</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::refaliasing</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/14150">[perl #14150]</a>.</p>
+
+<p>See also: <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlref.html#Assigning-to-References">&quot;Assigning to References&quot; in perlref</a></p>
+
+</dd>
+<dt id="use-re-strict">use re &#39;strict&#39;;</dt>
+<dd>
+
+<p>Introduced in Perl 5.22.0</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::re_strict</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/18755">[perl #18755]</a></p>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/re.html#strict-mode">&quot;&#39;strict&#39; mode&quot; in re</a></p>
+
+</dd>
+<dt id="Declaring-a-reference-to-a-variable">Declaring a reference to a variable</dt>
+<dd>
+
+<p>Introduced in Perl 5.26.0</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::declared_refs</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/15458">[perl #15458]</a>.</p>
+
+<p>See also: <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlref.html#Declaring-a-Reference-to-a-Variable">&quot;Declaring a Reference to a Variable&quot; in perlref</a></p>
+
+</dd>
+<dt id="There-is-an-installhtml-target-in-the-Makefile">There is an <code>installhtml</code> target in the Makefile.</dt>
+<dd>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/12726">[perl #12726]</a>.</p>
+
+</dd>
+<dt id="Limited-Variable-length-look-behind">(Limited) Variable-length look-behind</dt>
+<dd>
+
+<p>Introduced in Perl 5.30.0.</p>
+
+<p>Variability of up to 255 characters is handled.</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::vlb</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/18756">[perl #18756]</a>.</p>
+
+<p>See also: <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlre.html#positive_lookbehind:pattern">&quot;(*positive_lookbehind:<i>pattern</i>)&quot; in perlre</a> and <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlre.html#negative_lookbehind:pattern">&quot;(*negative_lookbehind:<i>pattern</i>)&quot; in perlre</a></p>
+
+</dd>
+<dt id="Unicode-private-use-character-hooks">Unicode private use character hooks</dt>
+<dd>
+
+<p>Introduced in Perl 5.30.0.</p>
+
+<p>This feature is part of an interface intended for internal and experimental use by the perl5 developers. You are unlikely to encounter it in the wild.</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::private_use</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/18758">[perl #18758]</a>.</p>
+
+</dd>
+<dt id="Unicode-property-wildcards">Unicode property wildcards</dt>
+<dd>
+
+<p>Introduced in Perl 5.30.0.</p>
+
+<p>This feature allows regular expression matching against Unicode character properties to be expressed more concisely.</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::uniprop_wildcards</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/18759">[perl #18759]</a>.</p>
+
+</dd>
+<dt id="try-catch-control-structure">try/catch control structure</dt>
+<dd>
+
+<p>Introduced in Perl 5.34.0.</p>
+
+<p>Using the optional <code>finally</code> block part of this feature triggers warnings in the category <code>experimental::try</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/18760">[perl #18760]</a></p>
+
+</dd>
+<dt id="Use-of-_-within-subroutine-signatures">Use of <code>@_</code> within subroutine signatures</dt>
+<dd>
+
+<p>Introduced in Perl 5.36.0 as part of a reduction in the scope of experimental subroutine signatures.</p>
+
+<p>Using the default arguments array (<code>@_</code>) within a subroutine that uses signatures will emit a warning in the category <code>experimental::args_array_with_signatures</code>. This includes <code>@_</code> directly, elements of it such as <code>$_[$index]</code>, or situations where the default arguments array is accessed implicitly such as <code>shift</code> or <code>pop</code> without arguments.</p>
+
+</dd>
+<dt id="The-builtin-namespace">The builtin namespace</dt>
+<dd>
+
+<p>Introduced in Perl 5.36.0.</p>
+
+<p>Using certain functions of this feature triggers warnings in the category <code>experimental::builtin</code>.</p>
+
+<p>In Perl 5.36.0, a new namespace, <code>builtin</code>, was created for new core functions that will not be present in every namespace, but will be available for importing. The namespace itself was considered experimental until Perl 5.39.2. Some specific functions within it remain experimental.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/19764">[perl #19764]</a>.</p>
+
+</dd>
+<dt id="The-defer-block-modifier">The defer block modifier</dt>
+<dd>
+
+<p>Introduced in Perl 5.36.0</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::defer</code>.</p>
+
+<p>This feature adds a new kind of block, a <code>defer</code> block, which will not be executed until the containing block is being exited.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/17949">[perl #17949]</a>.</p>
+
+</dd>
+<dt id="Extra-paired-delimiters-for-quote-like-operators">Extra paired delimiters for quote-like operators</dt>
+<dd>
+
+<p>Introduced in Perl 5.36.0</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::extra_paired_delimiters</code>.</p>
+
+<p>This feature allows for many non-ASCII pairs of mirroring delimiters, for example:</p>
+
+<pre><code>my @array = qw&#xAB; tinker tailor soldier spy &#xBB;;</code></pre>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/19765">[perl #19765]</a>.</p>
+
+</dd>
+<dt id="New-object-system-and-class-syntax">New object system and <code>class</code> syntax</dt>
+<dd>
+
+<p>Introduced in Perl 5.37.9.</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::class</code>.</p>
+
+<p>This feature enables the new object system and its associated keywords <code>class</code>, <code>field</code>, <code>method</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/22139">[perl #22139]</a>.</p>
+
+</dd>
+<dt id="any-and-all-list-processing-operators"><code>any</code> and <code>all</code> list processing operators</dt>
+<dd>
+
+<p>Introduced in Perl 5.41.7.</p>
+
+<p>Using these features triggers warnings in the categories <code>experimental::keyword_any</code> or <code>experimental::keyword_all</code>.</p>
+
+<p>This adds new list processing operators named <code>any</code> and <code>all</code>, each as their own named feature.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/22794">[perl #22794]</a>.</p>
+
+</dd>
+<dt id="Named-parameters-in-subroutine-signatures">Named parameters in subroutine signatures</dt>
+<dd>
+
+<p>Introduced in Perl 5.43.5.</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::signature_named_parameters</code>.</p>
+
+<p>This feature enables parameters in subroutine signatures that are matched by name rather than by position, and is documented in <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlsub.html#Signatures">&quot;Signatures&quot; in perlsub</a>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/23945">[perl #23945]</a>.</p>
+
+</dd>
+<dt id="Enhanced-xx-modifier-in-regular-expression-pattern-matching">Enhanced <code>/xx</code> modifier in regular expression pattern matching</dt>
+<dd>
+
+<p>Introduced in Perl 5.43.8.</p>
+
+<p>Using this feature triggers warnings in the category <code>experimental::enhanced_xx</code>.</p>
+
+<p>This feature enables bracketed character classes to be split across multiple lines, and to contain comments, and adds warnings if it appears a <code>#</code> is interpreted as beginning a comment when it was meant to be taken as a literal character.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/24209">[perl #23945]</a>.</p>
+
+</dd>
+</dl>
+
+<h2 id="Accepted-features">Accepted features</h2>
+
+<p>These features were so wildly successful and played so well with others that we decided to remove their experimental status and admit them as full, stable features in the world of Perl, lavishing all the benefits and luxuries thereof. They are also awarded +5 Stability and +3 Charisma.</p>
+
+<dl>
+
+<dt id="bit-support">64-bit support</dt>
+<dd>
+
+<p>Introduced in Perl 5.005</p>
+
+</dd>
+<dt id="die-accepts-a-reference">die accepts a reference</dt>
+<dd>
+
+<p>Introduced in Perl 5.005</p>
+
+</dd>
+<dt id="DB-module">DB module</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+<p>See also <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perldebug.html">perldebug</a>, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perldebtut.html">perldebtut</a></p>
+
+</dd>
+<dt id="Weak-references">Weak references</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+</dd>
+<dt id="Internal-file-glob">Internal file glob</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+</dd>
+<dt id="fork-emulation">fork() emulation</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.1</p>
+
+<p>See also <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlfork.html">perlfork</a></p>
+
+</dd>
+<dt id="Dusemultiplicity--Duseithreads">-Dusemultiplicity -Duseithreads</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+<p>Accepted in Perl 5.8.0</p>
+
+</dd>
+<dt id="Support-for-long-doubles">Support for long doubles</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+<p>Accepted in Perl 5.8.1</p>
+
+</dd>
+<dt id="The-N-regex-character-class">The <code>\N</code> regex character class</dt>
+<dd>
+
+<p>The <code>\N</code> character class, not to be confused with the named character sequence <code>\N{NAME}</code>, denotes any non-newline character in a regular expression.</p>
+
+<p>Introduced in Perl 5.12</p>
+
+<p>Exact version of acceptance unclear, but no later than Perl 5.18.</p>
+
+</dd>
+<dt id="code-and-code"><code>(?{code})</code> and <code>(??{ code })</code></dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+<p>Accepted in Perl 5.20.0</p>
+
+<p>See also <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlre.html">perlre</a></p>
+
+</dd>
+<dt id="Linux-abstract-Unix-domain-sockets">Linux abstract Unix domain sockets</dt>
+<dd>
+
+<p>Introduced in Perl 5.9.2</p>
+
+<p>Accepted before Perl 5.20.0. The Socket library is now primarily maintained on CPAN, rather than in the perl core.</p>
+
+<p>See also <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Socket.html">Socket</a></p>
+
+</dd>
+<dt id="Lvalue-subroutines">Lvalue subroutines</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+<p>Accepted in Perl 5.20.0</p>
+
+<p>See also <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlsub.html">perlsub</a></p>
+
+</dd>
+<dt id="Backtracking-control-verbs">Backtracking control verbs</dt>
+<dd>
+
+<p><code>(*ACCEPT)</code></p>
+
+<p>Introduced in Perl 5.10</p>
+
+<p>Accepted in Perl 5.20.0</p>
+
+</dd>
+<dt id="The-:pop-IO-pseudolayer">The <code>:pop</code> IO pseudolayer</dt>
+<dd>
+
+<p>See also <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlrun.html#PERLIO">&quot;PERLIO&quot; in perlrun</a></p>
+
+<p>Accepted in Perl 5.20.0</p>
+
+</dd>
+<dt id="s-in-regexp-matches-vertical-tab"><code>\s</code> in regexp matches vertical tab</dt>
+<dd>
+
+<p>Accepted in Perl 5.22.0</p>
+
+</dd>
+<dt id="Postfix-dereference-syntax">Postfix dereference syntax</dt>
+<dd>
+
+<p>Introduced in Perl 5.20.0</p>
+
+<p>Accepted in Perl 5.24.0</p>
+
+</dd>
+<dt id="Lexical-subroutines">Lexical subroutines</dt>
+<dd>
+
+<p>Introduced in Perl 5.18.0</p>
+
+<p>Accepted in Perl 5.26.0</p>
+
+</dd>
+<dt id="String--and-number-specific-bitwise-operators">String- and number-specific bitwise operators</dt>
+<dd>
+
+<p>Introduced in Perl 5.22.0</p>
+
+<p>Accepted in Perl 5.28.0</p>
+
+</dd>
+<dt id="Alphabetic-assertions">Alphabetic assertions</dt>
+<dd>
+
+<p>Introduced in Perl 5.28.0</p>
+
+<p>Accepted in Perl 5.32.0</p>
+
+</dd>
+<dt id="Script-runs">Script runs</dt>
+<dd>
+
+<p>Introduced in Perl 5.28.0</p>
+
+<p>Accepted in Perl 5.32.0</p>
+
+</dd>
+<dt id="The-infix-isa-operator">The infix <code>isa</code> operator</dt>
+<dd>
+
+<p>Introduced in Perl 5.32.0</p>
+
+<p>Accepted in Perl 5.36.0</p>
+
+</dd>
+<dt id="Subroutine-signatures">Subroutine signatures</dt>
+<dd>
+
+<p>Introduced in Perl 5.20.0</p>
+
+<p>Accepted in Perl 5.36.0</p>
+
+</dd>
+<dt id="Regular-Expression-Set-Operations">Regular Expression Set Operations</dt>
+<dd>
+
+<p>Introduced in Perl 5.18</p>
+
+<p>Accepted in Perl 5.36</p>
+
+<p>See : <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlrecharclass.html#Extended-Bracketed-Character-Classes">&quot;Extended Bracketed Character Classes&quot; in perlrecharclass</a></p>
+
+</dd>
+<dt id="try-catch-control-structure1">try/catch control structure</dt>
+<dd>
+
+<p>Introduced in Perl 5.34.0.</p>
+
+<p>Accepted in Perl 5.40 when not using the optional <code>finally</code> block.</p>
+
+</dd>
+<dt id="The-const-attribute">The &quot;const&quot; attribute</dt>
+<dd>
+
+<p>Introduced in Perl 5.22.0</p>
+
+<p>Accepted in Perl 5.40</p>
+
+<p>See also: <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlsub.html#Constant-Functions">&quot;Constant Functions&quot; in perlsub</a></p>
+
+</dd>
+<dt id="for-loop-with-multiple-iteration-variables">for loop with multiple iteration variables</dt>
+<dd>
+
+<p>Introduced in Perl 5.36.0.</p>
+
+<p>Accepted in Perl 5.40.</p>
+
+<p>This feature enables a parenthesized list of iteration variables for <code>for</code> rather than a single variable.</p>
+
+</dd>
+</dl>
+
+<h2 id="Removed-features">Removed features</h2>
+
+<p>These features are no longer considered experimental and their functionality has disappeared. It&#39;s your own fault if you wrote production programs using these features after we explicitly told you not to (see <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlpolicy.html">perlpolicy</a>).</p>
+
+<dl>
+
+<dt id="style-threading">5.005-style threading</dt>
+<dd>
+
+<p>Introduced in Perl 5.005</p>
+
+<p>Removed in Perl 5.10</p>
+
+</dd>
+<dt id="perlcc">perlcc</dt>
+<dd>
+
+<p>Introduced in Perl 5.005</p>
+
+<p>Moved from Perl 5.9.0 to CPAN</p>
+
+</dd>
+<dt id="The-pseudo-hash-data-type">The pseudo-hash data type</dt>
+<dd>
+
+<p>Introduced in Perl 5.6.0</p>
+
+<p>Removed in Perl 5.9.0</p>
+
+</dd>
+<dt id="GetOpt::Long-Options-can-now-take-multiple-values-at-once-experimental">GetOpt::Long Options can now take multiple values at once (experimental)</dt>
+<dd>
+
+<p><code>Getopt::Long</code> upgraded to version 2.35</p>
+
+<p>Removed in Perl 5.8.8</p>
+
+</dd>
+<dt id="Assertions">Assertions</dt>
+<dd>
+
+<p>The <code>-A</code> command line switch</p>
+
+<p>Introduced in Perl 5.9.0</p>
+
+<p>Removed in Perl 5.9.5</p>
+
+</dd>
+<dt id="Test::Harness::Straps">Test::Harness::Straps</dt>
+<dd>
+
+<p>Moved from Perl 5.10.1 to CPAN</p>
+
+</dd>
+<dt id="legacy"><code>legacy</code></dt>
+<dd>
+
+<p>The experimental <code>legacy</code> pragma was swallowed by the <code>feature</code> pragma.</p>
+
+<p>Introduced in Perl 5.11.2</p>
+
+<p>Removed in Perl 5.11.3</p>
+
+</dd>
+<dt id="Lexical-_">Lexical <code>$_</code></dt>
+<dd>
+
+<p>Using this feature triggered warnings in the category <code>experimental::lexical_topic</code>.</p>
+
+<p>Introduced in Perl 5.10.0</p>
+
+<p>Removed in Perl 5.24.0</p>
+
+</dd>
+<dt id="Array-and-hash-container-functions-accept-references">Array and hash container functions accept references</dt>
+<dd>
+
+<p>Using this feature triggered warnings in the category <code>experimental::autoderef</code>.</p>
+
+<p>Superseded by <a href="#Postfix-dereference-syntax">&quot;Postfix dereference syntax&quot;</a>.</p>
+
+<p>Introduced in Perl 5.14.0</p>
+
+<p>Removed in Perl 5.24.0</p>
+
+</dd>
+<dt id="our-can-have-an-experimental-optional-attribute-unique"><code>our</code> can have an experimental optional attribute <code>unique</code></dt>
+<dd>
+
+<p>Introduced in Perl 5.8.0</p>
+
+<p>Deprecated in Perl 5.10.0</p>
+
+<p>Removed in Perl 5.28.0</p>
+
+</dd>
+<dt id="The-:win32-IO-pseudolayer">The <code>:win32</code> IO pseudolayer</dt>
+<dd>
+
+<p>Introduced in Perl 5.8.0 (or before)</p>
+
+<p>Removed in Perl 5.36.0</p>
+
+</dd>
+</dl>
+
+<h2 id="Features-abandoned-in-place">Features abandoned in place</h2>
+
+<p>These are experiments that are considered failures, but due to mass use have been left in place.</p>
+
+<p>The switch and smartmatch features are likely to be the only ones which will ever fall into this category. They were introduced before we had a well-defined experimental feature process.</p>
+
+<p>These are unlikely to be updated with behavioural changes.</p>
+
+<dl>
+
+<dt id="Smart-match">Smart match (<code>~~</code>)</dt>
+<dd>
+
+<p>Introduced in Perl 5.10.0</p>
+
+<p>Modified in Perl 5.10.1, 5.12.0</p>
+
+<p>Deprecated in 5.38.0</p>
+
+<p>Scheduled for removal in 5.42.0, but this was reversed.</p>
+
+<p>Enabled by default, and in all feature bundles up to 5.40, disabled by default in feature bundle 5.42, but can be enabled with <code>use feature &quot;smartmatch&quot;</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/13173">[perl #13173]</a>.</p>
+
+</dd>
+<dt id="Switch-given-when">Switch (given/when)</dt>
+<dd>
+
+<p>Introduced in Perl 5.10.0</p>
+
+<p>Deprecated in 5.38.0</p>
+
+<p>Scheduled for removal in 5.42.0, but this was reversed.</p>
+
+<p>Enabled by feature bundles 5.10 through 5.34, but can be enabled with <code>use feature &quot;switch&quot;</code>.</p>
+
+<p>The ticket for this experiment is <a href="https://github.com/Perl/perl5/issues/13173">[perl #13173]</a>.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p>For a complete list of features check <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/feature.html">feature</a>.</p>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<p>brian d foy <code>&lt;briandfoy@pobox.com&gt;</code></p>
+
+<p>S&#xE9;bastien Aperghis-Tramoni <code>&lt;saper@cpan.org&gt;</code></p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2010, brian d foy <code>&lt;briandfoy@pobox.com&gt;</code></p>
+
+<h1 id="LICENSE">LICENSE</h1>
+
+<p>You can use and redistribute this document under the same terms as Perl itself.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perlexperiment - A listing of experimental features in Perl</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

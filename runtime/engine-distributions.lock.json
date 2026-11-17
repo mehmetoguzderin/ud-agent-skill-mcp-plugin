@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "frozen",
+  "engines": {
+    "apple-container": {
+      "darwin/arm64": {
+        "version": "1.7.1",
+        "binary_sha256": "sha256:2e4fdec2272867e2627d4c851a7457e86bf1b8db2d06d8a670f1419f2e85f1df",
+        "publisher_team_id": "UPBK2H6LZM",
+        "signing_identifier": "com.apple.container.cli"
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Getopt::Long::Parser - Getopt::Long object-oriented interface</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Getopt::Long::Parser - Getopt::Long object-oriented interface</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#CONSTRUCTOR">CONSTRUCTOR</a></li>
+  <li><a href="#METHODS">METHODS</a>
+    <ul>
+      <li><a href="#configure">configure</a></li>
+      <li><a href="#getoptionsfromarray">getoptionsfromarray</a></li>
+      <li><a href="#getoptions">getoptions</a></li>
+    </ul>
+  </li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT-AND-DISCLAIMER">COPYRIGHT AND DISCLAIMER</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Getopt::Long::Parser - Getopt::Long object-oriented interface</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use Getopt::Long::Parser;
+my $p = Getopt::Long::Parser-&gt;new;
+$p-&gt;configure( %options );
+if ( $p-&gt;getoptions( @options ) ) { ... }
+if ( $p-&gt;getoptionsfromarray( \@array, @options ) ) { ... }</code></pre>
+
+<p>Configuration options can be passed to the constructor:</p>
+
+<pre><code>my $p = Getopt::Long::Parser-&gt;new( config =&gt; [ %options ] );</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><code>Getopt::Long::Parser</code> is an object-oriented interface to <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Getopt/Long.html">Getopt::Long</a>. See its documentation for configuration and use.</p>
+
+<p>Note that <code>Getopt::Long</code> and <code>Getopt::Long::Parser</code> are not object-oriented. <code>Getopt::Long::Parser</code> emulates an object-oriented interface, which should be okay for most purposes.</p>
+
+<h1 id="CONSTRUCTOR">CONSTRUCTOR</h1>
+
+<pre><code>my $p = Getopt::Long::Parser-&gt;new( %options );</code></pre>
+
+<p>The constructor takes an optional hash with parameters.</p>
+
+<dl>
+
+<dt id="config">config</dt>
+<dd>
+
+<p>An array reference with configuration settings. See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Getopt/Long.html#Configuring-Getopt::Long">&quot;Configuring Getopt::Long&quot; in Getopt::Long</a> for all possible settings.</p>
+
+</dd>
+</dl>
+
+<h1 id="METHODS">METHODS</h1>
+
+<p>In the examples, <code>$p</code> is assumed to be the result of a call to the constructor.</p>
+
+<h2 id="configure">configure</h2>
+
+<pre><code>$p-&gt;configure( %settings );</code></pre>
+
+<p>Update the current config settings. See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Getopt/Long.html#Configuring-Getopt::Long">&quot;Configuring Getopt::Long&quot; in Getopt::Long</a> for all possible settings.</p>
+
+<h2 id="getoptionsfromarray">getoptionsfromarray</h2>
+
+<pre><code>my $res = $p-&gt;getoptionsfromarray( $aref, @opts );</code></pre>
+
+<h2 id="getoptions">getoptions</h2>
+
+<pre><code>my $res = $p-&gt;getoptions( @opts );</code></pre>
+
+<p>The same as <code>getoptionsfromarray( \@ARGV, @opts )</code>.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Getopt/Long.html">Getopt::Long</a></p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Johan Vromans &lt;jvromans@squirrel.nl&gt;</p>
+
+<h1 id="COPYRIGHT-AND-DISCLAIMER">COPYRIGHT AND DISCLAIMER</h1>
+
+<p>This program is Copyright 1990,2015,2023 by Johan Vromans. This program is free software; you can redistribute it and/or modify it under the same terms as Perl.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Getopt::Long::Parser - Getopt::Long object-oriented interface</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

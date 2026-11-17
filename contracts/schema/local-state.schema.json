@@ -1,0 +1,807 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Versioned owned local records",
+  "anyOf": [
+    {
+      "$ref": "#/$defs/transaction"
+    },
+    {
+      "$ref": "#/$defs/docker_job"
+    },
+    {
+      "$ref": "#/$defs/platform_job"
+    },
+    {
+      "$ref": "#/$defs/podman_job"
+    },
+    {
+      "$ref": "#/$defs/userspace_marker"
+    },
+    {
+      "$ref": "#/$defs/userspace_repair"
+    },
+    {
+      "$ref": "#/$defs/resource"
+    }
+  ],
+  "$defs": {
+    "transaction": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Journal",
+      "$comment": "Generated from packages/workspace/src/journal.ts#Journal; source SHA256 b2e615a2d66dcba99efaa620b764f3c7296802fc1a515394e9d44fb83b5264a0. Shape validation supplements, and never replaces, native ownership, path confinement, hashes, durable lifecycle and policy checks.",
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": 1
+        },
+        "id": {
+          "type": "string"
+        },
+        "request_hash": {
+          "type": "string"
+        },
+        "workspace": {
+          "type": "string"
+        },
+        "identity": {
+          "type": "object",
+          "properties": {
+            "device": {
+              "type": "string"
+            },
+            "inode": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "device",
+            "inode"
+          ]
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "const": "prepared"
+            },
+            {
+              "const": "committing"
+            },
+            {
+              "const": "completed"
+            },
+            {
+              "const": "recovering"
+            },
+            {
+              "const": "rolled_back"
+            },
+            {
+              "const": "conflict"
+            }
+          ]
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "before": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "after": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "state": {
+                "anyOf": [
+                  {
+                    "const": "pending"
+                  },
+                  {
+                    "const": "writing"
+                  },
+                  {
+                    "const": "applied"
+                  }
+                ]
+              },
+              "metadata": {
+                "type": "object",
+                "additionalProperties": {}
+              }
+            },
+            "required": [
+              "path",
+              "before",
+              "after",
+              "state"
+            ]
+          }
+        },
+        "directories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "token": {
+                "type": "string"
+              },
+              "state": {
+                "anyOf": [
+                  {
+                    "const": "planned"
+                  },
+                  {
+                    "const": "created"
+                  },
+                  {
+                    "const": "released"
+                  },
+                  {
+                    "const": "removed"
+                  }
+                ]
+              },
+              "identity": {
+                "type": "object",
+                "properties": {
+                  "device": {
+                    "type": "string"
+                  },
+                  "inode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "device",
+                  "inode"
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "token",
+              "state"
+            ]
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "read_preconditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          }
+        }
+      },
+      "required": [
+        "version",
+        "id",
+        "request_hash",
+        "workspace",
+        "identity",
+        "phase",
+        "entries"
+      ]
+    },
+    "docker_job": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "DockerJobRecord",
+      "$comment": "Generated from packages/coordinator/src/docker-journal.ts#DockerJobRecord; source SHA256 1242eb187639c7cdf90d00e96430b688dd7af8162283d02e5f9ca4c93de44ac0. Shape validation supplements, and never replaces, native ownership, path confinement, hashes, durable lifecycle and policy checks.",
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": 1
+        },
+        "id": {
+          "type": "string"
+        },
+        "engine": {
+          "type": "string"
+        },
+        "engine_sha256": {
+          "type": "string"
+        },
+        "image_digest": {
+          "type": "string"
+        },
+        "image_id": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "daemon_id": {
+          "type": "string"
+        },
+        "owner_pid": {
+          "type": "number"
+        },
+        "owner_lease": {
+          "type": "string"
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "const": "planned"
+            },
+            {
+              "const": "volume_pending"
+            },
+            {
+              "const": "volume_ready"
+            },
+            {
+              "const": "loader_pending"
+            },
+            {
+              "const": "loader_created"
+            },
+            {
+              "const": "loaded"
+            },
+            {
+              "const": "worker_pending"
+            },
+            {
+              "const": "worker_created"
+            },
+            {
+              "const": "ran"
+            },
+            {
+              "const": "cleanup_pending"
+            },
+            {
+              "const": "cleaned"
+            }
+          ]
+        },
+        "loader_id": {
+          "type": "string"
+        },
+        "worker_id": {
+          "type": "string"
+        },
+        "engine_cleanup_reconciliation": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "const": "cleanup_only"
+            },
+            "original_engine": {
+              "type": "string"
+            },
+            "original_engine_sha256": {
+              "type": "string"
+            },
+            "current_engine": {
+              "type": "string"
+            },
+            "current_engine_sha256": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "mode",
+            "original_engine",
+            "original_engine_sha256",
+            "current_engine",
+            "current_engine_sha256"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "id",
+        "engine",
+        "engine_sha256",
+        "image_digest",
+        "image_id",
+        "endpoint",
+        "daemon_id",
+        "owner_pid",
+        "phase"
+      ]
+    },
+    "platform_job": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "PlatformJob",
+      "$comment": "Generated from packages/coordinator/src/platform-journal.ts#PlatformJob; source SHA256 224c27f01c13f64aff3686843cc6d8beeff215b8e34e4d4636d912b6a506554c. Shape validation supplements, and never replaces, native ownership, path confinement, hashes, durable lifecycle and policy checks.",
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "lifecycle_revision": {
+          "const": 2
+        },
+        "pending_create": {
+          "anyOf": [
+            {
+              "const": "volume"
+            },
+            {
+              "const": "initializer"
+            },
+            {
+              "const": "loader"
+            },
+            {
+              "const": "worker"
+            }
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "const": "apple-container"
+            },
+            {
+              "const": "lima-nerdctl"
+            },
+            {
+              "const": "wslc"
+            }
+          ]
+        },
+        "authority": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "image_id": {
+          "type": "string"
+        },
+        "image_reference": {
+          "type": "string"
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "const": "planned"
+            },
+            {
+              "const": "volume"
+            },
+            {
+              "const": "initialized"
+            },
+            {
+              "const": "loader"
+            },
+            {
+              "const": "loaded"
+            },
+            {
+              "const": "worker"
+            },
+            {
+              "const": "ran"
+            },
+            {
+              "const": "cleanup"
+            },
+            {
+              "const": "cleaned"
+            }
+          ]
+        },
+        "initializer": {
+          "type": "string"
+        },
+        "loader": {
+          "type": "string"
+        },
+        "worker": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "provider",
+        "authority",
+        "image",
+        "phase"
+      ]
+    },
+    "podman_job": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "JobRecord",
+      "$comment": "Generated from packages/runtime-manager/src/job-journal.ts#JobRecord; source SHA256 b045e87b8480587325feb2f47d425b41c78fa10ac79e7aeb62f8a97c298ebbd7. Shape validation supplements, and never replaces, native ownership, path confinement, hashes, durable lifecycle and policy checks.",
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": 1
+        },
+        "name": {
+          "type": "string"
+        },
+        "engine": {
+          "const": "podman"
+        },
+        "engine_sha256": {
+          "type": "string"
+        },
+        "image_digest": {
+          "type": "string"
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "const": "planned"
+            },
+            {
+              "const": "created"
+            },
+            {
+              "const": "running"
+            },
+            {
+              "const": "cleanup_pending"
+            },
+            {
+              "const": "cleaned"
+            }
+          ]
+        },
+        "container_id": {
+          "type": "string"
+        },
+        "engine_mode": {
+          "anyOf": [
+            {
+              "const": "rootless"
+            },
+            {
+              "const": "rootful"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "name",
+        "engine",
+        "engine_sha256",
+        "image_digest",
+        "phase"
+      ]
+    },
+    "userspace_marker": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Marker",
+      "$comment": "Generated from packages/runtime-manager/src/userspace.ts#Marker; source SHA256 989ab8f65828b5adb79e8a0bf95569df9c8361dd461b9d50c0a7813b1fd6dfcf. Shape validation supplements, and never replaces, native ownership, path confinement, hashes, durable lifecycle and policy checks.",
+      "type": "object",
+      "properties": {
+        "render_probe": {
+          "type": "object",
+          "properties": {
+            "schema_version": {
+              "const": 1
+            },
+            "revision": {
+              "const": 1
+            },
+            "manifest_sha256": {
+              "type": "string"
+            },
+            "environment_fingerprint": {
+              "type": "string"
+            },
+            "browser_manifest_sha256": {
+              "type": "string"
+            },
+            "guard_sha256": {
+              "type": "string"
+            },
+            "outputs": {
+              "type": "object",
+              "properties": {
+                "png": {
+                  "type": "object",
+                  "properties": {
+                    "sha256": {
+                      "type": "string"
+                    },
+                    "size_bytes": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "sha256",
+                    "size_bytes"
+                  ]
+                },
+                "pdf": {
+                  "type": "object",
+                  "properties": {
+                    "sha256": {
+                      "type": "string"
+                    },
+                    "size_bytes": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "sha256",
+                    "size_bytes"
+                  ]
+                }
+              },
+              "required": [
+                "png",
+                "pdf"
+              ]
+            }
+          },
+          "required": [
+            "schema_version",
+            "revision",
+            "manifest_sha256",
+            "environment_fingerprint",
+            "browser_manifest_sha256",
+            "guard_sha256",
+            "outputs"
+          ]
+        },
+        "core_archive": {
+          "type": "string"
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "manifest": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "string"
+        },
+        "fingerprint": {
+          "type": "string"
+        },
+        "python_version": {
+          "type": "string"
+        },
+        "installer": {
+          "anyOf": [
+            {
+              "const": "uv"
+            },
+            {
+              "const": "venv"
+            }
+          ]
+        },
+        "platform": {
+          "type": "string"
+        },
+        "arch": {
+          "type": "string"
+        },
+        "abi": {
+          "type": "string"
+        },
+        "managed_python": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "fingerprint": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "fingerprint"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "manifest",
+        "environment",
+        "fingerprint",
+        "python_version",
+        "installer"
+      ]
+    },
+    "userspace_repair": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "RepairJournal",
+      "$comment": "Generated from packages/runtime-manager/src/userspace.ts#RepairJournal; source SHA256 989ab8f65828b5adb79e8a0bf95569df9c8361dd461b9d50c0a7813b1fd6dfcf. Shape validation supplements, and never replaces, native ownership, path confinement, hashes, durable lifecycle and policy checks.",
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "manifest": {
+          "type": "string"
+        },
+        "quarantine": {
+          "type": "string"
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "const": "building"
+            },
+            {
+              "const": "completed"
+            },
+            {
+              "const": "rolled_back"
+            },
+            {
+              "const": "conflict"
+            }
+          ]
+        },
+        "previous_usable": {
+          "type": "boolean"
+        },
+        "moves": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "device": {
+                "type": "string"
+              },
+              "inode": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "from",
+              "to",
+              "device",
+              "inode"
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "manifest",
+        "quarantine",
+        "phase",
+        "previous_usable",
+        "moves"
+      ]
+    },
+    "resource": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Metadata",
+      "$comment": "Generated from packages/coordinator/src/resources.ts#Metadata; source SHA256 2ae4bdfb073d85a30dfe47bd086a10e72da0d37630c3b6250c6c41d0ac339273. Shape validation supplements, and never replaces, native ownership, path confinement, hashes, durable lifecycle and policy checks.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "uri": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "number"
+            },
+            "sha256": {
+              "type": "string"
+            },
+            "retention": {
+              "type": "object",
+              "properties": {
+                "expires_at": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "expires_at"
+              ]
+            }
+          },
+          "required": [
+            "uri",
+            "mime_type",
+            "size_bytes",
+            "sha256",
+            "retention"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "version": {
+              "const": 1
+            },
+            "scope": {
+              "type": "string"
+            },
+            "kind": {
+              "anyOf": [
+                {
+                  "const": "reports"
+                },
+                {
+                  "const": "plans"
+                },
+                {
+                  "const": "contexts"
+                },
+                {
+                  "const": "operations"
+                },
+                {
+                  "const": "artifacts"
+                }
+              ]
+            },
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "version",
+            "scope",
+            "kind",
+            "id"
+          ]
+        }
+      ]
+    }
+  },
+  "$comment": "Storage is private, ownership/identity checked and native-lock protected. Unknown fields remain compatible where existing readers permit them. No schema can authorize repair/deletion or replace native ACL, lease, image and transaction checks. Runtime lock has its own versioned schema."
+}

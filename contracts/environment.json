@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ENV-001",
+    "name": "check_ud_environment",
+    "original_signature": "check_ud_environment(working_tree_path?, required_tools?, engine?, offline?)",
+    "upstream_provenance": null,
+    "runtime_pack": "host",
+    "parameters": [
+      { "name": "working_tree_path", "required": false },
+      { "name": "required_tools", "required": false },
+      { "name": "engine", "required": false },
+      { "name": "offline", "required": false }
+    ]
+  },
+  {
+    "id": "ENV-002",
+    "name": "setup_ud_environment",
+    "original_signature": "setup_ud_environment(working_tree_path?, required_tools?, engine?, mode?, network?, dry_run?, continuation_token?, target_release?)",
+    "upstream_provenance": null,
+    "runtime_pack": "host",
+    "parameters": [
+      { "name": "working_tree_path", "required": false },
+      { "name": "required_tools", "required": false },
+      { "name": "engine", "required": false },
+      { "name": "mode", "required": false },
+      { "name": "network", "required": false },
+      { "name": "dry_run", "required": false },
+      { "name": "continuation_token", "required": false },
+      { "name": "target_release", "required": false }
+    ]
+  }
+]

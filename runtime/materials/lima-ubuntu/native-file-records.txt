@@ -1,0 +1,90 @@
+arm64
+Inode: 1865   Type: regular    Mode:  0755   Flags: 0x80000
+Generation: 1729306747    Version: 0x00000000:00000003
+User:     0   Group:     0   Project:     0   Size: 68272
+File ACL: 0
+Links: 1   Blockcount: 136
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6ad25251:ed65f164 -- Fri Oct 16 16:35:29 2026
+ atime: 0x6ad2515a:00000000 -- Fri Oct 16 16:31:22 2026
+ mtime: 0x6a85bc68:00000000 -- Wed Aug 19 14:23:36 2026
+crtime: 0x6ad25251:ed65f164 -- Fri Oct 16 16:35:29 2026
+Size of extra inode fields: 32
+Inode checksum: 0x667711d7
+EXTENTS:
+(0-16):72218-72234
+Package: util-linux
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: utils
+Installed-Size: 4447
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: arm64
+Multi-Arch: foreign
+Version: 2.41.3-3ubuntu2.2
+Replaces: bsdutils (<< 1:2.41.1-4~), hardlink
+Provides: hardlink
+Pre-Depends: libpam-modules, libpam-runtime, libblkid1 (= 2.41.3-3ubuntu2.2), libc6 (>= 2.42), libcap-ng0 (>= 0.7.9), libcrypt1 (>= 1:4.1.0), libmount1 (= 2.41.3-3ubuntu2.2), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~), libsmartcols1 (= 2.41.3-3ubuntu2.2), libsystemd0, libtinfo6 (>= 6), libudev1 (>= 183), libuuid1 (= 2.41.3-3ubuntu2.2)
+Recommends: sensible-utils
+Suggests: dosfstools, kbd, util-linux-extra, util-linux-locales, wtmpdb
+Breaks: bsdutils (<< 1:2.41.1-4~), dracut (<< 108-6~)
+Conflicts: hardlink
+Conffiles:
+ /etc/pam.d/runuser b8b44b045259525e0fae9e38fdb2aeeb
+ /etc/pam.d/runuser-l 2106ea05877e8913f34b2c77fa02be45
+ /etc/pam.d/su 60fbbe65c90d741bc0d380543cefe8af
+ /etc/pam.d/su-l 756fef5687fecc0d986e5951427b0c4f
+Description: miscellaneous system utilities
+ This package contains a number of important utilities, most of which
+ are oriented towards maintenance of your system. Some of the more
+ important utilities included in this package allow you to view kernel
+ messages, create new filesystems, view block device information,
+ interface with real time clock, etc.
+Homepage: https://github.com/util-linux/util-linux
+Original-Maintainer: Chris Hofstaedtler <zeha@debian.org>
+amd64
+Inode: 1889   Type: regular    Mode:  0755   Flags: 0x80000
+Generation: 1754169762    Version: 0x00000000:00000003
+User:     0   Group:     0   Project:     0   Size: 35544
+File ACL: 0
+Links: 1   Blockcount: 72
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6ad25159:6cd081d0 -- Fri Oct 16 16:31:21 2026
+ atime: 0x6ad250b2:00000000 -- Fri Oct 16 16:28:34 2026
+ mtime: 0x6a85bc68:00000000 -- Wed Aug 19 14:23:36 2026
+crtime: 0x6ad25159:6cd081d0 -- Fri Oct 16 16:31:21 2026
+Size of extra inode fields: 32
+Inode checksum: 0xe5e6117d
+EXTENTS:
+(0-8):62881-62889
+Package: util-linux
+Essential: yes
+Status: install ok installed
+Priority: required
+Section: utils
+Installed-Size: 2888
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: foreign
+Version: 2.41.3-3ubuntu2.2
+Replaces: bsdutils (<< 1:2.41.1-4~), hardlink
+Provides: hardlink
+Pre-Depends: libpam-modules, libpam-runtime, libblkid1 (= 2.41.3-3ubuntu2.2), libc6 (>= 2.42), libcap-ng0 (>= 0.7.9), libcrypt1 (>= 1:4.1.0), libmount1 (= 2.41.3-3ubuntu2.2), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~), libsmartcols1 (= 2.41.3-3ubuntu2.2), libsystemd0, libtinfo6 (>= 6), libudev1 (>= 183), libuuid1 (= 2.41.3-3ubuntu2.2)
+Recommends: sensible-utils
+Suggests: dosfstools, kbd, util-linux-extra, util-linux-locales, wtmpdb
+Breaks: bsdutils (<< 1:2.41.1-4~), dracut (<< 108-6~)
+Conflicts: hardlink
+Conffiles:
+ /etc/pam.d/runuser b8b44b045259525e0fae9e38fdb2aeeb
+ /etc/pam.d/runuser-l 2106ea05877e8913f34b2c77fa02be45
+ /etc/pam.d/su 60fbbe65c90d741bc0d380543cefe8af
+ /etc/pam.d/su-l 756fef5687fecc0d986e5951427b0c4f
+Description: miscellaneous system utilities
+ This package contains a number of important utilities, most of which
+ are oriented towards maintenance of your system. Some of the more
+ important utilities included in this package allow you to view kernel
+ messages, create new filesystems, view block device information,
+ interface with real time clock, etc.
+Homepage: https://github.com/util-linux/util-linux
+Original-Maintainer: Chris Hofstaedtler <zeha@debian.org>

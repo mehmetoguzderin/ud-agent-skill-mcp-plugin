@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "qualification": "declared-compiler-and-runner-roles-not-execution-evidence",
+  "roles": {
+    "bundled_node": "26.13.0",
+    "npm_supported_node_majors": [
+      24,
+      26
+    ],
+    "host_original_rust": "1.99.0",
+    "release_and_ci_rust": "1.99.1",
+    "protected_linux_mutation_rust": "1.99.1",
+    "supported_cpython_minor_versions": [
+      "3.14",
+      "3.15"
+    ],
+    "python_requires": ">=3.14",
+    "javascript": {
+      "@modelcontextprotocol/client": "2.4.0",
+      "@stryker-mutator/core": "10.1.1",
+      "@stryker-mutator/vitest-runner": "10.1.1",
+      "@types/node": "26.6.6",
+      "esbuild": "0.28.2",
+      "tsx": "4.23.15",
+      "typescript": "7.0.2",
+      "typescript-compat": "npm:typescript@6.0.3",
+      "vitest": "5.1.0"
+    }
+  },
+  "inputs": [
+    {
+      "path": ".node-version",
+      "sha256": "6e775beae185bb3f5837d2f6d3fbe910e6f60e18fa507e661e312e84d707a92f",
+      "size_bytes": 8
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "sha256": "da4356f3dd3d17f715d97b81aabc2942defb95efad860f4b2adbb27c93a6c742",
+      "size_bytes": 208
+    },
+    {
+      "path": "package.json",
+      "sha256": "3f662a483d9a5eef4daadb485a1fa52fd5d047c54e338ca60e778a406c696961",
+      "size_bytes": 1929
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "55a88844023f8fc81ac92d5948e992fa88f33c7c775e7793753594f40618bcb2",
+      "size_bytes": 156586
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "af1a6b5feb884d1e5ce876ec0d8b848621b8dbfcdfd0c0e2797ae65e56a48f46",
+      "size_bytes": 884
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "9d60b612a8017ec76e245efb5bd201b4158d2a48ca5db23bbdca4796a4f614f9",
+      "size_bytes": 90161
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "757cdc68eda1ab905d2a0c35f5f012303785919528bfddee84a2b1592bed426c",
+      "size_bytes": 14138
+    },
+    {
+      "path": "runtime/node-distributions.lock.json",
+      "sha256": "6c6499f174a746b0a9648dd252f0cdb7510df290e2a9d829e00e02fbedfbc2fc",
+      "size_bytes": 1283
+    },
+    {
+      "path": "runtime/node-compatibility.lock.json",
+      "sha256": "2f24dd93503714a4b2564d64bb54afc3fcdaa1d2440da98f8026dd28c1ee5e75",
+      "size_bytes": 1409
+    },
+    {
+      "path": "runtime/userspace-inputs.lock.json",
+      "sha256": "f7cb2afdbe33ce0eccdb165264d5820beb4b2ce3707f0446d317e6ff8187c3a6",
+      "size_bytes": 4759
+    },
+    {
+      "path": "quality/act.lock.json",
+      "sha256": "d60bfa66a3602255c6814c07f7228c6d6825683fb3879dba9baae57c0047bbdd",
+      "size_bytes": 1240
+    }
+  ],
+  "policy": "Build/test receipts must additionally bind actual executable bytes, versions, target and source. Declared roles never trigger ambient toolchain acquisition or imply a successful run."
+}

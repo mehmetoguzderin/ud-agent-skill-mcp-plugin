@@ -1,0 +1,23 @@
+[project]
+name = "ud-agent-worker-development"
+version = "0.1.0b1"
+requires-python = ">=3.14"
+dependencies = ["udtools==0.2.9"]
+
+[dependency-groups]
+dev = ["mutmut==3.8.1", "pytest==9.2.0"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+udtools = { git = "https://github.com/UniversalDependencies/tools.git", rev = "4d0f1a789fbc5838cb6db1e9aafbd4596492c7a7", subdirectory = "udtools" }
+
+[tool.mutmut]
+source_paths = ["workers/ud/src/ud_agent"]
+pytest_add_cli_args_test_selection = ["tests/domain/worker", "tests/domain/editing", "tests/domain/release", "tests/domain/rendering", "tests/domain/perl", "tests/runtime/worker_image"]
+mutate_only_covered_lines = false
+use_git_change_detection = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests/domain/worker", "tests/domain/editing", "tests/domain/release", "tests/domain/rendering", "tests/domain/perl", "tests/runtime/worker_image"]

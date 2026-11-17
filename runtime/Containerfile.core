@@ -1,0 +1,63 @@
+# The source image and every additional Python wheel are pinned and verified by
+# prepare-core-build.py. This is an unqualified candidate, not a released pack.
+FROM docker.io/library/python:3.15.2-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928 AS build
+
+ARG TARGETARCH
+ARG INPUT_MANIFEST_PATH=input-manifest.json
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    SOURCE_DATE_EPOCH=315532800 \
+    PYTHONPATH=/opt/ud-agent/worker:/opt/ud-agent/upstream/udtools/src \
+    UD_AGENT_PERL=/opt/ud-agent/perl/bin/perl \
+    UD_AGENT_DEFAULT_CONTEXT=/opt/ud-agent/context/context.json \
+    UD_AGENT_CONTEXT_ASSET_ROOT=/opt/ud-agent
+
+COPY perl/${TARGETARCH}/ /opt/ud-agent/perl/
+
+COPY wheels/ /tmp/ud-agent-wheels/
+COPY requirements.txt /tmp/ud-agent-requirements.txt
+RUN --network=none python -m pip --isolated install --disable-pip-version-check --no-index --no-deps --no-compile --require-hashes --find-links=/tmp/ud-agent-wheels -r /tmp/ud-agent-requirements.txt \
+    && rm -rf /tmp/ud-agent-wheels /tmp/ud-agent-requirements.txt
+
+COPY worker/ /opt/ud-agent/worker/
+COPY upstream/ /opt/ud-agent/upstream/
+COPY docs-automation/ /opt/ud-agent/docs-automation/
+COPY docs/ /opt/ud-agent/docs/
+COPY context/ /opt/ud-agent/context/
+COPY licenses/ /opt/ud-agent/licenses/
+COPY ${INPUT_MANIFEST_PATH} /opt/ud-agent/input-manifest.json
+RUN --network=none chmod -R a-w /opt/ud-agent \
+    && mkdir -p /input \
+    && chown 10001:10001 /input \
+    && chmod 0700 /input \
+    && python -c 'import ud_agent.worker, udtools, udapi, regex; print("worker dependencies import successfully")' \
+    && python -c 'from pathlib import Path; import subprocess; from ud_agent.perl_runtime import command; subprocess.run(command(Path("/opt/ud-agent/perl/bin/perl"),Path("/opt/ud-agent/upstream/udlib.pm"),Path("/opt/ud-agent/upstream")),check=True)'
+
+# Pip's Windows distlib launchers and the ensurepip wheel stay in the
+# temporary build stage. Copy the cleaned root into a fresh image so the
+# underlying publisher layers that contained them are also absent.
+RUN --network=none python -m pip --isolated uninstall --yes pip \
+    && rm -rf /usr/local/lib/python3.15/ensurepip
+
+FROM scratch
+COPY --from=build / /
+LABEL org.opencontainers.image.title="UD Agent core worker candidate" \
+      org.opencontainers.image.version="0.1.0-beta.1" \
+      org.opencontainers.image.source="https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin" \
+      org.ud-agent.cpython-provider-layout="flattened-no-installers-v1" \
+      org.ud-agent.release-qualified="false"
+ENV PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin \
+    LANG=C.UTF-8 \
+    PYTHON_VERSION=3.15.2 \
+    PYTHON_SHA256=8b5536d280142ecf6cdfe15d12a21ba1c65e300bbf7b28a8d0cdb849575797de \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    SOURCE_DATE_EPOCH=315532800 \
+    PYTHONPATH=/opt/ud-agent/worker:/opt/ud-agent/upstream/udtools/src \
+    UD_AGENT_PERL=/opt/ud-agent/perl/bin/perl \
+    UD_AGENT_DEFAULT_CONTEXT=/opt/ud-agent/context/context.json \
+    UD_AGENT_CONTEXT_ASSET_ROOT=/opt/ud-agent
+
+WORKDIR /work
+USER 10001:10001
+ENTRYPOINT ["python", "-m", "ud_agent.worker"]

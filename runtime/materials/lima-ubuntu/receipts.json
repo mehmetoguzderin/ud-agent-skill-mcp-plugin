@@ -1,0 +1,18 @@
+{
+  "files": [
+    {
+      "path": "runtime/materials/lima-ubuntu/amd64.manifest",
+      "sha256": "sha256:d52adb4ae5a731dcbed5ebe664757d248f6c0994dc6230c88891f1763a818083",
+      "size_bytes": 20531,
+      "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-amd64.manifest"
+    },
+    {
+      "path": "runtime/materials/lima-ubuntu/arm64.manifest",
+      "sha256": "sha256:830e68b0892d14e5e886048a2379a287f652c88ee3440e4aab0820f05cec8bd2",
+      "size_bytes": 20401,
+      "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-arm64.manifest"
+    }
+  ],
+  "qualification": "publisher-package-inventory; license/source closure is separate",
+  "schema_version": 1
+}

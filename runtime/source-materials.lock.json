@@ -1,0 +1,124 @@
+{
+  "index": {
+    "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-index.json",
+    "sha256": "35d35d663c7af9baa3f09fe4a0ac4d0794d966153ecb2180bdae8cbc969481aa",
+    "size": 7065
+  },
+  "parts": [
+    {
+      "id": "corresponding-source-0000",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0000.tar.part",
+      "sha256": "3320d7d442c3fb33622b786d267a667674cffd6c8206933f613631199c4e0a1d",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0001",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0001.tar.part",
+      "sha256": "76ee3efcccba28ea494b31c43418ab5ba7ec6caf27597b07c46230ffcbef4f0e",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0002",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0002.tar.part",
+      "sha256": "297978c8f3d09215bcd0fe799a7ab3272cbfa54989f19db6d9936c48090d93f0",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0003",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0003.tar.part",
+      "sha256": "7f2a68bd85d8267f435ee27c51c2a76c89ed134d8edaf64d70c08648f465e819",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0004",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0004.tar.part",
+      "sha256": "224820ed91e6fb430fc625cec84cec17fe7657ed00bfaae489660eabeed68cd3",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0005",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0005.tar.part",
+      "sha256": "bd092e5144690bbc4cc68cb66eb676cc12a3ef6368948ab15a9c95d063f04bde",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0006",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0006.tar.part",
+      "sha256": "cdaeb79da1a7bdf8cc6b93fa23b3a08a39059d6e7177f9216e8057b88c075f33",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0007",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0007.tar.part",
+      "sha256": "275ea7ba2cacc19f9f82b5a561242e114cac08f3fe121c06feb9f17ba42c40bd",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0008",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0008.tar.part",
+      "sha256": "d2e8b4fcd640260a027c831b940d801015edb883022a6868a9c2c2b90f5d13d9",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0009",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0009.tar.part",
+      "sha256": "3b89a92ada6fcb98d0f519ed94f3b63cfc9ffc35d4d90f9c02165f3d359b2af8",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0010",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0010.tar.part",
+      "sha256": "cde863c9afef5f829fb46157bea380609937e810dd8269901ddfc4a156563707",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0011",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0011.tar.part",
+      "sha256": "3ecd143efa99d964c9cdbf4433991e7636ec350d3cf6c8f3b25723b6193e9cb8",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0012",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0012.tar.part",
+      "sha256": "2b38084cfc70602a3e86fba93717ff0c528cae7002c2bd43bf4960881c670ecd",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0013",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0013.tar.part",
+      "sha256": "4b39a914992c2a2ee7f594582ed9380123b7924bf3af83d94c5efc528d16a356",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0014",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0014.tar.part",
+      "sha256": "e784bf7f1b2c7248fa2706c3108b871652a9828d1d50c479844583cd9be7d9ee",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0015",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0015.tar.part",
+      "sha256": "917860a3091d0b232109b4b6c3b1da3b9806a17fb80438bbb41f65fda3cff72f",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0016",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0016.tar.part",
+      "sha256": "93daeb8417b2d3ea8aae54e99b7f55853f8ea816f4761e2ef2de9c913196837d",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0017",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0017.tar.part",
+      "sha256": "661d8006fb348548a9cc98213c11b8df896face438563a69ebfb7afa00fcf65d",
+      "size": 268435456
+    },
+    {
+      "id": "corresponding-source-0018",
+      "path": ".artifacts/public-beta-source-materials-provisional/ud-agent-corresponding-source-0018.tar.part",
+      "sha256": "ef405d6b34fee28738c0a101c0d96e0305062a5dec9213e3a54e56b615f53b04",
+      "size": 115648512
+    }
+  ],
+  "schema_version": 1
+}

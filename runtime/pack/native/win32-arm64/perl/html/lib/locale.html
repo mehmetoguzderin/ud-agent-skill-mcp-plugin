@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>locale - Perl pragma to use or avoid POSIX locales for built-in operations</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;locale - Perl pragma to use or avoid POSIX locales for built-in operations</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>locale - Perl pragma to use or avoid POSIX locales for built-in operations</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>my @x1 = sort @y;      # Native-platform/Unicode code point sort order
+{
+    use locale;
+    my @x2 = sort @y;  # Locale-defined sort order
+}
+my @x3 = sort @y;      # Native-platform/Unicode code point sort order
+                       # again
+
+# Parameters to the pragma are to work around deficiencies in locale
+# handling that have since been fixed, and hence these are likely no
+# longer useful
+use locale qw(:ctype :collate);    # Only use the locale for character
+                                   # classification (\w, \d, etc.), and
+                                   # for string comparison operations
+                                   # like &#39;$a le $b&#39; and sorting.
+use locale &#39;:not_characters&#39;;      # Use the locale for everything but
+                                   # character classification and string
+                                   # comparison operations
+
+use locale &#39;:!numeric&#39;;            # Use the locale for everything but
+                                   # numeric-related operations
+use locale &#39;:not_numeric&#39;;         # Same
+
+no locale;             # Turn off locale handling for the remainder of
+                       # the scope.</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This pragma tells the compiler to enable (or disable) the use of POSIX locales for built-in operations (for example, <code>LC_CTYPE</code> for regular expressions, <code>LC_COLLATE</code> for string comparison, and <code>LC_NUMERIC</code> for number formatting). Each <code>use locale</code> or <code>no locale</code> affects statements to the end of the enclosing BLOCK.</p>
+
+<p>The pragma is documented as part of <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perllocale.html">perllocale</a>.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;locale - Perl pragma to use or avoid POSIX locales for built-in operations</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

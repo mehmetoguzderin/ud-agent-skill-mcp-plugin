@@ -1,0 +1,100 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Pod::Text::Overstrike - Convert POD data to formatted overstrike text</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Pod::Text::Overstrike - Convert POD data to formatted overstrike text</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#BUGS">BUGS</a></li>
+  <li><a href="#COMPATIBILITY">COMPATIBILITY</a></li>
+  <li><a href="#CAVEATS">CAVEATS</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Pod::Text::Overstrike - Convert POD data to formatted overstrike text</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use Pod::Text::Overstrike;
+my $parser = Pod::Text::Overstrike-&gt;new (sentence =&gt; 0, width =&gt; 78);
+
+# Read POD from STDIN and write to STDOUT.
+$parser-&gt;parse_from_filehandle;
+
+# Read POD from file.pod and write to file.txt.
+$parser-&gt;parse_from_file (&#39;file.pod&#39;, &#39;file.txt&#39;);</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Pod::Text::Overstrike is a simple subclass of Pod::Text that highlights output text using overstrike sequences, in a manner similar to nroff. Characters in bold text are overstruck (character, backspace, character) and characters in underlined text are converted to overstruck underscores (underscore, backspace, character). This format was originally designed for hard-copy terminals and/or line printers, yet is readable on soft-copy (CRT) terminals.</p>
+
+<p>Overstruck text is best viewed by page-at-a-time programs that take advantage of the terminal&#39;s <b>stand-out</b> and <i>underline</i> capabilities, such as the less program on Unix.</p>
+
+<p>Apart from the overstrike, it in all ways functions like Pod::Text. See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Pod/Text.html">Pod::Text</a> for details and available options.</p>
+
+<h1 id="BUGS">BUGS</h1>
+
+<p>Currently, the outermost formatting instruction wins, so for example underlined text inside a region of bold text is displayed as simply bold. There may be some better approach possible.</p>
+
+<h1 id="COMPATIBILITY">COMPATIBILITY</h1>
+
+<p>Pod::Text::Overstrike 1.01 (based on <a>Pod::Parser</a>) was the first version of this module included with Perl, in Perl 5.6.1.</p>
+
+<p>The current API based on <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Pod/Simple.html">Pod::Simple</a> was added in Pod::Text::Overstrike 2.00, included in Perl 5.9.3.</p>
+
+<p>Several problems with wrapping and line length were fixed as recently as Pod::Text::Overstrike 6.0.0.</p>
+
+<p>This module inherits its API and most behavior from Pod::Text, so the details in <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Pod/Text.html#COMPATIBILITY">&quot;COMPATIBILITY&quot; in Pod::Text</a> also apply. Pod::Text and Pod::Text::Overstrike have had the same module version since 4.00, included in Perl 5.23.7. (They unfortunately diverge in confusing ways prior to that.)</p>
+
+<h1 id="CAVEATS">CAVEATS</h1>
+
+<p>Line wrapping is done only at ASCII spaces and tabs, rather than using a correct Unicode-aware line wrapping algorithm.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Originally written by Joe Smith &lt;Joe.Smith@inwap.com&gt;, using the framework created by Russ Allbery &lt;rra@cpan.org&gt;. Subsequently updated by Russ Allbery.</p>
+
+<h1 id="COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</h1>
+
+<p>Copyright 2000 Joe Smith &lt;Joe.Smith@inwap.com&gt;</p>
+
+<p>Copyright 2001, 2004, 2008, 2014, 2018-2019, 2022, 2024 Russ Allbery &lt;rra@cpan.org&gt;</p>
+
+<p>This program is free software; you may redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Pod/Text.html">Pod::Text</a>, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Pod/Simple.html">Pod::Simple</a></p>
+
+<p>The current version of this module is always available from its web site at <a href="https://www.eyrie.org/~eagle/software/podlators/">https://www.eyrie.org/~eagle/software/podlators/</a>. It is also part of the Perl core distribution as of 5.6.0.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Pod::Text::Overstrike - Convert POD data to formatted overstrike text</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

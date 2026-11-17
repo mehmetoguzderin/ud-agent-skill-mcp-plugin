@@ -1,0 +1,68 @@
+name: Native installed provider acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_run_id:
+        description: Trusted build run containing the immutable candidate-runtime-inputs artifact
+        required: true
+        type: number
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: native-provider-${{ github.run_id }}
+  cancel-in-progress: false
+jobs:
+  provider:
+    name: ${{ matrix.platform }} actual ${{ matrix.engine }}
+    # These are dedicated ephemeral native machines provisioned by their owner.
+    # No fork PR, global runtime setup, sudo, UAC or shared-service reconfiguration.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-arm64, os: linux, arch: arm64, runner_os: Linux, runner_arch: ARM64, engine: podman }
+          - { platform: linux-x64, os: linux, arch: x64, runner_os: Linux, runner_arch: X64, engine: podman }
+          - { platform: darwin-arm64, os: macos, arch: arm64, runner_os: macOS, runner_arch: ARM64, engine: apple-container }
+          - { platform: win32-arm64, os: windows, arch: arm64, runner_os: Windows, runner_arch: ARM64, engine: wslc }
+          - { platform: win32-x64, os: windows, arch: x64, runner_os: Windows, runner_arch: X64, engine: wslc }
+    runs-on: [self-hosted, ud-agent-ephemeral, '${{ matrix.runner_os }}', '${{ matrix.runner_arch }}']
+    timeout-minutes: 180
+    env:
+      RUSTUP_TOOLCHAIN: 1.99.1
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.15.2'
+          architecture: ${{ matrix.arch }}
+      - id: python
+        name: Bind original archive inspector interpreter
+        run: python -c "import os,sys;f=open(os.environ['GITHUB_OUTPUT'],'a');f.write('path='+sys.executable+'\n');f.close()"
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: candidate-runtime-inputs
+          path: .artifacts/candidate-runtime-inputs
+          run-id: ${{ inputs.candidate_run_id }}
+          github-token: ${{ github.token }}
+      - name: Install exact original test client dependencies
+        run: npm ci --ignore-scripts
+      - name: Assert actual native OS and architecture
+        env:
+          EXPECTED_PLATFORM: ${{ matrix.os }}
+          EXPECTED_ARCH: ${{ matrix.arch }}
+        run: node scripts/quality/assert-platform.mjs
+      - name: Execute original native and MCPB payloads through public MCP, offline
+        run: node scripts/quality/native-provider-acceptance.mjs --candidate-root .artifacts/candidate-runtime-inputs --python "${{ steps.python.outputs.path }}" --engine ${{ matrix.engine }} --report .artifacts/native-provider-${{ matrix.platform }}.json
+      - name: Preserve actual outcomes, including failed or pending prerequisites
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-provider-${{ matrix.platform }}
+          path: .artifacts/native-provider-${{ matrix.platform }}.json
+          if-no-files-found: error

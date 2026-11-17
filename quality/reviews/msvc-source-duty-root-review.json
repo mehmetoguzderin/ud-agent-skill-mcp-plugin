@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "qualification": "independent-exact-source-duty-review-not-publisher-license-authority",
+  "reviewer": "root-independent-of-component-generator",
+  "component_declaration": {
+    "path": "runtime/materials/msvc-static-components.lock.json",
+    "sha256": "1b5af001292e1f9a4860d1b18f702f9175aff7a820e2d6282211aa47c8a67a8d",
+    "size": 397846,
+    "executable": false
+  },
+  "cross_build_receipt_sha256": "83cf957b94d3d602269e3720e0f1e193ef4182e92d7537e25035a73dec2641bb",
+  "scope": "Corresponding-source classification of these exact six proprietary static components only; no publisher entitlement, license acceptance, redistribution grant, production signature or mutation exception.",
+  "reviewed_primary_sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/visualstudio/releases/2026/redistribution",
+      "locations": [
+        "Distributable Code Files",
+        "Visual C++ Runtime Files"
+      ]
+    },
+    {
+      "url": "https://www.microsoft.com/licensing/guidance/Visual-Studio",
+      "locations": [
+        "How Certain Software Can Be Distributed to Others within Your Applications"
+      ]
+    },
+    {
+      "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.txt",
+      "paragraphs": [
+        48,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        74
+      ]
+    },
+    {
+      "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.txt",
+      "paragraphs": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    }
+  ],
+  "reasoning": [
+    "The retained exact 2026 terms provide conditional object-code distribution routes and reserve rights. They do not impose an affirmative publication duty for proprietary Microsoft CRT source. This source-unavailable classification does not establish publisher redistribution authority.",
+    "The six actual binary hashes, canonical component definitions, content-addressed link maps and original-term bytes were independently rehashed. The four helpers match the retained 83cf cross-build inputs; the two uv binaries match the actual owned source builds.",
+    "Only libcmt, libucrt and libvcruntime members are classified by this proprietary source declaration. The separately listed 10 libcpmt STL objects remain Apache-2.0 WITH LLVM-exception and their exact source duties are outside this acceptance.",
+    "Original DOCX paragraph text was independently replayed against retained text. The new binaries and definitions are freshly reviewed; historical four-binary acceptance is not rebound to changed components.",
+    "This decision authorizes neither redistribution of raw SDK/lib/header payloads nor production promotion. Artifact-bound publisher authority and every open-source corresponding-source obligation remain separate requirements."
+  ],
+  "components": [
+    {
+      "id": "microsoft-crt-win32-arm64-ud-agent",
+      "definition_sha256": "fd071581691f6b99e0ab128d82f58d03f4d7255b450174cc41ff170895bb8f9d",
+      "binary_sha256": "005fedcc5cd494a483d116712bf0b8658b6c9a51e2c16f31fbecc034f5a3eb1f",
+      "terms": [
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.docx",
+          "sha256": "ff03a242ec131e8353643612cdf58ae3d6cc9b51d7dce929351d140ba24a8b83",
+          "size": 44201
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.txt",
+          "sha256": "053c32242100fa63e335aa34b21d5c0cbfe707c2b668db294ce6896e51dc9bcf",
+          "size": 18317
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.docx",
+          "sha256": "08651651a7602fc7c0e2763de0fde1ff9f868df2780597cd1775ee9d6441c783",
+          "size": 39553
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.txt",
+          "sha256": "923d8b11a03c277d59f3262727abc7e422158f5243a5565d67d5c270c6b05e3c",
+          "size": 11894
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.docx",
+          "sha256": "02ac07637f4a513a807cd3721c7620433fc483bc049d25784b0c10c54b05e1fb",
+          "size": 69066
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.txt",
+          "sha256": "0fb6a590997880cccc81c6453d4938e79e3e1ae6003e466314758de51bfb8233",
+          "size": 27204
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/redistribution.html",
+          "sha256": "d684c9ac2f95611c5d3dd6b33e0ee78c904842a0a95d7aadf24214dabebb27a3",
+          "size": 48844
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/licensing-guidance.html",
+          "sha256": "4fb409e17473ea537bd63d982f7c67dc625e921ecada989058f4b9de3fe49687",
+          "size": 359743
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/xwin-referenced-license.original",
+          "sha256": "9f798d7a578f04c07d57cb52a9d9df0bcde9912e5a3f39f7119692de8146adc7",
+          "size": 235821
+        }
+      ],
+      "decision": "source-unavailable-proprietary-declaration-accepted"
+    },
+    {
+      "id": "microsoft-crt-win32-arm64-ud-agent-guard",
+      "definition_sha256": "9f040482903921b5f73e3a4955aafbb79d1414747611614159ac82d7e3c97c33",
+      "binary_sha256": "3a8d5d5ce35620deb7a12112f55aea0a5fa10ea92afe06e6740f72f1836a8867",
+      "terms": [
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.docx",
+          "sha256": "ff03a242ec131e8353643612cdf58ae3d6cc9b51d7dce929351d140ba24a8b83",
+          "size": 44201
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.txt",
+          "sha256": "053c32242100fa63e335aa34b21d5c0cbfe707c2b668db294ce6896e51dc9bcf",
+          "size": 18317
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.docx",
+          "sha256": "08651651a7602fc7c0e2763de0fde1ff9f868df2780597cd1775ee9d6441c783",
+          "size": 39553
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.txt",
+          "sha256": "923d8b11a03c277d59f3262727abc7e422158f5243a5565d67d5c270c6b05e3c",
+          "size": 11894
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.docx",
+          "sha256": "02ac07637f4a513a807cd3721c7620433fc483bc049d25784b0c10c54b05e1fb",
+          "size": 69066
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.txt",
+          "sha256": "0fb6a590997880cccc81c6453d4938e79e3e1ae6003e466314758de51bfb8233",
+          "size": 27204
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/redistribution.html",
+          "sha256": "d684c9ac2f95611c5d3dd6b33e0ee78c904842a0a95d7aadf24214dabebb27a3",
+          "size": 48844
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/licensing-guidance.html",
+          "sha256": "4fb409e17473ea537bd63d982f7c67dc625e921ecada989058f4b9de3fe49687",
+          "size": 359743
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/xwin-referenced-license.original",
+          "sha256": "9f798d7a578f04c07d57cb52a9d9df0bcde9912e5a3f39f7119692de8146adc7",
+          "size": 235821
+        }
+      ],
+      "decision": "source-unavailable-proprietary-declaration-accepted"
+    },
+    {
+      "id": "microsoft-crt-win32-x64-ud-agent",
+      "definition_sha256": "81d07adae18802305bc86e44c9d633b1790e30bb6e9afa968de02b20579d28e4",
+      "binary_sha256": "f4b269c071020c8bb70907d0966ac92b161c264c12630cd72bc2c5a5d2a0b686",
+      "terms": [
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.docx",
+          "sha256": "ff03a242ec131e8353643612cdf58ae3d6cc9b51d7dce929351d140ba24a8b83",
+          "size": 44201
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.txt",
+          "sha256": "053c32242100fa63e335aa34b21d5c0cbfe707c2b668db294ce6896e51dc9bcf",
+          "size": 18317
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.docx",
+          "sha256": "08651651a7602fc7c0e2763de0fde1ff9f868df2780597cd1775ee9d6441c783",
+          "size": 39553
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.txt",
+          "sha256": "923d8b11a03c277d59f3262727abc7e422158f5243a5565d67d5c270c6b05e3c",
+          "size": 11894
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.docx",
+          "sha256": "02ac07637f4a513a807cd3721c7620433fc483bc049d25784b0c10c54b05e1fb",
+          "size": 69066
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.txt",
+          "sha256": "0fb6a590997880cccc81c6453d4938e79e3e1ae6003e466314758de51bfb8233",
+          "size": 27204
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/redistribution.html",
+          "sha256": "d684c9ac2f95611c5d3dd6b33e0ee78c904842a0a95d7aadf24214dabebb27a3",
+          "size": 48844
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/licensing-guidance.html",
+          "sha256": "4fb409e17473ea537bd63d982f7c67dc625e921ecada989058f4b9de3fe49687",
+          "size": 359743
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/xwin-referenced-license.original",
+          "sha256": "9f798d7a578f04c07d57cb52a9d9df0bcde9912e5a3f39f7119692de8146adc7",
+          "size": 235821
+        }
+      ],
+      "decision": "source-unavailable-proprietary-declaration-accepted"
+    },
+    {
+      "id": "microsoft-crt-win32-x64-ud-agent-guard",
+      "definition_sha256": "40e3c377db2c2ffeeac28ebf1676bbe16bbb2e63b68d6a8a854c369e27962329",
+      "binary_sha256": "fd6c98d64c6f941b07540725d9085df49b89a8e2dde57eedb8110e88a7a62132",
+      "terms": [
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.docx",
+          "sha256": "ff03a242ec131e8353643612cdf58ae3d6cc9b51d7dce929351d140ba24a8b83",
+          "size": 44201
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.txt",
+          "sha256": "053c32242100fa63e335aa34b21d5c0cbfe707c2b668db294ce6896e51dc9bcf",
+          "size": 18317
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.docx",
+          "sha256": "08651651a7602fc7c0e2763de0fde1ff9f868df2780597cd1775ee9d6441c783",
+          "size": 39553
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.txt",
+          "sha256": "923d8b11a03c277d59f3262727abc7e422158f5243a5565d67d5c270c6b05e3c",
+          "size": 11894
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.docx",
+          "sha256": "02ac07637f4a513a807cd3721c7620433fc483bc049d25784b0c10c54b05e1fb",
+          "size": 69066
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.txt",
+          "sha256": "0fb6a590997880cccc81c6453d4938e79e3e1ae6003e466314758de51bfb8233",
+          "size": 27204
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/redistribution.html",
+          "sha256": "d684c9ac2f95611c5d3dd6b33e0ee78c904842a0a95d7aadf24214dabebb27a3",
+          "size": 48844
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/licensing-guidance.html",
+          "sha256": "4fb409e17473ea537bd63d982f7c67dc625e921ecada989058f4b9de3fe49687",
+          "size": 359743
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/xwin-referenced-license.original",
+          "sha256": "9f798d7a578f04c07d57cb52a9d9df0bcde9912e5a3f39f7119692de8146adc7",
+          "size": 235821
+        }
+      ],
+      "decision": "source-unavailable-proprietary-declaration-accepted"
+    },
+    {
+      "id": "microsoft-crt-win32-arm64-uv",
+      "definition_sha256": "e3e4dec4b71167095880c4cd410b2f4fca6ee7d2d877b6bc775e7cf7236f6a8b",
+      "binary_sha256": "e4e35ff81e44cfc5443e1347ddef17cd80f185c1172e9c66a967036dad70e472",
+      "terms": [
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.docx",
+          "sha256": "ff03a242ec131e8353643612cdf58ae3d6cc9b51d7dce929351d140ba24a8b83",
+          "size": 44201
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.txt",
+          "sha256": "053c32242100fa63e335aa34b21d5c0cbfe707c2b668db294ce6896e51dc9bcf",
+          "size": 18317
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.docx",
+          "sha256": "08651651a7602fc7c0e2763de0fde1ff9f868df2780597cd1775ee9d6441c783",
+          "size": 39553
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.txt",
+          "sha256": "923d8b11a03c277d59f3262727abc7e422158f5243a5565d67d5c270c6b05e3c",
+          "size": 11894
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.docx",
+          "sha256": "02ac07637f4a513a807cd3721c7620433fc483bc049d25784b0c10c54b05e1fb",
+          "size": 69066
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.txt",
+          "sha256": "0fb6a590997880cccc81c6453d4938e79e3e1ae6003e466314758de51bfb8233",
+          "size": 27204
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/redistribution.html",
+          "sha256": "d684c9ac2f95611c5d3dd6b33e0ee78c904842a0a95d7aadf24214dabebb27a3",
+          "size": 48844
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/licensing-guidance.html",
+          "sha256": "4fb409e17473ea537bd63d982f7c67dc625e921ecada989058f4b9de3fe49687",
+          "size": 359743
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/xwin-referenced-license.original",
+          "sha256": "9f798d7a578f04c07d57cb52a9d9df0bcde9912e5a3f39f7119692de8146adc7",
+          "size": 235821
+        }
+      ],
+      "decision": "source-unavailable-proprietary-declaration-accepted"
+    },
+    {
+      "id": "microsoft-crt-win32-x64-uv",
+      "definition_sha256": "c4e41986afeb11a3a67e9a8c28c58883aff7c514d1153299502cace463da1807",
+      "binary_sha256": "75c5511d5e9636c268f6ddfcb376ba2fde448ded72449e0b5ab4629df31b30d4",
+      "terms": [
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.docx",
+          "sha256": "ff03a242ec131e8353643612cdf58ae3d6cc9b51d7dce929351d140ba24a8b83",
+          "size": 44201
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/build-tools.txt",
+          "sha256": "053c32242100fa63e335aa34b21d5c0cbfe707c2b668db294ce6896e51dc9bcf",
+          "size": 18317
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.docx",
+          "sha256": "08651651a7602fc7c0e2763de0fde1ff9f868df2780597cd1775ee9d6441c783",
+          "size": 39553
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/runtime.txt",
+          "sha256": "923d8b11a03c277d59f3262727abc7e422158f5243a5565d67d5c270c6b05e3c",
+          "size": 11894
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.docx",
+          "sha256": "02ac07637f4a513a807cd3721c7620433fc483bc049d25784b0c10c54b05e1fb",
+          "size": 69066
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/community.txt",
+          "sha256": "0fb6a590997880cccc81c6453d4938e79e3e1ae6003e466314758de51bfb8233",
+          "size": 27204
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/redistribution.html",
+          "sha256": "d684c9ac2f95611c5d3dd6b33e0ee78c904842a0a95d7aadf24214dabebb27a3",
+          "size": 48844
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/licensing-guidance.html",
+          "sha256": "4fb409e17473ea537bd63d982f7c67dc625e921ecada989058f4b9de3fe49687",
+          "size": 359743
+        },
+        {
+          "path": "licenses/vendor/Microsoft-VisualStudio-2026/xwin-referenced-license.original",
+          "sha256": "9f798d7a578f04c07d57cb52a9d9df0bcde9912e5a3f39f7119692de8146adc7",
+          "size": 235821
+        }
+      ],
+      "decision": "source-unavailable-proprietary-declaration-accepted"
+    }
+  ]
+}

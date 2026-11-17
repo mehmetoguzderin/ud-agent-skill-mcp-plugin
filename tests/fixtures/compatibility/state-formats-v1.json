@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "qualification": "format-fixtures-not-filesystem-or-runtime-authority",
+  "cases": [
+    {
+      "id": "saved-selection-v1",
+      "reader": "packages/runtime-manager/src/selection.ts:loadSavedSelection",
+      "schema": null,
+      "record": {
+        "schema_version": 1,
+        "product_version": "0.1.0-beta.1",
+        "platform": "linux",
+        "arch": "arm64",
+        "engine": "docker"
+      }
+    },
+    {
+      "id": "transaction-v1-replacement",
+      "reader": "packages/workspace/src/journal.ts:JournalStore.load",
+      "schema": "transaction",
+      "record": {
+        "version": 1,
+        "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "workspace": "/compatibility/workspace",
+        "identity": {
+          "device": "1",
+          "inode": "2"
+        },
+        "phase": "prepared",
+        "entries": [
+          {
+            "path": "a.conllu",
+            "before": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "after": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "state": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "id": "transaction-v1-create-delete",
+      "reader": "packages/workspace/src/journal.ts:JournalStore.load",
+      "schema": "transaction",
+      "record": {
+        "version": 1,
+        "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "workspace": "/compatibility/workspace",
+        "identity": {
+          "device": "1",
+          "inode": "2"
+        },
+        "phase": "prepared",
+        "entries": [
+          {
+            "path": "new.conllu",
+            "before": null,
+            "after": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "state": "pending"
+          },
+          {
+            "path": "old.conllu",
+            "before": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "after": null,
+            "state": "pending"
+          }
+        ]
+      }
+    },
+    {
+      "id": "userspace-v1-legacy-marker",
+      "reader": "packages/runtime-manager/src/userspace.ts:marker",
+      "schema": "userspace_marker",
+      "record": {
+        "schema_version": 1,
+        "manifest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "environment": "env-00000000-0000-4000-8000-000000000000",
+        "fingerprint": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "python_version": "3.14.9",
+        "installer": "venv"
+      }
+    },
+    {
+      "id": "resource-metadata-v1",
+      "reader": "packages/coordinator/src/resources.ts:ResourceStore",
+      "schema": "resource",
+      "record": {
+        "version": 1,
+        "scope": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "kind": "reports",
+        "id": "00000000-0000-4000-8000-000000000000",
+        "uri": "ud://reports/00000000-0000-4000-8000-000000000000",
+        "mime_type": "application/json",
+        "size_bytes": 2,
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "retention": {
+          "expires_at": "2030-01-01T00:00:00.000Z"
+        }
+      }
+    }
+  ],
+  "additional_reader_tests": [
+    "tests/runtime/runtime-lock.test.ts",
+    "tests/runtime/selection-state.test.ts",
+    "tests/runtime/transactions.test.ts",
+    "tests/runtime/resources.test.ts",
+    "tests/runtime/userspace.test.ts"
+  ]
+}

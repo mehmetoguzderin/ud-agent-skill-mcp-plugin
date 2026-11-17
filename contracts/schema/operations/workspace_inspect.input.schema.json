@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "workspace_inspect",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "compat_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "description": "Reserved options retain previously accepted successful inputs; no undocumented fields affect execution."
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "related_repository_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/compat_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "related_repository_paths",
+    "ud_context_path"
+  ]
+}

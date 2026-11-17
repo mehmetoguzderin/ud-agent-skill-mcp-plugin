@@ -1,0 +1,5 @@
+# sent_id = edit-1
+# text = Birds fly
+1	Birds	bird	NOUN	_	_	2	nsubj	_	_
+2	fly	fly	VERB	_	_	0	root	_	_
+

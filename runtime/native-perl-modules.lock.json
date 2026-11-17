@@ -1,0 +1,738 @@
+{
+  "modules": {
+    "B::Hooks::EndOfScope": "B-Hooks-EndOfScope-0.28",
+    "Class::Load": "Class-Load-0.25",
+    "Class::Load::XS": "Class-Load-XS-0.10",
+    "Clone": "Clone-0.51",
+    "Data::OptList": "Data-OptList-0.115",
+    "Devel::GlobalDestruction": "Devel-GlobalDestruction-0.14",
+    "Devel::OverloadInfo": "Devel-OverloadInfo-0.008",
+    "Devel::StackTrace": "Devel-StackTrace-2.05",
+    "Dist::CheckConflicts": "Dist-CheckConflicts-0.11",
+    "Encode::Locale": "Encode-Locale-1.05",
+    "Eval::Closure": "Eval-Closure-0.14",
+    "Exporter::Easy": "Exporter-Easy-0.18",
+    "Exporter::Tiny": "Exporter-Tiny-1.006003",
+    "File::Listing": "File-Listing-6.16",
+    "File::Which": "File-Which-1.27",
+    "HTML::Entities": "HTML-Parser-3.86",
+    "HTML::HeadParser": "HTML-Parser-3.86",
+    "HTML::Tagset": "HTML-Tagset-3.24",
+    "HTTP::Cookies": "HTTP-Cookies-6.12",
+    "HTTP::Date": "HTTP-Date-6.08",
+    "HTTP::Headers": "HTTP-Message-7.04",
+    "HTTP::Headers::Util": "HTTP-Message-7.04",
+    "HTTP::Message": "HTTP-Message-7.04",
+    "HTTP::Negotiate": "HTTP-Negotiate-6.01",
+    "HTTP::Request": "HTTP-Message-7.04",
+    "HTTP::Request::Common": "HTTP-Message-7.04",
+    "HTTP::Response": "HTTP-Message-7.04",
+    "HTTP::Status": "HTTP-Message-7.04",
+    "IO::HTML": "IO-HTML-1.004",
+    "JSON::Parse": "JSON-Parse-0.62",
+    "LWP::MediaTypes": "LWP-MediaTypes-6.05",
+    "LWP::Simple": "libwww-perl-6.83",
+    "List::MoreUtils": "List-MoreUtils-0.430",
+    "List::MoreUtils::XS": "List-MoreUtils-XS-0.430",
+    "MIME::Base32": "MIME-Base32-1.303",
+    "MRO::Compat": "MRO-Compat-0.15",
+    "Module::Implementation": "Module-Implementation-0.09",
+    "Module::Runtime": "Module-Runtime-0.018",
+    "Module::Runtime::Conflicts": "Module-Runtime-Conflicts-0.003",
+    "Moose": "Moose-2.4001",
+    "Moose::Exporter": "Moose-2.4001",
+    "Moose::Role": "Moose-2.4001",
+    "Moose::Util::MetaRole": "Moose-2.4001",
+    "MooseX::SemiAffordanceAccessor": "MooseX-SemiAffordanceAccessor-0.10",
+    "Net::HTTP": "Net-HTTP-6.24",
+    "Package::DeprecationManager": "Package-DeprecationManager-0.18",
+    "Package::Stash": "Package-Stash-0.40",
+    "Package::Stash::XS": "Package-Stash-XS-0.32",
+    "Params::SomeUtil": "Params-SomeUtil-1.12",
+    "Params::Util": "Params-Util-1.102",
+    "Sub::Exporter": "Sub-Exporter-0.992",
+    "Sub::Exporter::Progressive": "Sub-Exporter-Progressive-0.001013",
+    "Sub::Install": "Sub-Install-0.929",
+    "Time::Zone": "TimeDate-2.35",
+    "Try::Tiny": "Try-Tiny-0.32",
+    "URI": "URI-5.40",
+    "URI::Escape": "URI-5.40",
+    "URI::URL": "URI-5.40",
+    "WWW::RobotRules": "WWW-RobotRules-6.03",
+    "YAML": "YAML-1.321",
+    "namespace::autoclean": "namespace-autoclean-0.31",
+    "namespace::clean": "namespace-clean-0.27"
+  },
+  "releases": {
+    "B-Hooks-EndOfScope-0.28": {
+      "dependencies": [
+        "Module-Implementation-0.09",
+        "Sub-Exporter-Progressive-0.001013"
+      ],
+      "distribution": "B-Hooks-EndOfScope",
+      "license": [
+        "perl_5"
+      ],
+      "name": "B-Hooks-EndOfScope-0.28",
+      "sha256": "edac77a17fc36620c8324cc194ce1fad2f02e9fcbe72d08ad0b2c47f0c7fd8ef",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Hooks-EndOfScope-0.28.tar.gz",
+      "version": "0.28"
+    },
+    "Class-Load-0.25": {
+      "dependencies": [
+        "Data-OptList-0.115",
+        "Module-Implementation-0.09",
+        "Module-Runtime-0.018",
+        "Package-Stash-0.40",
+        "Try-Tiny-0.32"
+      ],
+      "distribution": "Class-Load",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Class-Load-0.25",
+      "sha256": "2a48fa779b5297e56156380e8b32637c6c58decb4f4a7f3c7350523e11275f8f",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz",
+      "version": "0.25"
+    },
+    "Class-Load-XS-0.10": {
+      "dependencies": [
+        "Class-Load-0.25"
+      ],
+      "distribution": "Class-Load-XS",
+      "license": [
+        "artistic_2"
+      ],
+      "name": "Class-Load-XS-0.10",
+      "sha256": "5bc22cf536ebfd2564c5bdaf42f0d8a4cee3d1930fc8b44b7d4a42038622add1",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-XS-0.10.tar.gz",
+      "version": "0.10"
+    },
+    "Clone-0.51": {
+      "dependencies": [],
+      "distribution": "Clone",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Clone-0.51",
+      "sha256": "f17f66fec97dacca67ac9585701d2d079cfc80539fe6e8160c201c4e55f67507",
+      "url": "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.51.tar.gz",
+      "version": "0.51"
+    },
+    "Data-OptList-0.115": {
+      "dependencies": [
+        "Params-SomeUtil-1.12",
+        "Sub-Install-0.929"
+      ],
+      "distribution": "Data-OptList",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Data-OptList-0.115",
+      "sha256": "fa0e7cdc10925db925a82f8eb9608a701f1c2bf5e88d512d9acd46977e174056",
+      "url": "https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Data-OptList-0.115.tar.gz",
+      "version": "0.115"
+    },
+    "Devel-GlobalDestruction-0.14": {
+      "dependencies": [
+        "Sub-Exporter-Progressive-0.001013"
+      ],
+      "distribution": "Devel-GlobalDestruction",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Devel-GlobalDestruction-0.14",
+      "sha256": "34b8a5f29991311468fe6913cadaba75fd5d2b0b3ee3bb41fe5b53efab9154ab",
+      "url": "https://cpan.metacpan.org/authors/id/H/HA/HAARG/Devel-GlobalDestruction-0.14.tar.gz",
+      "version": "0.14"
+    },
+    "Devel-OverloadInfo-0.008": {
+      "dependencies": [
+        "MRO-Compat-0.15",
+        "Package-Stash-0.40"
+      ],
+      "distribution": "Devel-OverloadInfo",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Devel-OverloadInfo-0.008",
+      "sha256": "91347d3a0b9a269180a3ea0e0d43f12c55dec3ddb974642f0e19093f907543d4",
+      "url": "https://cpan.metacpan.org/authors/id/I/IL/ILMARI/Devel-OverloadInfo-0.008.tar.gz",
+      "version": "0.008"
+    },
+    "Devel-StackTrace-2.05": {
+      "dependencies": [],
+      "distribution": "Devel-StackTrace",
+      "license": [
+        "artistic_2"
+      ],
+      "name": "Devel-StackTrace-2.05",
+      "sha256": "63cb6196e986a7e578c4d28b3c780e7194835bfc78b68eeb8f00599d4444888c",
+      "url": "https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Devel-StackTrace-2.05.tar.gz",
+      "version": "2.05"
+    },
+    "Dist-CheckConflicts-0.11": {
+      "dependencies": [
+        "Module-Runtime-0.018"
+      ],
+      "distribution": "Dist-CheckConflicts",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Dist-CheckConflicts-0.11",
+      "sha256": "ea844b9686c94d666d9d444321d764490b2cde2f985c4165b4c2c77665caedc4",
+      "url": "https://cpan.metacpan.org/authors/id/D/DO/DOY/Dist-CheckConflicts-0.11.tar.gz",
+      "version": "0.11"
+    },
+    "Encode-Locale-1.05": {
+      "dependencies": [],
+      "distribution": "Encode-Locale",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Encode-Locale-1.05",
+      "sha256": "176fa02771f542a4efb1dbc2a4c928e8f4391bf4078473bd6040d8f11adb0ec1",
+      "url": "https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz",
+      "version": "1.05"
+    },
+    "Eval-Closure-0.14": {
+      "dependencies": [],
+      "distribution": "Eval-Closure",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Eval-Closure-0.14",
+      "sha256": "ea0944f2f5ec98d895bef6d503e6e4a376fea6383a6bc64c7670d46ff2218cad",
+      "url": "https://cpan.metacpan.org/authors/id/D/DO/DOY/Eval-Closure-0.14.tar.gz",
+      "version": "0.14"
+    },
+    "Exporter-Easy-0.18": {
+      "dependencies": [],
+      "distribution": "Exporter-Easy",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Exporter-Easy-0.18",
+      "sha256": "d347b2292ffc6332e5bac1aece73796cb75c1eb4a79b1a4de9c54ab08f1c2565",
+      "url": "https://cpan.metacpan.org/authors/id/N/NE/NEILB/Exporter-Easy-0.18.tar.gz",
+      "version": "0.18"
+    },
+    "Exporter-Tiny-1.006003": {
+      "dependencies": [],
+      "distribution": "Exporter-Tiny",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Exporter-Tiny-1.006003",
+      "sha256": "6499f09a6432cf87b133fb9580a8a9a9a6c566821346b1fdee95f7b64c0317b1",
+      "url": "https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Exporter-Tiny-1.006003.tar.gz",
+      "version": "1.006003"
+    },
+    "File-Listing-6.16": {
+      "dependencies": [
+        "HTTP-Date-6.08"
+      ],
+      "distribution": "File-Listing",
+      "license": [
+        "perl_5"
+      ],
+      "name": "File-Listing-6.16",
+      "sha256": "189b3a13fc0a1ba412b9d9ec5901e9e5e444cc746b9f0156d4399370d33655c6",
+      "url": "https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/File-Listing-6.16.tar.gz",
+      "version": "6.16"
+    },
+    "File-Which-1.27": {
+      "dependencies": [],
+      "distribution": "File-Which",
+      "license": [
+        "perl_5"
+      ],
+      "name": "File-Which-1.27",
+      "sha256": "3201f1a60e3f16484082e6045c896842261fc345de9fb2e620fd2a2c7af3a93a",
+      "url": "https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/File-Which-1.27.tar.gz",
+      "version": "1.27"
+    },
+    "HTML-Parser-3.86": {
+      "dependencies": [
+        "HTML-Tagset-3.24",
+        "HTTP-Message-7.04",
+        "URI-5.40"
+      ],
+      "distribution": "HTML-Parser",
+      "license": [
+        "perl_5"
+      ],
+      "name": "HTML-Parser-3.86",
+      "sha256": "5305e1d5faa70ee0aa282d85a5c9aa93911e8c7afa590ad1ced5703a544e20f6",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTML-Parser-3.86.tar.gz",
+      "version": "3.86"
+    },
+    "HTML-Tagset-3.24": {
+      "dependencies": [],
+      "distribution": "HTML-Tagset",
+      "license": [
+        "artistic_2"
+      ],
+      "name": "HTML-Tagset-3.24",
+      "sha256": "eb89e145a608ed1f8f141a57472ee5f69e67592a432dcd2e8b1dbb445f2b230b",
+      "url": "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-3.24.tar.gz",
+      "version": "3.24"
+    },
+    "HTTP-Cookies-6.12": {
+      "dependencies": [
+        "HTTP-Date-6.08",
+        "HTTP-Message-7.04"
+      ],
+      "distribution": "HTTP-Cookies",
+      "license": [
+        "perl_5"
+      ],
+      "name": "HTTP-Cookies-6.12",
+      "sha256": "4e460c4bae76285bfc726f641349402fc9038fcd9ca0f33346bec036d73876b8",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Cookies-6.12.tar.gz",
+      "version": "6.12"
+    },
+    "HTTP-Date-6.08": {
+      "dependencies": [
+        "TimeDate-2.35"
+      ],
+      "distribution": "HTTP-Date",
+      "license": [
+        "perl_5"
+      ],
+      "name": "HTTP-Date-6.08",
+      "sha256": "b57d80ca6d821c6949ca48b27467d45aba7a9c77346562306facca781a003e44",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Date-6.08.tar.gz",
+      "version": "6.08"
+    },
+    "HTTP-Message-7.04": {
+      "dependencies": [
+        "Clone-0.51",
+        "Encode-Locale-1.05",
+        "HTTP-Date-6.08",
+        "IO-HTML-1.004",
+        "LWP-MediaTypes-6.05",
+        "URI-5.40"
+      ],
+      "distribution": "HTTP-Message",
+      "license": [
+        "perl_5"
+      ],
+      "name": "HTTP-Message-7.04",
+      "sha256": "699f3350dbb7bd8fdc9f3b013b0c91b7c059783708443e39bc395fa33352f006",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-7.04.tar.gz",
+      "version": "7.04"
+    },
+    "HTTP-Negotiate-6.01": {
+      "dependencies": [
+        "HTTP-Message-7.04"
+      ],
+      "distribution": "HTTP-Negotiate",
+      "license": [
+        "perl_5"
+      ],
+      "name": "HTTP-Negotiate-6.01",
+      "sha256": "1c729c1ea63100e878405cda7d66f9adfd3ed4f1d6cacaca0ee9152df728e016",
+      "url": "https://cpan.metacpan.org/authors/id/G/GA/GAAS/HTTP-Negotiate-6.01.tar.gz",
+      "version": "6.01"
+    },
+    "IO-HTML-1.004": {
+      "dependencies": [],
+      "distribution": "IO-HTML",
+      "license": [
+        "perl_5"
+      ],
+      "name": "IO-HTML-1.004",
+      "sha256": "c87b2df59463bbf2c39596773dfb5c03bde0f7e1051af339f963f58c1cbd8bf5",
+      "url": "https://cpan.metacpan.org/authors/id/C/CJ/CJM/IO-HTML-1.004.tar.gz",
+      "version": "1.004"
+    },
+    "JSON-Parse-0.62": {
+      "dependencies": [],
+      "distribution": "JSON-Parse",
+      "license": [
+        "perl_5"
+      ],
+      "name": "JSON-Parse-0.62",
+      "sha256": "6273180f9392497401ddd6d820706f5aa86c1be88891dd6aab4d906b5cff66d9",
+      "url": "https://cpan.metacpan.org/authors/id/B/BK/BKB/JSON-Parse-0.62.tar.gz",
+      "version": "0.62"
+    },
+    "LWP-MediaTypes-6.05": {
+      "dependencies": [],
+      "distribution": "LWP-MediaTypes",
+      "license": [
+        "perl_5"
+      ],
+      "name": "LWP-MediaTypes-6.05",
+      "sha256": "abb2dcfbf069317fe65b098e3b2ad58c5eb33e9a839b9190cce6d371f8966cc1",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-MediaTypes-6.05.tar.gz",
+      "version": "6.05"
+    },
+    "List-MoreUtils-0.430": {
+      "dependencies": [
+        "Exporter-Tiny-1.006003",
+        "List-MoreUtils-XS-0.430"
+      ],
+      "distribution": "List-MoreUtils",
+      "license": [
+        "apache_2_0"
+      ],
+      "name": "List-MoreUtils-0.430",
+      "sha256": "63b1f7842cd42d9b538d1e34e0330de5ff1559e4c2737342506418276f646527",
+      "url": "https://cpan.metacpan.org/authors/id/R/RE/REHSACK/List-MoreUtils-0.430.tar.gz",
+      "version": "0.430"
+    },
+    "List-MoreUtils-XS-0.430": {
+      "dependencies": [],
+      "distribution": "List-MoreUtils-XS",
+      "license": [
+        "apache_2_0"
+      ],
+      "name": "List-MoreUtils-XS-0.430",
+      "sha256": "e8ce46d57c179eecd8758293e9400ff300aaf20fefe0a9d15b9fe2302b9cb242",
+      "url": "https://cpan.metacpan.org/authors/id/R/RE/REHSACK/List-MoreUtils-XS-0.430.tar.gz",
+      "version": "0.430"
+    },
+    "MIME-Base32-1.303": {
+      "dependencies": [],
+      "distribution": "MIME-Base32",
+      "license": [
+        "perl_5"
+      ],
+      "name": "MIME-Base32-1.303",
+      "sha256": "ab21fa99130e33a0aff6cdb596f647e5e565d207d634ba2ef06bdbef50424e99",
+      "url": "https://cpan.metacpan.org/authors/id/R/RE/REHSACK/MIME-Base32-1.303.tar.gz",
+      "version": "1.303"
+    },
+    "MRO-Compat-0.15": {
+      "dependencies": [],
+      "distribution": "MRO-Compat",
+      "license": [
+        "perl_5"
+      ],
+      "name": "MRO-Compat-0.15",
+      "sha256": "0d4535f88e43babd84ab604866215fc4d04398bd4db7b21852d4a31b1c15ef61",
+      "url": "https://cpan.metacpan.org/authors/id/H/HA/HAARG/MRO-Compat-0.15.tar.gz",
+      "version": "0.15"
+    },
+    "Module-Implementation-0.09": {
+      "dependencies": [
+        "Module-Runtime-0.018",
+        "Try-Tiny-0.32"
+      ],
+      "distribution": "Module-Implementation",
+      "license": [
+        "artistic_2"
+      ],
+      "name": "Module-Implementation-0.09",
+      "sha256": "c15f1a12f0c2130c9efff3c2e1afe5887b08ccd033bd132186d1e7d5087fd66d",
+      "url": "https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Module-Implementation-0.09.tar.gz",
+      "version": "0.09"
+    },
+    "Module-Runtime-0.018": {
+      "dependencies": [],
+      "distribution": "Module-Runtime",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Module-Runtime-0.018",
+      "sha256": "0bf77ef68e53721914ff554eada20973596310b4e2cf1401fc958601807de577",
+      "url": "https://cpan.metacpan.org/authors/id/H/HA/HAARG/Module-Runtime-0.018.tar.gz",
+      "version": "0.018"
+    },
+    "Module-Runtime-Conflicts-0.003": {
+      "dependencies": [
+        "Dist-CheckConflicts-0.11",
+        "Module-Runtime-0.018"
+      ],
+      "distribution": "Module-Runtime-Conflicts",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Module-Runtime-Conflicts-0.003",
+      "sha256": "707cdc75038c70fe91779b888ac050f128565d3967ba96680e1b1c7cc9733875",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Module-Runtime-Conflicts-0.003.tar.gz",
+      "version": "0.003"
+    },
+    "Moose-2.4001": {
+      "dependencies": [
+        "Class-Load-0.25",
+        "Class-Load-XS-0.10",
+        "Data-OptList-0.115",
+        "Devel-GlobalDestruction-0.14",
+        "Devel-OverloadInfo-0.008",
+        "Devel-StackTrace-2.05",
+        "Dist-CheckConflicts-0.11",
+        "Eval-Closure-0.14",
+        "MRO-Compat-0.15",
+        "Module-Runtime-0.018",
+        "Module-Runtime-Conflicts-0.003",
+        "Package-DeprecationManager-0.18",
+        "Package-Stash-0.40",
+        "Package-Stash-XS-0.32",
+        "Params-Util-1.102",
+        "Sub-Exporter-0.992",
+        "Try-Tiny-0.32"
+      ],
+      "distribution": "Moose",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Moose-2.4001",
+      "sha256": "1dbb6157b0c655ae5ee6b5e4225651fc3ea505e6fd8c972d2f1d2612913a513e",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Moose-2.4001.tar.gz",
+      "version": "2.4001"
+    },
+    "MooseX-SemiAffordanceAccessor-0.10": {
+      "dependencies": [
+        "Moose-2.4001"
+      ],
+      "distribution": "MooseX-SemiAffordanceAccessor",
+      "license": [
+        "artistic_2"
+      ],
+      "name": "MooseX-SemiAffordanceAccessor-0.10",
+      "sha256": "a5b85776bcdded168027a1ff664b41c5f65886721cdd543e3af9d53759a2b1d5",
+      "url": "https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/MooseX-SemiAffordanceAccessor-0.10.tar.gz",
+      "version": "0.10"
+    },
+    "Net-HTTP-6.24": {
+      "dependencies": [
+        "URI-5.40"
+      ],
+      "distribution": "Net-HTTP",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Net-HTTP-6.24",
+      "sha256": "290ed9a97b05c7935b048e6d2a356035871fca98ad72c01c5961726adf85c83c",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.24.tar.gz",
+      "version": "6.24"
+    },
+    "Package-DeprecationManager-0.18": {
+      "dependencies": [
+        "Package-Stash-0.40",
+        "Params-Util-1.102",
+        "Sub-Install-0.929"
+      ],
+      "distribution": "Package-DeprecationManager",
+      "license": [
+        "artistic_2"
+      ],
+      "name": "Package-DeprecationManager-0.18",
+      "sha256": "b68d3f0ced55b7615fddbb6029b89f92a34fe0dd8c6fd6bceffc157d56834fe8",
+      "url": "https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Package-DeprecationManager-0.18.tar.gz",
+      "version": "0.18"
+    },
+    "Package-Stash-0.40": {
+      "dependencies": [
+        "Dist-CheckConflicts-0.11",
+        "Module-Implementation-0.09"
+      ],
+      "distribution": "Package-Stash",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Package-Stash-0.40",
+      "sha256": "5a9722c6d9cb29ee133e5f7b08a5362762a0b5633ff5170642a5b0686e95e066",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Package-Stash-0.40.tar.gz",
+      "version": "0.40"
+    },
+    "Package-Stash-XS-0.32": {
+      "dependencies": [],
+      "distribution": "Package-Stash-XS",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Package-Stash-XS-0.32",
+      "sha256": "9f961e798c01370f3834eda5f010c9d60c68a96d15c48598d8a5a25ca32f5f11",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Package-Stash-XS-0.32.tar.gz",
+      "version": "0.32"
+    },
+    "Params-SomeUtil-1.12": {
+      "dependencies": [],
+      "distribution": "Params-SomeUtil",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Params-SomeUtil-1.12",
+      "sha256": "ca61027a5c7f9ce2e31285c67a0bdc4f052c62051adfb7406d79ea0f23e5c1f0",
+      "url": "https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Params-SomeUtil-1.12.tar.gz",
+      "version": "1.12"
+    },
+    "Params-Util-1.102": {
+      "dependencies": [],
+      "distribution": "Params-Util",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Params-Util-1.102",
+      "sha256": "499bb1b482db24fda277a51525596ad092c2bd51dd508fa8fec2e9f849097402",
+      "url": "https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Params-Util-1.102.tar.gz",
+      "version": "1.102"
+    },
+    "Sub-Exporter-0.992": {
+      "dependencies": [
+        "Data-OptList-0.115",
+        "Params-SomeUtil-1.12",
+        "Sub-Install-0.929"
+      ],
+      "distribution": "Sub-Exporter",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Sub-Exporter-0.992",
+      "sha256": "31d1b7016390528f3ed2cda379f4026a4e7fbad2aa40c8c9a1808961bf642c67",
+      "url": "https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Sub-Exporter-0.992.tar.gz",
+      "version": "0.992"
+    },
+    "Sub-Exporter-Progressive-0.001013": {
+      "dependencies": [],
+      "distribution": "Sub-Exporter-Progressive",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Sub-Exporter-Progressive-0.001013",
+      "sha256": "d535b7954d64da1ac1305b1fadf98202769e3599376854b2ced90c382beac056",
+      "url": "https://cpan.metacpan.org/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz",
+      "version": "0.001013"
+    },
+    "Sub-Install-0.929": {
+      "dependencies": [],
+      "distribution": "Sub-Install",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Sub-Install-0.929",
+      "sha256": "80b1e281d8cd3b2b31dac711f5c8a1657a87cd80bbe69af3924bcbeb4e5db077",
+      "url": "https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Sub-Install-0.929.tar.gz",
+      "version": "0.929"
+    },
+    "TimeDate-2.35": {
+      "dependencies": [],
+      "distribution": "TimeDate",
+      "license": [
+        "perl_5"
+      ],
+      "name": "TimeDate-2.35",
+      "sha256": "baddd0306ae2e86e9ec28d3de5439e514643e80b3735e43bd0fbb426d73304de",
+      "url": "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/TimeDate-2.35.tar.gz",
+      "version": "2.35"
+    },
+    "Try-Tiny-0.32": {
+      "dependencies": [],
+      "distribution": "Try-Tiny",
+      "license": [
+        "mit"
+      ],
+      "name": "Try-Tiny-0.32",
+      "sha256": "ef2d6cab0bad18e3ab1c4e6125cc5f695c7e459899f512451c8fa3ef83fa7fc0",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Try-Tiny-0.32.tar.gz",
+      "version": "0.32"
+    },
+    "URI-5.40": {
+      "dependencies": [
+        "MIME-Base32-1.303"
+      ],
+      "distribution": "URI",
+      "license": [
+        "perl_5"
+      ],
+      "name": "URI-5.40",
+      "sha256": "ef5d2ef099a1a24a6e83ffe543de73337805d3d39c00b84fa205d725ad1a1b63",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.40.tar.gz",
+      "version": "5.40"
+    },
+    "WWW-RobotRules-6.03": {
+      "dependencies": [
+        "URI-5.40"
+      ],
+      "distribution": "WWW-RobotRules",
+      "license": [
+        "perl_5"
+      ],
+      "name": "WWW-RobotRules-6.03",
+      "sha256": "8522b532935a11bfa688c2e113bac66729df4851be50c2c26d4b06f45fade472",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/WWW-RobotRules-6.03.tar.gz",
+      "version": "6.03"
+    },
+    "YAML-1.321": {
+      "dependencies": [],
+      "distribution": "YAML",
+      "license": [
+        "perl_5"
+      ],
+      "name": "YAML-1.321",
+      "sha256": "d461167b8b4aa9244f736a7a740830141e61dddee301e456bf642e81d3cea193",
+      "url": "https://cpan.metacpan.org/authors/id/T/TI/TINITA/YAML-1.321.tar.gz",
+      "version": "1.321"
+    },
+    "libwww-perl-6.83": {
+      "dependencies": [
+        "Encode-Locale-1.05",
+        "File-Listing-6.16",
+        "HTML-Parser-3.86",
+        "HTTP-Cookies-6.12",
+        "HTTP-Date-6.08",
+        "HTTP-Message-7.04",
+        "HTTP-Negotiate-6.01",
+        "LWP-MediaTypes-6.05",
+        "Net-HTTP-6.24",
+        "Try-Tiny-0.32",
+        "URI-5.40",
+        "WWW-RobotRules-6.03"
+      ],
+      "distribution": "libwww-perl",
+      "license": [
+        "perl_5"
+      ],
+      "name": "libwww-perl-6.83",
+      "sha256": "e75f0fa9d3c6f0daf5a5a72fa9f8b1c9c0d23e3a84a8522ccb4f835232b95505",
+      "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/libwww-perl-6.83.tar.gz",
+      "version": "6.83"
+    },
+    "namespace-autoclean-0.31": {
+      "dependencies": [
+        "B-Hooks-EndOfScope-0.28",
+        "namespace-clean-0.27"
+      ],
+      "distribution": "namespace-autoclean",
+      "license": [
+        "perl_5"
+      ],
+      "name": "namespace-autoclean-0.31",
+      "sha256": "d3b32c82e1d2caa9d58b8c8075965240e6cab66ab9350bd6f6bea4ca07e938d6",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/namespace-autoclean-0.31.tar.gz",
+      "version": "0.31"
+    },
+    "namespace-clean-0.27": {
+      "dependencies": [
+        "B-Hooks-EndOfScope-0.28",
+        "Package-Stash-0.40"
+      ],
+      "distribution": "namespace-clean",
+      "license": [
+        "perl_5"
+      ],
+      "name": "namespace-clean-0.27",
+      "sha256": "8a10a83c3e183dc78f9e7b7aa4d09b47c11fb4e7d3a33b9a12912fd22e31af9d",
+      "url": "https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/namespace-clean-0.27.tar.gz",
+      "version": "0.27"
+    }
+  },
+  "root_releases": [
+    "Exporter-Easy-0.18",
+    "File-Which-1.27",
+    "JSON-Parse-0.62",
+    "List-MoreUtils-0.430",
+    "Moose-2.4001",
+    "MooseX-SemiAffordanceAccessor-0.10",
+    "YAML-1.321",
+    "libwww-perl-6.83",
+    "namespace-autoclean-0.31"
+  ],
+  "schema_version": 1,
+  "state": "frozen-inputs",
+  "tool": "UDPerlRuntime"
+}

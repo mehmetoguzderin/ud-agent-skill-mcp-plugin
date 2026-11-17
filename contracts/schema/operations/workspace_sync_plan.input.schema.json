@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "workspace_sync_plan",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "repository_spec": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "local_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "remote_snapshot": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "retrieved_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "revision",
+            "retrieved_at"
+          ]
+        }
+      },
+      "required": [
+        "path"
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_specs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repository_spec"
+      },
+      "minItems": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "max_evidence_age_seconds": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "repository_specs",
+    "ud_context_path"
+  ]
+}

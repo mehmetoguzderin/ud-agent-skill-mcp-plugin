@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "qualification": "independent-source-correspondence-review-only",
+  "reviewer": "root",
+  "proof_sha256": "0eed86afd451d1f3a3676240ba124548ee6c8691d0830a7c95bab015b1d0209d",
+  "review_script_sha256": "ee77dd01e2b63a0a77319f4da59a814e670cc7c732cf3798a67ea260c8d0c98e",
+  "source_lock_sha256": "176da8f630db10110354d90d4f27cee82e7fbbaae2653793734cb9e306346797",
+  "source_archive_sha256": "146b945530b65c6fc954e05a55cfadab7348ff5842e1731ffff520d2de0922f0",
+  "license_sha256": "1fc6b6db121d4555d8f661937d7f6013693cd8fd67495d5e5d98c1d18fb83eda",
+  "linkage_receipt_sha256": "abda1177a85738dd801dc67e87dab35a774e124efb6cb9a2177c045f4d3997e3",
+  "generator_sha256": "638953e399761fe4d5c3b512936ccb4c0c980fa680d500e2391922969fc703e5",
+  "reader_sha256": "9d510a3ce089bfb035a997e5a2fa81012b0c805ce380ab318ad3cdd14a84f5c4",
+  "llvm_ar_sha256": "ae8a0b902731b39ef6e462edb404b293718521e590e2ffd5cf4e2ab6fe8f6eb6",
+  "counts": {
+    "joined_stl_sources": 334,
+    "external_header_inputs": 709,
+    "win32/arm64": 5,
+    "win32/x64": 5
+  },
+  "objects": [
+    {
+      "platform": "win32/arm64",
+      "object_sha256": "50d091ebef6bc6ab010d5a153d434ab7d35779978f0f2f799c05f843646902a8",
+      "source_rows": 1,
+      "external_rows": 4
+    },
+    {
+      "platform": "win32/arm64",
+      "object_sha256": "29e0a5a8648886f982a11646bc4b25227f25b57e10e1f95ca647a4e743711a2b",
+      "source_rows": 53,
+      "external_rows": 55
+    },
+    {
+      "platform": "win32/arm64",
+      "object_sha256": "bbd90322edff560cd28ff1e9596e0e6a96dcf76e60f5ef523eba7cdaa63c1e72",
+      "source_rows": 62,
+      "external_rows": 133
+    },
+    {
+      "platform": "win32/arm64",
+      "object_sha256": "a89c5766baf54aacebf0387c68b9f50d19437ef17a876f40dbf2de03866bf4da",
+      "source_rows": 6,
+      "external_rows": 102
+    },
+    {
+      "platform": "win32/arm64",
+      "object_sha256": "1c122f9f5bab680aee5a80265dcaaa8af5f8bef9b5e38d8b589dca0e2fbd236e",
+      "source_rows": 45,
+      "external_rows": 50
+    },
+    {
+      "platform": "win32/x64",
+      "object_sha256": "e8e22b5913cbcf1c226534255372c933634a86cd4db5c024178007519bc13084",
+      "source_rows": 1,
+      "external_rows": 4
+    },
+    {
+      "platform": "win32/x64",
+      "object_sha256": "d6e6fe6c25d17b3a53107a11857de6503e3e97a3fe111a06e3c071bb2e95f33f",
+      "source_rows": 53,
+      "external_rows": 64
+    },
+    {
+      "platform": "win32/x64",
+      "object_sha256": "4be22d12d13e99d82cd2859cab51b4fd8cad1f8040875e4d6608dab6bcf313bf",
+      "source_rows": 62,
+      "external_rows": 142
+    },
+    {
+      "platform": "win32/x64",
+      "object_sha256": "4857dd770ca8c8138c08e1e6009170b83a6658a2a744946d24ae065685314313",
+      "source_rows": 6,
+      "external_rows": 96
+    },
+    {
+      "platform": "win32/x64",
+      "object_sha256": "8a9d6534b8c760bee73d9a8e1d92d3af94d64c60ab112644bb6aa23864ae647a",
+      "source_rows": 45,
+      "external_rows": 59
+    }
+  ],
+  "limitations": [
+    "Source checksums establish correspondence, not reproduced binaries.",
+    "SDK/CRT headers and publisher redistribution authority are separate."
+  ]
+}

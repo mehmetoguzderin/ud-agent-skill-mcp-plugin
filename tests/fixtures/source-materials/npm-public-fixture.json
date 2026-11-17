@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "qualification": "actual-offline-npm-pack-first-party-fixture",
+  "npm_version": "11.19.1",
+  "node_version": "v26.8.2",
+  "command": [
+    "npm",
+    "pack",
+    "--offline",
+    "--ignore-scripts",
+    "--json"
+  ],
+  "manifest": {
+    "name": "@owner/package",
+    "version": "0.1.0-beta.1",
+    "bin": {
+      "ud-agent": "cli.cjs"
+    },
+    "engines": {
+      "node": ">=24 <27"
+    },
+    "license": "MIT",
+    "publishConfig": {
+      "access": "public"
+    }
+  },
+  "sha256": "d35753c19f0b5caf34cf87f6213c9b8aba70432bd7a9dec2d85e5ee0394f01a9",
+  "size_bytes": 783
+}

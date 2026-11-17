@@ -1,0 +1,1537 @@
+{
+  "schema_version": 1,
+  "scope": "Authored implementation and pinned upstream inputs; a provenance category does not imply every operation is an upstream API.",
+  "upstream_lock_sha256": "b3a6bb8234ce5e013eb1ad609950e49f6823ab7446eb4f6bfac33426eb126926",
+  "operations": [
+    {
+      "id": "001",
+      "name": "treebank_create",
+      "original_signature": "treebank_create(working_tree_path, template_path, metadata_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/workspace.py",
+        "line": 33,
+        "sha256": "8b50c07e87902c1aed51279315d018072f844f7cef98a8e24f5838f3076c0808"
+      },
+      "input_schema": "treebank_create.input.schema.json",
+      "result_schema": "treebank_create.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "002",
+      "name": "workspace_inspect",
+      "original_signature": "workspace_inspect(working_tree_path, related_repository_paths, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/workspace.py",
+        "line": 11,
+        "sha256": "8b50c07e87902c1aed51279315d018072f844f7cef98a8e24f5838f3076c0808"
+      },
+      "input_schema": "workspace_inspect.input.schema.json",
+      "result_schema": "workspace_inspect.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "003",
+      "name": "workspace_sync_plan",
+      "original_signature": "workspace_sync_plan(working_tree_path, repository_specs, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/workspace.py",
+        "line": 93,
+        "sha256": "8b50c07e87902c1aed51279315d018072f844f7cef98a8e24f5838f3076c0808"
+      },
+      "input_schema": "workspace_sync_plan.input.schema.json",
+      "result_schema": "workspace_sync_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "004",
+      "name": "treebank_snapshot",
+      "original_signature": "treebank_snapshot(working_tree_path, file_paths, output_dir_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/workspace.py",
+        "line": 141,
+        "sha256": "8b50c07e87902c1aed51279315d018072f844f7cef98a8e24f5838f3076c0808"
+      },
+      "input_schema": "treebank_snapshot.input.schema.json",
+      "result_schema": "treebank_snapshot.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "005",
+      "name": "treebank_review",
+      "original_signature": "treebank_review(working_tree_path, base_revision, peer_treebank_paths, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/workspace.py",
+        "line": 156,
+        "sha256": "8b50c07e87902c1aed51279315d018072f844f7cef98a8e24f5838f3076c0808"
+      },
+      "input_schema": "treebank_review.input.schema.json",
+      "result_schema": "treebank_review.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "006",
+      "name": "treebank_edit",
+      "original_signature": "treebank_edit(working_tree_path, edit_batch, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/edit_batch.py",
+        "line": 199,
+        "sha256": "0bb831c148733c97c6b1f15c0b0889bbd5a5336c7f3f1356d1b8148ffa0d125b"
+      },
+      "input_schema": "treebank_edit.input.schema.json",
+      "result_schema": "treebank_edit.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "007",
+      "name": "tree_edit",
+      "original_signature": "tree_edit(working_tree_path, tree_ref, edit_operations, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/edit_batch.py",
+        "line": 195,
+        "sha256": "0bb831c148733c97c6b1f15c0b0889bbd5a5336c7f3f1356d1b8148ffa0d125b"
+      },
+      "input_schema": "tree_edit.input.schema.json",
+      "result_schema": "tree_edit.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "008",
+      "name": "token_edit",
+      "original_signature": "token_edit(working_tree_path, token_ref, token_patch, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/edit_batch.py",
+        "line": 39,
+        "sha256": "0bb831c148733c97c6b1f15c0b0889bbd5a5336c7f3f1356d1b8148ffa0d125b"
+      },
+      "input_schema": "token_edit.input.schema.json",
+      "result_schema": "token_edit.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "009",
+      "name": "tree_metadata_edit",
+      "original_signature": "tree_metadata_edit(working_tree_path, tree_ref, metadata_patch, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/edit_batch.py",
+        "line": 55,
+        "sha256": "0bb831c148733c97c6b1f15c0b0889bbd5a5336c7f3f1356d1b8148ffa0d125b"
+      },
+      "input_schema": "tree_metadata_edit.input.schema.json",
+      "result_schema": "tree_metadata_edit.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "010",
+      "name": "enhanced_graph_edit",
+      "original_signature": "enhanced_graph_edit(working_tree_path, tree_ref, edge_operations, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/edit_batch.py",
+        "line": 73,
+        "sha256": "0bb831c148733c97c6b1f15c0b0889bbd5a5336c7f3f1356d1b8148ffa0d125b"
+      },
+      "input_schema": "enhanced_graph_edit.input.schema.json",
+      "result_schema": "enhanced_graph_edit.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "011",
+      "name": "tree_list",
+      "original_signature": "tree_list(working_tree_path, file_paths, read_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 105,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_list.input.schema.json",
+      "result_schema": "tree_list.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "012",
+      "name": "tree_get",
+      "original_signature": "tree_get(working_tree_path, tree_ref, read_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 120,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_get.input.schema.json",
+      "result_schema": "tree_get.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "013",
+      "name": "tree_add",
+      "original_signature": "tree_add(working_tree_path, file_path, insertion_point, sentence_conllu, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 127,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_add.input.schema.json",
+      "result_schema": "tree_add.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "014",
+      "name": "tree_replace",
+      "original_signature": "tree_replace(working_tree_path, tree_ref, sentence_conllu, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 137,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_replace.input.schema.json",
+      "result_schema": "tree_replace.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "015",
+      "name": "tree_remove",
+      "original_signature": "tree_remove(working_tree_path, tree_ref, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 147,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_remove.input.schema.json",
+      "result_schema": "tree_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "016",
+      "name": "tree_copy",
+      "original_signature": "tree_copy(working_tree_path, tree_ref, target_file_path, insertion_point, new_sent_id, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 186,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_copy.input.schema.json",
+      "result_schema": "tree_copy.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "017",
+      "name": "tree_move",
+      "original_signature": "tree_move(working_tree_path, tree_ref, target_file_path, insertion_point, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 190,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_move.input.schema.json",
+      "result_schema": "tree_move.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "018",
+      "name": "tree_id_set",
+      "original_signature": "tree_id_set(working_tree_path, tree_ref, new_sent_id, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 194,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_id_set.input.schema.json",
+      "result_schema": "tree_id_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "019",
+      "name": "tree_text_set",
+      "original_signature": "tree_text_set(working_tree_path, tree_ref, text, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 207,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_text_set.input.schema.json",
+      "result_schema": "tree_text_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "020",
+      "name": "tree_comment_set",
+      "original_signature": "tree_comment_set(working_tree_path, tree_ref, comment_key, comment_value, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 211,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_comment_set.input.schema.json",
+      "result_schema": "tree_comment_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "021",
+      "name": "tree_comment_remove",
+      "original_signature": "tree_comment_remove(working_tree_path, tree_ref, comment_key, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/sentences.py",
+        "line": 217,
+        "sha256": "c2e18914eb62f6494330fcdf8dc8c98c3bbb958212a399aa5c0f92e0ff6c653a"
+      },
+      "input_schema": "tree_comment_remove.input.schema.json",
+      "result_schema": "tree_comment_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "022",
+      "name": "token_list",
+      "original_signature": "token_list(working_tree_path, tree_ref, read_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 10,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_list.input.schema.json",
+      "result_schema": "token_list.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "023",
+      "name": "token_get",
+      "original_signature": "token_get(working_tree_path, token_ref, read_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 16,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_get.input.schema.json",
+      "result_schema": "token_get.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "024",
+      "name": "token_add",
+      "original_signature": "token_add(working_tree_path, tree_ref, insertion_point, token_data, attachment_spec, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 103,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_add.input.schema.json",
+      "result_schema": "token_add.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "025",
+      "name": "token_remove",
+      "original_signature": "token_remove(working_tree_path, token_ref, removal_spec, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 139,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_remove.input.schema.json",
+      "result_schema": "token_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "026",
+      "name": "token_form_set",
+      "original_signature": "token_form_set(working_tree_path, token_ref, form, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 46,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_form_set.input.schema.json",
+      "result_schema": "token_form_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "027",
+      "name": "token_lemma_set",
+      "original_signature": "token_lemma_set(working_tree_path, token_ref, lemma, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 50,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_lemma_set.input.schema.json",
+      "result_schema": "token_lemma_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "028",
+      "name": "token_upos_set",
+      "original_signature": "token_upos_set(working_tree_path, token_ref, upos, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 54,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_upos_set.input.schema.json",
+      "result_schema": "token_upos_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "029",
+      "name": "token_xpos_set",
+      "original_signature": "token_xpos_set(working_tree_path, token_ref, xpos, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 58,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_xpos_set.input.schema.json",
+      "result_schema": "token_xpos_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "030",
+      "name": "token_features_replace",
+      "original_signature": "token_features_replace(working_tree_path, token_ref, features, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 62,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_features_replace.input.schema.json",
+      "result_schema": "token_features_replace.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "031",
+      "name": "token_feature_set",
+      "original_signature": "token_feature_set(working_tree_path, token_ref, feature_name, feature_values, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 87,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_feature_set.input.schema.json",
+      "result_schema": "token_feature_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "032",
+      "name": "token_feature_remove",
+      "original_signature": "token_feature_remove(working_tree_path, token_ref, feature_name, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 91,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_feature_remove.input.schema.json",
+      "result_schema": "token_feature_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "033",
+      "name": "token_misc_replace",
+      "original_signature": "token_misc_replace(working_tree_path, token_ref, misc_entries, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 66,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_misc_replace.input.schema.json",
+      "result_schema": "token_misc_replace.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "034",
+      "name": "token_misc_set",
+      "original_signature": "token_misc_set(working_tree_path, token_ref, attribute_name, attribute_values, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 95,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_misc_set.input.schema.json",
+      "result_schema": "token_misc_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "035",
+      "name": "token_misc_remove",
+      "original_signature": "token_misc_remove(working_tree_path, token_ref, attribute_name, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/tokens.py",
+        "line": 99,
+        "sha256": "1f2b3ab7e1e7a6fb309c77ba098d068b2e9c2b6b5e985f290dbe295065cac6a6"
+      },
+      "input_schema": "token_misc_remove.input.schema.json",
+      "result_schema": "token_misc_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "036",
+      "name": "basic_dependency_set",
+      "original_signature": "basic_dependency_set(working_tree_path, token_ref, head_id, deprel, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/dependencies.py",
+        "line": 36,
+        "sha256": "a2a1ee0f7af8aa8b5053ee11f4891c4dbcbceb8db24d9128e6b5e1691480a259"
+      },
+      "input_schema": "basic_dependency_set.input.schema.json",
+      "result_schema": "basic_dependency_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "037",
+      "name": "basic_dependency_label_set",
+      "original_signature": "basic_dependency_label_set(working_tree_path, token_ref, deprel, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/dependencies.py",
+        "line": 40,
+        "sha256": "a2a1ee0f7af8aa8b5053ee11f4891c4dbcbceb8db24d9128e6b5e1691480a259"
+      },
+      "input_schema": "basic_dependency_label_set.input.schema.json",
+      "result_schema": "basic_dependency_label_set.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "038",
+      "name": "enhanced_edge_add",
+      "original_signature": "enhanced_edge_add(working_tree_path, tree_ref, head_id, dependent_id, deprel, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/dependencies.py",
+        "line": 70,
+        "sha256": "a2a1ee0f7af8aa8b5053ee11f4891c4dbcbceb8db24d9128e6b5e1691480a259"
+      },
+      "input_schema": "enhanced_edge_add.input.schema.json",
+      "result_schema": "enhanced_edge_add.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "039",
+      "name": "enhanced_edge_remove",
+      "original_signature": "enhanced_edge_remove(working_tree_path, tree_ref, head_id, dependent_id, deprel, ud_context_path, edit_options)",
+      "provenance_category": "P",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/dependencies.py",
+        "line": 74,
+        "sha256": "a2a1ee0f7af8aa8b5053ee11f4891c4dbcbceb8db24d9128e6b5e1691480a259"
+      },
+      "input_schema": "enhanced_edge_remove.input.schema.json",
+      "result_schema": "enhanced_edge_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "040",
+      "name": "enhanced_dependencies_replace",
+      "original_signature": "enhanced_dependencies_replace(working_tree_path, tree_ref, dependent_id, incoming_edges, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/dependencies.py",
+        "line": 78,
+        "sha256": "a2a1ee0f7af8aa8b5053ee11f4891c4dbcbceb8db24d9128e6b5e1691480a259"
+      },
+      "input_schema": "enhanced_dependencies_replace.input.schema.json",
+      "result_schema": "enhanced_dependencies_replace.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "041",
+      "name": "multiword_token_add",
+      "original_signature": "multiword_token_add(working_tree_path, tree_ref, first_word_id, last_word_id, form, misc_entries, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/special_rows.py",
+        "line": 12,
+        "sha256": "d4cd575eb94ea122f049497a03bed92f44fdc01edc7b2e7be83739c117229f00"
+      },
+      "input_schema": "multiword_token_add.input.schema.json",
+      "result_schema": "multiword_token_add.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "042",
+      "name": "multiword_token_edit",
+      "original_signature": "multiword_token_edit(working_tree_path, tree_ref, range_id, multiword_token_patch, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/special_rows.py",
+        "line": 31,
+        "sha256": "d4cd575eb94ea122f049497a03bed92f44fdc01edc7b2e7be83739c117229f00"
+      },
+      "input_schema": "multiword_token_edit.input.schema.json",
+      "result_schema": "multiword_token_edit.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "043",
+      "name": "multiword_token_remove",
+      "original_signature": "multiword_token_remove(working_tree_path, tree_ref, range_id, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/special_rows.py",
+        "line": 47,
+        "sha256": "d4cd575eb94ea122f049497a03bed92f44fdc01edc7b2e7be83739c117229f00"
+      },
+      "input_schema": "multiword_token_remove.input.schema.json",
+      "result_schema": "multiword_token_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "044",
+      "name": "empty_node_add",
+      "original_signature": "empty_node_add(working_tree_path, tree_ref, after_word_id, empty_node_data, enhanced_edges, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/special_rows.py",
+        "line": 57,
+        "sha256": "d4cd575eb94ea122f049497a03bed92f44fdc01edc7b2e7be83739c117229f00"
+      },
+      "input_schema": "empty_node_add.input.schema.json",
+      "result_schema": "empty_node_add.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "045",
+      "name": "empty_node_edit",
+      "original_signature": "empty_node_edit(working_tree_path, tree_ref, empty_node_id, empty_node_patch, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/special_rows.py",
+        "line": 93,
+        "sha256": "d4cd575eb94ea122f049497a03bed92f44fdc01edc7b2e7be83739c117229f00"
+      },
+      "input_schema": "empty_node_edit.input.schema.json",
+      "result_schema": "empty_node_edit.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "046",
+      "name": "empty_node_remove",
+      "original_signature": "empty_node_remove(working_tree_path, tree_ref, empty_node_id, incident_edge_policy, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/special_rows.py",
+        "line": 117,
+        "sha256": "d4cd575eb94ea122f049497a03bed92f44fdc01edc7b2e7be83739c117229f00"
+      },
+      "input_schema": "empty_node_remove.input.schema.json",
+      "result_schema": "empty_node_remove.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "047",
+      "name": "tree_reindex",
+      "original_signature": "tree_reindex(working_tree_path, tree_ref, ud_context_path, edit_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/special_rows.py",
+        "line": 134,
+        "sha256": "d4cd575eb94ea122f049497a03bed92f44fdc01edc7b2e7be83739c117229f00"
+      },
+      "input_schema": "tree_reindex.input.schema.json",
+      "result_schema": "tree_reindex.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "048",
+      "name": "validation_report",
+      "original_signature": "validation_report(working_tree_path, file_paths, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/validation.py",
+        "line": 110,
+        "sha256": "e5f7567c8de23ecbb54375574cb2faa8afc6d85063825b98b9f5cb41bb1148a9"
+      },
+      "input_schema": "validation_report.input.schema.json",
+      "result_schema": "validation_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "049",
+      "name": "sentence_validation_report",
+      "original_signature": "sentence_validation_report(working_tree_path, sentence_conllu, language_code, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/validation.py",
+        "line": 138,
+        "sha256": "e5f7567c8de23ecbb54375574cb2faa8afc6d85063825b98b9f5cb41bb1148a9"
+      },
+      "input_schema": "sentence_validation_report.input.schema.json",
+      "result_schema": "sentence_validation_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "050",
+      "name": "project_consistency_report",
+      "original_signature": "project_consistency_report(working_tree_path, validator_module_path, validator_class_name, ud_context_path, options)",
+      "provenance_category": "X",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/validation.py",
+        "line": 257,
+        "sha256": "e5f7567c8de23ecbb54375574cb2faa8afc6d85063825b98b9f5cb41bb1148a9"
+      },
+      "input_schema": "project_consistency_report.input.schema.json",
+      "result_schema": "project_consistency_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "051",
+      "name": "fix_plan",
+      "original_signature": "fix_plan(working_tree_path, file_paths, fix_ids, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/plans.py",
+        "line": 58,
+        "sha256": "f0b46a3d9c202f33d4a3822e348740265a3bdc500272d41c6bfa6bf3c3750b90"
+      },
+      "input_schema": "fix_plan.input.schema.json",
+      "result_schema": "fix_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "052",
+      "name": "plan_apply",
+      "original_signature": "plan_apply(working_tree_path, plan_path, selected_action_ids, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/plans.py",
+        "line": 89,
+        "sha256": "f0b46a3d9c202f33d4a3822e348740265a3bdc500272d41c6bfa6bf3c3750b90"
+      },
+      "input_schema": "plan_apply.input.schema.json",
+      "result_schema": "plan_apply.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "053",
+      "name": "annotation_import_plan",
+      "original_signature": "annotation_import_plan(working_tree_path, source_annotation_paths, target_file_paths, columns, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 137,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "annotation_import_plan.input.schema.json",
+      "result_schema": "annotation_import_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "054",
+      "name": "token_alignment_report",
+      "original_signature": "token_alignment_report(working_tree_path, source_file_paths, target_file_paths, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 31,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "token_alignment_report.input.schema.json",
+      "result_schema": "token_alignment_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "055",
+      "name": "tokenization_change_plan",
+      "original_signature": "tokenization_change_plan(working_tree_path, source_tokenization_paths, target_file_paths, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 246,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "tokenization_change_plan.input.schema.json",
+      "result_schema": "tokenization_change_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "056",
+      "name": "sentence_segmentation_change_plan",
+      "original_signature": "sentence_segmentation_change_plan(working_tree_path, source_segmentation_paths, target_file_paths, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 279,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "sentence_segmentation_change_plan.input.schema.json",
+      "result_schema": "sentence_segmentation_change_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "057",
+      "name": "text_content_compare",
+      "original_signature": "text_content_compare(working_tree_path, left_path, left_format, right_path, right_format, ud_context_path)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 21,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "text_content_compare.input.schema.json",
+      "result_schema": "text_content_compare.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "058",
+      "name": "sentence_batch_extract",
+      "original_signature": "sentence_batch_extract(working_tree_path, selection_path, output_dir_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 395,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "sentence_batch_extract.input.schema.json",
+      "result_schema": "sentence_batch_extract.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "059",
+      "name": "dataset_split_plan",
+      "original_signature": "dataset_split_plan(working_tree_path, file_paths, split_spec_path, seed, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 52,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "dataset_split_plan.input.schema.json",
+      "result_schema": "dataset_split_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "060",
+      "name": "format_convert",
+      "original_signature": "format_convert(working_tree_path, input_paths, target_format, output_dir_path, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 354,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "format_convert.input.schema.json",
+      "result_schema": "format_convert.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "061",
+      "name": "tagset_conversion_plan",
+      "original_signature": "tagset_conversion_plan(working_tree_path, file_paths, source_tagset, target_tagset, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/conversion.py",
+        "line": 189,
+        "sha256": "7dd1e2181a9380120fc6efe49f5e37d038c9fb627562f4f1ef297a284c417483"
+      },
+      "input_schema": "tagset_conversion_plan.input.schema.json",
+      "result_schema": "tagset_conversion_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "062",
+      "name": "treebank_profile",
+      "original_signature": "treebank_profile(working_tree_path, file_paths, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 37,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "treebank_profile.input.schema.json",
+      "result_schema": "treebank_profile.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "063",
+      "name": "lexeme_pos_report",
+      "original_signature": "lexeme_pos_report(working_tree_path, lexeme_filter, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 48,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "lexeme_pos_report.input.schema.json",
+      "result_schema": "lexeme_pos_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "064",
+      "name": "observed_paradigms",
+      "original_signature": "observed_paradigms(working_tree_path, paradigm_filter, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 59,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "observed_paradigms.input.schema.json",
+      "result_schema": "observed_paradigms.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "065",
+      "name": "relation_profile",
+      "original_signature": "relation_profile(working_tree_path, relation_filter, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 89,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "relation_profile.input.schema.json",
+      "result_schema": "relation_profile.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "066",
+      "name": "feature_agreement_report",
+      "original_signature": "feature_agreement_report(working_tree_path, feature_name, relation_filter, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 124,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "feature_agreement_report.input.schema.json",
+      "result_schema": "feature_agreement_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "067",
+      "name": "dependency_order_profile",
+      "original_signature": "dependency_order_profile(working_tree_path, file_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 154,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "dependency_order_profile.input.schema.json",
+      "result_schema": "dependency_order_profile.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "068",
+      "name": "multiword_token_patterns",
+      "original_signature": "multiword_token_patterns(working_tree_path, file_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 167,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "multiword_token_patterns.input.schema.json",
+      "result_schema": "multiword_token_patterns.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "069",
+      "name": "proper_name_sequences",
+      "original_signature": "proper_name_sequences(working_tree_path, file_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 183,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "proper_name_sequences.input.schema.json",
+      "result_schema": "proper_name_sequences.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "070",
+      "name": "script_composition_report",
+      "original_signature": "script_composition_report(working_tree_path, peer_treebank_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 211,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "script_composition_report.input.schema.json",
+      "result_schema": "script_composition_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "071",
+      "name": "english_relative_clause_classify",
+      "original_signature": "english_relative_clause_classify(working_tree_path, file_paths, output_dir_path, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/analysis.py",
+        "line": 230,
+        "sha256": "e620951cb5f88668127ba196b3b32a6dc9f6bc6b76be22b09df34606cc952589"
+      },
+      "input_schema": "english_relative_clause_classify.input.schema.json",
+      "result_schema": "english_relative_clause_classify.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "072",
+      "name": "conventions_compare",
+      "original_signature": "conventions_compare(working_tree_path, peer_treebank_paths, dimensions, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/comparison.py",
+        "line": 167,
+        "sha256": "1da80cfc74993d308bfadccd5528ab70728e1396d17aa50c91f11ff89834cd30"
+      },
+      "input_schema": "conventions_compare.input.schema.json",
+      "result_schema": "conventions_compare.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "073",
+      "name": "feature_value_report",
+      "original_signature": "feature_value_report(working_tree_path, feature_name, peer_treebank_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/comparison.py",
+        "line": 147,
+        "sha256": "1da80cfc74993d308bfadccd5528ab70728e1396d17aa50c91f11ff89834cd30"
+      },
+      "input_schema": "feature_value_report.input.schema.json",
+      "result_schema": "feature_value_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "074",
+      "name": "duplicate_report",
+      "original_signature": "duplicate_report(working_tree_path, file_paths, matching_options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/comparison.py",
+        "line": 47,
+        "sha256": "1da80cfc74993d308bfadccd5528ab70728e1396d17aa50c91f11ff89834cd30"
+      },
+      "input_schema": "duplicate_report.input.schema.json",
+      "result_schema": "duplicate_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "075",
+      "name": "overlap_report",
+      "original_signature": "overlap_report(working_tree_path, peer_treebank_paths, split_spec_path, matching_options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/comparison.py",
+        "line": 64,
+        "sha256": "1da80cfc74993d308bfadccd5528ab70728e1396d17aa50c91f11ff89834cd30"
+      },
+      "input_schema": "overlap_report.input.schema.json",
+      "result_schema": "overlap_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "076",
+      "name": "enhanced_graph_report",
+      "original_signature": "enhanced_graph_report(working_tree_path, file_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/enhanced.py",
+        "line": 9,
+        "sha256": "682aa9ade817f2594c86d23a53b6aaad80bc5c5523fed70fd7eb4352f440c11c"
+      },
+      "input_schema": "enhanced_graph_report.input.schema.json",
+      "result_schema": "enhanced_graph_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "077",
+      "name": "enhanced_edge_explanations",
+      "original_signature": "enhanced_edge_explanations(working_tree_path, file_paths, output_dir_path, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/enhanced.py",
+        "line": 43,
+        "sha256": "682aa9ade817f2594c86d23a53b6aaad80bc5c5523fed70fd7eb4352f440c11c"
+      },
+      "input_schema": "enhanced_edge_explanations.input.schema.json",
+      "result_schema": "enhanced_edge_explanations.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "078",
+      "name": "enhanced_empty_node_collapse_plan",
+      "original_signature": "enhanced_empty_node_collapse_plan(working_tree_path, file_paths, transformation_spec_path, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/enhanced.py",
+        "line": 75,
+        "sha256": "682aa9ade817f2594c86d23a53b6aaad80bc5c5523fed70fd7eb4352f440c11c"
+      },
+      "input_schema": "enhanced_empty_node_collapse_plan.input.schema.json",
+      "result_schema": "enhanced_empty_node_collapse_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "079",
+      "name": "parallel_corpus_report",
+      "original_signature": "parallel_corpus_report(working_tree_path, peer_treebank_paths, alignment_spec_path, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/parallel.py",
+        "line": 31,
+        "sha256": "dc0ce6d8c88b556c0cac6b14bcb46d6f0a8e5b80e43c4e2b3c9cab853c8b3947"
+      },
+      "input_schema": "parallel_corpus_report.input.schema.json",
+      "result_schema": "parallel_corpus_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "080",
+      "name": "bible_passage_concordance",
+      "original_signature": "bible_passage_concordance(working_tree_path, file_paths, peer_file_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/parallel.py",
+        "line": 69,
+        "sha256": "dc0ce6d8c88b556c0cac6b14bcb46d6f0a8e5b80e43c4e2b3c9cab853c8b3947"
+      },
+      "input_schema": "bible_passage_concordance.input.schema.json",
+      "result_schema": "bible_passage_concordance.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "081",
+      "name": "predictions_evaluate",
+      "original_signature": "predictions_evaluate(working_tree_path, gold_file_paths, prediction_file_paths, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/evaluation.py",
+        "line": 112,
+        "sha256": "bbb61fb1ef360a2aadb926c73f05ed98c30926ccdc32ce32bb7cff9f395667a0"
+      },
+      "input_schema": "predictions_evaluate.input.schema.json",
+      "result_schema": "predictions_evaluate.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "082",
+      "name": "annotation_pair_scores",
+      "original_signature": "annotation_pair_scores(working_tree_path, reference_annotation_path, comparison_annotation_path, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/evaluation.py",
+        "line": 125,
+        "sha256": "bbb61fb1ef360a2aadb926c73f05ed98c30926ccdc32ce32bb7cff9f395667a0"
+      },
+      "input_schema": "annotation_pair_scores.input.schema.json",
+      "result_schema": "annotation_pair_scores.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "083",
+      "name": "changes_review",
+      "original_signature": "changes_review(working_tree_path, base_revision, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/review.py",
+        "line": 27,
+        "sha256": "37fce6c6c0377ec914a70b600956e97f2267ca1c33f4fc926db5051b4d6e81c6"
+      },
+      "input_schema": "changes_review.input.schema.json",
+      "result_schema": "changes_review.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "084",
+      "name": "contribution_plan",
+      "original_signature": "contribution_plan(working_tree_path, patch_path, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/review.py",
+        "line": 81,
+        "sha256": "37fce6c6c0377ec914a70b600956e97f2267ca1c33f4fc926db5051b4d6e81c6"
+      },
+      "input_schema": "contribution_plan.input.schema.json",
+      "result_schema": "contribution_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "085",
+      "name": "language_rules_report",
+      "original_signature": "language_rules_report(working_tree_path, language_code, peer_treebank_paths, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/rules.py",
+        "line": 15,
+        "sha256": "0bfdad4171574541f9e8bef0452f637124a44b300b73d579264ee74a68d080be"
+      },
+      "input_schema": "language_rules_report.input.schema.json",
+      "result_schema": "language_rules_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "086",
+      "name": "language_rule_change_plan",
+      "original_signature": "language_rule_change_plan(working_tree_path, language_code, proposed_rules_path, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/rules.py",
+        "line": 68,
+        "sha256": "0bfdad4171574541f9e8bef0452f637124a44b300b73d579264ee74a68d080be"
+      },
+      "input_schema": "language_rule_change_plan.input.schema.json",
+      "result_schema": "language_rule_change_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "087",
+      "name": "language_rule_impact_report",
+      "original_signature": "language_rule_impact_report(working_tree_path, proposed_rules_path, affected_treebank_paths, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/rules.py",
+        "line": 46,
+        "sha256": "0bfdad4171574541f9e8bef0452f637124a44b300b73d579264ee74a68d080be"
+      },
+      "input_schema": "language_rule_impact_report.input.schema.json",
+      "result_schema": "language_rule_impact_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "088",
+      "name": "metadata_change_plan",
+      "original_signature": "metadata_change_plan(working_tree_path, proposed_metadata_path, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/metadata.py",
+        "line": 15,
+        "sha256": "14e206519a1fb01d58b7958cefbacf0dcde3c98dab4a66ed9dc040c95ad37cad"
+      },
+      "input_schema": "metadata_change_plan.input.schema.json",
+      "result_schema": "metadata_change_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "089",
+      "name": "documentation_preview",
+      "original_signature": "documentation_preview(working_tree_path, ud_context_path, output_dir_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/rendering.py",
+        "line": 294,
+        "sha256": "19c02bc5c187f0c48fb3eab0af9d87b3146e86c2d7e500f8d3a60a6bd83d5eff"
+      },
+      "input_schema": "documentation_preview.input.schema.json",
+      "result_schema": "documentation_preview.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "090",
+      "name": "guideline_example_preview",
+      "original_signature": "guideline_example_preview(working_tree_path, example_markup_path, output_dir_path, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/rendering.py",
+        "line": 324,
+        "sha256": "19c02bc5c187f0c48fb3eab0af9d87b3146e86c2d7e500f8d3a60a6bd83d5eff"
+      },
+      "input_schema": "guideline_example_preview.input.schema.json",
+      "result_schema": "guideline_example_preview.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "091",
+      "name": "sentence_render",
+      "original_signature": "sentence_render(working_tree_path, sentence_conllu, output_format, output_path, ud_context_path)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/rendering.py",
+        "line": 258,
+        "sha256": "19c02bc5c187f0c48fb3eab0af9d87b3146e86c2d7e500f8d3a60a6bd83d5eff"
+      },
+      "input_schema": "sentence_render.input.schema.json",
+      "result_schema": "sentence_render.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "092",
+      "name": "release_plan",
+      "original_signature": "release_plan(working_tree_path, target_release, previous_release_path, ud_context_path, options)",
+      "provenance_category": "C",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/release.py",
+        "line": 59,
+        "sha256": "381c883c545395c8044914bce0e5ef147bb9105e5e05eba3e7612b11e2bd4958"
+      },
+      "input_schema": "release_plan.input.schema.json",
+      "result_schema": "release_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "093",
+      "name": "release_candidate_build",
+      "original_signature": "release_candidate_build(working_tree_path, release_plan_path, ud_context_path, output_dir_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/release.py",
+        "line": 92,
+        "sha256": "381c883c545395c8044914bce0e5ef147bb9105e5e05eba3e7612b11e2bd4958"
+      },
+      "input_schema": "release_candidate_build.input.schema.json",
+      "result_schema": "release_candidate_build.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "094",
+      "name": "release_deposit_prepare",
+      "original_signature": "release_deposit_prepare(working_tree_path, release_candidate_path, deposit_metadata_path, ud_context_path, output_dir_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/release.py",
+        "line": 123,
+        "sha256": "381c883c545395c8044914bce0e5ef147bb9105e5e05eba3e7612b11e2bd4958"
+      },
+      "input_schema": "release_deposit_prepare.input.schema.json",
+      "result_schema": "release_deposit_prepare.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "095",
+      "name": "maintenance_report",
+      "original_signature": "maintenance_report(working_tree_path, maintenance_policy_path, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/maintenance.py",
+        "line": 22,
+        "sha256": "95948812d0f8c8f68aa71124e78fa2fd7859f4232ee8eba1f6e1dff8e69f5c88"
+      },
+      "input_schema": "maintenance_report.input.schema.json",
+      "result_schema": "maintenance_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "096",
+      "name": "handover_package_build",
+      "original_signature": "handover_package_build(working_tree_path, ud_context_path, output_dir_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/maintenance.py",
+        "line": 74,
+        "sha256": "95948812d0f8c8f68aa71124e78fa2fd7859f4232ee8eba1f6e1dff8e69f5c88"
+      },
+      "input_schema": "handover_package_build.input.schema.json",
+      "result_schema": "handover_package_build.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "097",
+      "name": "treebank_rename_plan",
+      "original_signature": "treebank_rename_plan(working_tree_path, new_identity_path, related_repository_paths, ud_context_path, options)",
+      "provenance_category": "O",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/maintenance.py",
+        "line": 91,
+        "sha256": "95948812d0f8c8f68aa71124e78fa2fd7859f4232ee8eba1f6e1dff8e69f5c88"
+      },
+      "input_schema": "treebank_rename_plan.input.schema.json",
+      "result_schema": "treebank_rename_plan.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "098",
+      "name": "star_rating_report",
+      "original_signature": "star_rating_report(working_tree_path, ud_context_path, options)",
+      "provenance_category": "D",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/maintenance.py",
+        "line": 172,
+        "sha256": "95948812d0f8c8f68aa71124e78fa2fd7859f4232ee8eba1f6e1dff8e69f5c88"
+      },
+      "input_schema": "star_rating_report.input.schema.json",
+      "result_schema": "star_rating_report.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "099",
+      "name": "token_split",
+      "original_signature": "token_split(working_tree_path, token_ref, replacement_words, annotation_map, ud_context_path, edit_options)",
+      "provenance_category": "N",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/structural.py",
+        "line": 367,
+        "sha256": "f4f6bc914df3b7565fc56cbe18dc96ee483bfbd32203f8f373d267e7efdc3630"
+      },
+      "input_schema": "token_split.input.schema.json",
+      "result_schema": "token_split.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "100",
+      "name": "tokens_merge",
+      "original_signature": "tokens_merge(working_tree_path, tree_ref, token_ids, merged_word, annotation_map, ud_context_path, edit_options)",
+      "provenance_category": "N",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/structural.py",
+        "line": 371,
+        "sha256": "f4f6bc914df3b7565fc56cbe18dc96ee483bfbd32203f8f373d267e7efdc3630"
+      },
+      "input_schema": "tokens_merge.input.schema.json",
+      "result_schema": "tokens_merge.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "101",
+      "name": "tree_split",
+      "original_signature": "tree_split(working_tree_path, tree_ref, split_boundaries, new_sent_ids, annotation_map, ud_context_path, edit_options)",
+      "provenance_category": "N",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/structural.py",
+        "line": 375,
+        "sha256": "f4f6bc914df3b7565fc56cbe18dc96ee483bfbd32203f8f373d267e7efdc3630"
+      },
+      "input_schema": "tree_split.input.schema.json",
+      "result_schema": "tree_split.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    },
+    {
+      "id": "102",
+      "name": "trees_merge",
+      "original_signature": "trees_merge(working_tree_path, tree_refs, new_sent_id, annotation_map, ud_context_path, edit_options)",
+      "provenance_category": "N",
+      "handler": {
+        "path": "workers/ud/src/ud_agent/domain/structural.py",
+        "line": 379,
+        "sha256": "f4f6bc914df3b7565fc56cbe18dc96ee483bfbd32203f8f373d267e7efdc3630"
+      },
+      "input_schema": "trees_merge.input.schema.json",
+      "result_schema": "trees_merge.schema.json",
+      "upstream_lock": "runtime/ud-sources.lock.json",
+      "behavior_cases": "tests/domain/worker/operation_cases.py"
+    }
+  ]
+}

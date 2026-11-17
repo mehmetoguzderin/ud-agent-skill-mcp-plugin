@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "projection": "moby-cap-empty-to-oci-v1",
+  "source_profile_sha256": "6ae589f2d1422f98c64a691ffbaac96bf30451568d298ec76b5fb7c32c4a6a4a",
+  "architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "capabilities": [],
+  "kernel_precondition": "Linux>=5.13, independently required by worker Landlock admission",
+  "transport": "receipt-verified bounded OCI JSON on the exact create process stdin; seccomp=/dev/stdin",
+  "primary_sources": [
+    {
+      "url": "https://github.com/containerd/nerdctl/blob/94bc03df5247ece1781c4b115a44ef3d4b1e0e65/pkg/cmd/container/run_security_linux.go",
+      "sha256": "7efc2c52cdcfd5b4e3692423fd17b9714d891765d52f32e82b864d8e92e8e49f",
+      "size_bytes": 6639,
+      "source_archive": {
+        "url": "https://codeload.github.com/containerd/nerdctl/tar.gz/94bc03df5247ece1781c4b115a44ef3d4b1e0e65",
+        "sha256": "7285bd50a769ffa1721ca77a45cfc7785a0f4291ccd9798ac17abca1d67f5a0a",
+        "size_bytes": 1684075
+      }
+    },
+    {
+      "url": "https://github.com/containerd/containerd/blob/b7a25261e029d68978bbf290df0a62fc819b3c51/contrib/seccomp/seccomp.go",
+      "sha256": "4f02a2e870fb604b574abad789fb0f1fe4428a307219a1c18b8f75f21eeb61b6",
+      "size_bytes": 1836,
+      "source_archive": {
+        "url": "https://codeload.github.com/containerd/containerd/tar.gz/b7a25261e029d68978bbf290df0a62fc819b3c51",
+        "sha256": "e38df0eeb40d2304f3450edb148aee838cb0a57f3976a47c78870f92c80f1796",
+        "size_bytes": 12237056
+      }
+    }
+  ],
+  "rules": [
+    "Select only the declared native architecture and its exact frozen compatibility architectures.",
+    "Apply architecture includes/excludes and empty-capability conditions before removing Moby-only fields.",
+    "The only current minKernel condition is 4.8, below the independent Landlock kernel prerequisite. Reject other kernel predicates.",
+    "Preserve syscall order, actions, errno values and argument comparisons. Omit only runtime-spec valueTwo zero fields.",
+    "Inspect the complete native OCI seccomp object before starting either loader or worker. Default ordinary-worker policy remains unchanged."
+  ]
+}

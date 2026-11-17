@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "overlap_report",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "matching_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "casefold": {
+              "type": "boolean"
+            },
+            "normalize_whitespace": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "peer_treebank_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "split_spec_path": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional UTF-8 JSON split membership: splits maps at least two labels to nonempty arrays of file paths or {file_path,sent_id} selectors from the current corpus."
+    },
+    "matching_options": {
+      "$ref": "#/$defs/matching_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "peer_treebank_paths",
+    "split_spec_path"
+  ]
+}

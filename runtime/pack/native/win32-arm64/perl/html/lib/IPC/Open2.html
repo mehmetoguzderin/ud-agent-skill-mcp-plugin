@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>IPC::Open2 - open a process for both reading and writing using open2()</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;IPC::Open2 - open a process for both reading and writing using open2()</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#WARNING">WARNING</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>IPC::Open2 - open a process for both reading and writing using open2()</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use IPC::Open2;
+
+my $pid = open2(my $chld_out, my $chld_in,
+  &#39;some&#39;, &#39;cmd&#39;, &#39;and&#39;, &#39;args&#39;);
+# or passing the command through the shell
+my $pid = open2(my $chld_out, my $chld_in, &#39;some cmd and args&#39;);
+
+# read from parent STDIN and write to already open handle
+open my $outfile, &#39;&gt;&#39;, &#39;outfile.txt&#39; or die &quot;open failed: $!&quot;;
+my $pid = open2([&#39;&amp;&#39;, $outfile], [&#39;&amp;&#39;, *STDIN],
+  &#39;some&#39;, &#39;cmd&#39;, &#39;and&#39;, &#39;args&#39;);
+
+# read from already open handle and write to parent STDOUT
+open my $infile, &#39;&lt;&#39;, &#39;infile.txt&#39; or die &quot;open failed: $!&quot;;
+my $pid = open2([&#39;&amp;&#39;, *STDOUT], [&#39;&amp;&#39;, $infile],
+  &#39;some&#39;, &#39;cmd&#39;, &#39;and&#39;, &#39;args&#39;);
+
+# reap zombie and retrieve exit status
+waitpid( $pid, 0 );
+my $child_exit_status = $? &gt;&gt; 8;</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The <code>open2()</code> function runs the given command and connects <code>$chld_out</code> for reading and <code>$chld_in</code> for writing. It&#39;s what you think should work when you try</p>
+
+<pre><code>my $pid = open(my $fh, &quot;|cmd args|&quot;);  # ERROR</code></pre>
+
+<p>but you have to write it as:</p>
+
+<pre><code>my $pid = open2($chld_out, $chld_in, @command_and_args);</code></pre>
+
+<p>The <code>$chld_in</code> filehandle will have autoflush turned on.</p>
+
+<p>By default, the filehandles you pass in are used as output parameters. <code>open2</code> internally creates two pipes. The write end of the first pipe and the read end of the second pipe are connected to the command&#39;s standard output and input, respectively. The corresponding read and write ends are placed in the first and second argument to <code>open2</code>.</p>
+
+<p>The filehandle arguments can take the following forms:</p>
+
+<ul>
+
+<li><p>An uninitialized variable (technically, either <code>undef</code> or the empty string will work): <code>open2</code> generates a fresh filehandle and assigns it to the argument, which must be a modifiable variable for this work (otherwise an exception will be raised).</p>
+
+</li>
+<li><p>An existing handle in the form of a typeglob like <code>*STDIN</code> or <code>*FOO</code> or a reference to such: <code>open2</code> places the filehandle in the <code>IO</code> slot of the typeglob, which means the corresponding bareword filehandle (like <code>STDIN</code> or <code>FOO</code>) can be used for I/O from/to the child process. (If the handle is already open, it is automatically closed first.)</p>
+
+</li>
+<li><p>A string containing the name of a bareword handle (like <code>&#39;STDIN&#39;</code> or <code>&#39;FOO&#39;</code>): Such strings are resolved to typeglobs at runtime and then act like the case described above.</p>
+
+</li>
+</ul>
+
+<p>However, it is possible to make <code>open2</code> use an existing handle directly (as an input argument) and skip the creation of a pipe. To do this, the filehandle argument must have one of the following two forms:</p>
+
+<ul>
+
+<li><p>An array reference like <code>[&#39;&amp;&#39;, $fh]</code>, i.e. the first element is the string <code>&#39;&amp;&#39;</code> and the second element is the existing handle to use in the child process.</p>
+
+</li>
+<li><p>A string of the form <code>&#39;&lt;&amp;FOO&#39;</code> or <code>&#39;&gt;&amp;FOO&#39;</code>, i.e. a string starting with the two characters <code>&lt;&amp;</code> (for input) or <code>&gt;&amp;</code> (for output), followed by the name of a bareword filehandle. (The string form cannot be used with handles stored in variables.)</p>
+
+</li>
+</ul>
+
+<p>If you use this form for <code>$chld_in</code>, the filehandle will be closed in the parent process.</p>
+
+<p><code>open2</code> returns the process ID of the child process. It doesn&#39;t return on failure: it just raises an exception matching <code>/^open2:/</code>. However, <code>exec</code> failures in the child are not detected. You&#39;ll have to trap SIGPIPE yourself.</p>
+
+<p><code>open2</code> does not wait for and reap the child process after it exits. Except for short programs where it&#39;s acceptable to let the operating system take care of this, you need to do this yourself. This is normally as simple as calling <code>waitpid $pid, 0</code> when you&#39;re done with the process. Failing to do this can result in an accumulation of defunct or &quot;zombie&quot; processes. See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlfunc.html#waitpid">&quot;waitpid&quot; in perlfunc</a> for more information.</p>
+
+<p>This whole affair is quite dangerous, as you may block forever. It assumes it&#39;s going to talk to something like <a href="https://man7.org/linux/man-pages/man1/bc.1.html">bc(1)</a>, both writing to it and reading from it. This is presumably safe because you &quot;know&quot; that commands like <a href="https://man7.org/linux/man-pages/man1/bc.1.html">bc(1)</a> will read a line at a time and output a line at a time. Programs like <a href="https://man7.org/linux/man-pages/man1/sort.1.html">sort(1)</a> that read their entire input stream first, however, are quite apt to cause deadlock.</p>
+
+<p>The big problem with this approach is that if you don&#39;t have control over source code being run in the child process, you can&#39;t control what it does with pipe buffering. Thus you can&#39;t just open a pipe to <code>cat -v</code> and continually read and write a line from it.</p>
+
+<p>The <a>IO::Pty</a> and <a>Expect</a> modules from CPAN can help with this, as they provide a real tty (well, a pseudo-tty, actually), which gets you back to line buffering in the invoked command again.</p>
+
+<h1 id="WARNING">WARNING</h1>
+
+<p>The order of arguments differs from that of <code>open3</code> from <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/IPC/Open3.html">IPC::Open3</a>.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/IPC/Open3.html">IPC::Open3</a> for an alternative that handles <code>STDERR</code> as well. This function is really just a wrapper around <code>open3</code>.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;IPC::Open2 - open a process for both reading and writing using open2()</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

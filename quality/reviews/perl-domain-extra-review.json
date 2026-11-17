@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent domain-completion agent /root/domain_completion",
+  "reviews": [
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3670:string_value",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "11b50079fa173e1ab2d71f29ac9f055a25b3783eb6388f3f11e99f255df3f47b",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "string_value",
+        "start": 3670,
+        "end": 3698,
+        "original": "\"bridge execution warning\\n\"",
+        "replacement": "\"\""
+      },
+      "equivalent": true,
+      "reason": "Only the private warning exception text changes. For an emitted warning, Perl die with an emptystring still creates a nonempty exception string by adding its source location. Both paths throw through the same enclosingeval and emit the same fixed graph_execution_failed response/exit1. Detailed exception text is never returned or printed by either enclosingerror path. With no warning the handler is never executed. No request, Graph operation, output, or process termination changes. The verified pinned Graph.pm/Node.pm closure has no eval, warning handler, or $@ observation that could expose the private warning text; dependency fingerprints are included in this review."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/repository_bridge.pl#2886:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/repository_bridge.pl",
+      "source_sha256": "bea257e9f681279cb21be56fa77abe9e9d0233dec322e638e6fc12a1bf309208",
+      "definition_sha256": "695ba3d4a86b206007c00d413bedfe3f6a5468b5aa168552f1f4b49ea20e56d2",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 2886,
+        "end": 2887,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "The terminal eval success sentinel changes from integer1 to integer2. The enclosingcompleted value is observed only by a truthiness guard; both values are true. The sentinel is evaluated after all successful stdout behavior and has no side effect. On every exceptional path eval returnsundef and the sentinel isnotreached, so fixedfailure protocol/exitstatus is unchanged. No actual report/token data includes this private sentinel."
+    },
+    {
+      "id": "scripts/quality/perl_tokens.pl#1888:integer_boundary_1",
+      "file": "scripts/quality/perl_tokens.pl",
+      "source_sha256": "9d594208275077b5b8bfe19da00a4467eaeebdcc02f1c124b4cdb8354adc45b7",
+      "definition_sha256": "f1e651983d90f4a145321e647139cc6647944b1c085c1f1c8d83c98dac8c9681",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 1888,
+        "end": 1889,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "The terminal eval success sentinel changes from integer1 to integer2. The enclosingcompleted value is observed only by a truthiness guard; both values are true. The sentinel is evaluated after all successful stdout behavior and has no side effect. On every exceptional path eval returnsundef and the sentinel isnotreached, so fixedfailure protocol/exitstatus is unchanged. No actual report/token data includes this private sentinel."
+    }
+  ],
+  "verified_upstream_file_sha256": {
+    "Graph.pm": "90cb1c8122921f7c55c4d0e8a503635c43257387c294e85c2eaa2bb8cee09fdb",
+    "Node.pm": "6da8c68d64d2a0ee745ebb4d4f086dbda41f5aa313123aabfd11ff6b5c23336b"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "version": "26.13.0",
+  "signature_authority": "runtime/node-distributions.lock.json",
+  "archives": {
+    "arm64": { "filename": "win-arm64/node_pdb.zip", "sha256": "04f6a090037f4fdf3099e21bf77624da26bede6ff4ea116bdd8713c6a6423c87", "size_bytes": 106513087 },
+    "x64": { "filename": "win-x64/node_pdb.zip", "sha256": "d7c66db0cab81ec73672cd72e7dff8bf194a208f438c306ce4b37d61aabd93eb", "size_bytes": 111035853 }
+  },
+  "scope": "Official public PDB ZIPs covered by the existing signed Node release manifest; inspect as data only, never execute a target."
+}

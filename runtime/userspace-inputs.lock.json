@@ -1,0 +1,105 @@
+{
+  "platforms": {
+    "darwin/arm64": {
+      "python_download": {
+        "sha256": "sha256:95eb8c87d16af37c54e9765e31d8c56c0d8ffa9968ea0f704f73a9b83f84e9f9",
+        "size": 26753457,
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10%2B20261026-aarch64-apple-darwin-install_only_stripped.tar.gz",
+        "version": "3.14.10"
+      },
+      "uv_archive": {
+        "filename": "uv-aarch64-apple-darwin.tar.gz",
+        "sha256": "sha256:81b811b57e4624df7ed3aac148e0359100d9962f3d9dce00aec533dc2e086731",
+        "size": 14347867,
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-aarch64-apple-darwin.tar.gz"
+      }
+    },
+    "darwin/x64": {
+      "python_download": {
+        "sha256": "sha256:2fd8becd48cf0ff5f0a15df3c0db7cae7aa708dcaacf901bd30d6cdd6229370b",
+        "size": 26943401,
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10%2B20261026-x86_64-apple-darwin-install_only_stripped.tar.gz",
+        "version": "3.14.10"
+      },
+      "uv_archive": {
+        "filename": "uv-x86_64-apple-darwin.tar.gz",
+        "sha256": "sha256:20c47e4c1f630b8abaff8c291fa9b9aa300fef92c4fbff95adf198b55287cda7",
+        "size": 17026382,
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-x86_64-apple-darwin.tar.gz"
+      }
+    },
+    "linux/arm64": {
+      "python_download": {
+        "sha256": "sha256:90f48337bc3dd4ae6eda81e001e4c981236d403b6b5a07778bbdf94ee423dc00",
+        "size": 30635900,
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10%2B20261026-aarch64-unknown-linux-gnu-install_only_stripped.tar.gz",
+        "version": "3.14.10"
+      },
+      "uv_archive": {
+        "filename": "uv-aarch64-unknown-linux-gnu.tar.gz",
+        "sha256": "sha256:71279f8d3c67241e807b9d8db872d1bf541579fb9f08b7d1eb1682196d1e57dc",
+        "size": 15896996,
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-aarch64-unknown-linux-gnu.tar.gz"
+      }
+    },
+    "linux/x64": {
+      "python_download": {
+        "sha256": "sha256:4d3c16c59ed0802a3d1d34d8bce504b15ceeaff39d62dadecc6a9fa803412aed",
+        "size": 36776589,
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10%2B20261026-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+        "version": "3.14.10"
+      },
+      "uv_archive": {
+        "filename": "uv-x86_64-unknown-linux-gnu.tar.gz",
+        "sha256": "sha256:c5221ff41b7892bfc223543883600125f6a47fe845093e0f5bdff4f359196d83",
+        "size": 16671812,
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-x86_64-unknown-linux-gnu.tar.gz"
+      }
+    },
+    "win32/arm64": {
+      "python_download": {
+        "sha256": "sha256:2b6cf82a67cb99ef0db0932dd69ee24080077add6f98435cea5de850c144327d",
+        "size": 22285335,
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10%2B20261026-aarch64-pc-windows-msvc-install_only_stripped.tar.gz",
+        "version": "3.14.10"
+      },
+      "uv_archive": {
+        "filename": "uv-aarch64-pc-windows-msvc.zip",
+        "sha256": "sha256:505d9e65e7692bac3ddf98c66754aa26c5050c409c184af30a881a0a72cc85e3",
+        "size": 15538425,
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-aarch64-pc-windows-msvc.zip"
+      }
+    },
+    "win32/x64": {
+      "python_download": {
+        "sha256": "sha256:c1876a9795d3a94ee49a1499a69cd91e26ca3e2829593f93fa6e4db90d05402b",
+        "size": 23294761,
+        "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10%2B20261026-x86_64-pc-windows-msvc-install_only_stripped.tar.gz",
+        "version": "3.14.10"
+      },
+      "uv_archive": {
+        "filename": "uv-x86_64-pc-windows-msvc.zip",
+        "sha256": "sha256:0cdc5b38fe5a8168ed6a25814f5ba43c21d313dd3187314fccb37b7cec46e021",
+        "size": 15236317,
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-x86_64-pc-windows-msvc.zip"
+      }
+    }
+  },
+  "python_default": "3.14.10",
+  "python_release": "20261026",
+  "release_receipts": [
+    {
+      "path": "runtime/receipts/userspace-uv-release.json",
+      "sha256": "sha256:bfa8186182a1e9db2955fa879bf19ed30047728ec3deca556f82aa80ea1d8c5f",
+      "size": 95311
+    },
+    {
+      "path": "runtime/receipts/userspace-python-release.json",
+      "sha256": "sha256:ca2bb7259a71dbd9192d6d251b5e96c7d8d0e5b1da4ff76434f89001da2a1080",
+      "size": 2099105
+    }
+  ],
+  "schema_version": 1,
+  "state": "frozen-inputs",
+  "uv_version": "0.13.7"
+}

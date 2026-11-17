@@ -1,0 +1,8 @@
+[workspace]
+members = ["packages/launcher"]
+resolver = "3"
+
+# The debug guard hashes whole runtime executables (Node is ~150 MB) before
+# spawning; unoptimized SHA-256 takes seconds there and delays cancellation.
+[profile.dev.package.sha2]
+opt-level = 3

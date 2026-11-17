@@ -1,0 +1,15 @@
+{
+  "author": "native_transactions",
+  "decision": "original-readable-notice-source-only",
+  "extractions_sha256": "fd596a1706ca0e6fa16fe6a9f8d6ab71a6fa0b90251a2720bcdbbf06dbe85cbc",
+  "implementation_coverage": false,
+  "lock": {
+    "path": "runtime/materials/native-render-notice-sources.lock.json",
+    "sha256": "74f5ca0b11d52d9a665666f6965a966c4abd5e684f2eb96b47d0893cc0980bcd",
+    "size_bytes": 592
+  },
+  "publisher_authority": false,
+  "qualification": "independent-exact-render-notice-source-extraction-review-not-publisher-authority",
+  "reviewed_by": "root",
+  "schema_version": 1
+}

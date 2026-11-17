@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Require - Base class and documentation for skip-unless type test packages.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Require - Base class and documentation for skip-unless type test packages.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#HOW-DO-I-WRITE-A-REQUIRE-MODULE">HOW DO I WRITE A &#39;REQUIRE&#39; MODULE?</a>
+    <ul>
+      <li><a href="#AS-A-SUBCLASS">AS A SUBCLASS</a></li>
+      <li><a href="#STAND-ALONE">STAND-ALONE</a></li>
+    </ul>
+  </li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Require - Base class and documentation for skip-unless type test packages.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Test2::Require::* packages are packages you load to ensure your test file is skipped unless a specific requirement is met. Modules in this namespace may subclass <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Require.html">Test2::Require</a> if they wish, but it is not strictly necessary to do so.</p>
+
+<h1 id="HOW-DO-I-WRITE-A-REQUIRE-MODULE">HOW DO I WRITE A &#39;REQUIRE&#39; MODULE?</h1>
+
+<h2 id="AS-A-SUBCLASS">AS A SUBCLASS</h2>
+
+<pre><code>package Test2::Require::Widget;
+use strict;
+use warnings;
+
+use base &#39;Test2::Require&#39;;
+
+sub HAVE_WIDGETS { ... };
+
+sub skip {
+    my $class = shift;
+    my @import_args = @_;
+
+    if (HAVE_WIDGETS()) {
+        # We have widgets, do not skip
+        return undef;
+    }
+    else {
+        # No widgets, skip the test
+        return &quot;Skipped because there are no widgets&quot; unless HAVE_WIDGETS();
+    }
+}
+
+1;</code></pre>
+
+<p>A subclass of <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Require.html">Test2::Require</a> simply needs to implement a <code>skip()</code> method. This method will receive all import arguments. This method should return undef if the test should run, and should return a reason for skipping if the test should be skipped.</p>
+
+<h2 id="STAND-ALONE">STAND-ALONE</h2>
+
+<p>If you do not wish to subclass <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Require.html">Test2::Require</a> then you should write an <code>import()</code> method:</p>
+
+<pre><code>package Test2::Require::Widget;
+use strict;
+use warnings;
+
+use Test2::API qw/context/;
+
+sub HAVE_WIDGETS { ... };
+
+sub import {
+    my $class = shift;
+
+    # Have widgets, should run.
+    return if HAVE_WIDGETS();
+
+    # Use the context object to create the event
+    my $ctx = context();
+    $ctx-&gt;plan(0, SKIP =&gt; &quot;Skipped because there are no widgets&quot;);
+    $ctx-&gt;release;
+}
+
+1;</code></pre>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Suite can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Require - Base class and documentation for skip-unless type test packages.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "qualification": "actual native ARM recursively read-only worker OCI Spec captured before start; failed policy attempt, not successful acceptance",
+  "source": ".artifacts/lima-product/installed-public-ud-installed-lima-mX1pEQ-guardian-ctr-retry1/native-73ee7d3b-ea8a-4b92-a943-28b0fe319f4d-worker.json",
+  "source_sha256": "851d9af4629965fb73ca606f8c6ae02d3b0bb8f790ec87524d9a945033cfc45d",
+  "fixture_sha256": "47e45555898eccbe2ca3f0f6eb8db265287f20347fe4526255e91adc164ed3d9",
+  "expected": {
+    "id": "b9bc466ecea9619c080810598413b6ea7b46c49b0de4e7c9802f0f6ebadb9ba7",
+    "jobId": "73ee7d3b-ea8a-4b92-a943-28b0fe319f4d",
+    "image": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-core@sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+    "command": [
+      "-I",
+      "-B",
+      "-c",
+      "import sys;sys.path[:0]=['/opt/ud-agent/worker','/opt/ud-agent/upstream/udtools/src'];from ud_agent.oci_worker import main;raise SystemExit(main())"
+    ],
+    "readOnlyInput": true,
+    "inputSource": "/home/udagent/.local/share/nerdctl/77f28886/volumes/ud-agent/ud-agent-73ee7d3b-ea8a-4b92-a943-28b0fe319f4d-input/_data"
+  }
+}

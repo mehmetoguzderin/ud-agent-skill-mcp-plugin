@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "upstream": "https://github.com/moby/profiles",
+  "commit": "4b8214fc4971e06172938a1f1554ccff6647ee80",
+  "source_path": "seccomp/default.json",
+  "license": "Apache-2.0",
+  "modifications": [
+    "Allow clone user/PID/network namespace flags while rejecting mount, cgroup, UTS and IPC namespace flags.",
+    "Allow unshare only with the constrained NEWUSER mask.",
+    "Allow chroot, still subject to Linux capabilities in the current user namespace."
+  ],
+  "sha256": "6ae589f2d1422f98c64a691ffbaac96bf30451568d298ec76b5fb7c32c4a6a4a"
+}

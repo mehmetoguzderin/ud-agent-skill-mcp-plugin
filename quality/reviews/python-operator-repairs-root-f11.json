@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "qualification": "independent-exact-source-typed-ABI-retarget-review-not-mutation-outcomes",
+  "author": "native_transactions",
+  "reviewer": "root",
+  "proposal": {
+    "path": ".artifacts/python-abi-retarget-f11-proposal/proposal.json",
+    "sha256": "899c203d86f140fd6ed6a7d9e5d2389feec83b58d1468178e29d2f9c74b81ece",
+    "size_bytes": 84656
+  },
+  "yield_provenance": {
+    "path": ".artifacts/python-abi-retarget-f11-proposal/yield-provenance.json",
+    "sha256": "bfd588521296a2c4c0d8a6e03582d5093ef345ec7143bf413db237df0198d3cc",
+    "size_bytes": 9065
+  },
+  "global_uniqueness_audit": {
+    "path": ".artifacts/python-abi-retarget-f11-proposal/uniqueness-audit.json",
+    "sha256": "1c6bb2582bdb193104b525c4c5219e7a6d0d88bc6a4e88fd2d070411f1b1f5e5",
+    "size_bytes": 734
+  },
+  "reviews": [
+    {
+      "id": "scripts.quality.oci-exec.x__handoff__mutmut_237",
+      "decision": "approve-typed-regeneration-only",
+      "source_sha256": "209a5d141ddee2e3806d0f2ce162b7175ab744240e8453a513569ba663c56cab",
+      "upstream_definition_sha256": "92069b41594c6d36307975c78cea54cb285f9567711fd4dc8e5851a74d80860c",
+      "proposed_function_sha256": "86949eac6d82b431c9682edacd61ff63730793692759b8a4e6db01d8e4067050",
+      "removed_argument_index": 1,
+      "type_contract": "os.chown(path,uid,gid,*,follow_symlinks) requires both integer identity slots; retarget the removed UID value by +1 while preserving the other slot and exact arity.",
+      "reason": "The pinned left-to-right argument-removal origin is recorded, the raw call omits a required positional slot, and this exact replacement restores required arity while independently changing that slot with an integer, string or Path value. All other function bytes and line identities are retained. This is a valid-program operator repair, not a kill, exclusion or equivalent exception."
+    },
+    {
+      "id": "scripts.quality.oci-exec.x__handoff__mutmut_238",
+      "decision": "approve-typed-regeneration-only",
+      "source_sha256": "209a5d141ddee2e3806d0f2ce162b7175ab744240e8453a513569ba663c56cab",
+      "upstream_definition_sha256": "92069b41594c6d36307975c78cea54cb285f9567711fd4dc8e5851a74d80860c",
+      "proposed_function_sha256": "84ab64ce1b1ceaaebc0f2a46163b1789ff2e35449a18e072280d24581fbcae10",
+      "removed_argument_index": 2,
+      "type_contract": "os.chown(path,uid,gid,*,follow_symlinks) requires both integer identity slots; retarget the removed GID value by +1 while preserving the other slot and exact arity.",
+      "reason": "The pinned left-to-right argument-removal origin is recorded, the raw call omits a required positional slot, and this exact replacement restores required arity while independently changing that slot with an integer, string or Path value. All other function bytes and line identities are retained. This is a valid-program operator repair, not a kill, exclusion or equivalent exception."
+    },
+    {
+      "id": "scripts.release.bind-render-sources.x_package_source_requirements__mutmut_8",
+      "decision": "approve-typed-regeneration-only",
+      "source_sha256": "8e059908367c31c4f455f54a9373b0a1a38f32f56c452c9344a89c46623011a3",
+      "upstream_definition_sha256": "4bc66348c2a7452ed7f23b057b2761285a0f1c38c3b0f5619304262c4e53ec79",
+      "proposed_function_sha256": "8c580772a88a6bd38535996a494456ac0a7503b4ffb367ad89475bcc30218717",
+      "removed_argument_index": 1,
+      "type_contract": "deb_member(archive,section,member_path,expected) requires four arguments; keep Path/dict inputs and independently retarget the section string to data.",
+      "reason": "The pinned left-to-right argument-removal origin is recorded, the raw call omits a required positional slot, and this exact replacement restores required arity while independently changing that slot with an integer, string or Path value. All other function bytes and line identities are retained. This is a valid-program operator repair, not a kill, exclusion or equivalent exception."
+    },
+    {
+      "id": "scripts.release.bind-render-sources.x_package_source_requirements__mutmut_9",
+      "decision": "approve-typed-regeneration-only",
+      "source_sha256": "8e059908367c31c4f455f54a9373b0a1a38f32f56c452c9344a89c46623011a3",
+      "upstream_definition_sha256": "4bc66348c2a7452ed7f23b057b2761285a0f1c38c3b0f5619304262c4e53ec79",
+      "proposed_function_sha256": "ebd95f9e58ea0224db90a4e4d70c86c89b23c69a968a3b991035217b0209ca79",
+      "removed_argument_index": 2,
+      "type_contract": "deb_member(archive,section,member_path,expected) requires four arguments; keep Path/dict inputs and independently retarget the member-path string to control.ud-mutation.",
+      "reason": "The pinned left-to-right argument-removal origin is recorded, the raw call omits a required positional slot, and this exact replacement restores required arity while independently changing that slot with an integer, string or Path value. All other function bytes and line identities are retained. This is a valid-program operator repair, not a kill, exclusion or equivalent exception."
+    },
+    {
+      "id": "scripts.release.materialize-replay-inputs.x_materialize__mutmut_404",
+      "decision": "approve-typed-regeneration-only",
+      "source_sha256": "58c59dd6daf08f83216b642bc57ec4e7b2961f8a846ca112ecdea172efdc20d8",
+      "upstream_definition_sha256": "9077e1cf0a10fa3612578caee29c5a16c0c72654c758177740f76050d69889b9",
+      "proposed_function_sha256": "fac445e3288dcb8e65750ff19f479ec9ffd3ab918f5262cc1d0029b3870f6f56",
+      "removed_argument_index": 0,
+      "type_contract": "copy_oci_members(artifact_root,runtime_root,artifact,runtime_sha256,requests,destination,*,available_targets) requires six positional arguments; retain all values/types and independently retarget artifact_root to the Path parent.",
+      "reason": "The pinned left-to-right argument-removal origin is recorded, the raw call omits a required positional slot, and this exact replacement restores required arity while independently changing that slot with an integer, string or Path value. All other function bytes and line identities are retained. This is a valid-program operator repair, not a kill, exclusion or equivalent exception."
+    },
+    {
+      "id": "scripts.release.materialize-replay-inputs.x_materialize__mutmut_405",
+      "decision": "approve-typed-regeneration-only",
+      "source_sha256": "58c59dd6daf08f83216b642bc57ec4e7b2961f8a846ca112ecdea172efdc20d8",
+      "upstream_definition_sha256": "9077e1cf0a10fa3612578caee29c5a16c0c72654c758177740f76050d69889b9",
+      "proposed_function_sha256": "cbe75e6dbfa82a603082e55df6fbc6607785f19b0ab06f6da8b2dc6fd8a2e63a",
+      "removed_argument_index": 1,
+      "type_contract": "copy_oci_members(artifact_root,runtime_root,artifact,runtime_sha256,requests,destination,*,available_targets) requires six positional arguments; retain all values/types and independently retarget runtime_root to the Path parent.",
+      "reason": "The pinned left-to-right argument-removal origin is recorded, the raw call omits a required positional slot, and this exact replacement restores required arity while independently changing that slot with an integer, string or Path value. All other function bytes and line identities are retained. This is a valid-program operator repair, not a kill, exclusion or equivalent exception."
+    }
+  ],
+  "host_validation": "Original source/signature inspection plus AST and bytecode-as-data only; no emitted function imports, calls or execution.",
+  "approved_for_registry_activation": true,
+  "limitations": "Actual mutant execution and strict outcome reconciliation remain required. No threshold, scope, runtime-error or equivalence waiver is authorized."
+}

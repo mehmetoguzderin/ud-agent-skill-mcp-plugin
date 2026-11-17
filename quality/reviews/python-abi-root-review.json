@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "reviewer": "root",
+  "author": "acceptance_release",
+  "decision": "valid_operator_family",
+  "operator_version": "ud-python-operators-2",
+  "operator_source": {
+    "path": "scripts/quality/python-operators.py",
+    "sha256": "d600d2282ae675354dec123396e965f0357b26e2e7d57b27ddc5407f9baf8183"
+  },
+  "test_source": {
+    "path": "tests/mutation/test_python_operators.py",
+    "sha256": "ba8733ca69f8decb2658e0c1c154a1ff4da354cf3e3377b011f894dac6b7cf35"
+  },
+  "proof": {
+    "path": ".artifacts/test-evidence/python-abi-root-review-v2.json",
+    "sha256": "3c6a4e6fe70eb3505a413bb497378b902255eed404fea7a11d7087ef55b5522c"
+  },
+  "independently_checked_calls": 17,
+  "independently_checked_instances": 150,
+  "source_fingerprints": {
+    "scripts/quality/oci-isolation.py": "ec81a1a28315e704bb56eb35f6056dd93720ad2a2c6eaac40de2373cb9cf4e62",
+    "workers/ud/src/ud_agent/render_process.py": "81252dd9a03473e2f25c72e1cfdbfeac1e25bf5705ff76a5bedc4ceaef6931f9",
+    "workers/ud/src/ud_agent/vm_confinement.py": "11e0b33fb88fca379340a997b594e4c853da7417596c32ec69a24c3fa634902a"
+  },
+  "reason": "All 17 exact owned ABI/select call sites were independently enumerated from Python ASTs and all 150 None/removal operator instances regenerated. Every replacement preserves the callee, ABI argument count, original syscall/prctl command word and pointer/size expressions. Replacements change distinct integer data/flags words or explicitly borrowed existing read descriptors and nonnegative timeouts. The original calls remain byte-identical. Four independent operator tests passed, including all eight select variants in a child with stdin deliberately closed. Duplicate programs remain rejected. Unknown call shapes fail generation. This approves only the exact typed generator family, not mutation outcomes, equivalent exceptions, runtime-error kills or broader operator exclusions."
+}

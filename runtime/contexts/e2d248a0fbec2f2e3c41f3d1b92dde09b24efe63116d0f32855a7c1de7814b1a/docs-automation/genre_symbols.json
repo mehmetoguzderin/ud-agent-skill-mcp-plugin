@@ -1,0 +1,21 @@
+{
+    "none":"file-o",
+    "news":"newspaper-o",
+    "fiction":"book",
+    "nonfiction":"info-circle",
+    "academic":"graduation-cap",
+    "medical":"eyedropper",
+    "legal":"legal",
+    "government":"fort-awesome",
+    "blog":"calendar",
+    "reviews":"thumbs-o-up",
+    "social":"feed",
+    "email":"envelope",
+    "spoken":"comment-o",
+    "wiki":"wikipedia-w",
+    "web":"globe",
+    "bible":"cloud",
+    "grammar-examples":"magic",
+    "learner-essays":"edit",
+    "poetry":"music"
+}

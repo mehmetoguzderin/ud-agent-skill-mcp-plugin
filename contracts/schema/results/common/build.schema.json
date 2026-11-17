@@ -1,0 +1,1445 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "location": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string"
+        },
+        "sent_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "file_path",
+        "sent_id",
+        "ordinal"
+      ]
+    },
+    "occurrence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/location"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "token_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "token_id"
+          ]
+        }
+      ]
+    },
+    "row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "form": {
+          "type": "string"
+        },
+        "lemma": {
+          "type": "string"
+        },
+        "upos": {
+          "type": "string"
+        },
+        "xpos": {
+          "type": "string"
+        },
+        "feats": {
+          "type": "string"
+        },
+        "head": {
+          "type": "string"
+        },
+        "deprel": {
+          "type": "string"
+        },
+        "deps": {
+          "type": "string"
+        },
+        "misc": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "form",
+        "lemma",
+        "upos",
+        "xpos",
+        "feats",
+        "head",
+        "deprel",
+        "deps",
+        "misc"
+      ]
+    },
+    "count": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "proportion": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "count",
+        "denominator",
+        "proportion"
+      ]
+    },
+    "manifest_entry": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "size_bytes",
+        "sha256"
+      ]
+    },
+    "artifact": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "relative_path": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content_base64": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "relative_path",
+            "mime_type",
+            "size_bytes",
+            "sha256",
+            "content_base64"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "filename",
+            "mime_type",
+            "size_bytes",
+            "sha256",
+            "content"
+          ]
+        }
+      ]
+    },
+    "change": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string"
+        },
+        "before_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "after_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "content": {
+          "type": "string"
+        },
+        "content_base64": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "file_path",
+        "before_sha256",
+        "after_sha256"
+      ]
+    },
+    "file_operation": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "const": "create"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "before_sha256": {
+              "type": "null"
+            },
+            "after_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "file_path",
+            "before_sha256",
+            "after_sha256",
+            "content"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "const": "delete"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "before_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "after_sha256": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "operation",
+            "file_path",
+            "before_sha256",
+            "after_sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "const": "rename"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "target_file_path": {
+              "type": "string"
+            },
+            "before_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "target_before_sha256": {
+              "type": "null"
+            },
+            "after_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content_base64": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "file_path",
+            "target_file_path",
+            "before_sha256",
+            "target_before_sha256"
+          ]
+        }
+      ]
+    },
+    "check_state": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "incidents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "testid": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "level": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "check_family": {
+                "type": "string"
+              }
+            },
+            "required": []
+          }
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "file_paths": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sentence_only": {
+              "type": "boolean"
+            },
+            "filtered": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "file_paths",
+            "sentence_only"
+          ]
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "repository": {
+              "type": "string"
+            },
+            "documentation": {
+              "type": "string"
+            },
+            "project_rules": {
+              "type": "string"
+            },
+            "release_policy": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "content"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "repository_name": {
+              "type": "string"
+            },
+            "adapter": {
+              "type": "string"
+            },
+            "languages_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "validator_module_path": {
+              "type": "string"
+            },
+            "validator_class_name": {
+              "type": "string"
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "passed",
+        "incidents",
+        "scope",
+        "coverage",
+        "limitations"
+      ]
+    },
+    "annotation_needed": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "needs_annotation"
+        },
+        "missing_decisions": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "action_id": {
+                    "type": "string"
+                  },
+                  "required": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action_id",
+                  "required",
+                  "reason"
+                ]
+              }
+            ]
+          }
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/change"
+          }
+        },
+        "plan": {
+          "type": "object",
+          "properties": {
+            "complete": {
+              "const": false
+            },
+            "required_fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "complete",
+            "required_fields"
+          ]
+        },
+        "requires_host_commit": {
+          "type": "boolean"
+        },
+        "requested_mode": {
+          "enum": [
+            "preview",
+            "apply"
+          ]
+        },
+        "details": {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "type": "string"
+            },
+            "action_id": {
+              "type": "string"
+            },
+            "selected_action_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "completed_operations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "object",
+                    "properties": {},
+                    "required": []
+                  }
+                },
+                "required": [
+                  "operation",
+                  "result"
+                ]
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "status",
+        "missing_decisions",
+        "changes"
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "candidate"
+        },
+        "requested_mode": {
+          "enum": [
+            "preview",
+            "apply"
+          ]
+        },
+        "requires_host_commit": {
+          "type": "boolean"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/change"
+          }
+        },
+        "details": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "validation": {
+          "$ref": "#/$defs/check_state"
+        },
+        "context_changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language_code": {
+                "type": "string"
+              },
+              "files": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "file_hashes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "base_hashes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "context_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "language_code",
+              "files",
+              "file_hashes",
+              "base_hashes",
+              "context_sha256"
+            ]
+          }
+        },
+        "file_operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/file_operation"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "requested_mode",
+        "requires_host_commit",
+        "changes",
+        "details",
+        "validation"
+      ]
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "replace_file",
+            "create_file",
+            "delete_file",
+            "rename_file",
+            "replace_text",
+            "prepare_context",
+            "token_split",
+            "tokens_merge",
+            "tree_split",
+            "trees_merge",
+            "tokenization_reconcile"
+          ]
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "input_fingerprints": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "file_path": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "target_file_path": {
+          "type": "string"
+        },
+        "before_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "after_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "target_before_sha256": {
+          "type": "null"
+        },
+        "content": {
+          "type": "string"
+        },
+        "diff": {
+          "type": "string"
+        },
+        "old_text": {
+          "type": "string"
+        },
+        "new_text": {
+          "type": "string"
+        },
+        "conflict": {
+          "type": "boolean"
+        },
+        "language_code": {
+          "type": "string"
+        },
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "file_hashes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "base_hashes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "context_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "annotation_map": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "requires_annotation_map": {
+          "type": "boolean"
+        },
+        "temporary_id": {
+          "type": "string"
+        },
+        "temporary_ids": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "temporary_tree_ids": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "source_tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "form": {
+                "type": "string"
+              },
+              "file_path": {
+                "type": "string"
+              },
+              "sent_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "token_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "form",
+              "file_path",
+              "sent_id",
+              "ordinal",
+              "token_id"
+            ]
+          }
+        },
+        "target_tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "form": {
+                "type": "string"
+              },
+              "file_path": {
+                "type": "string"
+              },
+              "sent_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "token_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "form",
+              "file_path",
+              "sent_id",
+              "ordinal",
+              "token_id"
+            ]
+          }
+        },
+        "character_offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "desired_after": {
+          "$ref": "#/$defs/location"
+        },
+        "current_after": {
+          "$ref": "#/$defs/location"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "depends_on"
+      ]
+    },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "ud-plan-v1"
+        },
+        "plan_type": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/action"
+          }
+        },
+        "validation": {
+          "$ref": "#/$defs/check_state"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "plan_type",
+        "actions"
+      ]
+    },
+    "export": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "candidate",
+            "complete",
+            "incomplete"
+          ]
+        },
+        "output_dir_path": {
+          "type": "string"
+        },
+        "requires_host_export": {
+          "type": "boolean"
+        },
+        "requires_broker_export": {
+          "type": "boolean"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "output_dir_path",
+        "artifacts"
+      ]
+    },
+    "release_validation": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "completed",
+            "incomplete"
+          ]
+        },
+        "passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "report": {
+          "$ref": "#/$defs/validation"
+        }
+      },
+      "required": [
+        "status",
+        "passed"
+      ]
+    },
+    "git_attestation": {
+      "type": "object",
+      "properties": {
+        "requested_revision": {
+          "type": "string"
+        },
+        "resolved_commit": {
+          "type": "string"
+        },
+        "tree_oid": {
+          "type": "string"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "method": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "requested_revision",
+        "resolved_commit",
+        "tree_oid",
+        "snapshot_sha256",
+        "method"
+      ]
+    },
+    "metric": {
+      "type": "object",
+      "properties": {
+        "correct": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gold_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "system_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "aligned_total": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "precision": {
+          "type": "number"
+        },
+        "recall": {
+          "type": "number"
+        },
+        "f1": {
+          "type": "number"
+        },
+        "aligned_accuracy": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "correct",
+        "gold_total",
+        "system_total",
+        "aligned_total",
+        "precision",
+        "recall",
+        "f1",
+        "aligned_accuracy"
+      ]
+    },
+    "scoring": {
+      "type": "object",
+      "properties": {
+        "scores": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/metric"
+          }
+        },
+        "pair_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "enhanced": {
+          "type": "boolean"
+        },
+        "treebank_type": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
+        "definition": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "gold": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "system": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "gold",
+            "system"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "scores",
+        "pair_count",
+        "enhanced",
+        "treebank_type",
+        "definition",
+        "roles"
+      ]
+    },
+    "structural_details": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "type": "string"
+        },
+        "id_mapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "target_sentence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "operation",
+        "id_mapping",
+        "target_sentence_ids"
+      ]
+    },
+    "json_value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/json_value"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/json_value"
+          }
+        }
+      ]
+    },
+    "portable_release_provenance": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "selected_files_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_identity_method": {
+          "type": "string"
+        },
+        "implementation": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "const": "ud-agent-skill-mcp-plugin"
+            },
+            "version": {
+              "const": "0.1.0-beta.1"
+            },
+            "new_code_license": {
+              "const": "MIT"
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "files": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/manifest_entry"
+                  }
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "files",
+                "sha256"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "version",
+            "new_code_license",
+            "source"
+          ]
+        },
+        "validator": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "identified"
+                },
+                "source": {
+                  "type": "object",
+                  "properties": {
+                    "files": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/$defs/manifest_entry"
+                      }
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  },
+                  "required": [
+                    "files",
+                    "sha256"
+                  ]
+                }
+              },
+              "required": [
+                "status",
+                "source"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "unavailable"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "status",
+                "reason"
+              ]
+            }
+          ]
+        },
+        "upstream_revision_declarations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "commit": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}(?:[a-f0-9]{24})?$"
+              },
+              "archive_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "evidence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "commit",
+              "evidence"
+            ]
+          }
+        },
+        "context": {
+          "type": "object",
+          "properties": {
+            "identity": {
+              "type": "string",
+              "pattern": "^urn:ud-agent:context:sha256:[a-f0-9]{64}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "rules": {
+              "type": "array",
+              "minItems": 7,
+              "maxItems": 7,
+              "items": {
+                "$ref": "#/$defs/manifest_entry"
+              }
+            },
+            "manifest_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "identity",
+            "sha256",
+            "rules"
+          ]
+        },
+        "licenses": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "present",
+                "not_selected"
+              ]
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/manifest_entry"
+              }
+            },
+            "interpretation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "files",
+            "interpretation"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "selected_files_sha256",
+        "source_identity_method",
+        "implementation",
+        "validator",
+        "upstream_revision_declarations",
+        "context",
+        "licenses"
+      ]
+    }
+  },
+  "$ref": "#/$defs/export"
+}

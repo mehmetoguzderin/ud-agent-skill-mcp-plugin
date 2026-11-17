@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "version": "26.13.0",
+  "platforms": {
+    "win32-arm64": {
+      "sha256": "4c9baa047c4ae555050179f25a63153f1c962af32e2aad97735fb550750c5e7a",
+      "size_bytes": 88331080
+    },
+    "win32-x64": {
+      "sha256": "14319838b3f355e0398c13569a90270bce4fc68f25189f58c59b03dadae0e6d5",
+      "size_bytes": 100097864
+    }
+  }
+}

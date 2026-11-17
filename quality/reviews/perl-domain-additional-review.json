@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent domain-completion agent /root/domain_completion",
+  "sources": {
+    "workers/ud/src/ud_agent/perl/graph_bridge.pl": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1"
+  },
+  "reviews": [
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1648:operator_&&",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "ae55fcdd0215a88efbdd11333236c5d501cd8fa8b204db521dbe91e9069a28d8",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_&&",
+        "start": 1648,
+        "end": 1650,
+        "original": "&&",
+        "replacement": "||"
+      },
+      "equivalent": false,
+      "reason": "Rejected: a valid edge object with required head/dependent/relation plus an extra fourth key is rejected by the original exact-key guard. Changing this conjunction to disjunction admits that object and changes its result to graph processing (or prerequisite failure if modules are absent). Example nodes[1], edge{head:0,dependent:1,relation:dep,extra:1}."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1677:operator_&&",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "ca00b6d5259d0ac5d7c1c3d9dc49850b748e2e04662e51369d2f61f5644f5d18",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_&&",
+        "start": 1677,
+        "end": 1679,
+        "original": "&&",
+        "replacement": "||"
+      },
+      "equivalent": false,
+      "reason": "Rejected: a valid edge object with required head/dependent/relation plus an extra fourth key is rejected by the original exact-key guard. Changing this conjunction to disjunction admits that object and changes its result to graph processing (or prerequisite failure if modules are absent). Example nodes[1], edge{head:0,dependent:1,relation:dep,extra:1}."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1702:operator_&&",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "783002c090d4d6fbd77d1331543baa78e3baade264faf0ee4483bc14fc18dd19",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_&&",
+        "start": 1702,
+        "end": 1704,
+        "original": "&&",
+        "replacement": "||"
+      },
+      "equivalent": false,
+      "reason": "Rejected: a valid edge object with required head/dependent/relation plus an extra fourth key is rejected by the original exact-key guard. Changing this conjunction to disjunction admits that object and changes its result to graph processing (or prerequisite failure if modules are absent). Example nodes[1], edge{head:0,dependent:1,relation:dep,extra:1}."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1732:operator_&&",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "14a4c859613e2cef4ae641d4c4076fde01aba604b75223eccae9e1965644089d",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_&&",
+        "start": 1732,
+        "end": 1734,
+        "original": "&&",
+        "replacement": "||"
+      },
+      "equivalent": false,
+      "reason": "Rejected: a valid edge object with required head/dependent/relation plus an extra fourth key is rejected by the original exact-key guard. Changing this conjunction to disjunction admits that object and changes its result to graph processing (or prerequisite failure if modules are absent). Example nodes[1], edge{head:0,dependent:1,relation:dep,extra:1}."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#2216:string_value",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "7a556022830918cc25396ad1dd4eae6f674b5e2af1e825a5c2a84e1a9633d414",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "string_value",
+        "start": 2216,
+        "end": 2220,
+        "original": "\"\\0\"",
+        "replacement": "\"\""
+      },
+      "equivalent": false,
+      "reason": "Rejected: numeric endpoint IDs have variable widths. Distinct edges1->23 and12->3 with the same relation dep both become123dep without a delimiter. The mutant falsely rejects the second as duplicate_edge. All four IDs satisfy the node grammar."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3079:operator_||",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "4a530f781bfeb211d24284f459f0ffffa08f6a2547f8dff854e87ba2d17b3e62",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_||",
+        "start": 3079,
+        "end": 3081,
+        "original": "||",
+        "replacement": "&&"
+      },
+      "equivalent": false,
+      "reason": "Rejected: incoming edges are insertion-ordered in real pinned Graph.pm (push at lines215-216). For head2 then head1 into node3 with equal relation dep, original sorts1,2 while mutant compares equal and retains2,1. Parallel relations from the same head also lose lexical ordering."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3392:operator_||",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "7e7a376366eec9139af831b71d4093703fdfc234849fd325415ee960abf7351e",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_||",
+        "start": 3392,
+        "end": 3394,
+        "original": "||",
+        "replacement": "&&"
+      },
+      "equivalent": true,
+      "reason": "Accepted: the inner eval final expression is always a defined hash reference on success, and Perl clears$@ on successful eval. An exceptional exit assignsundef to$result and nonempty$@, so bothguards reject. If an exception object overloads booleanfalse, the relaxed guard reaches JSON::PP allow_nonref(0), which rejectsundef; the new outer eval then emits exactly the same graph_execution_failed envelope. No success path returns an undefined result."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3719:integer_boundary_1",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "5ab452eed3482d288a97de01a914f79b0641b0ac07bb4cecd76edf51c6528625",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 3719,
+        "end": 3720,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "Accepted: outer eval success sentinel is consumed only by unless$completed;1 and2 are true, while exceptions remain false/undef. mainalready emitted identical successfulJSON; both variants suppress the final failure envelope on success."
+    }
+  ]
+}

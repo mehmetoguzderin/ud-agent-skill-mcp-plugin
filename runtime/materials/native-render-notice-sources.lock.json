@@ -1,0 +1,11 @@
+{
+  "collection": {
+    "path": ".artifacts/source-materials-data/native-render-original-notices-3/receipt.json",
+    "sha256": "6b96715d140f122c8c82284624b0e78a860e12068350e5d2ea386b4129793c50",
+    "size_bytes": 85599
+  },
+  "extractions_sha256": "fd596a1706ca0e6fa16fe6a9f8d6ab71a6fa0b90251a2720bcdbbf06dbe85cbc",
+  "qualification": "frozen-original-render-notice-source-extractions",
+  "schema_version": 1,
+  "scope": "Only exact original readable copyright source forms, with locked supplier/member/extraction identity. No unshipped implementation or publisher authority is inferred."
+}

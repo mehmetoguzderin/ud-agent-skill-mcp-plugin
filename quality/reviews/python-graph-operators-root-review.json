@@ -1,0 +1,1036 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent root agent /root",
+  "author": "/root/domain_completion",
+  "proposal": {
+    "path": "quality/python-graph-operator-proposals.json",
+    "sha256": "6c20cf308631ab249b395e1b3b52bbbf48b4568e1ceaa7d48abf01282d2d82a4",
+    "version": "ud-graph-typed-operators-proposal-1"
+  },
+  "source": {
+    "path": "workers/ud/src/ud_agent/graph_backend.py",
+    "sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444"
+  },
+  "qualification": "Operator validity review only. No mutant was executed on the host; no previous RuntimeError is accepted as a kill. All regenerated definitions require fresh independent discovery, complete test execution and strict reconciliation. This does not approve the 96 retained outcomes or any equivalent exception.",
+  "reason": "Reviewed each replacement against its dominated runtime contract: iterable and container values retain tuple/field shape, aliases and reverse lookups retain existing keys, string and numeric operations retain operand types, Path operations retain path-like values, subprocess and WorkerError calls retain required arity, and malformed protocol values are passed to documented controlled-failure checks. Values, selections, order, counts and identities remain deliberately mutable; the exact source and original generator definitions are retained. Every proposal changes the original AST and is unique by materialized source hash.",
+  "checks": {
+    "source_hash": true,
+    "exact_original_function_in_source": true,
+    "complete_original_definition_hash_including_generation_profile": true,
+    "one_exact_repair_per_generated_function": true,
+    "unchanged_function_signature": true,
+    "parseable_nonidentical_AST": true,
+    "unique_materialized_sha256": true,
+    "host_mutant_execution": false
+  },
+  "reviews": [
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_1",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "5db44338e61c16a3fdaed705e6a78dadae2550d70a36ef0086e14b2ef2225fd8",
+      "proposed_function_sha256": "c95de8df0cc692b15ec33328fa0054e3c5be8f1fa6e24a72aacd7f629c24c7a9",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "enumerate requires iterable[list[edge]], never None; mutate the selected sequence while retaining its ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_2",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "de44f0089dc7f4f20bae9aa3066c17e061503e64584144e30ea1b9f6b5499951",
+      "proposed_function_sha256": "76f8b52a9d126c88b84e650a9719dc34ba0fa25443cdd1b7d569740f431fe573",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "unique is a mapping keyed by 3-string incidence tuples, never None; empty mapping removes incidences."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_3",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "8048ef46ef1b60869fa358567b82a621a3888b662b09564076ccf34fd053b2a5",
+      "proposed_function_sha256": "7b0ba3e285f74529dfefb80440247cc30243cc57ead8e3209efdfacd85ea4ec2",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "dict.fromkeys requires an iterable of three-string tuples; substitute an incorrect but typed incidence."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_4",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3a82f4b99a964a20e10c1d7ce63305c6edbf50dbabecc5dce22b414b075b815e",
+      "proposed_function_sha256": "0c500e2aba3d91e5c7c58a6f55a058e5af4a9e7edf9a0d5bf6777512ef40e832",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Every edge has exactly head_id/dependent_id/deprel string fields; mutate a value or choose another existing field instead of indexing an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_5",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "8266dcd09eaf26fed62cd161b88f2b6565a149685b381e401dee69572297390c",
+      "proposed_function_sha256": "eeb59ec2ee529f294d400820a8f861f404b5e2fc2fcd7da72acd69c0ca2c9d00",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Every edge has exactly head_id/dependent_id/deprel string fields; mutate a value or choose another existing field instead of indexing an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_6",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "5fd9095cf99efee445fc7e925b42c60e8001482c3d0ed4ffaf6f4ed588708ec0",
+      "proposed_function_sha256": "513fa6308c850f21d5b8d931859bad0a6fdc485b34143bf5ebf367863da114d6",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Every edge has exactly head_id/dependent_id/deprel string fields; mutate a value or choose another existing field instead of indexing an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_7",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "082e9af51b7628ed065b293a8ec0992b23a1985a4c3364e7775f4174923777a0",
+      "proposed_function_sha256": "0a6d3750cb270d74ccd26e10f782e6944555552c59edce076df0ecb82445ed0e",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Every edge has exactly head_id/dependent_id/deprel string fields; mutate a value or choose another existing field instead of indexing an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_8",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "32eab44ad3b11eb35641ea53b5605de933980737559e139fc2aa54e3a9a24911",
+      "proposed_function_sha256": "70f7275d6af356e0f8ff6785e4e7d572c8314eddcb11c562ba0927b6c724cb6d",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Every edge has exactly head_id/dependent_id/deprel string fields; mutate a value or choose another existing field instead of indexing an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_9",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "cd06ea21fc26ca69a859e6e3588cbb4760d25f4f691a183242b11af3b7f97d70",
+      "proposed_function_sha256": "2ead47490bc53a21da09bd7b28144fa599fea2ec822a051b0af80aea1cfed14f",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Every edge has exactly head_id/dependent_id/deprel string fields; mutate a value or choose another existing field instead of indexing an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_10",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "ad6655c598c065a824b631f36e55b942c49e6b9b546c6fa1c239ad7adba7691a",
+      "proposed_function_sha256": "139bd4e83981ad58fce50a43931672a3a53994829a12d71d52456365f0adc58c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The parallel assignment requires a four-tuple of role map, reverse map containing root0, string-label map and edge list; mutate initial label state."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_11",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "571c6e6b757153a3c2aec470f7750b217de1028b9f490c336f6cba965e92110d",
+      "proposed_function_sha256": "167474c00d18d5717a25e5924dbc1c60b976a7a7dea563caca82c0bed1db6c91",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The reverse map root lookup key0 is mandatory; mutate its string identity rather than remove the required key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_13",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "e1c0839e1f75f21257163a4cf355bc68a2ec56714aac3a96ecd3a301f671892e",
+      "proposed_function_sha256": "678f6cfb63430dfc7c4f8ad075cf549806dbdefb36ad2c5677edbfa146452d9c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_14",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "bcacc3bad9c0187c77f11f577fcd1b4d5c0e2b67211926e8511b8606de93a2b4",
+      "proposed_function_sha256": "244be3e463ad4269514376811fb93eb597b36ff06593c18941ed5cc55267381f",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_15",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3b87d6727399640e4f06685440e0e4a5f8157e4e77748ca6c0c167e49a81847e",
+      "proposed_function_sha256": "4a98d70371ef65eedd4d4de61df2a6b567d7cfc58793cfad7cc71a95b1c06cb9",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_16",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "95a6891e847b824a43c0c4844da192b925f6415ae7cd3dfe8ea990f27b7a59a4",
+      "proposed_function_sha256": "cbd72d1a5bb4bf655dd4273a4ab132962a29b06671ed0c203e10f35932ae6440",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_18",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3921916d64df3a48862dafacee8075186f6270bea58364980cbbf62f093fa7b8",
+      "proposed_function_sha256": "89bc74fe47b72a13814e0580d87d96a9fbc92ddf3986f65d9fe76253b509e01d",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_19",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "4d3cc93e12b40522050187e35a03bf8c6279334c6b9a7dfb358d02ccd4258593",
+      "proposed_function_sha256": "d6c808b93c4e836f2a5c958668a05aec531e2647cd83517eef859cbd71cb68b0",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_21",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "5446d7a5dab29339d1ce870b2896d03169728e64b88e6f5adf6ce07a9d6d1012",
+      "proposed_function_sha256": "efb43d3caa85988aa11f25a402e28dab6bcf043ac6a00d330ca3f168abac904f",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_22",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "7617f9bfce38256192f44de20023203d89444ccf0c05d95c50c6fa06b8c3b8c5",
+      "proposed_function_sha256": "cee9544aab4f5a6944fac253ce860cbf6cec58d56b586024bcd055e9a7680e97",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "keys is a list of role/ID tuples and must bind every role referenced by the mapped edge; retain roles while changing multiplicity and partition lookahead cost. List subtraction and None are outside the ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_23",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "4cb591348ff66a18b24c7356c7dc4eb8a71b3c07b0b1530febf990319bdf3ae9",
+      "proposed_function_sha256": "1794b9a7b9e7242dda97ebc8197532b2b88b34336521fffa334e71f86664ecbd",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "needed is an integer count, never None; an incorrect numeric bound keeps arithmetic defined."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_24",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "ae013c2848d3c0d6adc88f13a1c67f299353bcba86dbfd42d555df2270aac7e7",
+      "proposed_function_sha256": "89420cbdedcb31b55fc7ae1ff18eae6f41d21f467d29181e205e2f257c8a9f9b",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "sum requires iterable[int], never None; counting all keys overestimates already-bound roles while retaining an integer result."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_39",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3a0ea48b647995d94ff12c1382d3fa3815f312cfd4fdb5f17f21d04d973e74d5",
+      "proposed_function_sha256": "8666af658b61dbf9b02067793c69ca86d32a7185ab62b4eca9384e92997bb50c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "list requires iterable keys, never None; remove advertised nodes while retaining iterable ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_43",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "b1d33777ab295d41867572b9fd25cf7e4a437fb1c275493e1dcb547dd7bd13bf",
+      "proposed_function_sha256": "8a9983b49f4e85f453a9f47a14087b20e88c54b6b8ede30006c099de0474f5b0",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Partition reset must retain a four-tuple with maps/list and mandatory root key; alter the reset label state."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_44",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "7482badc41c4a9a4908c25f21d650655706f420627e458d10fad581a3a89e978",
+      "proposed_function_sha256": "a12534dfe16db36e51bfb4cf6de5525aa746c1e4bb03b9c8d49e4686d320e7cd",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Reset reverse map must retain numeric root lookup key0; mutate its string annotation identity."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_46",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "a2c16bb67658bc1e1664ac4ed333916c7911508cd8262f8f28247db83a1398c9",
+      "proposed_function_sha256": "aa2bf40597940ceaf27155abfbb3fa7e9c403974d2d4735baf237ebe6910d0e0",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Every referenced role requires a string alias; preserve missing-key initialization but incorrectly overwrite some existing head aliases."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_53",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "67ba01d360183a262374930a85819b2c17a7aed7381a8f5b4a2af2d8f30664b1",
+      "proposed_function_sha256": "ffbaa44792937c8cd9ef7b5ee89dd230e31d60d16df4c8f1ce9bc46129c2fe6c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Role keys are two-tuples: indexes0/1 exist, index2 is invalid. Mutate the mapped string value to the existing role component."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_55",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "130a2da643b370c6e049d7e05db8bfc53d2ce92aeb0f4e6379cb1c877d164864",
+      "proposed_function_sha256": "1e68b48ee5eb29230e8fa95b1902fdb0b93f112a9099313e4fb4c474202ee653",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Label concatenation takes strings; string subtraction is undefined. Change the numeric label identity while retaining its grammar."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_63",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "8938a76ce63652eef4b77d7151834c9917253e36676af0aa44f73c6389cbfb2e",
+      "proposed_function_sha256": "742c465c64376065ed4d68f662596bd08bea94b865655290400bfa192c34ed8d",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Mapped heads must remain string aliases present in reverse or root0; choose an incorrect existing identity instead of indexing an unbound role."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_66",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "939bb518828837f9a670e260914f75a130fb8c2ef03f69742f06f51ea3b7fe1f",
+      "proposed_function_sha256": "e5f6e1a9cd4b873df31a509c1d3e2f502f73033f49d0a29649cda1e1924a56d8",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Mapped heads must remain string aliases present in reverse or root0; choose an incorrect existing identity instead of indexing an unbound role."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_67",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "6332b7dac31807727e285800e3b144b4514f0ddc730909d99d67dfd43bc2f026",
+      "proposed_function_sha256": "013e4bb0d199540f44742c5d4a27d8548801275d7fe9130a0926305f482cc29c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Mapped heads must remain string aliases present in reverse or root0; choose an incorrect existing identity instead of indexing an unbound role."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_68",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "202abd9b171a921e4109ed34527c0c529144a785732801abf25491eb6f3519ef",
+      "proposed_function_sha256": "0ede0d4614738688248b8ca5077b7ac58c499e59f76228ea136d95149cb34d7b",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Mapped heads must remain string aliases present in reverse or root0; choose an incorrect existing identity instead of indexing an unbound role."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_69",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "2bfc2f10fd8003a849ba6ca6e5a0b7a657dbb1b77aaa02a40ecc5f10257f54d4",
+      "proposed_function_sha256": "d08e205559d09d527c22947f93523495e234afc44b929d1e106b8fc1404600c3",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Mapped heads must remain string aliases present in reverse or root0; choose an incorrect existing identity instead of indexing an unbound role."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_72",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "a4aa991d19049e2c22ae780a4f073c6ef08a8b1ae47ed3f24a33699aae6b8d68",
+      "proposed_function_sha256": "d7a1c30830d13fd906453237abbb3a83bd4276e684e48d11ad2443b22a5120b1",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Mapped dependents must use an existing string alias; retain the lookup domain while selecting the wrong incidence identity."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_73",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "f633506a6fd4a2232dac721c18aaa382e46331ba6f66a6645fba8acdce04cd3d",
+      "proposed_function_sha256": "0d8165cc7c1ec5355b944674f188cc1f972d3b453da78c7a90db774ad3afd667",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Mapped dependents must use an existing string alias; retain the lookup domain while selecting the wrong incidence identity."
+    },
+    {
+      "id": "ud_agent.graph_backend.x__partitions__mutmut_84",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "a51fbae7bc3a8a52259d6141818d861756f359163a55c6e067f42d3e348f9e7f",
+      "proposed_function_sha256": "dffb5c49ccd337654bfefa95006d53dc27a3a64226e159af61c3e9bab7617f8f",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "list requires iterable keys, never None; removing advertised nodes remains a typed protocol defect."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_17",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "9abfe1371105e0b0abf432b46ab2056606f4904d9b5574f4ba7dcd481c806913",
+      "proposed_function_sha256": "bf46b49039c176afb84adc48407a9444e347b2c774cfdb400561d98166742cc5",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "tools is a Path constructed from a string/path-like value; environment lookup keys are strings and its default must be string. Incorrect relative/missing prerequisites remain documented controlled failures."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_18",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "1d27073926b57f72da2534d4e86c6b2249f19994d08607510dbb584efaa1c599",
+      "proposed_function_sha256": "009613429080f596f8115018b1889e0d776b43ff71d0adbc428293e4bef3f01e",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "tools is a Path constructed from a string/path-like value; environment lookup keys are strings and its default must be string. Incorrect relative/missing prerequisites remain documented controlled failures."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_19",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "2a1633ccfe0980366aa778c38b3a175e2a5ccb6d88f499f7147cca2e20d52239",
+      "proposed_function_sha256": "3d1426d1d973bf54c2fc76f48d214f2f2161ec0a23d012acec9d170d52c8a97a",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "tools is a Path constructed from a string/path-like value; environment lookup keys are strings and its default must be string. Incorrect relative/missing prerequisites remain documented controlled failures."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_21",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "f562ec51d4d587fd3055d876f308a8696197b9318a551bfc2452c3f4ecabca74",
+      "proposed_function_sha256": "35fd1b01a671527bda212aadf05f63fb9706d76f379575b858a1460e84416a6f",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "tools is a Path constructed from a string/path-like value; environment lookup keys are strings and its default must be string. Incorrect relative/missing prerequisites remain documented controlled failures."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_33",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3afe7b94c8955a4b3ccd22bdf5d76bbd8da02cbf87b9c10e136941f57f7ca6c1",
+      "proposed_function_sha256": "07b05b5a26a5c5ab3715e37cac4643cf87481de3740caf5f8f5a7d813c980c29",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "perl is Path, not None; environment keys are strings and image indexing must remain dominated by a non-None image guard. Change the prerequisite value with the type/guard intact."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_34",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "5cf21c521393ce5bb7fefad36022f0fcbda33ff25f6378c042bdb69bfc04cd3b",
+      "proposed_function_sha256": "dac6e1c3abdfbd6bd55f574a644dd9c403826e40b98469e88140bf95c4cbbd71",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "perl is Path, not None; environment keys are strings and image indexing must remain dominated by a non-None image guard. Change the prerequisite value with the type/guard intact."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_35",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "ba008bae37c8c706263a9f1caee41bd0dfbd4993f534a4b3348f68eca10cf138",
+      "proposed_function_sha256": "aa042ce00f785eed00459615df1927de523465fbea4f2d0e7d06e30a22dfa7b3",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "perl is Path, not None; environment keys are strings and image indexing must remain dominated by a non-None image guard. Change the prerequisite value with the type/guard intact."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_37",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "332f27d53c65ecf211a5cbbea35940d08ad65c5092d06455f5636f2c6cae2489",
+      "proposed_function_sha256": "fbddd83d02ce177e92c245615b7719ca2a0d9f7db22c384c8d944ae74a6c0e0c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "perl is Path, not None; environment keys are strings and image indexing must remain dominated by a non-None image guard. Change the prerequisite value with the type/guard intact."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_42",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "d82bec4c16fd52a44118a07d74b19973ae8c41c8c64db66c792a51b598fc6f15",
+      "proposed_function_sha256": "7cf826e9a56b1e327bc4edefbc4b8b31338893ec8277b9c8ea86dacfd7fc4bd5",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "perl is Path, not None; environment keys are strings and image indexing must remain dominated by a non-None image guard. Change the prerequisite value with the type/guard intact."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_48",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "efd6b5c63a3545ec0a8dea4563381fe75cec64172e2846076406d80060d500e4",
+      "proposed_function_sha256": "194e0b411ff95dbeca4a051ce4cea27e1043b2b7c2c919afc1104605804b7c9b",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Path multiplication is undefined; select an existing but incorrect pinned module as bridge script using Path join."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_49",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "81a5d6dbc027beea53810d87d90075c17edaa7c68a08b6566a11e25a2a4934a2",
+      "proposed_function_sha256": "6498f7df6f4ba22e3e346f8c9995cb44a39ba1b181e5fad982e7b51608870df5",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Path construction requires str/path-like, never None; select an existing sibling bridge with wrong protocol."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_58",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "ad9e87a26811d2ddcca701d75cb55b1c0c102b7e29542ce296fb6cfc169053f7",
+      "proposed_function_sha256": "c1f3ba3c2ba98c25f8088c63201d4fddc45fdee36fecf312ef7fb70f23b8eab0",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "any requires iterable[bool], never None; retain checks while incorrectly demanding an extra prerequisite."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_60",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "43a96545328c6c84066c038b7f2d6a92b30b2095fa1d272d9cf1afaea7720cc0",
+      "proposed_function_sha256": "521530e47cc5a2342758e5e87ba43a4565d1edda675edb7ce45c28147e0273be",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Path joining requires the / operator; choose an incorrect directory while retaining valid Path operations."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_71",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "46c0cb42e58a2f4357b5e82919bd717f7bd7d483c20f899489bc29d986fef7f8",
+      "proposed_function_sha256": "709b3c485adfaecbb51fdf7b66645893b8356ee0abb72b482bf3c5cef123adf6",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "invocations is list[tuple[index,request,reverse,labels]], never None; add a typed phantom response expectation."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_72",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "179aeb5ebca3115f40b5bebe686553b9da1d8e00ab1d2e4cbb8f8517fdb3417f",
+      "proposed_function_sha256": "c64b1bd90da87c4c89da263b5b5516375829ad986acb645ee1e3e602f9064a25",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "adjacency must remain a graph-indexed list of maps with set[str] default values; inject an incorrect reachable identity without invalidating indexing."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_73",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "363cf084280e5d58c35bc243f5b02e5fcd30e3ae78166d4e94cc8b2ea1200dcd",
+      "proposed_function_sha256": "447304f3512b717c39183f8d4c64fb20d4a3e10d010102ea77c39de3d9eaacd6",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Adjacency maps must create set values on missing keys; None disables the required default factory. Seed an incorrect root self-edge instead."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_122",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "018e8a0aaf98ecd3c6cfa8bf1a32fcc305f7890a32ec00eb1fa4ec03703563cd",
+      "proposed_function_sha256": "9ab1548b6c21b19519c99fd94fd0c242f81619f6f4f88f0df4638bdc24512501",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Transfer counter is integer, never None; change the initial byte accounting."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_124",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "a61a9a0191616c61452f4e839327bdb63ce41f289e6d0542a78a086fef12c5e2",
+      "proposed_function_sha256": "5b9c98a396773a36b4b8e7e32d0d8f9deb4dd4f55733a6c6f861225f984a98d2",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "_partitions requires iterable[edge-list], never None; choose an incorrect empty selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_125",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "1f9b5548454e2ac2ea09631db825e425d314bfd99461c14d827a3a94768bb153",
+      "proposed_function_sha256": "80f4a368b5d6222aa4e3efc6965a02a444a7fd3ce98e02518fe286757a611082",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "frame is bytes, never None; a wrong JSON message retains transfer/length ABI."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_126",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "b681165a43529022a59af1b32c4f8ba7ba4e77317cf0419a4ddbb7713bea0d86",
+      "proposed_function_sha256": "584f1a3a88a6b83fbc7ac20138b34b3a0aeecc179d81b81f7bd5b64779352662",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "bytes subtraction is undefined; insert an extra protocol delimiter using valid concatenation."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_127",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "125162a3dd44edfa46b14443103210375ac48793715326529744ecd9a6e0212d",
+      "proposed_function_sha256": "4c37964397389ed9d574f53a84353d2b4ab96448d994faab46d0db575232ecaf",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "str.encode takes a known encoding string, never None; a wrong existing encoding yields typed bytes with invalid wire framing."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_130",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "a68fc8aa8148c08685faac715d00fb8932f2467b3230a93452a68f224efb2e63",
+      "proposed_function_sha256": "8c2f0b6191e6926e8645a5aad341fa003fe8b9bd92aa017f58f32f8aa4fec858",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "json.dumps requires its object argument; restore arity using a wrong request object."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_134",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "312d72677e30c0149ebb8e9101408a037514d4cf9fd4d55fb73d355c0db4293e",
+      "proposed_function_sha256": "6f86a2d579574b35e21f7fa820b400b4880a6afcaa9c5171a90cfbd8eef9734c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Unknown codec names cause LookupError outside the protocol; choose a real incorrect codec with defined bytes output."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_148",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "cd7b12258dd0c278e970a2c81ea75d5ad8a575458cf01b51d720d4a4419b5371",
+      "proposed_function_sha256": "25ef2afa465df0266d14b5484ae728303052af62ac07a101e5230a1e0e57192d",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "TemporaryFile.write requires bytes-like, never None; use a wrong but typed frame."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_149",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "d81fc9626af708b15f1490005cb40b0553dc330483d7688197891edd834a1d14",
+      "proposed_function_sha256": "e2e73106e5e1680abef0460e979eeac3ec55ed549aa10817ac6cc59d1dcbda7c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Pending invocation is a four-tuple with graph index/request/reverse/labels, never None; corrupt its expected incidence while retaining unpackability."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_150",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "20859e56db66be0fb3f6bfe7fce037167f171ee01183bb6339479bf8a857da5b",
+      "proposed_function_sha256": "d0206ae37274e5d1f4bf0c3f043396d8c4916c1590ec5df49a39ef75ae331857",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "seek requires integer offset; choose an incorrect offset rather than None."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_152",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "ea06af85ef84c719e2ed01a608195efc4837ad2f993a033f058d513486a5a0b3",
+      "proposed_function_sha256": "45a0af0fb88f474af0475559a32bb5d40e69787c5fc2ab1e662cdd8b983b25ec",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Subprocess result must expose integer returncode; return a typed unsuccessful completion instead of None."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_153",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "19c299444f60bcbeacdd84cc7fea60201cfc8cdcf1fe8901e6191c08dd2346b3",
+      "proposed_function_sha256": "27e17d0fb8e59e824012947b19fb7debcc80c11c18e62be448cdc3a493c4a9b9",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "subprocess.run requires an argument sequence; a different fixed command retains arity and yields a controlled invalid protocol result."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_161",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3b86468c389a55b7bd90081a5e4786dc48fce6d1360ebf00cefa092c7a1dda0f",
+      "proposed_function_sha256": "e9dfc1c27968fd1a669ed9ed02e6bda8b4b6424a904a5d678cb21afa564275b5",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Restore required subprocess args using an incorrect but valid argument list missing stream mode."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_172",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "1ea4ae62282f32b73c15afaf88bc3c94c801c51d817687a593fe31c70be8ae63",
+      "proposed_function_sha256": "df3f272093f237b7998ba620aa084a7338e050d4d3a4489475a200f982b32fcd",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Perl command requires all three Path arguments; preserve arity while selecting a different confined dependency directory that fails prerequisites or protocol."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_173",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "deac4d3f762c079b771caeadbc95c5590ef3339a69c7582cb5abbbd9bb8e213d",
+      "proposed_function_sha256": "2a39fa919253d241657d9d3ec57e0012511d24c0f684127b5e20fd45c6c53a07",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Perl command requires all three Path arguments; preserve arity while selecting a different confined dependency directory that fails prerequisites or protocol."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_174",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "f2e4a990ea21cbf003a43918b6fbdc3248b47ffeb9ab34a4712bb06d6c4b7437",
+      "proposed_function_sha256": "2d7baaa51022095f2c61ee2bf53cdae69b796a03951e0fcf31c6cd61e0ea460c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Perl command requires all three Path arguments; preserve arity while selecting a different confined dependency directory that fails prerequisites or protocol."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_210",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "d05839308da57d06e60b89da9aaa95d6f92b679b37ec44636b4412075a589a23",
+      "proposed_function_sha256": "43ebaafe4e8b1269fd045710f33836ac39ead0a69de1bbdf19989df78f99b41c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Response seek requires integer offset, never None; choose a wrong byte position."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_212",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "49450005d486f2f9dde9fbe098144a5924adc3acf7ac854687921e80b190cc57",
+      "proposed_function_sha256": "37d31cc0a2011e1d3da8c463a431df1577f078377604ef8b78994e4dfdcd91d4",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Decoded frame input must be bytes/string, never None; substitute wrong typed JSON."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_220",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "90ab10db767ca62ece83889769d56c0c4b2efa62d4ca44226cc646fce2231c1c",
+      "proposed_function_sha256": "37dfe51e86838bca5ff6bba7aa2b90747f2403f325e95a81a327b220be79bba2",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "json.loads requires str/bytes, never None; a typed wrong JSON result reaches structured consistency validation."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_229",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "f8bf653f42e536a5c5a7142c1e3db771c63442f96129748dfd717842a538e4bd",
+      "proposed_function_sha256": "306d5fdc108e81db6c175d32bf7d34af2e4f2caf033c7c430ee2e2d8bc1217c6",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Expected incidence must be a complete reverse-keyed map of typed edge lists; seed wrong incidence rather than remove the map."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_230",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "77920659093649f000fd3f01a4cc9a600892f52faf637f89a29ada8ac5d246ab",
+      "proposed_function_sha256": "a6356ef98150384eed1397b47f45db603e0cccd9b05c70eeef0fae8209de8b95",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Expected out-degree is a complete reverse-keyed map of integers, never None; use wrong numeric values."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_232",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "f38eae026cbe3fae09932d79cd4f33a7e2eb1082419d8f9263fc9c84e4fa2bcf",
+      "proposed_function_sha256": "7a1c83c72e5d410e94f47775101ea5de140f68142e445fee51093ee6e1d0f4dc",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Request schema guarantees edges list; mutate selected edges without indexing an impossible request key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_233",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "e6393224b6a8980833145fccfd4fe4c456b61ed913d7ea9e98112ed22d05e97f",
+      "proposed_function_sha256": "e54935fb926a2c5640aa5487d7e08c174b9dd7ba3b3b76cb6b258a88ee468e6a",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Request schema guarantees edges list; mutate selected edges without indexing an impossible request key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_234",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "252b21605e4d85362cfe185cae09d593ecaef6987eda78dd55c3dfb96ed9e78d",
+      "proposed_function_sha256": "95ad75a8379b6c629b94fe58dc0dcb20c750b64defd5a2c65bc4a8a90ffc2bfe",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Incoming entries must retain head/relation string fields; replace a relation value rather than append None."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_235",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "c1ac67861a8f872dfce251e234df426a9028ed739f2431ebd578b7486153e1ff",
+      "proposed_function_sha256": "38bb095920612562752095d3c2f653b6217f070575dc36b377b3660a52e9796c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_236",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "6183f6b84eca9f6232a41ac71625b3cec76d611a4a4a3cdcc7152cc0bfc64578",
+      "proposed_function_sha256": "c9edd21628add86e01a4027ec1af072ade3a2a876b1a9d16fbf4cb058bd0b3d4",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_237",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "467c543833c79a3b636e3ccd9c0ca1199359d4ae255ce83df7a8d049f3c14aed",
+      "proposed_function_sha256": "c1a9bb042fc2936f021e13b1d682f07a00cde6e509bcafd608f8761c86435693",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_238",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "6255ec9b59818c4b54c4f84553c1f84918c2602a70a907bd36bca011a5ac6343",
+      "proposed_function_sha256": "767abd62a0b69b5d41904fd7b29431f57053576b37794da7f5fe065a070e46c7",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_239",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "c7466df915a2cab3a7af3f171ede3a4ef44a61417ad90402ad324158101b2e6f",
+      "proposed_function_sha256": "109c78bf1f35918c3bac3a497154224fa822a329a487f556eb354e3073fcf268",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_240",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "075d8580c24b0daf7ded5fafbe23d33b11086e5fad1d10b4b17025a24bd1cb2f",
+      "proposed_function_sha256": "03f62e305ddf5152c79a262f48d1ffaf746abe758372153932f69641da55f170",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_241",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "51e22f655b061c3e5659ce97510526899da7d14da210eafafa650f5bf756de53",
+      "proposed_function_sha256": "7dc1832c62c4080a38e2c0c26f93489b226e18081186b596583169b7eebb8024",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_242",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "babb696472be0dbfd9177cb665eaa716271a6e1658ae174a8e0b9bb5ff88785e",
+      "proposed_function_sha256": "c396ac47ec6eb9d0281f9bd37802b5e7095abf37a0584074498c19c8a3b0b9a3",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_243",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "ec549c144bb7940f94f040aca98cbdb3428514e019aef26036abb534a17a33db",
+      "proposed_function_sha256": "d43938fe36bf246974fb20290fed1816b8eb9d25c0ca810f514f14dc132a5d25",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_244",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "01c98053034ba48d56a9cdca0cee9d6071650a55f58cb3ee01dadcec03abb12b",
+      "proposed_function_sha256": "aa0738a932616bba615c13fa4f72bccea7284dd8b2cb1e1f34d67430affdcd50",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_247",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "b4cc638203f6f5e66d4549c46d8c8b96dc8cca03845afadbe08fefdc1d9310fe",
+      "proposed_function_sha256": "9039b0f95f32e38af8b83a9e45da10b1c5148f3c3e0d294f5fc5318b4418b1fb",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_248",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "e1d86bfa885adc0d2e171d439fae6447066617651a412b091fe287a37a084b1c",
+      "proposed_function_sha256": "5de4a1384329934bc00293aaca1f73aa91854fdef3f0f414dfee9422b9fa2331",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Retain guaranteed request edge keys, complete reverse-key map indexes and incoming head/relation fields; mutate an existing typed value instead of introducing KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_259",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "61c19c2253a91cc4ad29a853d814c5b20043900db5307e816538aba834cbe6a4",
+      "proposed_function_sha256": "6b9737d20bcc6eaa346609d5307a1a4ffb7820dc5d364ff3cf1186c5cb637639",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_260",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "8831fea82955b456a8d3bc0f5315ec934616f4ca29a5961ddd81a6e84eabfc4e",
+      "proposed_function_sha256": "24570ad2d03c1bba51bfd7cccfb77de2b42707cb3e52646f362c138f8c09501e",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_261",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3a104539f9cbf8bc8f1a729ff31481986a2fbbae59f01df34188b0bf461dca95",
+      "proposed_function_sha256": "84a3bfb684f325527bc98155cd4e6ec935190973f54be45732f2671680ded0d6",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_262",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "6d3e75f4df2f5e2753e40869af54f5e9fa6617ee38b91522e896dc23b8b7a2ea",
+      "proposed_function_sha256": "8824fb4d2a6e924e1db9523eb3cc191fea6cfd52f62d43425b6d3233abb085c0",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_263",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "0b36643867f46ed78520be3af4fdb3fecaaba8154ff107b1655e5f60f6c8d5f8",
+      "proposed_function_sha256": "04c0c35cfb736de897ccf4f7bec9625ad574333c2cc36ff1226c775adf7c61aa",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_264",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "dd1d48602f6af8949d3bb054bf6fa7d873a6ea28c9aabefc93e17c37e2867481",
+      "proposed_function_sha256": "12c57fe67457de7977883a4cfac8a207699502d56fa973f2ef66f8ceccd34d78",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_265",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "53c8d6d40af2de6b46b45ce5199141f0016a2b68ec99546b4a197ee3bbcac180",
+      "proposed_function_sha256": "eb5462aa5b28120569e2ed6149a04f7f26aa6d5c158441012a2d81ae167b4e60",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_266",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "21552bb27be3459a02f8f9ab7bcbd53b69e6bcb61d566133b6d631741712c4de",
+      "proposed_function_sha256": "df8162d2d60dd9aa54d86a79f039a98b4d5c6a5958d4110bd58636146bcfc0af",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_267",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "881850d37b845c67743ec764c73124fd97a7a42882270e4f70c09d9e466d5005",
+      "proposed_function_sha256": "be0c4c6550ff981a56a2a75653cd7e0af8d2f0cfcb98fcb9edaa1c964075f394",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_268",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "44dbc8f29f2e3b516a37cf7b9b6f5767c571f658856352523e9bea19aa0f5b28",
+      "proposed_function_sha256": "78a3b3f3c75e2e9aa831326cf8df136007f6ecfe1ade18c65d1635921594a1da",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_269",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "6008e5fe25813c7967c382773fb1edcda783bfe081b581398271530b136038d2",
+      "proposed_function_sha256": "dbdad312af50b8423629181d1e9be17754e8d457b7a5963eb9381bb23dcd02f6",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_271",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "4e6fec0d7929ce3707b03761c14e8e035501e4210d4e39170ac79b43d0445c80",
+      "proposed_function_sha256": "84b07b52e1ef34c29bca7e637941bb1b2fad6ad14450372ad1a7f61ad1c0b7aa",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Sorting requires its iterable and a totally comparable typed key; preserve guaranteed incoming edge fields and numeric head identities while mutating order/selection."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_278",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "ff37dc7c39256fdd47cd6cf85f5a165e98b5d4a02c45d98c3af310ef5e764610",
+      "proposed_function_sha256": "2697ae5f49b7e2daf052e06b6d3356dd7a8d2152e94fea8846e5ea37629b78d6",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The exact key-set guard establishes ok/nodes lookups; preserve that dominated domain and mutate the acceptance predicate or expected value."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_284",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "4c8d103cd37f1af55bbd664fb8d7ccf4ba5b4b278138b76f20a120963a81a850",
+      "proposed_function_sha256": "9fc74333dcf82db8272b5b52ad8cefdd94a5afeecd3f4404af14d35b3296150c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The exact key-set guard establishes ok/nodes lookups; preserve that dominated domain and mutate the acceptance predicate or expected value."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_285",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "e00cee0181cf30cc1d20013c628d1c9f508d87b95b81406d61605706531ac09e",
+      "proposed_function_sha256": "63f9864cf286b29180a9d1bddae94aa7dab761534354277c51642ee4ed84eda2",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The exact key-set guard establishes ok/nodes lookups; preserve that dominated domain and mutate the acceptance predicate or expected value."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_288",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "3015bb151a0fc0fae791be9cb25368d1312d0751af8105524c24a3a4a8130928",
+      "proposed_function_sha256": "723375061340380fc3285893980ee34e587bc6699fa58e75109e95eb3bd8addb",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The exact key-set guard establishes ok/nodes lookups; preserve that dominated domain and mutate the acceptance predicate or expected value."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_289",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "290bc409b6acb7a2a3a98ea8b97ded1645a6cb544bc71bbd3b68967385d89486",
+      "proposed_function_sha256": "6a4d5a2a82c4c0f3f6ab4db9392bca5df00047a9ddb1f40ecd25dd4cf09aa823",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The exact key-set guard establishes ok/nodes lookups; preserve that dominated domain and mutate the acceptance predicate or expected value."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_291",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "a459c3bfd0e012084a09c8e7267d133362b3aedd2d883728f4db6b189f71e3e3",
+      "proposed_function_sha256": "ea33556bcb1b2fa43109ea902763b7247c17652caa5891144ff5babcaaa479b4",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "any requires iterable[bool], never None; invert the typed degree predicate."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_295",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "748adb89200d483b0c1b254279512f84e3b87c83cbe094504b7c3725d95bce71",
+      "proposed_function_sha256": "f1e02c5a74c1858d018fd8f7f58547f59f1fd8914a5370bf4f3bb5d83e478b27",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The guarded result node list is mandatory; change its inspected subset instead of reading an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_296",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "fc3e75be4f3bdd286f561be0ced885d6b2cb25d9eaf47b718eae278bcb18fc53",
+      "proposed_function_sha256": "1bc12e8a3407d484d27db7f11fcd596a5d9ea8711f9d7829a3cfe0cd2452288e",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The guarded result node list is mandatory; change its inspected subset instead of reading an impossible key."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_303",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "c786a1d6ab3b1db536c42ae1a3a3b986a5bb4294304862c44e582609de144d49",
+      "proposed_function_sha256": "cdab24ff6d8480ea25a77a2f98fee537e3756a5a7a0748f094be4ad7fd5bbf63",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "WorkerError requires stable code and message arguments; mutate the code with arity retained."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_304",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "6d740507410a1345c249fbe04919a8e0e88c9a11c7defc8ad41d49ecf5aff241",
+      "proposed_function_sha256": "9d01349be16abb7718f7ccc8ee4040583f6cb75b1ceed9e6e4b213fe18c82a64",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "WorkerError requires both code and message arguments; mutate the message with arity retained."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_309",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "48025d179d86a516fa2c7df9af2a14dd8df99ac1e0cc6d312b2c83e977adb3cf",
+      "proposed_function_sha256": "31c7a7e2af4a6e43cd585a1e20367acbb061d22c142254300ae7f393a3500d2a",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The verified result has nodes list; select a wrong subset without invalid key lookup."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_310",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "85448232c9ef1af4257aca59c70ed593a978b85350181b7f08fc8dc0917a9c0b",
+      "proposed_function_sha256": "89ae7d4394a89a29fafe9bced79edd4a5dc001a87ee82ca900424c5a0df005ed",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The verified result has nodes list; select a wrong subset without invalid key lookup."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_311",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "7a48ee5f06d4d11493406ca5bbcd735c18dc52f0d5346315d8fbada57c5025af",
+      "proposed_function_sha256": "49a70ed381642b011c6a8b7eb91f5cff579774db218a6e44c175088336a4ae76",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The verified node has incoming list; select a wrong subset without invalid key lookup."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_312",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "7fc4006081b9cb110e4f92e14444624a319b7bf5a63b5ad65b9d20d2a9537ce3",
+      "proposed_function_sha256": "083208b28fb5df6d1dece8b19eebd449d26b6c735c94a77e932a29a9c1a61059",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "The verified node has incoming list; select a wrong subset without invalid key lookup."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_314",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "6c1fb2791dd7ec6353d43c6f2eb79541bbc0363d3a72e97271fa385cfefe7fb2",
+      "proposed_function_sha256": "69e3536482e5cb9c363f1425f913b8ebbaab948f0981409378a5eef78d0b7027",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Verified edge/node IDs and root0 are the only guaranteed reverse-map lookup domain; mutate to another existing identity instead of KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_315",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "549daed2b8e358eb1a60d2ac0f1f816569e97a5c59e31b663e5909745b5e9dfb",
+      "proposed_function_sha256": "5387e02af99879ca75514f9bcf1e487fb486bea3214584b7f378ed9a6c9d9f6b",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Verified edge/node IDs and root0 are the only guaranteed reverse-map lookup domain; mutate to another existing identity instead of KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_316",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "08db5b5864022b864cd8852c7b2d351d926687886a79f1f786ab47ff2875d278",
+      "proposed_function_sha256": "ce404418c61298863b4a96a0e7b9dda5fd8f63922cbec5abc8229b1e1ff966ba",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Verified edge/node IDs and root0 are the only guaranteed reverse-map lookup domain; mutate to another existing identity instead of KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_317",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "d99ed8f8d5471b6065616c095e49b815bc19537a8a41906282cd6aab21be0dd6",
+      "proposed_function_sha256": "80bc3f3ffe88b1d689cd5225645778e07c753ee6f72a6497721f94431e1e1f84",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Verified edge/node IDs and root0 are the only guaranteed reverse-map lookup domain; mutate to another existing identity instead of KeyError."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_345",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "0a07a31cf617be769e1a7a87f708b0e66a50eb6d00f9213866844f30ff1f47bd",
+      "proposed_function_sha256": "fd2429a291fd6dbe969bd4f449137b2e3a30b318d9d2fdbb8504e0715941d5bd",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "hashlib.sha256 requires a bytes-like buffer, never None; hash wrong bytes."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_348",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "0efbd949e9023d5c1bf2506fc042a9c7f97b2721345b1661ff14b79b9549f002",
+      "proposed_function_sha256": "52574f6b80342a3250d12659eb329ed15cf26b6bfcb70dd8cfd217e43053989c",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "hashlib.sha256 requires bytes, never None; report an incorrect typed digest."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_349",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "be013d00ed05a3537d0299fe8b6d91fd6a75d334da4cb580acb21cbd4ff604f2",
+      "proposed_function_sha256": "750917b1108dd9a5b7694be905f16f54cc8a211ea8deff199b2e3bdd13dc7829",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Path multiplication is undefined; read a wrong existing module using typed Path join."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_350",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "b73434ac59224c16d8b7a34b8594bec01fad693983e6fd33a1761a46a9cf144f",
+      "proposed_function_sha256": "3c7a33493c5bd0848f978c038d53d9010dae0e225ec155cf65c297c673db718e",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Module provenance reads must stay within existing pinned Graph.pm/Node.pm files; alter the reported module subset or duplicates instead of attempting nonexistent filesystem reads."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_351",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "41b66f3627eb4406e8be6586530c033b7d035b07ac6784f90fd95a34d71f5c8c",
+      "proposed_function_sha256": "4823184526f1ef810e6eea071c001b5456d1e10e2c9b96bc4cf024ba3c6d6d0a",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Module provenance reads must stay within existing pinned Graph.pm/Node.pm files; alter the reported module subset or duplicates instead of attempting nonexistent filesystem reads."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_352",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "d217215f2d384afea831356bebfeafbd0ad1a6f2f3de9fab88e6c28cfc4fa475",
+      "proposed_function_sha256": "812b2c7f98fc53b84a3e6dc483431cb4fe4ac2cf5acca66e96e79aee16c08845",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Module provenance reads must stay within existing pinned Graph.pm/Node.pm files; alter the reported module subset or duplicates instead of attempting nonexistent filesystem reads."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_353",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "166b2a999fb20a3ade72fafb64c805dae03145a15a1ce28244d7814ca1458ecb",
+      "proposed_function_sha256": "99d667d1c5a98a64501554abffb313db2b9c94ff84685aa9fc4687b96e5c06f3",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Module provenance reads must stay within existing pinned Graph.pm/Node.pm files; alter the reported module subset or duplicates instead of attempting nonexistent filesystem reads."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_354",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "a1d65bb34f2e584e3756fdfd94284f70185baca93a7932d988b217ae45ec88cb",
+      "proposed_function_sha256": "573ff963ad998f863ec0c4b304f9c2a1765cdd8082026959bd6106aacc79da03",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Module provenance reads must stay within existing pinned Graph.pm/Node.pm files; alter the reported module subset or duplicates instead of attempting nonexistent filesystem reads."
+    },
+    {
+      "id": "ud_agent.graph_backend.x_inspect_graphs__mutmut_355",
+      "source_sha256": "cfcf2f6161ff9fb2cf72be2b9c2847c7ff40d943fdddcc47d9effae61186b444",
+      "upstream_definition_sha256": "c918e54d89c6ae6252f1f865a1009766469d1138841a876a2298f0b64c8d34c0",
+      "proposed_function_sha256": "f07f8a9d89c835444de727879ab29d74d70a705bc77aee27ae37d56efc72a7eb",
+      "decision": "approve-typed-regeneration-only",
+      "type_contract": "Module provenance reads must stay within existing pinned Graph.pm/Node.pm files; alter the reported module subset or duplicates instead of attempting nonexistent filesystem reads."
+    }
+  ]
+}

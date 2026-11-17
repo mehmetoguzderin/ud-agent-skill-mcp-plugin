@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "text_content_compare",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {},
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "left_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "left_format": {
+      "enum": [
+        "conllu",
+        "text"
+      ]
+    },
+    "right_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_format": {
+      "enum": [
+        "conllu",
+        "text"
+      ]
+    },
+    "ud_context_path": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "left_path",
+    "left_format",
+    "right_path",
+    "right_format",
+    "ud_context_path"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "annotation_import_plan",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "empty_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_annotation_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target_file_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "LEMMA",
+          "UPOS",
+          "XPOS",
+          "FEATS",
+          "MISC"
+        ]
+      },
+      "minItems": 1
+    },
+    "options": {
+      "$ref": "#/$defs/empty_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "source_annotation_paths",
+    "target_file_paths",
+    "columns"
+  ]
+}

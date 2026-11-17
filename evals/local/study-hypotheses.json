@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "kind": "ud-scientific-diagnostic-hypotheses",
+  "qualification_evidence": false,
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Software-repair framing competes with read-only comparison intent in mini-swe.",
+      "contrast": "neutral-framing versus unchanged within each model/harness/intent/seed block; unchanged Qwen framing is a sham.",
+      "prediction": "More supported discovery or operation proposals in mini-swe; native combined-arm completion is a separate practical outcome."
+    },
+    {
+      "id": "H2",
+      "claim": "Skill metadata location affects access to relevant guidance.",
+      "contrast": "Identical metadata nearer the request versus unchanged, preserving role, instructions, tools and schemas.",
+      "prediction": "Higher relevant discovery or operation-proposal rate; a null result weakens this particular intervention, not all position hypotheses."
+    },
+    {
+      "id": "H3",
+      "claim": "Unrelated narrative competes with the task under restrictive context.",
+      "contrast": "Reduced unrelated narrative versus unchanged while retaining available tools and required schemas.",
+      "prediction": "Lower input cost and more supported next actions, without extra hints or answer values."
+    },
+    {
+      "id": "H4",
+      "claim": "Relevant skill-body delivery can separate activation failure from interpretation failure.",
+      "contrast": "Actual native skill-loader result versus unchanged initial request.",
+      "prediction": "A delivered body improves supported next actions if missing activation is a bottleneck; no implicit-selection credit is granted."
+    },
+    {
+      "id": "H5",
+      "claim": "Actionable operation mappings and inspectable CLI schema discovery bridge user intent to execution.",
+      "contrast": "Actionable guidance probes and current versus task-neutral/actionable native episodes.",
+      "prediction": "More canonical discovery, valid dispatch and independently verified completion; S7 must retain ordinary-writing behavior. Native effects combine framing and guidance and cannot identify their separate effects."
+    },
+    {
+      "id": "H6",
+      "claim": "CoNLL-U tool-result representation affects a subsequent lexical action decision.",
+      "contrast": "Seed47 paired forwards change only eligible tool-result wrappers, preserving decoded bytes and return code; absent eligible data is a sham.",
+      "prediction": "Marker likelihood or initial decision logits may change; this does not by itself establish improved native interpretation or completion."
+    },
+    {
+      "id": "H7",
+      "claim": "Hybrid information paths can influence the observed lexical action decision.",
+      "contrast": "Seed23 observed versus selected last-position hybrid-operator zeroing, after seed17 instrumentation parity.",
+      "prediction": "An intervention effect establishes dependence on that operator contribution for that context; it does not identify a skill-specific circuit or quantization cause."
+    }
+  ],
+  "analysis_constraints": [
+    "All252 probes,108 native episodes and72 forwards remain in the inventory, including unfinished or blocked rows.",
+    "Pair within model, harness and fixed task; seeds17,23,47 are repeated stochastic trials, not independent tasks.",
+    "No cross-model causal regression: architecture, quantization, tokenizer and runtime are bundled.",
+    "Attention correlations are descriptive and require instrumentation parity, unique token contexts and nonconstant observations; no head/layer pseudoreplication.",
+    "Marker sequence likelihood is pre-sampler lexical evidence, not a probability of a complete correct operation.",
+    "Unknown observations remain unknown. Reservations, dispatch attempts, forced activation and inert responses cannot establish real inference or native qualification.",
+    "Fixed condition order and combined native intervention limit attribution. No favorable-seed selection, post-hoc oracle relaxation or answer-specific tuning."
+  ],
+  "methodology_references": [
+    "https://aclanthology.org/N19-1357/",
+    "https://arxiv.org/abs/2309.16042v2"
+  ],
+  "forecast_rule": {
+    "comparison_blocks": "same kind/model/harness/intent/seed: seven probes, two native arms or two forwards",
+    "new_block": "Require all unattempted peers fit original model deadline using max observed same-model/kind claim-to-record duration clipped10..95seconds; default95seconds;30second initial/mode-switch reserve.",
+    "begun_block": "Continue in frozen order only with at least95seconds remaining; record whether all remaining peers still forecast to fit; unfinished rows never become completion.",
+    "clock_and_counters": "Use original model/global-minus-reconciliation deadline; no replenishment or refunds; all forecast decisions persisted."
+  }
+}

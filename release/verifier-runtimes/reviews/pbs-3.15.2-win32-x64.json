@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "qualification": "independent-verifier-runtime-origin-and-byte-closure-review",
+  "decision": "approved-for-release-verification",
+  "reviewer": "Codex release review independent of the verifier inventory implementation",
+  "inventory": {
+    "path": "release/verifier-runtimes/pbs-3.15.2-win32-x64.json",
+    "sha256": "e44301669789a8bfd4e24096d4716cb361657b7e6f2a7d601eac469f2a289333",
+    "size": 440582
+  },
+  "origin_archive_sha256": "02e532b60e720aa3d77e757c349ae9cc945441c05851fa646336fc9ff0403041",
+  "generator_sha256": "a8e2ab22fc7a36daaa4f8d2e314abe77ea4ede7bb2f1170f85f448b394df5b9c",
+  "release_receipt_sha256": "ca2bb7259a71dbd9192d6d251b5e96c7d8d0e5b1da4ff76434f89001da2a1080",
+  "independent_evidence": [
+    {
+      "path": ".artifacts/public-beta-verifier-x64-origin-review/win32-x64/origin-review.json",
+      "sha256": "327286a9afddf51005edfa1eb854ade6f53f65e1a4b28253519354bd0718e207",
+      "scope": "The official PBS archive and the pinned publisher record matched. All 1,692 inventoried files, archive executable modes, 579 excluded bytecode entries and zero aliases matched. LLVM independently confirmed all 53 retained AMD64 PE files and 370 loader edges."
+    },
+    {
+      "path": ".artifacts/public-beta-apple-isolated/windows-x64-native-verifier-restricted.json",
+      "sha256": "15696852650690921e64f9024cab4131590d74fdbb339855c53635994bfcbaa7",
+      "scope": "The source-bound staging code copied the complete prefix on native Windows AMD64. CPython 3.15.2 passed private import, compression and archive tests with isolated flags, site disabled and an empty bytecode cache. All 17 loaded private module hashes matched the inventory. The remaining 23 loaded modules came from Windows System32. The verifier-owned temporary prefix was removed."
+    },
+    {
+      "path": ".artifacts/public-beta-apple-isolated/windows-x64-restricted-probe.stderr",
+      "sha256": "57910dcf4244c793c5ed796f45419f6c3b6302d81191c49debb93353b1905c83",
+      "scope": "The caller-owned restricted token used for the native verifier removed SeDebugPrivilege. Its supervisor confirmed cleanup and that the parent token was unchanged."
+    }
+  ],
+  "limitations": [
+    "Approval covers this exact Windows x64 verifier prefix and its Windows system-library prerequisites. The observed host build was 10.0.26300.",
+    "The native exercise used one restricted caller identity. Cross-SID access tests, installed workflows, WSL provider acceptance, and redistribution authority retain their own evidence requirements."
+  ]
+}

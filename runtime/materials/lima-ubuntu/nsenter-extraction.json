@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "purpose": "image-bound frozen guest executable identity",
+  "source_lock_sha256": "sha256:8c87fe690d6c959bde8a5cc9efd280fa743587a74712d700e48e2a2a79591a8a",
+  "host": {
+    "system": "Darwin",
+    "architecture": "arm64"
+  },
+  "qemu_img": {
+    "path": "/opt/homebrew/Cellar/qemu/11.1.1/bin/qemu-img",
+    "sha256": "sha256:333cbd68c349beaa237f5a7a4781a908c853931b6f03f1a3ccef83a4dbc15616",
+    "version": "qemu-img version 11.1.1"
+  },
+  "extraction": {
+    "provider": "local-docker",
+    "tool_image": "sha256:7cf0c248d11d5fa156acd3738965fe118ad686da273edb4891474b812eecd4c0",
+    "tool_architecture": "arm64",
+    "debugfs_version": "1.47.0 (5-Feb-2023)",
+    "mode": "read-only root filesystem and input mount; no capabilities; no network; no guest boot",
+    "gpt": "header and partition-table CRC32 validated; unique architecture-specific cloudimg-rootfs partition"
+  },
+  "files": [
+    {
+      "architecture": "arm64",
+      "image": {
+        "installed_dependencies": {
+          "dbus-user-session": "1.16.2-2ubuntu4",
+          "fuse3": "3.18.2-1",
+          "iptables": "1.8.11-2ubuntu3",
+          "libaudit1": "1:4.1.2-1ubuntu0.1",
+          "libc6": "2.43-2ubuntu2.4",
+          "libselinux1": "3.9-4build1",
+          "rsync": "3.4.1+ds1-7ubuntu0.3",
+          "systemd": "259.5-0ubuntu3.4"
+        },
+        "manifest": {
+          "sha256": "sha256:830e68b0892d14e5e886048a2379a287f652c88ee3440e4aab0820f05cec8bd2",
+          "size_bytes": 20401,
+          "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-arm64.manifest"
+        },
+        "sha256": "sha256:8eb876c2ccc4b6ff89e4a65d511815923b285e04503ba465809bf587f763da24",
+        "size_bytes": 940373504,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-arm64.img"
+      },
+      "partition": {
+        "partition": 1,
+        "type_guid": "b921b045-1df0-41c3-af44-4c6f280d3fae",
+        "first_lba": 2099200,
+        "last_lba": 7339998,
+        "name": "cloudimg-rootfs",
+        "offset": 1074790400,
+        "size": 2683289088,
+        "raw_size": 3758096384
+      },
+      "file": {
+        "path": "/usr/bin/nsenter",
+        "sha256": "sha256:b55c259966772a75df59c0dd42bdebe67886b89baf403488dc3ef7e11ff7a024",
+        "size_bytes": 68272,
+        "elf_machine": 183,
+        "mode": "0755",
+        "uid": 0,
+        "gid": 0,
+        "nlink": 1
+      },
+      "execution": "not executed; data extraction only",
+      "package": {
+        "name": "util-linux",
+        "version": "2.41.3-3ubuntu2.2"
+      }
+    },
+    {
+      "architecture": "amd64",
+      "image": {
+        "installed_dependencies": {
+          "dbus-user-session": "1.16.2-2ubuntu4",
+          "fuse3": "3.18.2-1",
+          "iptables": "1.8.11-2ubuntu3",
+          "libaudit1": "1:4.1.2-1ubuntu0.1",
+          "libc6": "2.43-2ubuntu2.4",
+          "libselinux1": "3.9-4build1",
+          "rsync": "3.4.1+ds1-7ubuntu0.3",
+          "systemd": "259.5-0ubuntu3.4"
+        },
+        "manifest": {
+          "sha256": "sha256:d52adb4ae5a731dcbed5ebe664757d248f6c0994dc6230c88891f1763a818083",
+          "size_bytes": 20531,
+          "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-amd64.manifest"
+        },
+        "sha256": "sha256:5645d0318ad21f643ebb1ac4567514620e9893380b07b0201fda163baa5b7eb5",
+        "size_bytes": 859090944,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-amd64.img"
+      },
+      "partition": {
+        "partition": 1,
+        "type_guid": "4f68bce3-e8cd-4db1-96e7-fbcaf984b709",
+        "first_lba": 2324480,
+        "last_lba": 7339998,
+        "name": "cloudimg-rootfs",
+        "offset": 1190133760,
+        "size": 2567945728,
+        "raw_size": 3758096384
+      },
+      "file": {
+        "path": "/usr/bin/nsenter",
+        "sha256": "sha256:763259c01dca596ed903f1dc430599a938396294723165d0b0fdfdcc15d92aea",
+        "size_bytes": 35544,
+        "elf_machine": 62,
+        "mode": "0755",
+        "uid": 0,
+        "gid": 0,
+        "nlink": 1
+      },
+      "execution": "not executed; data extraction only",
+      "package": {
+        "name": "util-linux",
+        "version": "2.41.3-3ubuntu2.2"
+      }
+    }
+  ],
+  "cleanup": "intermediate sparse raw/partition copies removed after verified extraction; original locked images unchanged",
+  "metadata_record": {
+    "path": "native-file-records.txt",
+    "sha256": "sha256:17b4db8bb6c700c71ef0d1f72ce7930a6e6138d295a58723b4b983b0de21e1a0",
+    "size_bytes": 4178
+  }
+}

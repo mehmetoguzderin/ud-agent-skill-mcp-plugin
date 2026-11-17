@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "qualification": "actual native ARM nerdctl2.4.2 readonly-created OCI Spec captured before worker start; failed containment attempt, not successful acceptance",
+  "source": ".artifacts/lima-product/installed-public-ud-installed-lima-mX1pEQ/native-a5b55056-7431-4dff-8df1-f7d5bcb6483b-loader.json",
+  "source_sha256": "b009180be8ec381cfb657bc2e97acb4137a6b1ada9165b77927982dec98da170",
+  "fixture_sha256": "76945e7be7a18186b8a21b90d19c17fe78dfc5b3dd0c1c538627a7e56d32fbc9",
+  "job": {
+    "schema_version": 1,
+    "lifecycle_revision": 2,
+    "id": "a5b55056-7431-4dff-8df1-f7d5bcb6483b",
+    "provider": "lima-nerdctl",
+    "authority": "ud-agent:/run/user/1001/containerd/containerd.sock:sha256:5f5c41cc9530af3001a7c0b733028165972df64f6cfe22d904b0d486c4c920b0:sha256:f19fa4eb5b1a3e05e75d67b402abb497ebf8290aa1124a60ee9ab32f294beb7c:sha256:820d3c1ca185d9e0d5204e6937a591b46b0cc8a7928642370872d5ff82f26987:dadd59f4-638a-4265-83f4-7be9b6ee1318",
+    "image": "sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+    "image_reference": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-core@sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+    "image_id": "sha256:7ec1d9505c530b58affe84030bbbca3c7785f901130ab3b40671ba6058a736b0",
+    "phase": "initialized",
+    "pending_create": "loader"
+  },
+  "expected": {
+    "id": "2f79e60d5e149fd39d0c702b2ea32e94a880577977728e6b12836d342932fdb7",
+    "jobId": "a5b55056-7431-4dff-8df1-f7d5bcb6483b",
+    "image": "ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-core@sha256:835e665c82dccf6cfe596dd4dd97a441aea13145428203db028f1be6ebf34fe6",
+    "command": [
+      "-I",
+      "-B",
+      "-c",
+      "import sys;sys.path[:0]=['/opt/ud-agent/worker','/opt/ud-agent/upstream/udtools/src'];from ud_agent.oci_loader import main;raise SystemExit(main())",
+      "3fd23ca09dd94072d821a3b3de96070cfa3384dd0a06e4acaa8372cc24a2482e"
+    ],
+    "readOnlyInput": false,
+    "inputSource": "/home/udagent/.local/share/nerdctl/77f28886/volumes/ud-agent/ud-agent-a5b55056-7431-4dff-8df1-f7d5bcb6483b-input/_data"
+  }
+}

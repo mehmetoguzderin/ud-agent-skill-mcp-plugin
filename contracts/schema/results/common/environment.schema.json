@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "requested_tools",
+    "platform",
+    "working_tree_changes",
+    "status",
+    "ready"
+  ],
+  "properties": {
+    "requested_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "platform": {
+      "type": "object",
+      "required": [
+        "os",
+        "arch"
+      ],
+      "properties": {
+        "os": {
+          "type": "string"
+        },
+        "arch": {
+          "type": "string"
+        }
+      }
+    },
+    "working_tree_changes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string"
+    },
+    "ready": {
+      "type": "boolean"
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "engine": {
+          "enum": [
+            "apple-container",
+            "wslc",
+            "lima-nerdctl",
+            "podman",
+            "docker-rootless",
+            "docker",
+            "userspace"
+          ]
+        },
+        "executable": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isolation_model": {
+          "type": "string"
+        },
+        "rootless_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "worker_uid_verified": {
+          "type": "boolean"
+        },
+        "verification": {
+          "type": "string"
+        },
+        "selection_reason": {
+          "type": "string"
+        },
+        "available_operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "missing": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "host_prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dry_run": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "ensure",
+        "repair",
+        "update",
+        "resume"
+      ]
+    },
+    "network": {
+      "enum": [
+        "bootstrap_only",
+        "offline"
+      ]
+    }
+  }
+}

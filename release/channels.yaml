@@ -1,0 +1,13 @@
+schema_version: 1
+prerelease:
+  npm: beta
+  github_prerelease: true
+stable:
+  npm: latest
+  github_prerelease: false
+oci:
+  mutable_latest: false
+  versioned_tags_only: true
+promotion:
+  require_all_targets_verified: true
+  rewrite_artifacts: false

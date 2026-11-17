@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent primary agent /root",
+  "mutation_author": "/root/domain_completion",
+  "reviewed_at": "2026-11-09T00:21:03.858478+00:00",
+  "coordinate_convention": "zero-based lines and columns; end exclusive",
+  "review_scope": "Independent source inspection, canonical definition hashing and exact replacement-span verification. Only these five definitions on the bound source are equivalent; this is not full mutation acceptance.",
+  "sources": {
+    "packages/coordinator/src/docker-policy.ts": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e"
+  },
+  "reviews": [
+    {
+      "id": "packages/coordinator/src/docker-policy.ts#55",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "336d6cda78044a3ba1e965e0a2b56a8c32fd2b89bd077c81e07c866e69a4d184",
+      "definition": {
+        "tool": "stryker",
+        "version": "10.1.1",
+        "operator": "Regex",
+        "location": {
+          "end": {
+            "line": 14,
+            "column": 57
+          },
+          "start": {
+            "line": 14,
+            "column": 37
+          }
+        },
+        "original": "/^size=[1-9][0-9]*$/",
+        "replacement": "/size=[1-9][0-9]*$/"
+      },
+      "equivalent": true,
+      "reason": "Equivalent for the native JSON contract. The unchanged primitive-string split and five-flag/four-literal checks leave one size slot. Any newly matched size= suffix starts at index j>0, so its '=' at j+4>=5 remains in the slice passed to Number; a decimal Number conversion containing '=' is NaN, and the unchanged finite upper bound rejects it. Original matches have identical numeric conversion and result."
+    },
+    {
+      "id": "packages/coordinator/src/docker-policy.ts#63",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "65422a9f471897bafd3b2e501dfcbd44e96df7a776a2982447198655826da880",
+      "definition": {
+        "tool": "stryker",
+        "version": "10.1.1",
+        "operator": "ConditionalExpression",
+        "location": {
+          "end": {
+            "line": 15,
+            "column": 27
+          },
+          "start": {
+            "line": 15,
+            "column": 9
+          }
+        },
+        "original": "sizes.length === 1",
+        "replacement": "true"
+      },
+      "equivalent": true,
+      "reason": "Equivalent. Four distinct required literal flags in exactly five array positions leave at most one size match. With no size match, String(undefined).slice(5) is 'ined', Number returns NaN and the remaining <=67108864 predicate is false. With one size match the removed conjunction is true. No other count is reachable; the flags array is created locally from a primitive string."
+    },
+    {
+      "id": "packages/coordinator/src/docker-policy.ts#71",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "17f56f62fbc9fc919a39b18cd76d9e1161d029ecf7f863558867085e5e0483d0",
+      "definition": {
+        "tool": "stryker",
+        "version": "10.1.1",
+        "operator": "ConditionalExpression",
+        "location": {
+          "end": {
+            "line": 24,
+            "column": 48
+          },
+          "start": {
+            "line": 24,
+            "column": 21
+          }
+        },
+        "original": "typeof item.Id === 'string'",
+        "replacement": "true"
+      },
+      "equivalent": true,
+      "reason": "Equivalent under the caller's parsed-native-JSON inspection contract. For primitive string IDs the selector produces the same value. For every non-string JSON ID the following unchanged typeof rejection short-circuits before observing the local selector value. Selecting an object does not coerce it. JSON objects that shadow toString/valueOf are therefore also rejected without conversion. Executable getters/proxies are outside this JSON contract."
+    },
+    {
+      "id": "packages/coordinator/src/docker-policy.ts#75",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "dc4ae0544ed44648de6ff7006762ce95bc0f4583a6a9fcbf3b2af6e64f541c1d",
+      "definition": {
+        "tool": "stryker",
+        "version": "10.1.1",
+        "operator": "StringLiteral",
+        "location": {
+          "end": {
+            "line": 24,
+            "column": 63
+          },
+          "start": {
+            "line": 24,
+            "column": 61
+          }
+        },
+        "original": "''",
+        "replacement": "\"Stryker was here!\""
+      },
+      "equivalent": true,
+      "reason": "Equivalent. The mutated fallback value is selected only for a non-string ID, and the unchanged following typeof disjunct immediately records identity failure before the local fallback can be used. String IDs never select that fallback. Neither value escapes the function or changes violation ordering."
+    },
+    {
+      "id": "packages/coordinator/src/docker-policy.ts#87",
+      "file": "packages/coordinator/src/docker-policy.ts",
+      "source_sha256": "d1196c2d2f7a7e76e8ddfd628a57f7c244f28e2b777a4217a368e3679fe95e3e",
+      "definition_sha256": "5c6369eb8e08f536aad136bb588d3bfc521a9f8208bdae0132c1e26e387819a5",
+      "definition": {
+        "tool": "stryker",
+        "version": "10.1.1",
+        "operator": "ConditionalExpression",
+        "location": {
+          "end": {
+            "line": 25,
+            "column": 33
+          },
+          "start": {
+            "line": 25,
+            "column": 6
+          }
+        },
+        "original": "typeof item.Id !== 'string'",
+        "replacement": "false"
+      },
+      "equivalent": true,
+      "reason": "Equivalent. The unchanged total selector maps every non-string native ID to the primitive empty string. If the first rejection disjunct becomes false, the unchanged 64-hex regular expression rejects that empty string, without invoking any conversion method on the native value. String IDs already made the original type disjunct false. All subsequent observations and violation order are identical."
+    }
+  ]
+}

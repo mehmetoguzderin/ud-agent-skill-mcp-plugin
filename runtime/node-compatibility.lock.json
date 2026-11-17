@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "version": "24.22.2",
+  "publisher": "Node.js",
+  "checksum_signer_fingerprint": "5BE8A3F6C8A5C01D106C0AD820B1A390B168D356",
+  "release_keys_revision": "481637f813e912c4aa3622d7964ab426c97b8e8d",
+  "release_keyring_sha256": "610b8d249da3d5733f5a128def2dd0294dbbf5b5713e6ca2529db8db419dee00",
+  "signed_manifest_sha256": "cbff095ae2d793bc0ffed794e7ef4a6609f7157a0fcb3b051176c09e3320e4a2",
+  "platforms": {
+    "darwin-arm64": {
+      "filename": "node-v24.22.2-darwin-arm64.tar.xz",
+      "sha256": "1f5ac075be50bed4780ea3be19a007fda95ea4d527d28d76d0b91de47d915115"
+    },
+    "darwin-x64": {
+      "filename": "node-v24.22.2-darwin-x64.tar.xz",
+      "sha256": "6965578fd823e72c1b5387f5ab84cb25368f886e02eb8779e6f0fce6b91c27b7"
+    },
+    "linux-arm64": {
+      "filename": "node-v24.22.2-linux-arm64.tar.xz",
+      "sha256": "eb187837a2230d4047161ac0be008584e16b46f726e9c9490ee35dc6b17d9ba8"
+    },
+    "linux-x64": {
+      "filename": "node-v24.22.2-linux-x64.tar.xz",
+      "sha256": "48cc0e21e048790e54c0cf5749c2725005313d652651c40b7a21feb9697aaf75"
+    },
+    "win32-arm64": {
+      "filename": "node-v24.22.2-win-arm64.zip",
+      "sha256": "f47968c213105077f64c6510f007632c0ca2574802a0b5067c327c49abe1c468"
+    },
+    "win32-x64": {
+      "filename": "node-v24.22.2-win-x64.zip",
+      "sha256": "ca1bff5d8ead13c9f2ea404a176db46bd430704d5b5113734049fa365e7799e2"
+    }
+  }
+}

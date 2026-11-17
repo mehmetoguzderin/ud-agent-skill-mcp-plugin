@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "state": "publisher-beta-active",
+  "active_key_ids": {
+    "publisher-beta": ["mehmetoguzderin-beta-1"],
+    "release-candidate": [],
+    "mutation-inventory": [],
+    "acceptance-evidence": [],
+    "mutation-review": []
+  },
+  "rotations": [
+    {
+      "purpose": "publisher-beta",
+      "key_id": "mehmetoguzderin-beta-1",
+      "product_version": "0.1.0-beta.1",
+      "public_key_sha256": "6c4c04497262e1ce706cb04344a2e3b23850e7982e878f425d6ebbac2d901752",
+      "activated_on": "2026-11-18"
+    }
+  ],
+  "note": "The publisher beta key is active for 0.1.0-beta.1."
+}

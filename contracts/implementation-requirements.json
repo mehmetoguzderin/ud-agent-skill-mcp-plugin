@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "scope": "Retained application requirements linked to implementation and original tests. File presence and source hashes are not execution or release acceptance.",
+  "requirements": [
+    {
+      "id": "public-catalog",
+      "requirement": "Keep all 104 public identities, signatures, shared input/result contracts and dispatch bindings compatible.",
+      "authorities": [
+        "contracts/ud-interfaces.json",
+        "contracts/environment.json",
+        "contracts/input-shapes.json",
+        "contracts/result-shapes.json",
+        "contracts/public-contract.md"
+      ],
+      "implementation": [
+        "scripts/generate/contracts.py",
+        "scripts/generate/public-contracts.mjs",
+        "packages/coordinator/src/catalog.ts",
+        "workers/ud/src/ud_agent/dispatch.py"
+      ],
+      "tests": [
+        "tests/contracts/catalog-compatibility.test.ts",
+        "tests/contracts/catalog-generation.test.mjs",
+        "tests/contracts/public-contracts.test.mjs",
+        "tests/fixtures/compatibility"
+      ],
+      "required_suites": [
+        "contracts-104",
+        "static"
+      ]
+    },
+    {
+      "id": "workspace-authority",
+      "requirement": "Grant inputs before reading, preserve captured bytes, validate outputs and retain recoverable ownership-bound per-file publication.",
+      "authorities": [
+        "AGENTS.md",
+        "contracts/schema/worker-wire.schema.json",
+        "contracts/schema/local-state.schema.json",
+        "contracts/filesystem-transactions.md",
+        "contracts/plan-dependencies.md"
+      ],
+      "implementation": [
+        "packages/workspace/src",
+        "packages/launcher/src",
+        "packages/coordinator/src/result-broker.ts",
+        "packages/coordinator/src/mutation-recovery.ts"
+      ],
+      "tests": [
+        "tests/runtime/snapshot.test.ts",
+        "tests/runtime/snapshot-transfer.test.ts",
+        "tests/runtime/transactions.test.ts",
+        "packages/launcher/tests"
+      ],
+      "required_suites": [
+        "unit",
+        "security"
+      ]
+    },
+    {
+      "id": "mcp-compatibility",
+      "requirement": "Serve modern and legacy MCP with protocol-only stdout, scoped resources, advisory progress, real cancellation and request-bound continuations or Tasks.",
+      "authorities": [
+        "contracts/protocol",
+        "contracts/resources.yaml",
+        "contracts/prompts.yaml",
+        "contracts/progress.md"
+      ],
+      "implementation": [
+        "packages/coordinator/src/server.ts",
+        "packages/coordinator/src/task-transport.ts",
+        "packages/coordinator/src/continuations.ts",
+        "packages/coordinator/src/operations.ts",
+        "packages/coordinator/src/resources.ts"
+      ],
+      "tests": [
+        "tests/protocol/stdio.test.ts",
+        "tests/protocol/tasks-stdio.test.ts",
+        "tests/protocol/continuations.test.ts",
+        "tests/protocol/progress.test.ts",
+        "tests/protocol/progress-stdio.test.ts",
+        "tests/protocol/continuation-progress.test.ts"
+      ],
+      "required_suites": [
+        "protocol-modern",
+        "protocol-legacy"
+      ]
+    },
+    {
+      "id": "domain-behavior",
+      "requirement": "Implement every domain operation with independent expected-result cases, byte-preserving edits and explicit provenance, coverage and limitations.",
+      "authorities": [
+        "contracts/ud-interfaces.json",
+        "contracts/result-shapes.json",
+        "runtime/ud-sources.lock.json"
+      ],
+      "implementation": [
+        "workers/ud/src/ud_agent/domain",
+        "workers/ud/src/ud_agent/conllu",
+        "workers/ud/src/ud_agent/perl"
+      ],
+      "tests": [
+        "tests/domain"
+      ],
+      "required_suites": [
+        "unit"
+      ]
+    },
+    {
+      "id": "runtime-selection",
+      "requirement": "Admit exact runtime identities, use selection-aware lazy assets, distinguish prerequisites from integrity failures and clean only verified owned resources.",
+      "authorities": [
+        "contracts/environment.json",
+        "contracts/schema/runtime-lock.schema.json",
+        "contracts/public-contract.md"
+      ],
+      "implementation": [
+        "packages/runtime-manager/src",
+        "packages/coordinator/src/provider-runtime.ts",
+        "packages/coordinator/src/provider-maintenance.ts",
+        "packages/coordinator/src/provider-leases.ts"
+      ],
+      "tests": [
+        "tests/runtime/profiles.test.ts",
+        "tests/runtime/provider-maintenance.test.ts",
+        "tests/runtime/provider-assets.test.ts",
+        "tests/release/native-provider-acceptance.test.mjs",
+        "tests/release/userspace-acceptance.test.mjs"
+      ],
+      "required_suites": [
+        "runtime-linux-amd64",
+        "runtime-linux-arm64",
+        "runtime-macos-arm64",
+        "runtime-windows-amd64",
+        "runtime-windows-arm64"
+      ]
+    },
+    {
+      "id": "worker-isolation",
+      "requirement": "Contain ordinary workers with immutable images, no network or engine socket, private snapshots and separately constrained rendering/project-code execution.",
+      "authorities": [
+        "runtime/policies",
+        "contracts/schema/runtime-lock.schema.json"
+      ],
+      "implementation": [
+        "runtime/Containerfile.core",
+        "runtime/Containerfile.render",
+        "workers/ud/src/ud_agent/oci_worker.py",
+        "packages/coordinator/src/docker-worker.ts",
+        "packages/coordinator/src/platform-worker.ts",
+        "packages/coordinator/src/podman-worker.ts"
+      ],
+      "tests": [
+        "tests/runtime/worker_image",
+        "tests/release/oci.test.mjs",
+        "tests/release/graph-activation-contract.test.mjs"
+      ],
+      "required_suites": [
+        "worker-linux-amd64",
+        "worker-linux-arm64"
+      ]
+    },
+    {
+      "id": "installed-payloads",
+      "requirement": "Test native archives, MCPB and npm through their installed entrypoints against original immutable package bytes on all five supported host tuples.",
+      "authorities": [
+        "packages/launcher/src/windows-node.json",
+        "packages/npm-distribution/platforms.json",
+        "release/schema/candidate.schema.json",
+        "quality/requirements.json"
+      ],
+      "implementation": [
+        "packages/launcher/src/windows_node.rs",
+        "scripts/release/prepare.mjs",
+        "scripts/release/inspect-package.py",
+        "scripts/release/runtime-inputs.mjs",
+        "scripts/quality/installed-payload.mjs",
+        "scripts/quality/installed-operation-matrix.mjs"
+      ],
+      "tests": [
+        "tests/release/release.test.mjs",
+        "tests/release/host-adapters.test.mjs",
+        "tests/release/installed-payload.test.mjs",
+        "tests/release/runtime-inputs.test.mjs",
+        "tests/release/npm-package.test.mjs"
+      ],
+      "required_suites": [
+        "install-linux-amd64",
+        "install-linux-arm64",
+        "install-macos-arm64",
+        "install-windows-amd64",
+        "install-windows-arm64"
+      ]
+    },
+    {
+      "id": "skills-and-hosts",
+      "requirement": "Provide connected standalone workflow skills, scripted host replays, and an explicitly opted-in bounded local native-model evaluation path, keeping actual model routing evidence distinct from deterministic application execution.",
+      "authorities": [
+        "contracts/prompts.yaml",
+        "evals",
+        "skills"
+      ],
+      "implementation": [
+        "scripts/generate/skill-files.mjs",
+        "scripts/release/host-adapters.mjs",
+        "scripts/quality/run-workflow-evals.mjs",
+        "scripts/quality/run-local-model-evals.mjs",
+        "evals/local"
+      ],
+      "tests": [
+        "tests/contracts/skills.test.mjs",
+        "tests/evals",
+        "tests/release/host-adapters.test.mjs"
+      ],
+      "required_suites": [
+        "skills-hosts"
+      ]
+    },
+    {
+      "id": "mutation-typescript",
+      "requirement": "Discover and reconcile complete JavaScript/TypeScript mutations with protected execution, full required test identities and original assertion authority.",
+      "authorities": [
+        "stryker.config.mjs",
+        "quality/policy.yaml"
+      ],
+      "implementation": [
+        "scripts/quality/oci-stryker.py",
+        "scripts/quality/stryker-protected-runner.mjs",
+        "scripts/quality/stryker-child.mjs",
+        "scripts/quality/stryker-exec.py"
+      ],
+      "tests": [
+        "tests/mutation/stryker-selection-evidence.test.mjs",
+        "tests/mutation/stryker-assertions.test.mjs",
+        "tests/mutation/test_oci_stryker.py"
+      ],
+      "required_suites": [
+        "mutation-typescript"
+      ]
+    },
+    {
+      "id": "mutation-python",
+      "requirement": "Independently schedule Python runtime and static operators and reject incomplete, skipped, erroneous or unconfined outcomes.",
+      "authorities": [
+        "pyproject.toml",
+        "quality/policy.yaml"
+      ],
+      "implementation": [
+        "scripts/quality/mutmut-driver.py",
+        "scripts/quality/oci-isolation.py",
+        "scripts/quality/oci-secondary.py"
+      ],
+      "tests": [
+        "tests/mutation/test_python_operators.py",
+        "tests/mutation/test_python_static.py",
+        "tests/mutation/test_secondary_policy.py"
+      ],
+      "required_suites": [
+        "mutation-python"
+      ]
+    },
+    {
+      "id": "mutation-rust",
+      "requirement": "Reconcile both Rust workspaces with protected variant compilation/execution, exact artifact/test completion and compiler/source-bound foreign-target applicability.",
+      "authorities": [
+        "Cargo.toml",
+        "scripts/quality/rust-assertion-parser/Cargo.toml",
+        "quality/policy.yaml"
+      ],
+      "implementation": [
+        "scripts/quality/rust-literal.py",
+        "scripts/quality/rust-protected.py",
+        "scripts/quality/rust-assertions.mjs",
+        "scripts/quality/rust-applicability.mjs",
+        "scripts/quality/rust-assertion-parser/src"
+      ],
+      "tests": [
+        "tests/mutation/cargo-gate.test.mjs",
+        "tests/mutation/rust-phase.test.mjs",
+        "tests/mutation/rust-applicability.test.mjs",
+        "tests/mutation/test_rust_literal.py",
+        "scripts/quality/rust-assertion-parser/tests"
+      ],
+      "required_suites": [
+        "mutation-rust"
+      ]
+    },
+    {
+      "id": "mutation-perl",
+      "requirement": "Reconcile every applicable live PPI token/operator and full Perl source mutation inventory; unknown selected semantics, invalid syntax and runtime errors cannot become kills.",
+      "authorities": [
+        "quality/perl-operators.json",
+        "quality/perl-parser.lock.json",
+        "quality/policy.yaml"
+      ],
+      "implementation": [
+        "scripts/quality/perl-mutation.py",
+        "scripts/quality/perl_tokens.pl",
+        "scripts/quality/prove-perl-generation.py",
+        "scripts/quality/perl-assess.mjs"
+      ],
+      "tests": [
+        "tests/mutation/test_perl_operator_coverage.py",
+        "tests/mutation/perl-operator-coverage.test.mjs",
+        "tests/mutation/test_perl_inventory.py",
+        "tests/mutation/perl-full.test.mjs",
+        "tests/domain/perl/test_operator_semantics.py"
+      ],
+      "required_suites": [
+        "mutation-perl"
+      ]
+    },
+    {
+      "id": "acceptance-reconciliation",
+      "requirement": "Require independently discovered original cases and every scheduled policy, generator, release, grader and fault outcome against one frozen source; no empty or missing inventories pass.",
+      "authorities": [
+        "quality/requirements.json",
+        "quality/policy.yaml",
+        "AGENTS.md",
+        "release/ACCEPTANCE.md"
+      ],
+      "implementation": [
+        "scripts/release/discover-acceptance.mjs",
+        "scripts/quality/original-acceptance.mjs",
+        "scripts/quality/mutation-gate.mjs",
+        "scripts/quality/mutation-scope.mjs",
+        "scripts/quality/oci-exec.py"
+      ],
+      "tests": [
+        "tests/release/acceptance-discovery.test.mjs",
+        "tests/contracts/original-acceptance.test.mjs",
+        "tests/mutation/gate.test.ts",
+        "tests/mutation/test_oci_exec.py",
+        "tests/mutation/fault-runner.mjs"
+      ],
+      "required_suites": [
+        "mutation-policies",
+        "mutation-generators",
+        "mutation-release",
+        "mutation-graders",
+        "mutation-faults"
+      ]
+    },
+    {
+      "id": "release-authority",
+      "requirement": "Retain corresponding source/notices and independent package checks, require actual signing authority, and recover explicit publication journals without unauthorized remote actions.",
+      "authorities": [
+        "release/product.yaml",
+        "release/channels.yaml",
+        "release/FIRST-PUBLICATION.md",
+        "release/RECOVERY.md",
+        "AGENTS.md"
+      ],
+      "implementation": [
+        "scripts/release/source_materials.py",
+        "scripts/release/source-artifacts.mjs",
+        "scripts/release/publisher.mjs",
+        "scripts/release/reconcile.mjs"
+      ],
+      "tests": [
+        "tests/release/source-artifacts.test.mjs",
+        "tests/release/publisher-authority.test.mjs",
+        "tests/release/publication-workflow.test.mjs",
+        "tests/release/http-publication.test.mjs"
+      ],
+      "required_suites": [
+        "signing-macos",
+        "signing-windows",
+        "release-reconciliation"
+      ]
+    },
+    {
+      "id": "mutation-bounded",
+      "requirement": "Default to the source-bound eighteen-case bounded-reviewed-v1 corpus across TypeScript/JavaScript, Python, Rust and Perl plus declared data policy, with complete original tests, protected assertion-only kills, exact runtime/candidate identities and explicit non-exhaustive reporting; preserve the separate legacy exhaustive profile.",
+      "authorities": [
+        "quality/requirements.json",
+        "quality/policy.yaml",
+        "tests/mutation/fault-cases.json",
+        "quality/mutation-runtime-bootstrap.lock.json",
+        "release/ACCEPTANCE.md"
+      ],
+      "implementation": [
+        "scripts/quality/fault-assess.mjs",
+        "scripts/quality/mutation-gate.mjs",
+        "scripts/quality/mutation-session.mjs",
+        "scripts/quality/mutation-generation.mjs",
+        "scripts/quality/oci-secondary.py",
+        "scripts/quality/secondary-child.py",
+        "scripts/quality/rust-protected.py",
+        "scripts/quality/mutation-runtime-bootstrap.py",
+        "scripts/quality/prepare-mutation-runtime.py",
+        "scripts/release/mutation-backends.mjs",
+        "scripts/release/discover-acceptance.mjs",
+        "scripts/release/acceptance.mjs",
+        "scripts/release/verify-internal.mjs",
+        "scripts/generate/implementation-inventory.py"
+      ],
+      "tests": [
+        "tests/mutation/fault-assess.test.mjs",
+        "tests/mutation/bounded-gate.test.mjs",
+        "tests/mutation/bounded-session.test.mjs",
+        "tests/mutation/test_mutation_runtime_bootstrap.py",
+        "tests/mutation/test_rust_named_faults.py",
+        "tests/mutation/test_secondary_policy.py",
+        "tests/contracts/implementation-inventory.test.mjs",
+        "tests/release/release.test.mjs"
+      ],
+      "required_suites": [
+        "mutation-bounded"
+      ]
+    }
+  ]
+}

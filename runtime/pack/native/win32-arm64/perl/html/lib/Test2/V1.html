@@ -1,0 +1,1163 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::V1 - V1 edition of the Test2 recommended bundle.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::V1 - V1 edition of the Test2 recommended bundle.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#Key-differences-from-Test2%3A%3AV0">Key differences from Test2::V0</a></li>
+    </ul>
+  </li>
+  <li><a href="#NAMING-USING-DEPENDING">NAMING, USING, DEPENDING</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a>
+    <ul>
+      <li><a href="#RECOMMENDED">RECOMMENDED</a></li>
+      <li><a href="#WORK-LIKE-V0-DID">WORK LIKE V0 DID</a></li>
+      <li><a href="#IMPORT-ARGUMENT-GUIDE">IMPORT ARGUMENT GUIDE</a></li>
+      <li><a href="#RENAMING-IMPORTS">RENAMING IMPORTS</a></li>
+    </ul>
+  </li>
+  <li><a href="#PRAGMAS-AND-PLUGINS">PRAGMAS AND PLUGINS</a></li>
+  <li><a href="#ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</a></li>
+  <li><a href="#API-FUNCTIONS">API FUNCTIONS</a></li>
+  <li><a href="#THE-T2-HANDLE">THE T2() HANDLE</a>
+    <ul>
+      <li><a href="#ADDING-OVERRIDING-TOOLS-IN-YOUR-T2-HANDLE">ADDING/OVERRIDING TOOLS IN YOUR T2 HANDLE</a></li>
+      <li><a href="#OTHER-HANDLE-OPTIONS">OTHER HANDLE OPTIONS</a></li>
+    </ul>
+  </li>
+  <li><a href="#EXAMPLE-USE-CASES">EXAMPLE USE CASES</a>
+    <ul>
+      <li><a href="#OVERRIDING-INCLUDED-TOOLS-WITH-ALTERNATES">OVERRIDING INCLUDED TOOLS WITH ALTERNATES</a></li>
+    </ul>
+  </li>
+  <li><a href="#TOOLS">TOOLS</a>
+    <ul>
+      <li><a href="#TARGET">TARGET</a></li>
+      <li><a href="#DEFER">DEFER</a></li>
+      <li><a href="#BASIC">BASIC</a></li>
+      <li><a href="#COMPARE">COMPARE</a></li>
+      <li><a href="#CLASSIC-COMPARE">CLASSIC COMPARE</a></li>
+      <li><a href="#SUBTEST">SUBTEST</a></li>
+      <li><a href="#CLASS1">CLASS</a></li>
+      <li><a href="#ENCODING">ENCODING</a></li>
+      <li><a href="#EXPORTS">EXPORTS</a></li>
+      <li><a href="#REF">REF</a></li>
+      <li><a href="#MOCK">MOCK</a></li>
+      <li><a href="#EXCEPTION">EXCEPTION</a></li>
+      <li><a href="#WARNINGS">WARNINGS</a></li>
+    </ul>
+  </li>
+  <li><a href="#JUSTIFICATION">JUSTIFICATION</a>
+    <ul>
+      <li><a href="#PROBLEMS-WITH-V0">PROBLEMS WITH V0</a></li>
+    </ul>
+  </li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::V1 - V1 edition of the Test2 recommended bundle.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This is the first sequel to <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a>. This module is recommended over <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a> for new tests.</p>
+
+<h2 id="Key-differences-from-Test2::V0">Key differences from <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a></h2>
+
+<dl>
+
+<dt id="Only-1-export-by-default:-T2">Only 1 export by default: T2()</dt>
+<dd>
+
+</dd>
+<dt id="No-pragmas-by-default">No pragmas by default</dt>
+<dd>
+
+</dd>
+<dt id="srand-and-utf8-are-not-enabled-by-default">srand and utf8 are not enabled by default</dt>
+<dd>
+
+</dd>
+<dt id="Easy-to-still-import-everything">Easy to still import everything</dt>
+<dd>
+
+</dd>
+<dt id="East-to-still-enable-pragmas">East to still enable pragmas</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="NAMING-USING-DEPENDING">NAMING, USING, DEPENDING</h1>
+
+<p>This bundle should not change in a <i>severely</i> incompatible way. Some minor breaking changes, specially bugfixes, may be allowed. If breaking changes are needed then a new <code>Test2::V#</code> module should be released instead.</p>
+
+<p>Adding new optional exports, and new methods on the T2() handle are not considered breaking changes, and are allowed without bumping the V# number. Adding new plugin shortcuts is also allowed, but they cannot be added to the <code>-P</code> or <code>-plugins</code> shortcuts without a bump in V# number.</p>
+
+<p>As new <code>V#</code> modules are released old ones <i>may</i> be moved to different cpan distributions. You should always use a specific bundle version and list that version in your distributions testing requirements. You should never simply list <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Suite.html">Test2::Suite</a> as your modules dep, instead list the specific bundle, or tools and plugins you use directly in your metadata.</p>
+
+<p>See the <a href="#JUSTIFICATION">&quot;JUSTIFICATION&quot;</a> section for an explanation of why <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a> was created.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<h2 id="RECOMMENDED">RECOMMENDED</h2>
+
+<pre><code>use Test2::V1 -utf8;
+
+T2-&gt;ok(1, &quot;pass&quot;);
+
+T2-&gt;is({1 =&gt; 1}, {1 =&gt; 1}, &quot;Structures Match&quot;);
+
+# Note that prototypes do not work in method form:
+my @foo = (1, 2, 3);
+T2-&gt;is(scalar(@foo), 3, &quot;Needed to force scalar context&quot;);
+
+T2-&gt;done_testing;</code></pre>
+
+<h2 id="WORK-LIKE-V0-DID">WORK LIKE V0 DID</h2>
+
+<pre><code>use Test2::V1 -ipP;
+
+ok(1, &quot;pass&quot;);
+
+is({1 =&gt; 1}, {1 =&gt; 1}, &quot;Structures Match&quot;);
+
+my @foo = (1, 2, 3);
+is(@foo, 3, &quot;Prototype forces @foo into scalar context&quot;);
+
+# You still have access to T2
+T2-&gt;ok(1, &quot;Another Pass&quot;);
+
+done_testing;</code></pre>
+
+<p>The <code>-ipP</code> argument is short for <code>-include, -pragmas, -plugins</code> which together enable all pragmas, plugins, and import all symbols.</p>
+
+<p><b>Note:</b> The order in which <code>i</code>, <code>p</code>, and <code>P</code> appear is not important; <code>-Ppi</code> and <code>-piP</code> and any other order are all perfectly valid.</p>
+
+<h2 id="IMPORT-ARGUMENT-GUIDE">IMPORT ARGUMENT GUIDE</h2>
+
+<dl>
+
+<dt id="P-or--plugins"><code>-P</code> or <code>-plugins</code></dt>
+<dd>
+
+<p>Shortcut to include the following plugins: <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Plugin/UTF8.html">Test2::Plugin::UTF8</a>, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Plugin/SRand.html">Test2::Plugin::SRand</a>, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Plugin/ExitSummary.html">Test2::Plugin::ExitSummary</a>.</p>
+
+</dd>
+<dt id="p-or--pragmas"><code>-p</code> or <code>-pragmas</code></dt>
+<dd>
+
+<p>Shortcut to enable the following pragmas: <code>strict</code>, <code>warnings</code>.</p>
+
+</dd>
+<dt id="i-or--import"><code>-i</code> or <code>-import</code></dt>
+<dd>
+
+<p>Shortcut to import all possible exports.</p>
+
+</dd>
+<dt id="x"><code>-x</code></dt>
+<dd>
+
+<p>Shortcut to import any sub that has &#39;&amp;&#39; in its prototype, things like <code>dies { ... }</code>, <code>warns { ... }</code>, etc.</p>
+
+<p>While these can be used in method form: <code>T2-&gt;dies(sub { ... })</code> it is a little less convenient than having them imported. &#39;-x&#39; will import all of these, and any added in the future or included via an <code>-include =&gt; ...</code> import argument.</p>
+
+</dd>
+<dt id="ipP--pPi--pP--Pix-etc"><code>-ipP</code>, <code>-pPi</code>, <code>-pP</code>, <code>-Pix</code>, etc..</dt>
+<dd>
+
+<p>The <code>i</code>, <code>p</code>, <code>P</code>, and <code>x</code> short options may all be grouped in any order following a single dash.</p>
+
+</dd>
+<dt id="EXPORT_LIST"><code>@EXPORT_LIST</code></dt>
+<dd>
+
+<p>Any arguments provided that are not prefixed with a <code>-</code> will be assumed to be export requests. If there is an exported sub by the given name it will be imported into your namespace. If there is no such sub an exception will be thrown.</p>
+
+</dd>
+<dt id="EXPORT_NAME"><code>!EXPORT_NAME</code></dt>
+<dd>
+
+<p>You can prefix an export name with <code>!</code> to exclude it at import time. This is really only usedul when combined with <code>-import</code> or <code>-i</code>.</p>
+
+</dd>
+<dt id="EXPORT_NAME--as-ALT_NAME"><code>EXPORT_NAME =&gt; { -as =&gt; &quot;ALT_NAME&quot; }</code></dt>
+<dd>
+
+</dd>
+<dt id="EXPORT_NAME--prefix-PREFIX_"><code>EXPORT_NAME =&gt; { -prefix =&gt; &quot;PREFIX_&quot; }</code></dt>
+<dd>
+
+</dd>
+<dt id="EXPORT_NAME--postfix-_POSTFIX"><code>EXPORT_NAME =&gt; { -postfix =&gt; &quot;_POSTFIX&quot; }</code></dt>
+<dd>
+
+<p>You may specify a hashref after an export name to rename it, or add a prefix/postfix to the name.</p>
+
+</dd>
+</dl>
+
+<h2 id="RENAMING-IMPORTS">RENAMING IMPORTS</h2>
+
+<pre><code>use Test2::V1 &#39;-import&#39;, &#39;!ok&#39;, ok =&gt; {-as =&gt; &#39;my_ok&#39;};</code></pre>
+
+<p>Explanation:</p>
+
+<dl>
+
+<dt id="import">&#39;-import&#39;</dt>
+<dd>
+
+<p>Bring in ALL imports, no need to list them all by hand.</p>
+
+</dd>
+<dt id="ok">&#39;!ok&#39;</dt>
+<dd>
+
+<p>Do not import <code>ok()</code> (remove it from the list added by &#39;-import&#39;)</p>
+
+</dd>
+<dt id="ok--as-my_ok">ok =&gt; {-as =&gt; &#39;my_ok&#39;}</dt>
+<dd>
+
+<p>Actually, go ahead and import <code>ok()</code> but under the name <code>my_ok()</code>.</p>
+
+</dd>
+</dl>
+
+<p>If you did not add the <code>&#39;!ok&#39;</code> argument then you would have both <code>ok()</code> and <code>my_ok()</code></p>
+
+<h1 id="PRAGMAS-AND-PLUGINS">PRAGMAS AND PLUGINS</h1>
+
+<p><b>NO PRAGMAS ARE ENABLED BY DEFAULT</b> <b>ONLY THE EXIT SUMMARY PLUGIN IS STILL ENABLED BY DEFAULT</b></p>
+
+<p>This is a significant departure from <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a>.</p>
+
+<p>You can enable all of these with the <code>-pP</code> argument, which is short for <code>-plugins, -pragmas</code>. <code>P</code> is short for plugins, and <code>p</code> is short for pragmas. When using the single-letter form they may both be together following a single dash, and can be in any order. They may also be combined with <code>i</code> to bring in all imports. <code>-p</code> or <code>-P</code> ont heir own are also perfectly valid.</p>
+
+<dl>
+
+<dt id="strict">strict</dt>
+<dd>
+
+<p>You can enable this with any of these arguments: <code>-strict</code>, <code>-p</code>, <code>-pragmas</code>.</p>
+
+<p>This enables strict for you.</p>
+
+</dd>
+<dt id="warnings">warnings</dt>
+<dd>
+
+<p>You can enable this with any of these arguments: <code>-warnings</code>, <code>-p</code>, <code>-pragmas</code>.</p>
+
+<p>This enables warnings for you.</p>
+
+</dd>
+<dt id="srand">srand</dt>
+<dd>
+
+<p>You can enable this in multiple ways:</p>
+
+<pre><code>use Test2::V1 -srand
+use Test2::V1 -P
+use Test2::V1 -plugins</code></pre>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Plugin/SRand.html">Test2::Plugin::SRand</a>.</p>
+
+<p>This will set the random seed to today&#39;s date.</p>
+
+<p>You can also set a random seed:</p>
+
+<pre><code>use Test2::V1 -srand =&gt; { seed =&gt; &#39;my seed&#39; };</code></pre>
+
+</dd>
+<dt id="utf8">utf8</dt>
+<dd>
+
+<p>You can enable this in multiple ways:</p>
+
+<pre><code>use Test2::V1 -utf8
+use Test2::V1 -P
+use Test2::V1 -plugins</code></pre>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Plugin/UTF8.html">Test2::Plugin::UTF8</a>.</p>
+
+<p>This will set the file, and all output handles (including formatter handles), to utf8. This will turn on the utf8 pragma for the current scope.</p>
+
+</dd>
+<dt id="summary">summary</dt>
+<dd>
+
+<p>This is turned on by default.</p>
+
+<p>You can avoid enabling it at import this way:</p>
+
+<pre><code>use Test2::V1 -summary =&gt; 0;</code></pre>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Plugin/ExitSummary.html">Test2::Plugin::ExitSummary</a>.</p>
+
+<p>This plugin has no configuration.</p>
+
+</dd>
+</dl>
+
+<h1 id="ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</h1>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Env.html">Test2::Env</a> for a list of meaningful environment variables.</p>
+
+<h1 id="API-FUNCTIONS">API FUNCTIONS</h1>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/API.html">Test2::API</a> for these</p>
+
+<dl>
+
+<dt id="ctx-T2-context">$ctx = T2-&gt;context()</dt>
+<dd>
+
+</dd>
+<dt id="events-T2-intercept-sub">$events = T2-&gt;intercept(sub { ... });</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="THE-T2-HANDLE">THE T2() HANDLE</h1>
+
+<p>The <code>T2()</code> subroutine imported into your namespace returns an instance of <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1/Handle.html">Test2::V1::Handle</a>. This gives you a handle on all the tools included by default. It also creates a completely new namespace for use by your test that can have additional tools added to it.</p>
+
+<h2 id="ADDING-OVERRIDING-TOOLS-IN-YOUR-T2-HANDLE">ADDING/OVERRIDING TOOLS IN YOUR T2 HANDLE</h2>
+
+<pre><code># Method 1
+use Test2::V1 T2 =&gt; {
+    include =&gt; [
+        [&#39;Test2::Tools::MyTool&#39;, &#39;my_tool&#39;, &#39;my_other_tool&#39;],
+        [&#39;Data::Dumper&#39;, &#39;Dumper&#39;],
+    ],
+};
+
+# Method 2
+use Test2::V1 T2 =&gt; {
+    include =&gt; {
+        &#39;Test2::Tools::MyTool&#39; =&gt; [&#39;my_tool&#39;, &#39;my_other_tool&#39;],
+        &#39;Data::Dumper&#39;         =&gt; &#39;Dumper&#39;,
+    },
+};
+
+# Method 3 (This also works with a hashref instead of an arrayref)
+use Test2::V1 -include =&gt; [
+    [&#39;Test2::Tools::MyTool&#39;, &#39;my_tool&#39;, &#39;my_other_tool&#39;],
+    [&#39;Data::Dumper&#39;, &#39;Dumper&#39;],
+];
+
+# Method 4
+T2-&gt;include(&#39;Test2::Tools::MyTool&#39;, &#39;my_tool&#39;, &#39;my_other_tool&#39;);
+T2-&gt;include(&#39;Data::Dumper&#39;, &#39;Dumper&#39;);
+
+# Using them:
+
+T2-&gt;my_tool(...);
+
+T2-&gt;Dumper({hi =&gt; &#39;there&#39;});</code></pre>
+
+<p>Note that you MAY override original tools such as ok(), note(), etc. by importing different copies this way. The first time you do this there should be no warnings or errors. If you pull in multiple tools of the same name an redefine warning is likely.</p>
+
+<p>This also effects exports:</p>
+
+<pre><code>use Test2::V1 -import, -include =&gt; [&#39;Data::Dumper&#39;];
+
+print Dumper(&quot;Dumper can be imported from your include!&quot;);</code></pre>
+
+<h2 id="OTHER-HANDLE-OPTIONS">OTHER HANDLE OPTIONS</h2>
+
+<pre><code>use Test2::V1 T2 =&gt; {
+    include   =&gt; $ARRAYREF_OR_HASHREF,
+    namespace =&gt; $NAMESPACE,
+    base      =&gt; $BASE_PACKAGE // &#39;Test2::V1::Base&#39;,
+    stomp     =&gt; $BOOL,
+};</code></pre>
+
+<dl>
+
+<dt id="include-ARRAYREF_OR_HASHREF">include =&gt; $ARRAYREF_OR_HASHREF</dt>
+<dd>
+
+<p>See <a href="#ADDING-TOOLS-TO-YOUR-T2-HANDLE">&quot;ADDING TOOLS TO YOUR T2 HANDLE&quot;</a>.</p>
+
+</dd>
+<dt id="namespace-NAMESPACE">namespace =&gt; $NAMESPACE</dt>
+<dd>
+
+<p>Normally a new namespace will be generated for you. You <b>CANNOT</b> rely on the package name being anything specific unless you provide your own.</p>
+
+<p>The namespace here will be where any tools you &#39;include&#39; will be imported into. It will also have its base class set to the base class you specify, or the <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1/Base.html">Test2::V1::Base</a> module if you do not provide any.</p>
+
+<p>If this namespace already has any symbols defined in it an exception will be thrown unless the <code>stomp</code> argument is set to true (not recommended).</p>
+
+</dd>
+<dt id="stomp-BOOL">stomp =&gt; $BOOL</dt>
+<dd>
+
+<p>Used to allow the handle to stomp on an existing namespace (NOT RECOMMENDED).</p>
+
+</dd>
+<dt id="base-BASE">base =&gt; $BASE</dt>
+<dd>
+
+<p>Set the base class from which functions should be inherited. Normally this is set to <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1/Base.html">Test2::V1::Base</a>.</p>
+
+<p>Another interesting use case is to have multiple handles that use eachothers namespaces as base classes:</p>
+
+<pre><code>use Test2::V1;
+
+use Test2::V1::Handle(
+    &#39;T3&#39;,
+    base    =&gt; T2-&gt;HANDLE_NAMESPACE,
+    include =&gt; {&#39;Alt::Ok&#39; =&gt; &#39;ok&#39;};
+);
+
+T3-&gt;ok(1, &quot;This uses ok() from Alt::Ok, but all other -&gt; methods are the original&quot;);
+T3-&gt;done_testing(); # Uses the original done_testing</code></pre>
+
+</dd>
+</dl>
+
+<h1 id="EXAMPLE-USE-CASES">EXAMPLE USE CASES</h1>
+
+<h2 id="OVERRIDING-INCLUDED-TOOLS-WITH-ALTERNATES">OVERRIDING INCLUDED TOOLS WITH ALTERNATES</h2>
+
+<p>Lets say you want to use the <a>Test2::Warnings</a> version of <code>warning()</code>, <code>warnings()</code> instead of the <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Warnings.html">Test2::Tools::Warnings</a> versions, and also wanted to import everything else <a>Test2::Warnings</a> provides.</p>
+
+<pre><code>use Test2::V1 -import, -include =&gt; [&#39;Test2::Warnings&#39;];</code></pre>
+
+<p>The <code>-include =&gt; [&#39;Test2::Warnings&#39;]</code> option means we want to import the default set of imports from <a>Test2::Warnings</a> into our <code>T2()</code> handle&#39;s private namespace. This will override any methods that were also previously defined by default.</p>
+
+<p>The <code>-import</code> option means we want to import all subs into the current namespace. This includes anything we got from <a>Test2::Warnings</a>, and we will get the <a>Test2::Warnings</a> version of those subs.</p>
+
+<pre><code>like(
+    warning { warn &#39;xxx&#39; }, # This is the Test2::Warnings version of &#39;warning&#39;
+    qr/xxx/,
+    &quot;Got expected warning&quot;
+);</code></pre>
+
+<h1 id="TOOLS">TOOLS</h1>
+
+<h2 id="TARGET">TARGET</h2>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Target.html">Test2::Tools::Target</a>.</p>
+
+<p>You can specify a target class with the <code>-target</code> import argument. If you do not provide a target then <code>$CLASS</code> and <code>CLASS()</code> will not be imported.</p>
+
+<pre><code>use Test2::V1 -target =&gt; &#39;My::Class&#39;;
+
+print $CLASS;  # My::Class
+print CLASS(); # My::Class</code></pre>
+
+<p>Or you can specify names:</p>
+
+<pre><code>use Test2::V1 -target =&gt; { pkg =&gt; &#39;Some::Package&#39; };
+
+pkg()-&gt;xxx; # Call &#39;xxx&#39; on Some::Package
+$pkg-&gt;xxx;  # Same</code></pre>
+
+<dl>
+
+<dt id="CLASS">$CLASS</dt>
+<dd>
+
+<p>Package variable that contains the target class name.</p>
+
+</dd>
+<dt id="class-CLASS">$class = CLASS()</dt>
+<dd>
+
+<p>Constant function that returns the target class name.</p>
+
+</dd>
+</dl>
+
+<h2 id="DEFER">DEFER</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Defer.html">Test2::Tools::Defer</a>.</p>
+
+<dl>
+
+<dt id="def-func-args">def $func =&gt; @args;</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="do_def">do_def()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="BASIC">BASIC</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Basic.html">Test2::Tools::Basic</a>.</p>
+
+<dl>
+
+<dt id="ok-bool-name">ok($bool, $name)</dt>
+<dd>
+
+</dd>
+<dt id="ok-bool-name-diag">ok($bool, $name, @diag)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="pass-name">pass($name)</dt>
+<dd>
+
+</dd>
+<dt id="pass-name-diag">pass($name, @diag)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="fail-name">fail($name)</dt>
+<dd>
+
+</dd>
+<dt id="fail-name-diag">fail($name, @diag)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="diag-message">diag($message)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="note-message">note($message)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="todo-todo-reason">$todo = todo($reason)</dt>
+<dd>
+
+</dd>
+<dt id="todo-reason-sub">todo $reason =&gt; sub { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="skip-reason-count">skip($reason, $count)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="plan-count">plan($count)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="skip_all-reason">skip_all($reason)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="done_testing">done_testing()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="bail_out-reason">bail_out($reason)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="COMPARE">COMPARE</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Compare.html">Test2::Tools::Compare</a>.</p>
+
+<dl>
+
+<dt id="is-got-want-name">is($got, $want, $name)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="isnt-got-do_not_want-name">isnt($got, $do_not_want, $name)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="like-got-qr-match-name">like($got, qr/match/, $name)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="unlike-got-qr-mismatch-name">unlike($got, qr/mismatch/, $name)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-match-qr-pattern">$check = match(qr/pattern/)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-mismatch-qr-pattern">$check = mismatch(qr/pattern/)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-validator-sub-return-bool">$check = validator(sub { return $bool })</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-hash">$check = hash { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-array">$check = array { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-bag">$check = bag { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-object">$check = object { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-meta">$check = meta { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-number-num">$check = number($num)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-string-str">$check = string($str)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-bool-bool">$check = bool($bool)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-check_isa-class_name">$check = check_isa($class_name)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-in_set-things">$check = in_set(@things)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-not_in_set-things">$check = not_in_set(@things)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-check_set-things">$check = check_set(@things)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-item-thing">$check = item($thing)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-item-idx-thing">$check = item($idx =&gt; $thing)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-field-name-val">$check = field($name =&gt; $val)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-call-method-expect">$check = call($method =&gt; $expect)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-call_list-method-expect">$check = call_list($method =&gt; $expect)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-call_hash-method-expect">$check = call_hash($method =&gt; $expect)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-prop-name-expect">$check = prop($name =&gt; $expect)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-check-thing">$check = check($thing)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-T">$check = T()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-F">$check = F()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-D">$check = D()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-DF">$check = DF()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-E">$check = E()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-DNE">$check = DNE()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-FDNE">$check = FDNE()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-U">$check = U()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-L">$check = L()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-exact_ref-ref">$check = exact_ref($ref)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="end">end()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="etc">etc()</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="filter_items-grep-...-_">filter_items { grep { ... } @_ }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="check-event-type">$check = event $type =&gt; ...</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="checks-fail_events-type">@checks = fail_events $type =&gt; ...</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="CLASSIC-COMPARE">CLASSIC COMPARE</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/ClassicCompare.html">Test2::Tools::ClassicCompare</a>.</p>
+
+<dl>
+
+<dt id="cmp_ok-got-op-want-name">cmp_ok($got, $op, $want, $name)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="SUBTEST">SUBTEST</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Subtest.html">Test2::Tools::Subtest</a>.</p>
+
+<dl>
+
+<dt id="subtest-name-sub">subtest $name =&gt; sub { ... };</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+<p>(Note: This is called <code>subtest_buffered()</code> in the Tools module.)</p>
+
+</dd>
+</dl>
+
+<h2 id="CLASS1">CLASS</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Class.html">Test2::Tools::Class</a>.</p>
+
+<dl>
+
+<dt id="can_ok-thing-methods">can_ok($thing, @methods)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="isa_ok-thing-classes">isa_ok($thing, @classes)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="DOES_ok-thing-roles">DOES_ok($thing, @roles)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="ENCODING">ENCODING</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Encoding.html">Test2::Tools::Encoding</a>.</p>
+
+<dl>
+
+<dt id="set_encoding-encoding">set_encoding($encoding)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="EXPORTS">EXPORTS</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Exports.html">Test2::Tools::Exports</a>.</p>
+
+<dl>
+
+<dt id="imported_ok-function-scalar">imported_ok(&#39;function&#39;, &#39;$scalar&#39;, ...)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="not_imported_ok-function-scalar">not_imported_ok(&#39;function&#39;, &#39;$scalar&#39;, ...)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="REF">REF</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Ref.html">Test2::Tools::Ref</a>.</p>
+
+<dl>
+
+<dt id="ref_ok-ref-type">ref_ok($ref, $type)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="ref_is-got-want">ref_is($got, $want)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="ref_is_not-got-do_not_want">ref_is_not($got, $do_not_want)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Refcount.html">Test2::Tools::Refcount</a>.</p>
+
+<dl>
+
+<dt id="is_refcount-ref-count-description">is_refcount($ref, $count, $description)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="is_oneref-ref-description">is_oneref($ref, $description)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="count-refcount-ref">$count = refcount($ref)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="MOCK">MOCK</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Mock.html">Test2::Tools::Mock</a>.</p>
+
+<dl>
+
+<dt id="control-mock">$control = mock ...</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="bool-mocked-thing">$bool = mocked($thing)</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="EXCEPTION">EXCEPTION</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Exception.html">Test2::Tools::Exception</a>.</p>
+
+<dl>
+
+<dt id="exception-dies">$exception = dies { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="bool-lives">$bool = lives { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="bool-try_ok">$bool = try_ok { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h2 id="WARNINGS">WARNINGS</h2>
+
+<p>See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Warnings.html">Test2::Tools::Warnings</a>.</p>
+
+<dl>
+
+<dt id="count-warns">$count = warns { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="warning-warning">$warning = warning { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="warnings_ref-warnings">$warnings_ref = warnings { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+<dt id="bool-no_warnings">$bool = no_warnings { ... }</dt>
+<dd>
+
+<p><i>Added to Test::V1 in 1.302217.</i></p>
+
+</dd>
+</dl>
+
+<h1 id="JUSTIFICATION">JUSTIFICATION</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a> is a rich set of tools. But it made several assumptions about how it would be used. The assumptions are fairly good for new users writing simple scripts, but they can get in the way in many cases.</p>
+
+<h2 id="PROBLEMS-WITH-V0">PROBLEMS WITH V0</h2>
+
+<dl>
+
+<dt id="Assumptions-of-strict-warnings">Assumptions of strict/warnings</dt>
+<dd>
+
+<p>Many people would put custom strict/warnings settings at the top of their tests, only to have them wiped out when they use <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a>.</p>
+
+</dd>
+<dt id="Assumptions-of-UTF8">Assumptions of UTF8</dt>
+<dd>
+
+<p>Occasionally you do not want this assumption. The way it impacts all your regular and test handles, as well as how your source is read, can be a problem if you are not working with UTF8, or have other plans entirly.</p>
+
+</dd>
+<dt id="Huge-default-set-of-exports-which-can-grow">Huge default set of exports, which can grow</dt>
+<dd>
+
+<p>Sometimes you want to keep your namespace clean.</p>
+
+<p>Sometimes you import a tool that does not conflict with anything in <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a>, then we go and add a new tool which conflicts with yours! We make a point not to break/remove exports, but there is no such commitment about adding new ones.</p>
+
+<p>Now the only default export is <code>T2()</code> which gives you a handle where all the tools we expose are provided as methods. You can also use the <a>T2</a> module (Not bundled with Test-Simple) for use with an identical number of keystrokes, which allow you to leverage the prototypes on the original tool subroutines.</p>
+
+</dd>
+</dl>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Suite can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::V1 - V1 edition of the Test2 recommended bundle.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

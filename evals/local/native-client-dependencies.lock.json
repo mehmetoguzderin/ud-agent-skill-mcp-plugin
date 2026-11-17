@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "clients": {
+    "hermes-agent": {
+      "client_version": "0.19.0",
+      "purpose": "Native MCP client transport (optional in Hermes; required for this evaluation route)",
+      "packages": [
+        {
+          "package": "mcp",
+          "version": "1.26.0",
+          "url": "https://files.pythonhosted.org/packages/fd/d9/eaa1f80170d2b7c5ba23f3b59f766f3a0bb41155fbc32a69adfa1adaaef9/mcp-1.26.0-py3-none-any.whl",
+          "sha256": "904a21c33c25aa98ddbeb47273033c435e595bbacfdb177f4bd87f6dceebe1ca"
+        }
+      ]
+    }
+  }
+}

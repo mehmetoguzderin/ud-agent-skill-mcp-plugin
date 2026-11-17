@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "project": "apple/container",
+      "commit": "a15b46097aa4c2325da13c1fb5192b9274aab083",
+      "license": "Apache-2.0",
+      "role": "maintained-source-input"
+    },
+    {
+      "project": "microsoft/WSL",
+      "commit": "19cd15ea579fe09e29fcef8d9b947a588da3a765",
+      "license": "MIT",
+      "role": "maintained-source-input"
+    },
+    {
+      "project": "containerd/nerdctl",
+      "commit": "94bc03df5247ece1781c4b115a44ef3d4b1e0e65",
+      "license": "Apache-2.0",
+      "role": "maintained-source-input"
+    },
+    {
+      "project": "lima-vm/lima",
+      "commit": "800a96b14e96b5d2ceb20ab2602147c1e79224ea",
+      "license": "Apache-2.0",
+      "role": "maintained-source-input"
+    }
+  ],
+  "binary_release_source_lock": "runtime/materials/provider-binary-sources.lock.json"
+}

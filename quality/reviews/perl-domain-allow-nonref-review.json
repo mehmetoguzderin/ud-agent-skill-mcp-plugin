@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "reviewer": "domain_completion",
+  "reviews": [
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#276:integer_boundary_1",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "9f126d47c01d4d6d4a1bc6ce9ba7cbaac89a9e15b07f8205acab2b3dc4dc6de8",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 276,
+        "end": 277,
+        "original": "0",
+        "replacement": "1"
+      },
+      "equivalent": true,
+      "reason": "The only changed JSON::PP setting is acceptance of a non-reference top-level value. Every decoded request immediately passes the same guard: decode exceptions or any value whose ref is not HASH produce invalid_json and exit1. Thus every additional scalar admitted by allow_nonref(1) reaches exactly the invalid_json outcome that allow_nonref(0) produces through its caught decode exception. Arrays and objects retain identical decoding behavior. Both encode sites always receive HASH references (the fixed failure envelope or the graph result), so encoding is unchanged. Stream frames call the same guarded main routine, and malformed bytes still use the same invalid_json envelope. The claim concerns documented bounded protocol output and exit status, not internal JSON::PP exception text, which is never exposed."
+    }
+  ]
+}

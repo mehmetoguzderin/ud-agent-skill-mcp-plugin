@@ -1,0 +1,366 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "enhanced_graph_edit",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "head_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[1-9][0-9]*)?$"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ]
+        },
+        "head": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[1-9][0-9]*)?$"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ]
+        },
+        "deprel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "head_id"
+              ],
+              "properties": {
+                "head_id": {}
+              }
+            },
+            {
+              "required": [
+                "head"
+              ],
+              "properties": {
+                "head": {}
+              }
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "deprel"
+              ],
+              "properties": {
+                "deprel": {}
+              }
+            },
+            {
+              "required": [
+                "relation"
+              ],
+              "properties": {
+                "relation": {}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "edge_operation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "add",
+                "remove"
+              ]
+            },
+            "dependent_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[1-9][0-9]*)?$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ]
+            },
+            "head_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[1-9][0-9]*)?$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ]
+            },
+            "deprel": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "action",
+            "dependent_id",
+            "head_id",
+            "deprel"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "replace"
+            },
+            "dependent_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[1-9][0-9]*)?$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ]
+            },
+            "incoming_edges": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/edge"
+              }
+            }
+          },
+          "required": [
+            "action",
+            "dependent_id"
+          ]
+        }
+      ]
+    },
+    "edit_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mode": {
+              "enum": [
+                "preview",
+                "apply"
+              ]
+            },
+            "expected_file_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "expected_fingerprint": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "expected_sentence_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "boundary_policy": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "transfer_to_next",
+                    "drop",
+                    "preserve",
+                    "move_with_sentence",
+                    "copy_with_sentence"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "action": {
+                      "enum": [
+                        "transfer_to_next",
+                        "drop",
+                        "preserve",
+                        "move_with_sentence",
+                        "copy_with_sentence"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "action"
+                  ]
+                }
+              ]
+            },
+            "validation_options": {
+              "$ref": "#/$defs/validation_options"
+            },
+            "idempotency_key": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tree_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sent_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "file_path"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "sent_id"
+          ],
+          "properties": {
+            "sent_id": {}
+          }
+        },
+        {
+          "required": [
+            "ordinal",
+            "fingerprint"
+          ],
+          "properties": {
+            "ordinal": {},
+            "fingerprint": {}
+          }
+        }
+      ]
+    },
+    "validation_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "language_code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "level": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "coref": {
+              "type": "boolean"
+            },
+            "test_filters": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "exclude_filters": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "check_families": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "content",
+                  "repository",
+                  "documentation"
+                ]
+              }
+            },
+            "repository_name": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tree_ref": {
+      "$ref": "#/$defs/tree_ref"
+    },
+    "edge_operations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge_operation"
+      },
+      "minItems": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "edit_options": {
+      "$ref": "#/$defs/edit_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "tree_ref",
+    "edge_operations",
+    "ud_context_path"
+  ]
+}

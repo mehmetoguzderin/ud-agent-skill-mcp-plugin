@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "predictions_evaluate",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "scoring_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enhanced": {
+              "type": "boolean"
+            },
+            "treebank_type": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "no_gapping": {
+                  "type": "boolean"
+                },
+                "no_shared_parents_in_coordination": {
+                  "type": "boolean"
+                },
+                "no_shared_dependents_in_coordination": {
+                  "type": "boolean"
+                },
+                "no_control": {
+                  "type": "boolean"
+                },
+                "no_external_arguments_of_relative_clauses": {
+                  "type": "boolean"
+                },
+                "no_case_info": {
+                  "type": "boolean"
+                },
+                "no_empty_nodes": {
+                  "type": "boolean"
+                },
+                "multiple_roots_okay": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gold_file_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "prediction_file_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/scoring_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "gold_file_paths",
+    "prediction_file_paths",
+    "ud_context_path"
+  ]
+}

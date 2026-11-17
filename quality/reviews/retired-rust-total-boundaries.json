@@ -1,0 +1,37 @@
+{
+  "boundaries": [
+    {
+      "assertion": "assertion `left == right` failed: public serialized-metadata boundary must never panic",
+      "boundary": "validate_security",
+      "definition_sha256": "55df7c3525897903f9a6f8936cf38dd510014b7097bbe4790407e54d12325454",
+      "event": {
+        "boundary": "validate_security",
+        "contract": "hostile bytes return InvalidInput without panic",
+        "definition_sha256": "55df7c3525897903f9a6f8936cf38dd510014b7097bbe4790407e54d12325454",
+        "event": "caught-boundary-panic",
+        "expected": "Err(InvalidInput)",
+        "input_hex": "",
+        "observed": "caught panic",
+        "schema_version": 1,
+        "source_sha256": "cad86bd7dc42fdf85c6abb6e1a9bf945fdcf6314a014dce54f2ddfc298bf33a1",
+        "test": "boundary_proof::hostile_empty_security_is_total"
+      },
+      "proof_file": "tests/mutation/fixtures/rust-total-boundary-proof.json",
+      "proof_sha256": "220b2f893b6281fe7a3724554a27150c3de7468d51e93af8eb0041add8748c4a",
+      "review_file": "quality/reviews/rust-caught-boundary-root-review.json",
+      "review_sha256": "551d2931e9d7fdd774fce25a1067615ba94057a1e099d497c4539e2b0d19826d",
+      "source": "packages/launcher/src/windows_metadata_policy.rs",
+      "source_lines": [
+        8,
+        43
+      ],
+      "source_sha256": "cad86bd7dc42fdf85c6abb6e1a9bf945fdcf6314a014dce54f2ddfc298bf33a1",
+      "test_file": "tests/mutation/fixtures/rust-total-security.rs",
+      "test_name": "boundary_proof::hostile_empty_security_is_total",
+      "test_sha256": "037a90da8671afade567c3d1357cb6838c47570ff8f472cb1980f98b9dc76f9a"
+    }
+  ],
+  "schema_version": 1,
+  "qualification": "historical-only-no-active-authorization",
+  "reason": "Bounds-safe header access removes this panic dependency; normal Cargo discovers the immutable totality regression."
+}

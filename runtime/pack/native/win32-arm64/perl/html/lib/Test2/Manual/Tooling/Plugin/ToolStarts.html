@@ -1,0 +1,164 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Manual::Tooling::Plugin::ToolStarts - How to add behaviors that occur when a tool starts work.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Tooling::Plugin::ToolStarts - How to add behaviors that occur when a tool starts work.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#COMPLETE-CODE-UP-FRONT">COMPLETE CODE UP FRONT</a></li>
+  <li><a href="#LINE-BY-LINE">LINE BY LINE</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Manual::Tooling::Plugin::ToolStarts - How to add behaviors that occur when a tool starts work.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This tutorial will help you write plugins that have behavior when a tool starts. All tools should start by acquiring a context object. This tutorial shows you the hooks you can use to take advantage of the context acquisition.</p>
+
+<h1 id="COMPLETE-CODE-UP-FRONT">COMPLETE CODE UP FRONT</h1>
+
+<pre><code>package Test2::Plugin::MyPlugin;
+
+use Test2::API qw{
+    test2_add_callback_context_init
+    test2_add_callback_context_acquire
+};
+
+sub import {
+    my $class = shift;
+
+    # Let us know every time a tool requests a context, and give us a
+    # chance to modify the parameters before we find it.
+    test2_add_callback_context_acquire(sub {
+        my $params_ref = shift;
+
+        print &quot;A tool has requested the context\n&quot;;
+    });
+
+    # Callback every time a new context is created, not called if an
+    # existing context is found.
+    test2_add_callback_context_init(sub {
+        my $ctx_ref = shift;
+
+        print &quot;A new context was created\n&quot;;
+    });
+}
+
+1;</code></pre>
+
+<h1 id="LINE-BY-LINE">LINE BY LINE</h1>
+
+<dl>
+
+<dt id="use-Test2::API-qw-test2_add_callback_context_init-test2_add_callback_context_acquire">use Test2::API qw{test2_add_callback_context_init test2_add_callback_context_acquire};</dt>
+<dd>
+
+<p>This imports the <code>test2_add_callback_context_init()</code> and <code>test2_add_callback_context_acquire()</code> callbacks.</p>
+
+</dd>
+<dt id="test2_add_callback_context_acquire-sub">test2_add_callback_context_acquire(sub { ... })</dt>
+<dd>
+
+<p>This is where we add our callback for context acquisition. Every time <code>Test2::API::context()</code> is called the callback will be run.</p>
+
+</dd>
+<dt id="my-params_ref-shift">my $params_ref = shift</dt>
+<dd>
+
+<p>In the test2_add_callback_context_acquire() callbacks we get exactly 1 argument, a reference to the parameters that <code>context()</code> will use to find the context.</p>
+
+</dd>
+<dt id="print-A-tool-has-requested-the-context-n">print &quot;A tool has requested the context\n&quot;</dt>
+<dd>
+
+<p>Print a notification whenever a tool asks for a context.</p>
+
+</dd>
+<dt id="test2_add_callback_context_init-sub">test2_add_callback_context_init(sub { ... })</dt>
+<dd>
+
+<p>Add our context init callback. These callbacks are triggered whenever a completely new context is created. This is not called if an existing context is found. In short this only fires off for the top level tool, not nested tools.</p>
+
+</dd>
+<dt id="my-ctx_ref-shift">my $ctx_ref = shift</dt>
+<dd>
+
+<p>The coderefs for test2_add_callback_context_init() will receive exactly 1 argument, the newly created context.</p>
+
+</dd>
+<dt id="print-A-new-context-was-created-n">print &quot;A new context was created\n&quot;</dt>
+<dd>
+
+<p>Print a notification whenever a new context is created.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Manual.html">Test2::Manual</a> - Primary index of the manual.</p>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Manual can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Tooling::Plugin::ToolStarts - How to add behaviors that occur when a tool starts work.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

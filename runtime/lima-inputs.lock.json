@@ -1,0 +1,44 @@
+{
+  "assets": [
+    {
+      "name": "lima-2.3.0-Darwin-x86_64.tar.gz",
+      "sha256": "d58bc7d6b8158d638720d8c8fdb17eb58527dfead6a29a5b60f48a35ee4a65a6",
+      "size": 37793345,
+      "url": "https://github.com/lima-vm/lima/releases/download/v2.3.0/lima-2.3.0-Darwin-x86_64.tar.gz"
+    },
+    {
+      "name": "lima-2.3.0-Darwin-arm64.tar.gz",
+      "sha256": "b7af444bd8f91d3c307477e562f2cf3bd7595d62b9429185e4fa841563578cfc",
+      "size": 50317981,
+      "url": "https://github.com/lima-vm/lima/releases/download/v2.3.0/lima-2.3.0-Darwin-arm64.tar.gz"
+    },
+    {
+      "name": "nerdctl-full-2.4.2-linux-amd64.tar.gz",
+      "sha256": "1f12c1a5840744fdf7029483c55a69813d44aa2ec1ef879d52d81ff6a3049ecd",
+      "size": 297720400,
+      "url": "https://github.com/containerd/nerdctl/releases/download/v2.4.2/nerdctl-full-2.4.2-linux-amd64.tar.gz"
+    },
+    {
+      "name": "nerdctl-full-2.4.2-linux-arm64.tar.gz",
+      "sha256": "fe0ef0e9840ee8932640e6058f84b7fa98050f9726e44af44883a5b804ae830e",
+      "size": 270513423,
+      "url": "https://github.com/containerd/nerdctl/releases/download/v2.4.2/nerdctl-full-2.4.2-linux-arm64.tar.gz"
+    }
+  ],
+  "qualification": "exact-provider-inputs-no-execution",
+  "schema_version": 1,
+  "sources": {
+    "lima": {
+      "commit": "800a96b14e96b5d2ceb20ab2602147c1e79224ea",
+      "source_url": "https://github.com/lima-vm/lima/commit/800a96b14e96b5d2ceb20ab2602147c1e79224ea",
+      "tag": "v2.3.0",
+      "tree": "59aa0238e20ed1b30c9771d50f77d809bb0bdea5"
+    },
+    "nerdctl": {
+      "commit": "94bc03df5247ece1781c4b115a44ef3d4b1e0e65",
+      "source_url": "https://github.com/containerd/nerdctl/commit/94bc03df5247ece1781c4b115a44ef3d4b1e0e65",
+      "tag": "v2.4.2",
+      "tree": "d47766c52529904278e8ba2c7d5db568617e7ad7"
+    }
+  }
+}

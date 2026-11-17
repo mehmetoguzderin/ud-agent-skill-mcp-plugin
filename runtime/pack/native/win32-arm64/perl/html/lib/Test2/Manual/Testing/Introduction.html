@@ -1,0 +1,364 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Manual::Testing::Introduction - Introduction to testing with Test2.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Testing::Introduction - Introduction to testing with Test2.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#BOILERPLATE">BOILERPLATE</a>
+    <ul>
+      <li><a href="#THE-TEST-FILE">THE TEST FILE</a></li>
+      <li><a href="#DIST-CONFIG">DIST CONFIG</a>
+        <ul>
+          <li><a href="#Dist%3A%3AZilla">Dist::Zilla</a></li>
+          <li><a href="#ExtUtils%3A%3AMakeMaker">ExtUtils::MakeMaker</a></li>
+          <li><a href="#Module%3A%3AInstall">Module::Install</a></li>
+          <li><a href="#Module%3A%3ABuild">Module::Build</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#MAKING-ASSERTIONS">MAKING ASSERTIONS</a></li>
+  <li><a href="#RUNNING-THE-TEST">RUNNING THE TEST</a>
+    <ul>
+      <li><a href="#RUN-DIRECTLY">RUN DIRECTLY</a></li>
+      <li><a href="#USING-YATH">USING YATH</a></li>
+      <li><a href="#USING-PROVE">USING PROVE</a></li>
+    </ul>
+  </li>
+  <li><a href="#THE-PLAN">THE &quot;PLAN&quot;</a></li>
+  <li><a href="#ADDITIONAL-ASSERTION-TOOLS">ADDITIONAL ASSERTION TOOLS</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Manual::Testing::Introduction - Introduction to testing with Test2.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This tutorial is a beginners introduction to testing. This will take you through writing a test file, making assertions, and running your test.</p>
+
+<h1 id="BOILERPLATE">BOILERPLATE</h1>
+
+<h2 id="THE-TEST-FILE">THE TEST FILE</h2>
+
+<p>Test files typically are placed inside the <code>t/</code> directory, and end with the <code>.t</code> file extension.</p>
+
+<p><code>t/example.t</code>:</p>
+
+<pre><code>use Test2::V1 -ipP;
+
+# Assertions will go here
+
+done_testing;</code></pre>
+
+<p>This is all the boilerplate you need.</p>
+
+<dl>
+
+<dt id="use-Test2::V1--ipP">use Test2::V1 -ipP;</dt>
+<dd>
+
+<p>This loads a collection of testing tools that will be described later in the tutorial. See <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a> for more details, but for starters &#39;-ipP&#39; is a good set of import flags.</p>
+
+<p>If you do not like importing a ton of symbols or enabling pragmas/plugins all in one swoop you can do <code>use Test2::V1;</code>. If you do this you will need to use the T2() function to access tools, and load any pragmas/plugins manually:</p>
+
+<pre><code>use Test2::V1;
+use strict;
+use warnings;
+use Test2::Plugin::UTF8;
+use Test2::Plugin::SRand;
+
+T2-&gt;ok(1, &quot;pass&quot;);
+T2-&gt;is(5, 5, &quot;5 is 5&quot;);
+
+T2-&gt;done_testing;</code></pre>
+
+</dd>
+<dt id="done_testing">done_testing;</dt>
+<dd>
+
+<p>This should always be at the end of your test files. This tells <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> that you are done making assertions. This is important as <code>test2</code> will assume the test did not complete successfully without this, or some other form of test &quot;plan&quot;.</p>
+
+</dd>
+</dl>
+
+<h2 id="DIST-CONFIG">DIST CONFIG</h2>
+
+<p>You should always list bundles and tools directly. You should not simply list <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Suite.html">Test2::Suite</a> and call it done, bundles and tools may be moved out of <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Suite.html">Test2::Suite</a> to their own dists at any time.</p>
+
+<h3 id="Dist::Zilla">Dist::Zilla</h3>
+
+<pre><code>[Prereqs / TestRequires]
+Test2::V1 = 0.000060</code></pre>
+
+<h3 id="ExtUtils::MakeMaker">ExtUtils::MakeMaker</h3>
+
+<pre><code>my %WriteMakefileArgs = (
+  ...,
+  &quot;TEST_REQUIRES&quot; =&gt; {
+    &quot;Test2::V1&quot; =&gt; &quot;0.000060&quot;
+  },
+  ...
+);</code></pre>
+
+<h3 id="Module::Install">Module::Install</h3>
+
+<pre><code>test_requires &#39;Test2::V1&#39; =&gt; &#39;0.000060&#39;;</code></pre>
+
+<h3 id="Module::Build">Module::Build</h3>
+
+<pre><code>my $build = Module::Build-&gt;new(
+    ...,
+    test_requires =&gt; {
+        &quot;Test2::V1&quot; =&gt; &quot;0.000060&quot;,
+    },
+    ...
+);</code></pre>
+
+<h1 id="MAKING-ASSERTIONS">MAKING ASSERTIONS</h1>
+
+<p>The most simple tool for making assertions is <code>ok()</code>. <code>ok()</code> lets you assert that a condition is true.</p>
+
+<pre><code>ok($CONDITION, &quot;Description of the condition&quot;);</code></pre>
+
+<p>Here is a complete <code>t/example.t</code>:</p>
+
+<pre><code>use Test2::V1 -import;
+
+ok(1, &quot;1 is true, so this will pass&quot;);
+
+done_testing;</code></pre>
+
+<p>If you are doing it without imports:</p>
+
+<pre><code>use Test2::V1;
+
+T2-&gt;ok(1, &quot;1 is true, so this will pass&quot;);
+
+T2-&gt;done_testing;</code></pre>
+
+<h1 id="RUNNING-THE-TEST">RUNNING THE TEST</h1>
+
+<p>Test files are simply scripts. Just like any other script you can run the test directly with perl. Another option is to use a test &quot;harness&quot; which runs the test for you, and provides extra information and checks the scripts exit value for you.</p>
+
+<h2 id="RUN-DIRECTLY">RUN DIRECTLY</h2>
+
+<pre><code>$ perl -Ilib t/example.t</code></pre>
+
+<p>Which should produce output like this:</p>
+
+<pre><code># Seeded srand with seed &#39;20161028&#39; from local date.
+ok 1 - 1 is true, so this will pass
+1..1</code></pre>
+
+<p>If the test had failed (<code>ok(0, ...)</code>) it would look like this:</p>
+
+<pre><code># Seeded srand with seed &#39;20161028&#39; from local date.
+not ok 1 - 0 is false, so this will fail
+1..1</code></pre>
+
+<p>Test2 will also set the exit value of the script, a successful run will have an exit value of 0, a failed run will have a non-zero exit value.</p>
+
+<h2 id="USING-YATH">USING YATH</h2>
+
+<p>The <code>yath</code> command line tool is provided by <a>Test2::Harness</a> which you may need to install yourself from cpan. <code>yath</code> is the harness written specifically for <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a>.</p>
+
+<pre><code>$ yath -Ilib t/example.t</code></pre>
+
+<p>This will produce output similar to this:</p>
+
+<pre><code>( PASSED )  job  1    t/example.t
+
+================================================================================
+
+Run ID: 1508027909
+
+All tests were successful!</code></pre>
+
+<p>You can also request verbose output with the <code>-v</code> flag:</p>
+
+<pre><code>$ yath -Ilib -v t/example.t</code></pre>
+
+<p>Which produces:</p>
+
+<pre><code>( LAUNCH )  job  1    example.t
+(  NOTE  )  job  1    Seeded srand with seed &#39;20171014&#39; from local date.
+[  PASS  ]  job  1  + 1 is true, so this will pass
+[  PLAN  ]  job  1    Expected assertions: 1
+( PASSED )  job  1    example.t
+
+================================================================================
+
+Run ID: 1508028002
+
+All tests were successful!</code></pre>
+
+<h2 id="USING-PROVE">USING PROVE</h2>
+
+<p>The <code>prove</code> command line tool is provided by the <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/Harness.html">Test::Harness</a> module which comes with most versions of perl. <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/Harness.html">Test::Harness</a> is dual-life, which means you can also install the latest version from cpan.</p>
+
+<pre><code>$ prove -Ilib t/example.t</code></pre>
+
+<p>This will produce output like this:</p>
+
+<pre><code>example.t .. ok
+All tests successful.
+Files=1, Tests=1,  0 wallclock secs ( 0.01 usr  0.00 sys +  0.05 cusr  0.00 csys =  0.06 CPU)
+Result: PASS</code></pre>
+
+<p>You can also request verbose output with the <code>-v</code> flag:</p>
+
+<pre><code>$ prove -Ilib -v t/example.t</code></pre>
+
+<p>The verbose output looks like this:</p>
+
+<pre><code>example.t ..
+# Seeded srand with seed &#39;20161028&#39; from local date.
+ok 1 - 1 is true, so this will pass
+1..1
+ok
+All tests successful.
+Files=1, Tests=1,  0 wallclock secs ( 0.02 usr  0.00 sys +  0.06 cusr  0.00 csys =  0.08 CPU)
+Result: PASS</code></pre>
+
+<h1 id="THE-PLAN">THE &quot;PLAN&quot;</h1>
+
+<p>All tests need a &quot;plan&quot;. The job of a plan is to make sure you ran all the tests you expected. The plan prevents a passing result from a test that exits before all the tests are run.</p>
+
+<p>There are 2 primary ways to set the plan:</p>
+
+<dl>
+
+<dt id="done_testing1">done_testing()</dt>
+<dd>
+
+</dd>
+<dt id="T2-done_testing">T2-&gt;done_testing()</dt>
+<dd>
+
+<p>The most common, and recommended way to set a plan is to add <code>done_testing</code> at the end of your test file. This will automatically calculate the plan for you at the end of the test. If the test were to exit early then <code>done_testing</code> would not run and no plan would be found, forcing a failure.</p>
+
+</dd>
+<dt id="plan-COUNT">plan($COUNT)</dt>
+<dd>
+
+</dd>
+<dt id="T2-plan-COUNT">T2-&gt;plan($COUNT)</dt>
+<dd>
+
+<p>The <code>plan()</code> function allows you to specify an exact number of assertions you want to run. If you run too many or too few assertions then the plan will not match and it will be counted as a failure. The primary problem with this way of planning is that you need to add up the number of assertions, and adjust the count whenever you update the test file.</p>
+
+<p><code>plan()</code> must be used before all assertions, or after all assertions, it cannot be done in the middle of making assertions.</p>
+
+</dd>
+</dl>
+
+<h1 id="ADDITIONAL-ASSERTION-TOOLS">ADDITIONAL ASSERTION TOOLS</h1>
+
+<p>The <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a> bundle provides a lot more than <code>ok()</code>, <code>plan()</code>, and <code>done_testing()</code>. The biggest tools to note are:</p>
+
+<dl>
+
+<dt id="is-a-b-description">is($a, $b, $description)</dt>
+<dd>
+
+</dd>
+<dt id="T2-is-a-b-description">T2-&gt;is($a, $b, $description)</dt>
+<dd>
+
+<p><code>is()</code> allows you to compare 2 structures and insure they are identical. You can use it for simple string comparisons, or even deep data structure comparisons.</p>
+
+<pre><code>is(&quot;foo&quot;, &quot;foo&quot;, &quot;Both strings are identical&quot;);
+
+is([&quot;foo&quot;, 1], [&quot;foo&quot;, 1], &quot;Both arrays contain the same elements&quot;);</code></pre>
+
+</dd>
+<dt id="like-a-b-description">like($a, $b, $description)</dt>
+<dd>
+
+</dd>
+<dt id="T2-like-a-b-description">T2-&gt;like($a, $b, $description)</dt>
+<dd>
+
+<p><code>like()</code> is similar to <code>is()</code> except that it only checks items listed on the right, it ignores any extra values found on the left.</p>
+
+<pre><code>like([1, 2, 3, 4], [1, 2, 3], &quot;Passes, the extra element on the left is ignored&quot;);</code></pre>
+
+<p>You can also used regular expressions on the right hand side:</p>
+
+<pre><code>like(&quot;foo bar baz&quot;, qr/bar/, &quot;The string matches the regex, this passes&quot;);</code></pre>
+
+<p>You can also nest the regexes:</p>
+
+<pre><code>like([1, 2, &#39;foo bar baz&#39;, 3], [1, 2, qr/bar/], &quot;This passes&quot;);</code></pre>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Manual.html">Test2::Manual</a> - Primary index of the manual.</p>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Manual can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Testing::Introduction - Introduction to testing with Test2.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

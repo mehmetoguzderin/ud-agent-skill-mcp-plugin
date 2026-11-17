@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "qualification": "independent-assertion-obligation-review",
+  "author": "domain_completion",
+  "reviewer": "root-and-acceptance-release-independent-per-packet",
+  "classifier": {
+    "path": "scripts/quality/assertion-obligations.mjs",
+    "sha256": "8f6469afc80117971ad3a57ecf7fe0cbfef2dfb6a4896fe9ee1499b0fe0dbe79"
+  },
+  "obligations": {
+    "path": "quality/assertion-obligations.json",
+    "sha256": "3734575df1bbcce15f6d182f7da44db5993465edad6386976e7d7c8e7e5db4ca"
+  },
+  "sites_sha256": "38bcf4900336b14ed3d95404888ba53e08add58417598845486e2ec4a456da63"
+}

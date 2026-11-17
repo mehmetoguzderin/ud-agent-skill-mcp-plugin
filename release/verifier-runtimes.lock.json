@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "purpose": "release-verifier-python",
+  "profiles": [
+    {
+      "id": "pbs-3.15.2-darwin-arm64",
+      "platform": "darwin-arm64",
+      "status": "approved",
+      "inventory": {
+        "path": "release/verifier-runtimes/pbs-3.15.2-darwin-arm64.json",
+        "sha256": "ce8f3f0e3f280596dd5183702700f10e7f24df4c2b0c54a5ed94e55f832f5e89",
+        "size": 375896
+      },
+      "approval": {
+        "path": "release/verifier-runtimes/reviews/pbs-3.15.2-darwin-arm64.json",
+        "sha256": "24dbe8f8722d0cce29f7db5f793db20e3219b0b4edf3819b47ec76b3c4023f7e",
+        "size": 1932
+      }
+    },
+    {
+      "id": "pbs-3.15.2-darwin-x64",
+      "platform": "darwin-x64",
+      "status": "pending-native",
+      "inventory": {
+        "path": "release/verifier-runtimes/pbs-3.15.2-darwin-x64.json",
+        "sha256": "7bb0b9dc8d186a11c58721d4e3446b47bac9a64e34effd1020805c0ba8b22853",
+        "size": 375582
+      }
+    },
+    {
+      "id": "pbs-3.15.2-linux-arm64",
+      "platform": "linux-arm64",
+      "status": "approved",
+      "inventory": {
+        "path": "release/verifier-runtimes/pbs-3.15.2-linux-arm64.json",
+        "sha256": "1e4a5445088881ffcf5fe70bacdaec14f1d6a88754ef4e651bb8ce8e5ea3075b",
+        "size": 903062
+      },
+      "approval": {
+        "path": "release/verifier-runtimes/reviews/pbs-3.15.2-linux-arm64.json",
+        "sha256": "a74a461fd3a79d265a8e1681af510eaa9232e0394f7939979dbe8205c5d8326f",
+        "size": 1631
+      }
+    },
+    {
+      "id": "pbs-3.15.2-linux-x64",
+      "platform": "linux-x64",
+      "status": "pending-native",
+      "inventory": {
+        "path": "release/verifier-runtimes/pbs-3.15.2-linux-x64.json",
+        "sha256": "b41dc5895b7a12db13d2ddd5077d3aadcceb05075a5098c0d5ce9b4a2b9c6ddb",
+        "size": 902702
+      }
+    },
+    {
+      "id": "pbs-3.15.2-win32-arm64",
+      "platform": "win32-arm64",
+      "status": "pending-native",
+      "inventory": {
+        "path": "release/verifier-runtimes/pbs-3.15.2-win32-arm64.json",
+        "sha256": "98de337727242956d219b00d0c29938e896aeed31709eaed184fae31cbb556b6",
+        "size": 439457
+      }
+    },
+    {
+      "id": "pbs-3.15.2-win32-x64",
+      "platform": "win32-x64",
+      "status": "approved",
+      "inventory": {
+        "path": "release/verifier-runtimes/pbs-3.15.2-win32-x64.json",
+        "sha256": "e44301669789a8bfd4e24096d4716cb361657b7e6f2a7d601eac469f2a289333",
+        "size": 440582
+      },
+      "approval": {
+        "path": "release/verifier-runtimes/reviews/pbs-3.15.2-win32-x64.json",
+        "sha256": "3d5c165bd893373fcca438d09a3c90d5532db156d98591eddc77dee9c7e03ad9",
+        "size": 2559
+      }
+    }
+  ],
+  "unprovisioned_platforms": [
+    "darwin-x64",
+    "linux-x64",
+    "win32-arm64"
+  ]
+}

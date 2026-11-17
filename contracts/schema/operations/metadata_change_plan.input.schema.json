@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "metadata_change_plan",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {},
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposed_metadata_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "readme_path": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "proposed_metadata_path",
+    "ud_context_path"
+  ]
+}

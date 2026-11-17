@@ -1,0 +1,492 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "token_misc_replace",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "attribute_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "values": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "attributes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/$defs/attribute_item"
+              }
+            ]
+          }
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "CoNLL-U attribute text, a name/value mapping, or ordered entries. Null and empty collections clear the field; null mapping values are supported for opaque MISC flags."
+    },
+    "edit_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mode": {
+              "enum": [
+                "preview",
+                "apply"
+              ]
+            },
+            "expected_file_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "expected_fingerprint": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "expected_sentence_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "boundary_policy": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "transfer_to_next",
+                    "drop",
+                    "preserve",
+                    "move_with_sentence",
+                    "copy_with_sentence"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "action": {
+                      "enum": [
+                        "transfer_to_next",
+                        "drop",
+                        "preserve",
+                        "move_with_sentence",
+                        "copy_with_sentence"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "action"
+                  ]
+                }
+              ]
+            },
+            "validation_options": {
+              "$ref": "#/$defs/validation_options"
+            },
+            "idempotency_key": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "token_ref": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tree_ref": {
+              "$ref": "#/$defs/tree_ref"
+            },
+            "token_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "word_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            }
+          },
+          "required": [
+            "tree_ref"
+          ],
+          "anyOf": [
+            {
+              "required": [
+                "token_id"
+              ],
+              "properties": {
+                "token_id": {}
+              }
+            },
+            {
+              "required": [
+                "word_id"
+              ],
+              "properties": {
+                "word_id": {}
+              }
+            },
+            {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {}
+              }
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "token_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "word_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "file_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sent_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ordinal": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fingerprint": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "file_path"
+          ],
+          "allOf": [
+            {
+              "anyOf": [
+                {
+                  "required": [
+                    "sent_id"
+                  ],
+                  "properties": {
+                    "sent_id": {}
+                  }
+                },
+                {
+                  "required": [
+                    "ordinal",
+                    "fingerprint"
+                  ],
+                  "properties": {
+                    "ordinal": {},
+                    "fingerprint": {}
+                  }
+                }
+              ]
+            },
+            {
+              "anyOf": [
+                {
+                  "required": [
+                    "token_id"
+                  ],
+                  "properties": {
+                    "token_id": {}
+                  }
+                },
+                {
+                  "required": [
+                    "word_id"
+                  ],
+                  "properties": {
+                    "word_id": {}
+                  }
+                },
+                {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {}
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "tree_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sent_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "file_path"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "sent_id"
+          ],
+          "properties": {
+            "sent_id": {}
+          }
+        },
+        {
+          "required": [
+            "ordinal",
+            "fingerprint"
+          ],
+          "properties": {
+            "ordinal": {},
+            "fingerprint": {}
+          }
+        }
+      ]
+    },
+    "validation_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "language_code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "level": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "coref": {
+              "type": "boolean"
+            },
+            "test_filters": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "exclude_filters": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "check_families": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "content",
+                  "repository",
+                  "documentation"
+                ]
+              }
+            },
+            "repository_name": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "token_ref": {
+      "$ref": "#/$defs/token_ref"
+    },
+    "misc_entries": {
+      "$ref": "#/$defs/attributes"
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "edit_options": {
+      "$ref": "#/$defs/edit_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "token_ref",
+    "misc_entries",
+    "ud_context_path"
+  ]
+}

@@ -1,0 +1,1421 @@
+{
+  "base_image": "docker.io/library/python:3.15.2-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928",
+  "debian": {
+    "architectures": {
+      "amd64": {
+        "evidence": [
+          {
+            "file": "debian-archive-keyring.gpg",
+            "sha256": "506b815cbb32d9b6066b4a2aa524071e071761e7e7f68c3ac74f3061ba852017",
+            "size": 55918
+          },
+          {
+            "file": "snapshot.debian.org_archive_debian-security_20261104T212339Z_dists_trixie-security_InRelease",
+            "sha256": "de7ca75ccda9ff69caf9635e7c5b9f04dcc9802f3f7686b924d600df34bc7056",
+            "size": 43409
+          },
+          {
+            "file": "snapshot.debian.org_archive_debian_20261104T212339Z_dists_trixie_InRelease",
+            "sha256": "0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675",
+            "size": 140421
+          }
+        ],
+        "indexes": [
+          {
+            "file": "snapshot.debian.org_archive_debian-security_20261104T212339Z_dists_trixie-security_main_binary-amd64_Packages",
+            "release_path": "main/binary-amd64/Packages",
+            "sha256": "240daf2a479510dcdaeda04396728a52f961779dde1af6f9fd80e57837a83c68",
+            "size": 2163170,
+            "source": "security"
+          },
+          {
+            "file": "snapshot.debian.org_archive_debian_20261104T212339Z_dists_trixie_main_binary-amd64_Packages",
+            "release_path": "main/binary-amd64/Packages",
+            "sha256": "4f2c68d67001d595fbd343f6dbad44468953a51c4d9dec3a4803249f6e295940",
+            "size": 56620099,
+            "source": "main"
+          }
+        ],
+        "packages": [
+          {
+            "architecture": "all",
+            "file": "libalgorithm-c3-perl_0.11-2_all.deb",
+            "name": "libalgorithm-c3-perl",
+            "repository_path": "pool/main/liba/libalgorithm-c3-perl/libalgorithm-c3-perl_0.11-2_all.deb",
+            "sha256": "e1a319e126c101ea1ab3f16cc4083aa6719209e231169eb4849a019dd7e46e31",
+            "size": 10844,
+            "source": "main",
+            "version": "0.11-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libb-hooks-endofscope-perl_0.28-2_all.deb",
+            "name": "libb-hooks-endofscope-perl",
+            "repository_path": "pool/main/libb/libb-hooks-endofscope-perl/libb-hooks-endofscope-perl_0.28-2_all.deb",
+            "sha256": "440aec0a0530404696ee7393ff1ae9af97959e9f957887f0c1795505620f1f6a",
+            "size": 17564,
+            "source": "main",
+            "version": "0.28-2"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libb-hooks-op-check-perl_0.22-3+b2_amd64.deb",
+            "name": "libb-hooks-op-check-perl",
+            "repository_path": "pool/main/libb/libb-hooks-op-check-perl/libb-hooks-op-check-perl_0.22-3+b2_amd64.deb",
+            "sha256": "90cc8931725ef9a0fcfe16df3e55b6397b4cf57d033f2228ebcf9175ada254de",
+            "size": 10592,
+            "source": "main",
+            "version": "0.22-3+b2"
+          },
+          {
+            "architecture": "all",
+            "file": "libclass-c3-perl_0.35-2_all.deb",
+            "name": "libclass-c3-perl",
+            "repository_path": "pool/main/libc/libclass-c3-perl/libclass-c3-perl_0.35-2_all.deb",
+            "sha256": "5504859968dde2ec2392115299f9363c8096eb6e950565dbe822a16d0e2c2f3f",
+            "size": 20992,
+            "source": "main",
+            "version": "0.35-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libclass-load-perl_0.25-2_all.deb",
+            "name": "libclass-load-perl",
+            "repository_path": "pool/main/libc/libclass-load-perl/libclass-load-perl_0.25-2_all.deb",
+            "sha256": "297bff2a31afc492457dbcc2c9d6ad2c40931d4b135649ed96639079d0083ca7",
+            "size": 15316,
+            "source": "main",
+            "version": "0.25-2"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libclass-load-xs-perl_0.10-2+b4_amd64.deb",
+            "name": "libclass-load-xs-perl",
+            "repository_path": "pool/main/libc/libclass-load-xs-perl/libclass-load-xs-perl_0.10-2+b4_amd64.deb",
+            "sha256": "b5bcf7e71c74d09a2293d9c1aa1086bbd194e9f43561d4dcdc6bc030cc8472ff",
+            "size": 14156,
+            "source": "main",
+            "version": "0.10-2+b4"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libclone-perl_0.47-1+b1_amd64.deb",
+            "name": "libclone-perl",
+            "repository_path": "pool/main/libc/libclone-perl/libclone-perl_0.47-1+b1_amd64.deb",
+            "sha256": "c1ca65f05a5fb68b04b4fb0c9f1bd1210c80041c98b0ea7848d80be8bc7a72a5",
+            "size": 13852,
+            "source": "main",
+            "version": "0.47-1+b1"
+          },
+          {
+            "architecture": "all",
+            "file": "libdata-optlist-perl_0.114-1_all.deb",
+            "name": "libdata-optlist-perl",
+            "repository_path": "pool/main/libd/libdata-optlist-perl/libdata-optlist-perl_0.114-1_all.deb",
+            "sha256": "cedbb74d891679cde4f10a1ad1e47e99da825ec22f55c8667657d1a80f37eb65",
+            "size": 10556,
+            "source": "main",
+            "version": "0.114-1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libdevel-callchecker-perl_0.009-2_amd64.deb",
+            "name": "libdevel-callchecker-perl",
+            "repository_path": "pool/main/libd/libdevel-callchecker-perl/libdevel-callchecker-perl_0.009-2_amd64.deb",
+            "sha256": "c591d0c927ba6f61b53eed6ae0c976737dd3159a6e2b8ff5618d6c8b7dfea35e",
+            "size": 15612,
+            "source": "main",
+            "version": "0.009-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libdevel-globaldestruction-perl_0.14-4_all.deb",
+            "name": "libdevel-globaldestruction-perl",
+            "repository_path": "pool/main/libd/libdevel-globaldestruction-perl/libdevel-globaldestruction-perl_0.14-4_all.deb",
+            "sha256": "92c1971de1f8ed69d595b04332df4d9bbe865c123b81924adf64d5fd3be697c9",
+            "size": 7144,
+            "source": "main",
+            "version": "0.14-4"
+          },
+          {
+            "architecture": "all",
+            "file": "libdevel-overloadinfo-perl_0.007-1_all.deb",
+            "name": "libdevel-overloadinfo-perl",
+            "repository_path": "pool/main/libd/libdevel-overloadinfo-perl/libdevel-overloadinfo-perl_0.007-1_all.deb",
+            "sha256": "5f0ce200dcb062a975a2252ce0f94d4226b80a565eef86e96706c7766879dfbb",
+            "size": 7896,
+            "source": "main",
+            "version": "0.007-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libdevel-stacktrace-perl_2.0500-1_all.deb",
+            "name": "libdevel-stacktrace-perl",
+            "repository_path": "pool/main/libd/libdevel-stacktrace-perl/libdevel-stacktrace-perl_2.0500-1_all.deb",
+            "sha256": "34f9d4bb6f73e4a7d2af533a04ca1ce7de8dfdab4d9af3d201a8d1c552261607",
+            "size": 26372,
+            "source": "main",
+            "version": "2.0500-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libdist-checkconflicts-perl_0.11-2_all.deb",
+            "name": "libdist-checkconflicts-perl",
+            "repository_path": "pool/main/libd/libdist-checkconflicts-perl/libdist-checkconflicts-perl_0.11-2_all.deb",
+            "sha256": "963c2b11e45d440599412311146f6f691a2e77f7772ac5928c5c0775d48ce303",
+            "size": 10484,
+            "source": "main",
+            "version": "0.11-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libdynaloader-functions-perl_0.004-2_all.deb",
+            "name": "libdynaloader-functions-perl",
+            "repository_path": "pool/main/libd/libdynaloader-functions-perl/libdynaloader-functions-perl_0.004-2_all.deb",
+            "sha256": "41a780d15e9c1093c2f9d254f7496eeff8819522a6971182373c3a16cb050bee",
+            "size": 12156,
+            "source": "main",
+            "version": "0.004-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libencode-locale-perl_1.05-3_all.deb",
+            "name": "libencode-locale-perl",
+            "repository_path": "pool/main/libe/libencode-locale-perl/libencode-locale-perl_1.05-3_all.deb",
+            "sha256": "071bff2a1d193ec1b0d71e1a1ba7e718909866874e600f19d99a6f8c5ae30bcd",
+            "size": 12896,
+            "source": "main",
+            "version": "1.05-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libeval-closure-perl_0.14-3_all.deb",
+            "name": "libeval-closure-perl",
+            "repository_path": "pool/main/libe/libeval-closure-perl/libeval-closure-perl_0.14-3_all.deb",
+            "sha256": "611c80719fa5a0c253f6f087466b44e24ea585e38e1672551d2c0b8a92b00b1a",
+            "size": 11192,
+            "source": "main",
+            "version": "0.14-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libexporter-easy-perl_0.18-3_all.deb",
+            "name": "libexporter-easy-perl",
+            "repository_path": "pool/main/libe/libexporter-easy-perl/libexporter-easy-perl_0.18-3_all.deb",
+            "sha256": "cd6eb9feab7f70d84db7bf96bd6968ae47239283e319b1fbfca0960bb3d53c8b",
+            "size": 14976,
+            "source": "main",
+            "version": "0.18-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libexporter-tiny-perl_1.006002-1_all.deb",
+            "name": "libexporter-tiny-perl",
+            "repository_path": "pool/main/libe/libexporter-tiny-perl/libexporter-tiny-perl_1.006002-1_all.deb",
+            "sha256": "27d5eeaf052c149675df33db58f1fa650f461b1ddebe4d73ae53be88087b5b31",
+            "size": 38748,
+            "source": "main",
+            "version": "1.006002-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libfile-listing-perl_6.16-1_all.deb",
+            "name": "libfile-listing-perl",
+            "repository_path": "pool/main/libf/libfile-listing-perl/libfile-listing-perl_6.16-1_all.deb",
+            "sha256": "171410be7be03a39e6ad531b19d3b95049d43dae9f19076fe250b3b7bcc30574",
+            "size": 12440,
+            "source": "main",
+            "version": "6.16-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libfile-which-perl_1.27-2_all.deb",
+            "name": "libfile-which-perl",
+            "repository_path": "pool/main/libf/libfile-which-perl/libfile-which-perl_1.27-2_all.deb",
+            "sha256": "ab06d044acd41214f38f310bfec05548bee6ae7fcc97a3ac683b9932bd1d48c1",
+            "size": 15088,
+            "source": "main",
+            "version": "1.27-2"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libgdbm-compat4t64_1.24-2_amd64.deb",
+            "name": "libgdbm-compat4t64",
+            "repository_path": "pool/main/g/gdbm/libgdbm-compat4t64_1.24-2_amd64.deb",
+            "sha256": "2cbd43cf2dfbf57ff48188b5d79d29cf7ea8f0dedaa61ab0bcc02eceff50ea01",
+            "size": 50280,
+            "source": "main",
+            "version": "1.24-2"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libhtml-parser-perl_3.83-2~deb13u1_amd64.deb",
+            "name": "libhtml-parser-perl",
+            "repository_path": "pool/main/libh/libhtml-parser-perl/libhtml-parser-perl_3.83-2~deb13u1_amd64.deb",
+            "sha256": "408c98f2e8101608b4d0a3553af9708e4538d51626f97fe16705fd12f56bd79f",
+            "size": 99632,
+            "source": "main",
+            "version": "3.83-2~deb13u1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhtml-tagset-perl_3.24-1_all.deb",
+            "name": "libhtml-tagset-perl",
+            "repository_path": "pool/main/libh/libhtml-tagset-perl/libhtml-tagset-perl_3.24-1_all.deb",
+            "sha256": "5efdaf433e10ce127257176d8093e41eabc642839e71f1961bc17f2e4f6169b0",
+            "size": 14704,
+            "source": "main",
+            "version": "3.24-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhtml-tree-perl_5.07-3_all.deb",
+            "name": "libhtml-tree-perl",
+            "repository_path": "pool/main/libh/libhtml-tree-perl/libhtml-tree-perl_5.07-3_all.deb",
+            "sha256": "00f857bb27388432df3e4d6510334a560c2de19feb4b31897cb5d83251bb54ac",
+            "size": 210588,
+            "source": "main",
+            "version": "5.07-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-cookies-perl_6.11-1_all.deb",
+            "name": "libhttp-cookies-perl",
+            "repository_path": "pool/main/libh/libhttp-cookies-perl/libhttp-cookies-perl_6.11-1_all.deb",
+            "sha256": "f3a57264a6704bd22397c644b1b91ed6055bdb190bd4d5d995cdf92840d049ed",
+            "size": 19136,
+            "source": "main",
+            "version": "6.11-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-date-perl_6.06-1_all.deb",
+            "name": "libhttp-date-perl",
+            "repository_path": "pool/main/libh/libhttp-date-perl/libhttp-date-perl_6.06-1_all.deb",
+            "sha256": "b46bf28a321e344be21b3161969c613abeddc63b1ff627ee94487a0ee4b53eda",
+            "size": 10720,
+            "source": "main",
+            "version": "6.06-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-message-perl_7.00-2_all.deb",
+            "name": "libhttp-message-perl",
+            "repository_path": "pool/main/libh/libhttp-message-perl/libhttp-message-perl_7.00-2_all.deb",
+            "sha256": "e55e830b16af9c2b5269000c4dd9b93fd24b304a0675aeb0ab83438c566d2ca7",
+            "size": 79808,
+            "source": "main",
+            "version": "7.00-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-negotiate-perl_6.01-2_all.deb",
+            "name": "libhttp-negotiate-perl",
+            "repository_path": "pool/main/libh/libhttp-negotiate-perl/libhttp-negotiate-perl_6.01-2_all.deb",
+            "sha256": "b2770aaf4d638283d9b4f713005702fbab42304be169cb4d6761e8537f724261",
+            "size": 13072,
+            "source": "main",
+            "version": "6.01-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libio-html-perl_1.004-3_all.deb",
+            "name": "libio-html-perl",
+            "repository_path": "pool/main/libi/libio-html-perl/libio-html-perl_1.004-3_all.deb",
+            "sha256": "66c87e3e92460b9dcf56257fd6a48cc7fd1283790acb365a111ecb9d74e9ea43",
+            "size": 16200,
+            "source": "main",
+            "version": "1.004-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libio-socket-ssl-perl_2.089-1_all.deb",
+            "name": "libio-socket-ssl-perl",
+            "repository_path": "pool/main/libi/libio-socket-ssl-perl/libio-socket-ssl-perl_2.089-1_all.deb",
+            "sha256": "9fe58e2dd2847896e380f9fb26b5344d62cab21d8390598912e485ceedb30f00",
+            "size": 223404,
+            "source": "main",
+            "version": "2.089-1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libjson-parse-perl_0.62-1+b4_amd64.deb",
+            "name": "libjson-parse-perl",
+            "repository_path": "pool/main/libj/libjson-parse-perl/libjson-parse-perl_0.62-1+b4_amd64.deb",
+            "sha256": "2f2271c09387e01067a64a9096de1c8414be3c45e19bd2f9d8508113bc29d897",
+            "size": 84228,
+            "source": "main",
+            "version": "0.62-1+b4"
+          },
+          {
+            "architecture": "all",
+            "file": "liblist-moreutils-perl_0.430-2_all.deb",
+            "name": "liblist-moreutils-perl",
+            "repository_path": "pool/main/libl/liblist-moreutils-perl/liblist-moreutils-perl_0.430-2_all.deb",
+            "sha256": "8a3ac2cd2c995bced7449a17838005abcaecfc302b0c51739dcc326f6eb8fbde",
+            "size": 46948,
+            "source": "main",
+            "version": "0.430-2"
+          },
+          {
+            "architecture": "amd64",
+            "file": "liblist-moreutils-xs-perl_0.430-4+b2_amd64.deb",
+            "name": "liblist-moreutils-xs-perl",
+            "repository_path": "pool/main/libl/liblist-moreutils-xs-perl/liblist-moreutils-xs-perl_0.430-4+b2_amd64.deb",
+            "sha256": "772de3f5254a2a08d4b73b2f146023d77ab07f40e9447b9dfaa3b111f9ba085b",
+            "size": 42096,
+            "source": "main",
+            "version": "0.430-4+b2"
+          },
+          {
+            "architecture": "all",
+            "file": "liblwp-mediatypes-perl_6.04-2_all.deb",
+            "name": "liblwp-mediatypes-perl",
+            "repository_path": "pool/main/libl/liblwp-mediatypes-perl/liblwp-mediatypes-perl_6.04-2_all.deb",
+            "sha256": "c3ae8bca625ab6e16d6257698de402090135b5eca511df2c8086b0c23eefbaff",
+            "size": 20200,
+            "source": "main",
+            "version": "6.04-2"
+          },
+          {
+            "architecture": "all",
+            "file": "liblwp-protocol-https-perl_6.14-1_all.deb",
+            "name": "liblwp-protocol-https-perl",
+            "repository_path": "pool/main/libl/liblwp-protocol-https-perl/liblwp-protocol-https-perl_6.14-1_all.deb",
+            "sha256": "9201070118916bfbf3111008cac59769fb240376bb04e981132805a915f57223",
+            "size": 10824,
+            "source": "main",
+            "version": "6.14-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libmodule-implementation-perl_0.09-2_all.deb",
+            "name": "libmodule-implementation-perl",
+            "repository_path": "pool/main/libm/libmodule-implementation-perl/libmodule-implementation-perl_0.09-2_all.deb",
+            "sha256": "a2e46abd11eb315f2db905358e8dcd477a6078ffbb9a2e124e496b7a182abc5b",
+            "size": 12604,
+            "source": "main",
+            "version": "0.09-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libmodule-runtime-conflicts-perl_0.003-2_all.deb",
+            "name": "libmodule-runtime-conflicts-perl",
+            "repository_path": "pool/main/libm/libmodule-runtime-conflicts-perl/libmodule-runtime-conflicts-perl_0.003-2_all.deb",
+            "sha256": "1c4881c5a636845474b361914b2aff2afd7963f7c83ee1fb457ef44a24251f96",
+            "size": 7356,
+            "source": "main",
+            "version": "0.003-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libmodule-runtime-perl_0.018-1_all.deb",
+            "name": "libmodule-runtime-perl",
+            "repository_path": "pool/main/libm/libmodule-runtime-perl/libmodule-runtime-perl_0.018-1_all.deb",
+            "sha256": "e0244fda81ace4f75ef26bef83362742468f229bb0fa4b531b4be583100a5505",
+            "size": 17800,
+            "source": "main",
+            "version": "0.018-1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libmoose-perl_2.2207-1+b3_amd64.deb",
+            "name": "libmoose-perl",
+            "repository_path": "pool/main/libm/libmoose-perl/libmoose-perl_2.2207-1+b3_amd64.deb",
+            "sha256": "4343c36bb7df93a9f15306ec3e3a907e943e17402c8fe6d292ed82a086aab2b5",
+            "size": 765912,
+            "source": "main",
+            "version": "2.2207-1+b3"
+          },
+          {
+            "architecture": "all",
+            "file": "libmoosex-semiaffordanceaccessor-perl_0.10-2_all.deb",
+            "name": "libmoosex-semiaffordanceaccessor-perl",
+            "repository_path": "pool/main/libm/libmoosex-semiaffordanceaccessor-perl/libmoosex-semiaffordanceaccessor-perl_0.10-2_all.deb",
+            "sha256": "0b029ae6f5279546f96451f8a1995267dca76abc0158c54fd4ec1d63621e88c5",
+            "size": 13112,
+            "source": "main",
+            "version": "0.10-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libmro-compat-perl_0.15-2_all.deb",
+            "name": "libmro-compat-perl",
+            "repository_path": "pool/main/libm/libmro-compat-perl/libmro-compat-perl_0.15-2_all.deb",
+            "sha256": "2cc4f76171dcd33eb71ac3c808f4541f46bf89235ded1d022a854b011671bf5b",
+            "size": 11820,
+            "source": "main",
+            "version": "0.15-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libnamespace-autoclean-perl_0.31-1_all.deb",
+            "name": "libnamespace-autoclean-perl",
+            "repository_path": "pool/main/libn/libnamespace-autoclean-perl/libnamespace-autoclean-perl_0.31-1_all.deb",
+            "sha256": "5b97776d49b87273a8123187ba42f0cdae8f079f0d1e603caf8c5d877849a4c5",
+            "size": 13800,
+            "source": "main",
+            "version": "0.31-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libnamespace-clean-perl_0.27-2_all.deb",
+            "name": "libnamespace-clean-perl",
+            "repository_path": "pool/main/libn/libnamespace-clean-perl/libnamespace-clean-perl_0.27-2_all.deb",
+            "sha256": "d2f3cd0d52f5d6b5d11787ef2c13e3b19378140ccde948ebcde9b8d8fc910605",
+            "size": 17768,
+            "source": "main",
+            "version": "0.27-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libnet-http-perl_6.23-1_all.deb",
+            "name": "libnet-http-perl",
+            "repository_path": "pool/main/libn/libnet-http-perl/libnet-http-perl_6.23-1_all.deb",
+            "sha256": "ef8220824939149b88ff230081e4bd686d1d92f0a233c4f80d1e14115ab1b510",
+            "size": 23940,
+            "source": "main",
+            "version": "6.23-1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libnet-ssleay-perl_1.94-3_amd64.deb",
+            "name": "libnet-ssleay-perl",
+            "repository_path": "pool/main/libn/libnet-ssleay-perl/libnet-ssleay-perl_1.94-3_amd64.deb",
+            "sha256": "fc67b418ec1ed7277902702791c91b3023eb488d7c01029f0cc2acfdfdebd13a",
+            "size": 339052,
+            "source": "main",
+            "version": "1.94-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libpackage-deprecationmanager-perl_0.18-1_all.deb",
+            "name": "libpackage-deprecationmanager-perl",
+            "repository_path": "pool/main/libp/libpackage-deprecationmanager-perl/libpackage-deprecationmanager-perl_0.18-1_all.deb",
+            "sha256": "1a899ef357d0314491c1c469e50ec2089cd48462251e62fe4370808d40579aa2",
+            "size": 17620,
+            "source": "main",
+            "version": "0.18-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libpackage-stash-perl_0.40-1_all.deb",
+            "name": "libpackage-stash-perl",
+            "repository_path": "pool/main/libp/libpackage-stash-perl/libpackage-stash-perl_0.40-1_all.deb",
+            "sha256": "282fe1cf280bb9c74d4c5b1e6eab1e4ce9503e67221cb89b9a9a2fe8d020a110",
+            "size": 22008,
+            "source": "main",
+            "version": "0.40-1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libpackage-stash-xs-perl_0.30-1+b4_amd64.deb",
+            "name": "libpackage-stash-xs-perl",
+            "repository_path": "pool/main/libp/libpackage-stash-xs-perl/libpackage-stash-xs-perl_0.30-1+b4_amd64.deb",
+            "sha256": "67f13323c9669f083db9e3bcce1c2c40e41fa8dda8f8300e00b50e087eaa3940",
+            "size": 20868,
+            "source": "main",
+            "version": "0.30-1+b4"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libparams-classify-perl_0.015-2+b4_amd64.deb",
+            "name": "libparams-classify-perl",
+            "repository_path": "pool/main/libp/libparams-classify-perl/libparams-classify-perl_0.015-2+b4_amd64.deb",
+            "sha256": "81e4cd06ca1d23b5f22778feb90a6de03aa98c6ba66e752c74c290a08dfddbb6",
+            "size": 22452,
+            "source": "main",
+            "version": "0.015-2+b4"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libparams-util-perl_1.102-3+b1_amd64.deb",
+            "name": "libparams-util-perl",
+            "repository_path": "pool/main/libp/libparams-util-perl/libparams-util-perl_1.102-3+b1_amd64.deb",
+            "sha256": "6a8e5f00b1b390241a78e4ca1ff15f103a92b39862d61ca282b75c442eda5966",
+            "size": 24356,
+            "source": "main",
+            "version": "1.102-3+b1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libperl5.40_5.40.1-6+deb13u1_amd64.deb",
+            "name": "libperl5.40",
+            "repository_path": "pool/main/p/perl/libperl5.40_5.40.1-6+deb13u1_amd64.deb",
+            "sha256": "e44777ff47ad248d1debd57e1f96ab5e89061a341008ae39880ba3b5fc15f273",
+            "size": 4325996,
+            "source": "main",
+            "version": "5.40.1-6+deb13u1"
+          },
+          {
+            "architecture": "all",
+            "file": "libsub-exporter-perl_0.990-1_all.deb",
+            "name": "libsub-exporter-perl",
+            "repository_path": "pool/main/libs/libsub-exporter-perl/libsub-exporter-perl_0.990-1_all.deb",
+            "sha256": "66e41e65d5bd922a96b32ccf8e34edd7eed897ee1cf9adc96581db4bd481a134",
+            "size": 50572,
+            "source": "main",
+            "version": "0.990-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libsub-exporter-progressive-perl_0.001013-3_all.deb",
+            "name": "libsub-exporter-progressive-perl",
+            "repository_path": "pool/main/libs/libsub-exporter-progressive-perl/libsub-exporter-progressive-perl_0.001013-3_all.deb",
+            "sha256": "4a93e349aa066b7d57492fcf6e9e19a5afd8ff02d814733eef2c42297dc9bdb3",
+            "size": 7496,
+            "source": "main",
+            "version": "0.001013-3"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libsub-identify-perl_0.14-3+b3_amd64.deb",
+            "name": "libsub-identify-perl",
+            "repository_path": "pool/main/libs/libsub-identify-perl/libsub-identify-perl_0.14-3+b3_amd64.deb",
+            "sha256": "8bdcf086e4c78fcd867d0b7f347fcc49fef0beed8f60cb5d5fba9dafb0598e9f",
+            "size": 11284,
+            "source": "main",
+            "version": "0.14-3+b3"
+          },
+          {
+            "architecture": "all",
+            "file": "libsub-install-perl_0.929-1_all.deb",
+            "name": "libsub-install-perl",
+            "repository_path": "pool/main/libs/libsub-install-perl/libsub-install-perl_0.929-1_all.deb",
+            "sha256": "90041a7c0dc1916e1b08c8573fbc8b549acf76bf8573dfb003ebf3d2af04b0ea",
+            "size": 10536,
+            "source": "main",
+            "version": "0.929-1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libsub-name-perl_0.28-1_amd64.deb",
+            "name": "libsub-name-perl",
+            "repository_path": "pool/main/libs/libsub-name-perl/libsub-name-perl_0.28-1_amd64.deb",
+            "sha256": "ed73735c1ea774f42702fb5cdb4dbcd1342a5d9bacbc575be114099c72315be4",
+            "size": 12240,
+            "source": "main",
+            "version": "0.28-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libtimedate-perl_2.3300-2_all.deb",
+            "name": "libtimedate-perl",
+            "repository_path": "pool/main/libt/libtimedate-perl/libtimedate-perl_2.3300-2_all.deb",
+            "sha256": "8e36723da883c2975d83199e7f4b5331e291881372fde944b0d56660965f38bb",
+            "size": 39316,
+            "source": "main",
+            "version": "2.3300-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libtry-tiny-perl_0.32-1_all.deb",
+            "name": "libtry-tiny-perl",
+            "repository_path": "pool/main/libt/libtry-tiny-perl/libtry-tiny-perl_0.32-1_all.deb",
+            "sha256": "f160af736fa67df5a5f6ec222d28e6c188b5b87965bd649956a6bea8795c1d3a",
+            "size": 22892,
+            "source": "main",
+            "version": "0.32-1"
+          },
+          {
+            "architecture": "all",
+            "file": "liburi-perl_5.30-1_all.deb",
+            "name": "liburi-perl",
+            "repository_path": "pool/main/libu/liburi-perl/liburi-perl_5.30-1_all.deb",
+            "sha256": "33957bd8218ddd3a86cc19fdf3bf7832b0640337a4be6cf23b2714b73d220220",
+            "size": 104548,
+            "source": "main",
+            "version": "5.30-1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "libvariable-magic-perl_0.64-1+b1_amd64.deb",
+            "name": "libvariable-magic-perl",
+            "repository_path": "pool/main/libv/libvariable-magic-perl/libvariable-magic-perl_0.64-1+b1_amd64.deb",
+            "sha256": "ce72fca9eb64c914d88e7c3146c38489610b89c3315e41a9f00bee4e1c31d57f",
+            "size": 44888,
+            "source": "main",
+            "version": "0.64-1+b1"
+          },
+          {
+            "architecture": "all",
+            "file": "libwww-perl_6.78-1_all.deb",
+            "name": "libwww-perl",
+            "repository_path": "pool/main/libw/libwww-perl/libwww-perl_6.78-1_all.deb",
+            "sha256": "ddcecf6d01b33f14faf6ebd511deb114fcb0c043bb4291e4b45c82cbe7b4ec88",
+            "size": 183056,
+            "source": "main",
+            "version": "6.78-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libwww-robotrules-perl_6.02-1_all.deb",
+            "name": "libwww-robotrules-perl",
+            "repository_path": "pool/main/libw/libwww-robotrules-perl/libwww-robotrules-perl_6.02-1_all.deb",
+            "sha256": "be69cda8c2a860e64c43396bf2ff1c7145259cb85753ded14e0434f15ed647a0",
+            "size": 12892,
+            "source": "main",
+            "version": "6.02-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libyaml-perl_1.31-1_all.deb",
+            "name": "libyaml-perl",
+            "repository_path": "pool/main/liby/libyaml-perl/libyaml-perl_1.31-1_all.deb",
+            "sha256": "b155f976061eabbe569604cac80e0aad17d8f308e774855ed5cc43b2e27946b2",
+            "size": 64848,
+            "source": "main",
+            "version": "1.31-1"
+          },
+          {
+            "architecture": "all",
+            "file": "perl-modules-5.40_5.40.1-6+deb13u1_all.deb",
+            "name": "perl-modules-5.40",
+            "repository_path": "pool/main/p/perl/perl-modules-5.40_5.40.1-6+deb13u1_all.deb",
+            "sha256": "4c46cdd8f3135aa1c95f07e817f8e5d9be590687441ac1c27e3a8c49400f35ce",
+            "size": 3013728,
+            "source": "main",
+            "version": "5.40.1-6+deb13u1"
+          },
+          {
+            "architecture": "amd64",
+            "file": "perl-openssl-defaults_7+b2_amd64.deb",
+            "name": "perl-openssl-defaults",
+            "repository_path": "pool/main/p/perl-openssl-defaults/perl-openssl-defaults_7+b2_amd64.deb",
+            "sha256": "e1d601fe96d5465a90042b49921b2086347a2e2111705972ba415ce9f9f3a871",
+            "size": 6724,
+            "source": "main",
+            "version": "7+b2"
+          },
+          {
+            "architecture": "amd64",
+            "file": "perl_5.40.1-6+deb13u1_amd64.deb",
+            "name": "perl",
+            "repository_path": "pool/main/p/perl/perl_5.40.1-6+deb13u1_amd64.deb",
+            "sha256": "ef145c247787d6f40dcdefd5b417502484827cde0d555998c17fd5b27ec1e1dd",
+            "size": 267736,
+            "source": "main",
+            "version": "5.40.1-6+deb13u1"
+          }
+        ]
+      },
+      "arm64": {
+        "evidence": [
+          {
+            "file": "debian-archive-keyring.gpg",
+            "sha256": "506b815cbb32d9b6066b4a2aa524071e071761e7e7f68c3ac74f3061ba852017",
+            "size": 55918
+          },
+          {
+            "file": "snapshot.debian.org_archive_debian-security_20261104T212339Z_dists_trixie-security_InRelease",
+            "sha256": "de7ca75ccda9ff69caf9635e7c5b9f04dcc9802f3f7686b924d600df34bc7056",
+            "size": 43409
+          },
+          {
+            "file": "snapshot.debian.org_archive_debian_20261104T212339Z_dists_trixie_InRelease",
+            "sha256": "0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675",
+            "size": 140421
+          }
+        ],
+        "indexes": [
+          {
+            "file": "snapshot.debian.org_archive_debian-security_20261104T212339Z_dists_trixie-security_main_binary-arm64_Packages",
+            "release_path": "main/binary-arm64/Packages",
+            "sha256": "e6d77c06724c2da53a5aeec462f62683d66019596b5a42d3d9479bdd7187e7a6",
+            "size": 2192854,
+            "source": "security"
+          },
+          {
+            "file": "snapshot.debian.org_archive_debian_20261104T212339Z_dists_trixie_main_binary-arm64_Packages",
+            "release_path": "main/binary-arm64/Packages",
+            "sha256": "f97011263173eaccb1a215a28a6ec7ba1f6e5cebd8bb68e8fa0475b1d4021161",
+            "size": 56162922,
+            "source": "main"
+          }
+        ],
+        "packages": [
+          {
+            "architecture": "all",
+            "file": "libalgorithm-c3-perl_0.11-2_all.deb",
+            "name": "libalgorithm-c3-perl",
+            "repository_path": "pool/main/liba/libalgorithm-c3-perl/libalgorithm-c3-perl_0.11-2_all.deb",
+            "sha256": "e1a319e126c101ea1ab3f16cc4083aa6719209e231169eb4849a019dd7e46e31",
+            "size": 10844,
+            "source": "main",
+            "version": "0.11-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libb-hooks-endofscope-perl_0.28-2_all.deb",
+            "name": "libb-hooks-endofscope-perl",
+            "repository_path": "pool/main/libb/libb-hooks-endofscope-perl/libb-hooks-endofscope-perl_0.28-2_all.deb",
+            "sha256": "440aec0a0530404696ee7393ff1ae9af97959e9f957887f0c1795505620f1f6a",
+            "size": 17564,
+            "source": "main",
+            "version": "0.28-2"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libb-hooks-op-check-perl_0.22-3+b2_arm64.deb",
+            "name": "libb-hooks-op-check-perl",
+            "repository_path": "pool/main/libb/libb-hooks-op-check-perl/libb-hooks-op-check-perl_0.22-3+b2_arm64.deb",
+            "sha256": "21b22cca921b0a0d8baa7e93b87b0f16655c19021cab2394d9669fdb12386c8d",
+            "size": 10604,
+            "source": "main",
+            "version": "0.22-3+b2"
+          },
+          {
+            "architecture": "all",
+            "file": "libclass-c3-perl_0.35-2_all.deb",
+            "name": "libclass-c3-perl",
+            "repository_path": "pool/main/libc/libclass-c3-perl/libclass-c3-perl_0.35-2_all.deb",
+            "sha256": "5504859968dde2ec2392115299f9363c8096eb6e950565dbe822a16d0e2c2f3f",
+            "size": 20992,
+            "source": "main",
+            "version": "0.35-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libclass-load-perl_0.25-2_all.deb",
+            "name": "libclass-load-perl",
+            "repository_path": "pool/main/libc/libclass-load-perl/libclass-load-perl_0.25-2_all.deb",
+            "sha256": "297bff2a31afc492457dbcc2c9d6ad2c40931d4b135649ed96639079d0083ca7",
+            "size": 15316,
+            "source": "main",
+            "version": "0.25-2"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libclass-load-xs-perl_0.10-2+b4_arm64.deb",
+            "name": "libclass-load-xs-perl",
+            "repository_path": "pool/main/libc/libclass-load-xs-perl/libclass-load-xs-perl_0.10-2+b4_arm64.deb",
+            "sha256": "2d098a36f488d15fc09c1af7e3706f00d399105c6e90aad816f6de55df45fa79",
+            "size": 14268,
+            "source": "main",
+            "version": "0.10-2+b4"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libclone-perl_0.47-1+b1_arm64.deb",
+            "name": "libclone-perl",
+            "repository_path": "pool/main/libc/libclone-perl/libclone-perl_0.47-1+b1_arm64.deb",
+            "sha256": "48e3a080da34e615d64d495a8c9d0c745115a479d1f1120f2fb44b706d596e4d",
+            "size": 13708,
+            "source": "main",
+            "version": "0.47-1+b1"
+          },
+          {
+            "architecture": "all",
+            "file": "libdata-optlist-perl_0.114-1_all.deb",
+            "name": "libdata-optlist-perl",
+            "repository_path": "pool/main/libd/libdata-optlist-perl/libdata-optlist-perl_0.114-1_all.deb",
+            "sha256": "cedbb74d891679cde4f10a1ad1e47e99da825ec22f55c8667657d1a80f37eb65",
+            "size": 10556,
+            "source": "main",
+            "version": "0.114-1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libdevel-callchecker-perl_0.009-2_arm64.deb",
+            "name": "libdevel-callchecker-perl",
+            "repository_path": "pool/main/libd/libdevel-callchecker-perl/libdevel-callchecker-perl_0.009-2_arm64.deb",
+            "sha256": "2d8571b24d6e4b21e11d7f887cddce732ed212674329ecbdcd5c2b8e95abfcd6",
+            "size": 15728,
+            "source": "main",
+            "version": "0.009-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libdevel-globaldestruction-perl_0.14-4_all.deb",
+            "name": "libdevel-globaldestruction-perl",
+            "repository_path": "pool/main/libd/libdevel-globaldestruction-perl/libdevel-globaldestruction-perl_0.14-4_all.deb",
+            "sha256": "92c1971de1f8ed69d595b04332df4d9bbe865c123b81924adf64d5fd3be697c9",
+            "size": 7144,
+            "source": "main",
+            "version": "0.14-4"
+          },
+          {
+            "architecture": "all",
+            "file": "libdevel-overloadinfo-perl_0.007-1_all.deb",
+            "name": "libdevel-overloadinfo-perl",
+            "repository_path": "pool/main/libd/libdevel-overloadinfo-perl/libdevel-overloadinfo-perl_0.007-1_all.deb",
+            "sha256": "5f0ce200dcb062a975a2252ce0f94d4226b80a565eef86e96706c7766879dfbb",
+            "size": 7896,
+            "source": "main",
+            "version": "0.007-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libdevel-stacktrace-perl_2.0500-1_all.deb",
+            "name": "libdevel-stacktrace-perl",
+            "repository_path": "pool/main/libd/libdevel-stacktrace-perl/libdevel-stacktrace-perl_2.0500-1_all.deb",
+            "sha256": "34f9d4bb6f73e4a7d2af533a04ca1ce7de8dfdab4d9af3d201a8d1c552261607",
+            "size": 26372,
+            "source": "main",
+            "version": "2.0500-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libdist-checkconflicts-perl_0.11-2_all.deb",
+            "name": "libdist-checkconflicts-perl",
+            "repository_path": "pool/main/libd/libdist-checkconflicts-perl/libdist-checkconflicts-perl_0.11-2_all.deb",
+            "sha256": "963c2b11e45d440599412311146f6f691a2e77f7772ac5928c5c0775d48ce303",
+            "size": 10484,
+            "source": "main",
+            "version": "0.11-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libdynaloader-functions-perl_0.004-2_all.deb",
+            "name": "libdynaloader-functions-perl",
+            "repository_path": "pool/main/libd/libdynaloader-functions-perl/libdynaloader-functions-perl_0.004-2_all.deb",
+            "sha256": "41a780d15e9c1093c2f9d254f7496eeff8819522a6971182373c3a16cb050bee",
+            "size": 12156,
+            "source": "main",
+            "version": "0.004-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libencode-locale-perl_1.05-3_all.deb",
+            "name": "libencode-locale-perl",
+            "repository_path": "pool/main/libe/libencode-locale-perl/libencode-locale-perl_1.05-3_all.deb",
+            "sha256": "071bff2a1d193ec1b0d71e1a1ba7e718909866874e600f19d99a6f8c5ae30bcd",
+            "size": 12896,
+            "source": "main",
+            "version": "1.05-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libeval-closure-perl_0.14-3_all.deb",
+            "name": "libeval-closure-perl",
+            "repository_path": "pool/main/libe/libeval-closure-perl/libeval-closure-perl_0.14-3_all.deb",
+            "sha256": "611c80719fa5a0c253f6f087466b44e24ea585e38e1672551d2c0b8a92b00b1a",
+            "size": 11192,
+            "source": "main",
+            "version": "0.14-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libexporter-easy-perl_0.18-3_all.deb",
+            "name": "libexporter-easy-perl",
+            "repository_path": "pool/main/libe/libexporter-easy-perl/libexporter-easy-perl_0.18-3_all.deb",
+            "sha256": "cd6eb9feab7f70d84db7bf96bd6968ae47239283e319b1fbfca0960bb3d53c8b",
+            "size": 14976,
+            "source": "main",
+            "version": "0.18-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libexporter-tiny-perl_1.006002-1_all.deb",
+            "name": "libexporter-tiny-perl",
+            "repository_path": "pool/main/libe/libexporter-tiny-perl/libexporter-tiny-perl_1.006002-1_all.deb",
+            "sha256": "27d5eeaf052c149675df33db58f1fa650f461b1ddebe4d73ae53be88087b5b31",
+            "size": 38748,
+            "source": "main",
+            "version": "1.006002-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libfile-listing-perl_6.16-1_all.deb",
+            "name": "libfile-listing-perl",
+            "repository_path": "pool/main/libf/libfile-listing-perl/libfile-listing-perl_6.16-1_all.deb",
+            "sha256": "171410be7be03a39e6ad531b19d3b95049d43dae9f19076fe250b3b7bcc30574",
+            "size": 12440,
+            "source": "main",
+            "version": "6.16-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libfile-which-perl_1.27-2_all.deb",
+            "name": "libfile-which-perl",
+            "repository_path": "pool/main/libf/libfile-which-perl/libfile-which-perl_1.27-2_all.deb",
+            "sha256": "ab06d044acd41214f38f310bfec05548bee6ae7fcc97a3ac683b9932bd1d48c1",
+            "size": 15088,
+            "source": "main",
+            "version": "1.27-2"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libgdbm-compat4t64_1.24-2_arm64.deb",
+            "name": "libgdbm-compat4t64",
+            "repository_path": "pool/main/g/gdbm/libgdbm-compat4t64_1.24-2_arm64.deb",
+            "sha256": "266b9a9e8d1ecc4393ebd29bec7e7c0fe1505b1d8755033af9e15df161316627",
+            "size": 50320,
+            "source": "main",
+            "version": "1.24-2"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libhtml-parser-perl_3.83-2~deb13u1_arm64.deb",
+            "name": "libhtml-parser-perl",
+            "repository_path": "pool/main/libh/libhtml-parser-perl/libhtml-parser-perl_3.83-2~deb13u1_arm64.deb",
+            "sha256": "51f1d70726daa87f762b91bc1f45ca6119a8e99d3f1952575581de3cf3d813d8",
+            "size": 97336,
+            "source": "main",
+            "version": "3.83-2~deb13u1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhtml-tagset-perl_3.24-1_all.deb",
+            "name": "libhtml-tagset-perl",
+            "repository_path": "pool/main/libh/libhtml-tagset-perl/libhtml-tagset-perl_3.24-1_all.deb",
+            "sha256": "5efdaf433e10ce127257176d8093e41eabc642839e71f1961bc17f2e4f6169b0",
+            "size": 14704,
+            "source": "main",
+            "version": "3.24-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhtml-tree-perl_5.07-3_all.deb",
+            "name": "libhtml-tree-perl",
+            "repository_path": "pool/main/libh/libhtml-tree-perl/libhtml-tree-perl_5.07-3_all.deb",
+            "sha256": "00f857bb27388432df3e4d6510334a560c2de19feb4b31897cb5d83251bb54ac",
+            "size": 210588,
+            "source": "main",
+            "version": "5.07-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-cookies-perl_6.11-1_all.deb",
+            "name": "libhttp-cookies-perl",
+            "repository_path": "pool/main/libh/libhttp-cookies-perl/libhttp-cookies-perl_6.11-1_all.deb",
+            "sha256": "f3a57264a6704bd22397c644b1b91ed6055bdb190bd4d5d995cdf92840d049ed",
+            "size": 19136,
+            "source": "main",
+            "version": "6.11-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-date-perl_6.06-1_all.deb",
+            "name": "libhttp-date-perl",
+            "repository_path": "pool/main/libh/libhttp-date-perl/libhttp-date-perl_6.06-1_all.deb",
+            "sha256": "b46bf28a321e344be21b3161969c613abeddc63b1ff627ee94487a0ee4b53eda",
+            "size": 10720,
+            "source": "main",
+            "version": "6.06-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-message-perl_7.00-2_all.deb",
+            "name": "libhttp-message-perl",
+            "repository_path": "pool/main/libh/libhttp-message-perl/libhttp-message-perl_7.00-2_all.deb",
+            "sha256": "e55e830b16af9c2b5269000c4dd9b93fd24b304a0675aeb0ab83438c566d2ca7",
+            "size": 79808,
+            "source": "main",
+            "version": "7.00-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libhttp-negotiate-perl_6.01-2_all.deb",
+            "name": "libhttp-negotiate-perl",
+            "repository_path": "pool/main/libh/libhttp-negotiate-perl/libhttp-negotiate-perl_6.01-2_all.deb",
+            "sha256": "b2770aaf4d638283d9b4f713005702fbab42304be169cb4d6761e8537f724261",
+            "size": 13072,
+            "source": "main",
+            "version": "6.01-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libio-html-perl_1.004-3_all.deb",
+            "name": "libio-html-perl",
+            "repository_path": "pool/main/libi/libio-html-perl/libio-html-perl_1.004-3_all.deb",
+            "sha256": "66c87e3e92460b9dcf56257fd6a48cc7fd1283790acb365a111ecb9d74e9ea43",
+            "size": 16200,
+            "source": "main",
+            "version": "1.004-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libio-socket-ssl-perl_2.089-1_all.deb",
+            "name": "libio-socket-ssl-perl",
+            "repository_path": "pool/main/libi/libio-socket-ssl-perl/libio-socket-ssl-perl_2.089-1_all.deb",
+            "sha256": "9fe58e2dd2847896e380f9fb26b5344d62cab21d8390598912e485ceedb30f00",
+            "size": 223404,
+            "source": "main",
+            "version": "2.089-1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libjson-parse-perl_0.62-1+b4_arm64.deb",
+            "name": "libjson-parse-perl",
+            "repository_path": "pool/main/libj/libjson-parse-perl/libjson-parse-perl_0.62-1+b4_arm64.deb",
+            "sha256": "1da2c92fe4ea774126d38367d8b1df1d9e64ad3ccd9539e64fba36917e50af54",
+            "size": 80624,
+            "source": "main",
+            "version": "0.62-1+b4"
+          },
+          {
+            "architecture": "all",
+            "file": "liblist-moreutils-perl_0.430-2_all.deb",
+            "name": "liblist-moreutils-perl",
+            "repository_path": "pool/main/libl/liblist-moreutils-perl/liblist-moreutils-perl_0.430-2_all.deb",
+            "sha256": "8a3ac2cd2c995bced7449a17838005abcaecfc302b0c51739dcc326f6eb8fbde",
+            "size": 46948,
+            "source": "main",
+            "version": "0.430-2"
+          },
+          {
+            "architecture": "arm64",
+            "file": "liblist-moreutils-xs-perl_0.430-4+b2_arm64.deb",
+            "name": "liblist-moreutils-xs-perl",
+            "repository_path": "pool/main/libl/liblist-moreutils-xs-perl/liblist-moreutils-xs-perl_0.430-4+b2_arm64.deb",
+            "sha256": "8f3ced8e5c89e662a893135b4cf5d670b380aeab9a02ad40daf374be09b81860",
+            "size": 37728,
+            "source": "main",
+            "version": "0.430-4+b2"
+          },
+          {
+            "architecture": "all",
+            "file": "liblwp-mediatypes-perl_6.04-2_all.deb",
+            "name": "liblwp-mediatypes-perl",
+            "repository_path": "pool/main/libl/liblwp-mediatypes-perl/liblwp-mediatypes-perl_6.04-2_all.deb",
+            "sha256": "c3ae8bca625ab6e16d6257698de402090135b5eca511df2c8086b0c23eefbaff",
+            "size": 20200,
+            "source": "main",
+            "version": "6.04-2"
+          },
+          {
+            "architecture": "all",
+            "file": "liblwp-protocol-https-perl_6.14-1_all.deb",
+            "name": "liblwp-protocol-https-perl",
+            "repository_path": "pool/main/libl/liblwp-protocol-https-perl/liblwp-protocol-https-perl_6.14-1_all.deb",
+            "sha256": "9201070118916bfbf3111008cac59769fb240376bb04e981132805a915f57223",
+            "size": 10824,
+            "source": "main",
+            "version": "6.14-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libmodule-implementation-perl_0.09-2_all.deb",
+            "name": "libmodule-implementation-perl",
+            "repository_path": "pool/main/libm/libmodule-implementation-perl/libmodule-implementation-perl_0.09-2_all.deb",
+            "sha256": "a2e46abd11eb315f2db905358e8dcd477a6078ffbb9a2e124e496b7a182abc5b",
+            "size": 12604,
+            "source": "main",
+            "version": "0.09-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libmodule-runtime-conflicts-perl_0.003-2_all.deb",
+            "name": "libmodule-runtime-conflicts-perl",
+            "repository_path": "pool/main/libm/libmodule-runtime-conflicts-perl/libmodule-runtime-conflicts-perl_0.003-2_all.deb",
+            "sha256": "1c4881c5a636845474b361914b2aff2afd7963f7c83ee1fb457ef44a24251f96",
+            "size": 7356,
+            "source": "main",
+            "version": "0.003-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libmodule-runtime-perl_0.018-1_all.deb",
+            "name": "libmodule-runtime-perl",
+            "repository_path": "pool/main/libm/libmodule-runtime-perl/libmodule-runtime-perl_0.018-1_all.deb",
+            "sha256": "e0244fda81ace4f75ef26bef83362742468f229bb0fa4b531b4be583100a5505",
+            "size": 17800,
+            "source": "main",
+            "version": "0.018-1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libmoose-perl_2.2207-1+b3_arm64.deb",
+            "name": "libmoose-perl",
+            "repository_path": "pool/main/libm/libmoose-perl/libmoose-perl_2.2207-1+b3_arm64.deb",
+            "sha256": "acf6683a6f25f6fb22e3a3b0f1f25a6a65a6a20600aa1d2e55bad15772bceb37",
+            "size": 765328,
+            "source": "main",
+            "version": "2.2207-1+b3"
+          },
+          {
+            "architecture": "all",
+            "file": "libmoosex-semiaffordanceaccessor-perl_0.10-2_all.deb",
+            "name": "libmoosex-semiaffordanceaccessor-perl",
+            "repository_path": "pool/main/libm/libmoosex-semiaffordanceaccessor-perl/libmoosex-semiaffordanceaccessor-perl_0.10-2_all.deb",
+            "sha256": "0b029ae6f5279546f96451f8a1995267dca76abc0158c54fd4ec1d63621e88c5",
+            "size": 13112,
+            "source": "main",
+            "version": "0.10-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libmro-compat-perl_0.15-2_all.deb",
+            "name": "libmro-compat-perl",
+            "repository_path": "pool/main/libm/libmro-compat-perl/libmro-compat-perl_0.15-2_all.deb",
+            "sha256": "2cc4f76171dcd33eb71ac3c808f4541f46bf89235ded1d022a854b011671bf5b",
+            "size": 11820,
+            "source": "main",
+            "version": "0.15-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libnamespace-autoclean-perl_0.31-1_all.deb",
+            "name": "libnamespace-autoclean-perl",
+            "repository_path": "pool/main/libn/libnamespace-autoclean-perl/libnamespace-autoclean-perl_0.31-1_all.deb",
+            "sha256": "5b97776d49b87273a8123187ba42f0cdae8f079f0d1e603caf8c5d877849a4c5",
+            "size": 13800,
+            "source": "main",
+            "version": "0.31-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libnamespace-clean-perl_0.27-2_all.deb",
+            "name": "libnamespace-clean-perl",
+            "repository_path": "pool/main/libn/libnamespace-clean-perl/libnamespace-clean-perl_0.27-2_all.deb",
+            "sha256": "d2f3cd0d52f5d6b5d11787ef2c13e3b19378140ccde948ebcde9b8d8fc910605",
+            "size": 17768,
+            "source": "main",
+            "version": "0.27-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libnet-http-perl_6.23-1_all.deb",
+            "name": "libnet-http-perl",
+            "repository_path": "pool/main/libn/libnet-http-perl/libnet-http-perl_6.23-1_all.deb",
+            "sha256": "ef8220824939149b88ff230081e4bd686d1d92f0a233c4f80d1e14115ab1b510",
+            "size": 23940,
+            "source": "main",
+            "version": "6.23-1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libnet-ssleay-perl_1.94-3_arm64.deb",
+            "name": "libnet-ssleay-perl",
+            "repository_path": "pool/main/libn/libnet-ssleay-perl/libnet-ssleay-perl_1.94-3_arm64.deb",
+            "sha256": "50622582eec91dac26bf34e19a255b4e1bfaaf9cf44431fb437f3ade9bcbb7bc",
+            "size": 322916,
+            "source": "main",
+            "version": "1.94-3"
+          },
+          {
+            "architecture": "all",
+            "file": "libpackage-deprecationmanager-perl_0.18-1_all.deb",
+            "name": "libpackage-deprecationmanager-perl",
+            "repository_path": "pool/main/libp/libpackage-deprecationmanager-perl/libpackage-deprecationmanager-perl_0.18-1_all.deb",
+            "sha256": "1a899ef357d0314491c1c469e50ec2089cd48462251e62fe4370808d40579aa2",
+            "size": 17620,
+            "source": "main",
+            "version": "0.18-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libpackage-stash-perl_0.40-1_all.deb",
+            "name": "libpackage-stash-perl",
+            "repository_path": "pool/main/libp/libpackage-stash-perl/libpackage-stash-perl_0.40-1_all.deb",
+            "sha256": "282fe1cf280bb9c74d4c5b1e6eab1e4ce9503e67221cb89b9a9a2fe8d020a110",
+            "size": 22008,
+            "source": "main",
+            "version": "0.40-1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libpackage-stash-xs-perl_0.30-1+b4_arm64.deb",
+            "name": "libpackage-stash-xs-perl",
+            "repository_path": "pool/main/libp/libpackage-stash-xs-perl/libpackage-stash-xs-perl_0.30-1+b4_arm64.deb",
+            "sha256": "529b7e29e6dc63954fabd25d80fe0ecf30b1625478dd05b41980b5b39e4d42a6",
+            "size": 19032,
+            "source": "main",
+            "version": "0.30-1+b4"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libparams-classify-perl_0.015-2+b4_arm64.deb",
+            "name": "libparams-classify-perl",
+            "repository_path": "pool/main/libp/libparams-classify-perl/libparams-classify-perl_0.015-2+b4_arm64.deb",
+            "sha256": "68e3c7db369ab4837dafee937a6e6309c6faeb09c943a349100fee243570a87e",
+            "size": 22312,
+            "source": "main",
+            "version": "0.015-2+b4"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libparams-util-perl_1.102-3+b1_arm64.deb",
+            "name": "libparams-util-perl",
+            "repository_path": "pool/main/libp/libparams-util-perl/libparams-util-perl_1.102-3+b1_arm64.deb",
+            "sha256": "7d5d1cc2fbe537e6b081178b333fb07f5dabe070ac200d4241032496eeb29481",
+            "size": 23696,
+            "source": "main",
+            "version": "1.102-3+b1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libperl5.40_5.40.1-6+deb13u1_arm64.deb",
+            "name": "libperl5.40",
+            "repository_path": "pool/main/p/perl/libperl5.40_5.40.1-6+deb13u1_arm64.deb",
+            "sha256": "b3cf688efb6096b2f3d95e96ad5b216602146ad11f792c1f3b2f66b5556241d9",
+            "size": 4137968,
+            "source": "main",
+            "version": "5.40.1-6+deb13u1"
+          },
+          {
+            "architecture": "all",
+            "file": "libsub-exporter-perl_0.990-1_all.deb",
+            "name": "libsub-exporter-perl",
+            "repository_path": "pool/main/libs/libsub-exporter-perl/libsub-exporter-perl_0.990-1_all.deb",
+            "sha256": "66e41e65d5bd922a96b32ccf8e34edd7eed897ee1cf9adc96581db4bd481a134",
+            "size": 50572,
+            "source": "main",
+            "version": "0.990-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libsub-exporter-progressive-perl_0.001013-3_all.deb",
+            "name": "libsub-exporter-progressive-perl",
+            "repository_path": "pool/main/libs/libsub-exporter-progressive-perl/libsub-exporter-progressive-perl_0.001013-3_all.deb",
+            "sha256": "4a93e349aa066b7d57492fcf6e9e19a5afd8ff02d814733eef2c42297dc9bdb3",
+            "size": 7496,
+            "source": "main",
+            "version": "0.001013-3"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libsub-identify-perl_0.14-3+b3_arm64.deb",
+            "name": "libsub-identify-perl",
+            "repository_path": "pool/main/libs/libsub-identify-perl/libsub-identify-perl_0.14-3+b3_arm64.deb",
+            "sha256": "0b07c44893c93d2cd8728865805e5922ee2b5f7526f691aae1cbdd7ff7911296",
+            "size": 11232,
+            "source": "main",
+            "version": "0.14-3+b3"
+          },
+          {
+            "architecture": "all",
+            "file": "libsub-install-perl_0.929-1_all.deb",
+            "name": "libsub-install-perl",
+            "repository_path": "pool/main/libs/libsub-install-perl/libsub-install-perl_0.929-1_all.deb",
+            "sha256": "90041a7c0dc1916e1b08c8573fbc8b549acf76bf8573dfb003ebf3d2af04b0ea",
+            "size": 10536,
+            "source": "main",
+            "version": "0.929-1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libsub-name-perl_0.28-1_arm64.deb",
+            "name": "libsub-name-perl",
+            "repository_path": "pool/main/libs/libsub-name-perl/libsub-name-perl_0.28-1_arm64.deb",
+            "sha256": "896c2a75e3cbdb508dc1c6c0b057fcbb9babef546dd4b88b8f9d1c202b237a43",
+            "size": 12104,
+            "source": "main",
+            "version": "0.28-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libtimedate-perl_2.3300-2_all.deb",
+            "name": "libtimedate-perl",
+            "repository_path": "pool/main/libt/libtimedate-perl/libtimedate-perl_2.3300-2_all.deb",
+            "sha256": "8e36723da883c2975d83199e7f4b5331e291881372fde944b0d56660965f38bb",
+            "size": 39316,
+            "source": "main",
+            "version": "2.3300-2"
+          },
+          {
+            "architecture": "all",
+            "file": "libtry-tiny-perl_0.32-1_all.deb",
+            "name": "libtry-tiny-perl",
+            "repository_path": "pool/main/libt/libtry-tiny-perl/libtry-tiny-perl_0.32-1_all.deb",
+            "sha256": "f160af736fa67df5a5f6ec222d28e6c188b5b87965bd649956a6bea8795c1d3a",
+            "size": 22892,
+            "source": "main",
+            "version": "0.32-1"
+          },
+          {
+            "architecture": "all",
+            "file": "liburi-perl_5.30-1_all.deb",
+            "name": "liburi-perl",
+            "repository_path": "pool/main/libu/liburi-perl/liburi-perl_5.30-1_all.deb",
+            "sha256": "33957bd8218ddd3a86cc19fdf3bf7832b0640337a4be6cf23b2714b73d220220",
+            "size": 104548,
+            "source": "main",
+            "version": "5.30-1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "libvariable-magic-perl_0.64-1+b1_arm64.deb",
+            "name": "libvariable-magic-perl",
+            "repository_path": "pool/main/libv/libvariable-magic-perl/libvariable-magic-perl_0.64-1+b1_arm64.deb",
+            "sha256": "86ada47ab7ffadf8e6d4477275bc26f3654b4866844599f3f5b57749b006fe3f",
+            "size": 43872,
+            "source": "main",
+            "version": "0.64-1+b1"
+          },
+          {
+            "architecture": "all",
+            "file": "libwww-perl_6.78-1_all.deb",
+            "name": "libwww-perl",
+            "repository_path": "pool/main/libw/libwww-perl/libwww-perl_6.78-1_all.deb",
+            "sha256": "ddcecf6d01b33f14faf6ebd511deb114fcb0c043bb4291e4b45c82cbe7b4ec88",
+            "size": 183056,
+            "source": "main",
+            "version": "6.78-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libwww-robotrules-perl_6.02-1_all.deb",
+            "name": "libwww-robotrules-perl",
+            "repository_path": "pool/main/libw/libwww-robotrules-perl/libwww-robotrules-perl_6.02-1_all.deb",
+            "sha256": "be69cda8c2a860e64c43396bf2ff1c7145259cb85753ded14e0434f15ed647a0",
+            "size": 12892,
+            "source": "main",
+            "version": "6.02-1"
+          },
+          {
+            "architecture": "all",
+            "file": "libyaml-perl_1.31-1_all.deb",
+            "name": "libyaml-perl",
+            "repository_path": "pool/main/liby/libyaml-perl/libyaml-perl_1.31-1_all.deb",
+            "sha256": "b155f976061eabbe569604cac80e0aad17d8f308e774855ed5cc43b2e27946b2",
+            "size": 64848,
+            "source": "main",
+            "version": "1.31-1"
+          },
+          {
+            "architecture": "all",
+            "file": "perl-modules-5.40_5.40.1-6+deb13u1_all.deb",
+            "name": "perl-modules-5.40",
+            "repository_path": "pool/main/p/perl/perl-modules-5.40_5.40.1-6+deb13u1_all.deb",
+            "sha256": "4c46cdd8f3135aa1c95f07e817f8e5d9be590687441ac1c27e3a8c49400f35ce",
+            "size": 3013728,
+            "source": "main",
+            "version": "5.40.1-6+deb13u1"
+          },
+          {
+            "architecture": "arm64",
+            "file": "perl-openssl-defaults_7+b2_arm64.deb",
+            "name": "perl-openssl-defaults",
+            "repository_path": "pool/main/p/perl-openssl-defaults/perl-openssl-defaults_7+b2_arm64.deb",
+            "sha256": "1fa2d99f1f7d32147cd5935eb2700ac49b366c086fea21c963c73e6dc62d62b1",
+            "size": 6712,
+            "source": "main",
+            "version": "7+b2"
+          },
+          {
+            "architecture": "arm64",
+            "file": "perl_5.40.1-6+deb13u1_arm64.deb",
+            "name": "perl",
+            "repository_path": "pool/main/p/perl/perl_5.40.1-6+deb13u1_arm64.deb",
+            "sha256": "7f15c34267346a0da41b9fe36d509d70dfb8d39561d275c4f4c53d429290f6d2",
+            "size": 267732,
+            "source": "main",
+            "version": "5.40.1-6+deb13u1"
+          }
+        ]
+      }
+    },
+    "signed_by": {
+      "main": [
+        "B8E5F13176D2A7A75220028078DBA3BC47EF2265",
+        "41587F7DB8C774BCCF131416762F67A0B2C39DE4"
+      ],
+      "security": [
+        "89C87ACEA5DD6B8E6A7068808E9F831205B4BA95"
+      ]
+    },
+    "suite": "trixie",
+    "timestamp": "20261104T212339Z"
+  },
+  "interset": {
+    "archive": "interset-f3568ffb0c3d73330df750fb57dd78d03ff1c0da.tar.gz",
+    "archive_sha256": "dab0fcac2bd40ae6b42320a768f58c13b20caaba49c596e180a1755860d64f7e",
+    "archive_size": 14756727,
+    "commit": "f3568ffb0c3d73330df750fb57dd78d03ff1c0da",
+    "repository": "https://github.com/dan-zeman/interset"
+  },
+  "schema_version": 1,
+  "state": "frozen-inputs"
+}

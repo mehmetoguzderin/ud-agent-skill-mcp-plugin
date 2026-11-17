@@ -1,0 +1,40 @@
+Project-authored source is distributed under the MIT License. Dependencies and any
+included upstream sources retain their own licenses. Component-specific notices and
+source obligations must be reviewed and included before distributing an artifact.
+
+Original notices collected from the exact npm, Cargo, bootstrap and provider
+source archives are retained byte for byte in licenses/upstream/. INDEX.json
+binds each notice to its source archive, component and original path. This notice
+collection does not assert that the complete product source/license closure has
+been accepted; the corresponding-source index records that separate state.
+
+The Unicode 16.0.0 case-folding mapping bundled in
+workers/ud/src/ud_agent/unicode_casefold.json is derived from Unicode data.
+Copyright © 1991–2026 Unicode, Inc. The applicable permission notice is in
+licenses/Unicode-3.0.txt. Source: https://www.unicode.org/Public/16.0.0/ucd/CaseFolding.txt
+
+runtime/policies/render-seccomp.json is derived from Moby profiles at commit
+4b8214fc4971e06172938a1f1554ccff6647ee80, licensed under Apache-2.0.
+The product adds constrained Chromium user/PID/network namespace operations
+and chroot while retaining the upstream default-deny policy. See
+licenses/Moby-Apache-2.0.txt and runtime/policies/render-seccomp.provenance.json.
+
+The optional Windows ARM64 render pack includes an independently executable
+7-Zip 26.06 Alone7z command, cross-built from the unmodified source pinned in
+runtime/native-decoder.lock.json. Its C++ sources are LGPL-2.1-or-later; many C
+sources are public domain. No RAR/unRAR objects are linked into this command.
+The complete upstream source archive, build recipe, 7-Zip notices and LGPL text
+accompany the decoder. The Zig/LLVM C++ and MinGW runtime notices accompany the
+pack in licenses/. Microsoft Edge is acquired privately from its publisher at
+setup time; the base pack does not redistribute the Microsoft browser or run
+its installer actions.
+
+Windows native helpers include Microsoft Visual Studio 2026 CRT object code.
+The exact contributing object hashes and original conditional terms are recorded
+in runtime/materials/msvc-static-components.lock.json and
+licenses/vendor/Microsoft-VisualStudio-2026/. This proprietary component is
+identified as LicenseRef-Microsoft-VisualStudio-2026-CRT separately from the
+authored MIT Rust code. The source-duty review does not establish publisher
+redistribution authority; production promotion requires that separate authority.
+Microsoft SDK libraries and headers are build inputs and are not included in the
+corresponding-source distribution.

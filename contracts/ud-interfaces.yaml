@@ -1,0 +1,3650 @@
+[
+  {
+    "id": "001",
+    "name": "treebank_create",
+    "original_signature": "treebank_create(working_tree_path, template_path, metadata_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.workspace:treebank_create",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/treebank_create.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "template_path",
+        "required": true
+      },
+      {
+        "name": "metadata_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "002",
+    "name": "workspace_inspect",
+    "original_signature": "workspace_inspect(working_tree_path, related_repository_paths, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.workspace:workspace_inspect",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/workspace_inspect.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "related_repository_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "003",
+    "name": "workspace_sync_plan",
+    "original_signature": "workspace_sync_plan(working_tree_path, repository_specs, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.workspace:workspace_sync_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/workspace_sync_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "repository_specs",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "004",
+    "name": "treebank_snapshot",
+    "original_signature": "treebank_snapshot(working_tree_path, file_paths, output_dir_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.workspace:treebank_snapshot",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/treebank_snapshot.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "005",
+    "name": "treebank_review",
+    "original_signature": "treebank_review(working_tree_path, base_revision, peer_treebank_paths, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.workspace:treebank_review",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/treebank_review.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "base_revision",
+        "required": true
+      },
+      {
+        "name": "peer_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "006",
+    "name": "treebank_edit",
+    "original_signature": "treebank_edit(working_tree_path, edit_batch, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.edit_batch:treebank_edit",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/treebank_edit.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "edit_batch",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "007",
+    "name": "tree_edit",
+    "original_signature": "tree_edit(working_tree_path, tree_ref, edit_operations, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.edit_batch:tree_edit",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_edit.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "edit_operations",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "008",
+    "name": "token_edit",
+    "original_signature": "token_edit(working_tree_path, token_ref, token_patch, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.edit_batch:token_edit",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_edit.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "token_patch",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "009",
+    "name": "tree_metadata_edit",
+    "original_signature": "tree_metadata_edit(working_tree_path, tree_ref, metadata_patch, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.edit_batch:tree_metadata_edit",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_metadata_edit.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "metadata_patch",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "010",
+    "name": "enhanced_graph_edit",
+    "original_signature": "enhanced_graph_edit(working_tree_path, tree_ref, edge_operations, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.edit_batch:enhanced_graph_edit",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/enhanced_graph_edit.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "edge_operations",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "011",
+    "name": "tree_list",
+    "original_signature": "tree_list(working_tree_path, file_paths, read_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_list",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_list.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "read_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "012",
+    "name": "tree_get",
+    "original_signature": "tree_get(working_tree_path, tree_ref, read_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.sentences:tree_get",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_get.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "read_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "013",
+    "name": "tree_add",
+    "original_signature": "tree_add(working_tree_path, file_path, insertion_point, sentence_conllu, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_add",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_add.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_path",
+        "required": true
+      },
+      {
+        "name": "insertion_point",
+        "required": true
+      },
+      {
+        "name": "sentence_conllu",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "014",
+    "name": "tree_replace",
+    "original_signature": "tree_replace(working_tree_path, tree_ref, sentence_conllu, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_replace",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_replace.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "sentence_conllu",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "015",
+    "name": "tree_remove",
+    "original_signature": "tree_remove(working_tree_path, tree_ref, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "016",
+    "name": "tree_copy",
+    "original_signature": "tree_copy(working_tree_path, tree_ref, target_file_path, insertion_point, new_sent_id, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_copy",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_copy.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "target_file_path",
+        "required": true
+      },
+      {
+        "name": "insertion_point",
+        "required": true
+      },
+      {
+        "name": "new_sent_id",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "017",
+    "name": "tree_move",
+    "original_signature": "tree_move(working_tree_path, tree_ref, target_file_path, insertion_point, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_move",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_move.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "target_file_path",
+        "required": true
+      },
+      {
+        "name": "insertion_point",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "018",
+    "name": "tree_id_set",
+    "original_signature": "tree_id_set(working_tree_path, tree_ref, new_sent_id, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_id_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_id_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "new_sent_id",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "019",
+    "name": "tree_text_set",
+    "original_signature": "tree_text_set(working_tree_path, tree_ref, text, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_text_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_text_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "text",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "020",
+    "name": "tree_comment_set",
+    "original_signature": "tree_comment_set(working_tree_path, tree_ref, comment_key, comment_value, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_comment_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_comment_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "comment_key",
+        "required": true
+      },
+      {
+        "name": "comment_value",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "021",
+    "name": "tree_comment_remove",
+    "original_signature": "tree_comment_remove(working_tree_path, tree_ref, comment_key, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.sentences:tree_comment_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_comment_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "comment_key",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "022",
+    "name": "token_list",
+    "original_signature": "token_list(working_tree_path, tree_ref, read_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_list",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_list.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "read_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "023",
+    "name": "token_get",
+    "original_signature": "token_get(working_tree_path, token_ref, read_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_get",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_get.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "read_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "024",
+    "name": "token_add",
+    "original_signature": "token_add(working_tree_path, tree_ref, insertion_point, token_data, attachment_spec, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.tokens:token_add",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_add.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "insertion_point",
+        "required": true
+      },
+      {
+        "name": "token_data",
+        "required": true
+      },
+      {
+        "name": "attachment_spec",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "025",
+    "name": "token_remove",
+    "original_signature": "token_remove(working_tree_path, token_ref, removal_spec, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.tokens:token_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "removal_spec",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "026",
+    "name": "token_form_set",
+    "original_signature": "token_form_set(working_tree_path, token_ref, form, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_form_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_form_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "form",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "027",
+    "name": "token_lemma_set",
+    "original_signature": "token_lemma_set(working_tree_path, token_ref, lemma, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_lemma_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_lemma_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "lemma",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "028",
+    "name": "token_upos_set",
+    "original_signature": "token_upos_set(working_tree_path, token_ref, upos, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_upos_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_upos_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "upos",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "029",
+    "name": "token_xpos_set",
+    "original_signature": "token_xpos_set(working_tree_path, token_ref, xpos, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_xpos_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_xpos_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "xpos",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "030",
+    "name": "token_features_replace",
+    "original_signature": "token_features_replace(working_tree_path, token_ref, features, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_features_replace",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_features_replace.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "features",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "031",
+    "name": "token_feature_set",
+    "original_signature": "token_feature_set(working_tree_path, token_ref, feature_name, feature_values, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_feature_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_feature_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "feature_name",
+        "required": true
+      },
+      {
+        "name": "feature_values",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "032",
+    "name": "token_feature_remove",
+    "original_signature": "token_feature_remove(working_tree_path, token_ref, feature_name, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_feature_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_feature_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "feature_name",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "033",
+    "name": "token_misc_replace",
+    "original_signature": "token_misc_replace(working_tree_path, token_ref, misc_entries, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.tokens:token_misc_replace",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_misc_replace.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "misc_entries",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "034",
+    "name": "token_misc_set",
+    "original_signature": "token_misc_set(working_tree_path, token_ref, attribute_name, attribute_values, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.tokens:token_misc_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_misc_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "attribute_name",
+        "required": true
+      },
+      {
+        "name": "attribute_values",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "035",
+    "name": "token_misc_remove",
+    "original_signature": "token_misc_remove(working_tree_path, token_ref, attribute_name, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.tokens:token_misc_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_misc_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "attribute_name",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "036",
+    "name": "basic_dependency_set",
+    "original_signature": "basic_dependency_set(working_tree_path, token_ref, head_id, deprel, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.dependencies:basic_dependency_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/basic_dependency_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "head_id",
+        "required": true
+      },
+      {
+        "name": "deprel",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "037",
+    "name": "basic_dependency_label_set",
+    "original_signature": "basic_dependency_label_set(working_tree_path, token_ref, deprel, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.dependencies:basic_dependency_label_set",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/basic_dependency_label_set.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "deprel",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "038",
+    "name": "enhanced_edge_add",
+    "original_signature": "enhanced_edge_add(working_tree_path, tree_ref, head_id, dependent_id, deprel, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.dependencies:enhanced_edge_add",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/enhanced_edge_add.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "head_id",
+        "required": true
+      },
+      {
+        "name": "dependent_id",
+        "required": true
+      },
+      {
+        "name": "deprel",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "039",
+    "name": "enhanced_edge_remove",
+    "original_signature": "enhanced_edge_remove(working_tree_path, tree_ref, head_id, dependent_id, deprel, ud_context_path, edit_options)",
+    "upstream_provenance": "P",
+    "handler": "ud_agent.domain.dependencies:enhanced_edge_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/enhanced_edge_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "head_id",
+        "required": true
+      },
+      {
+        "name": "dependent_id",
+        "required": true
+      },
+      {
+        "name": "deprel",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "040",
+    "name": "enhanced_dependencies_replace",
+    "original_signature": "enhanced_dependencies_replace(working_tree_path, tree_ref, dependent_id, incoming_edges, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.dependencies:enhanced_dependencies_replace",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/enhanced_dependencies_replace.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "dependent_id",
+        "required": true
+      },
+      {
+        "name": "incoming_edges",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "041",
+    "name": "multiword_token_add",
+    "original_signature": "multiword_token_add(working_tree_path, tree_ref, first_word_id, last_word_id, form, misc_entries, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.special_rows:multiword_token_add",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/multiword_token_add.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "first_word_id",
+        "required": true
+      },
+      {
+        "name": "last_word_id",
+        "required": true
+      },
+      {
+        "name": "form",
+        "required": true
+      },
+      {
+        "name": "misc_entries",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "042",
+    "name": "multiword_token_edit",
+    "original_signature": "multiword_token_edit(working_tree_path, tree_ref, range_id, multiword_token_patch, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.special_rows:multiword_token_edit",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/multiword_token_edit.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "range_id",
+        "required": true
+      },
+      {
+        "name": "multiword_token_patch",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "043",
+    "name": "multiword_token_remove",
+    "original_signature": "multiword_token_remove(working_tree_path, tree_ref, range_id, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.special_rows:multiword_token_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/multiword_token_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "range_id",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "044",
+    "name": "empty_node_add",
+    "original_signature": "empty_node_add(working_tree_path, tree_ref, after_word_id, empty_node_data, enhanced_edges, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.special_rows:empty_node_add",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/empty_node_add.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "after_word_id",
+        "required": true
+      },
+      {
+        "name": "empty_node_data",
+        "required": true
+      },
+      {
+        "name": "enhanced_edges",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "045",
+    "name": "empty_node_edit",
+    "original_signature": "empty_node_edit(working_tree_path, tree_ref, empty_node_id, empty_node_patch, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.special_rows:empty_node_edit",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/empty_node_edit.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "empty_node_id",
+        "required": true
+      },
+      {
+        "name": "empty_node_patch",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "046",
+    "name": "empty_node_remove",
+    "original_signature": "empty_node_remove(working_tree_path, tree_ref, empty_node_id, incident_edge_policy, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.special_rows:empty_node_remove",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/empty_node_remove.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "empty_node_id",
+        "required": true
+      },
+      {
+        "name": "incident_edge_policy",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "047",
+    "name": "tree_reindex",
+    "original_signature": "tree_reindex(working_tree_path, tree_ref, ud_context_path, edit_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.special_rows:tree_reindex",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_reindex.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "048",
+    "name": "validation_report",
+    "original_signature": "validation_report(working_tree_path, file_paths, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.validation:validation_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/validation_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "049",
+    "name": "sentence_validation_report",
+    "original_signature": "sentence_validation_report(working_tree_path, sentence_conllu, language_code, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.validation:sentence_validation_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/sentence_validation_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "sentence_conllu",
+        "required": true
+      },
+      {
+        "name": "language_code",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "050",
+    "name": "project_consistency_report",
+    "original_signature": "project_consistency_report(working_tree_path, validator_module_path, validator_class_name, ud_context_path, options)",
+    "upstream_provenance": "X",
+    "handler": "ud_agent.domain.validation:project_consistency_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/project_consistency_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": true
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "validator_module_path",
+        "required": true
+      },
+      {
+        "name": "validator_class_name",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "051",
+    "name": "fix_plan",
+    "original_signature": "fix_plan(working_tree_path, file_paths, fix_ids, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.plans:fix_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/fix_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "fix_ids",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "052",
+    "name": "plan_apply",
+    "original_signature": "plan_apply(working_tree_path, plan_path, selected_action_ids, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.plans:plan_apply",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/plan_apply.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "plan_path",
+        "required": true
+      },
+      {
+        "name": "selected_action_ids",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "053",
+    "name": "annotation_import_plan",
+    "original_signature": "annotation_import_plan(working_tree_path, source_annotation_paths, target_file_paths, columns, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.conversion:annotation_import_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/annotation_import_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "source_annotation_paths",
+        "required": true
+      },
+      {
+        "name": "target_file_paths",
+        "required": true
+      },
+      {
+        "name": "columns",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "054",
+    "name": "token_alignment_report",
+    "original_signature": "token_alignment_report(working_tree_path, source_file_paths, target_file_paths, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.conversion:token_alignment_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_alignment_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "source_file_paths",
+        "required": true
+      },
+      {
+        "name": "target_file_paths",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "055",
+    "name": "tokenization_change_plan",
+    "original_signature": "tokenization_change_plan(working_tree_path, source_tokenization_paths, target_file_paths, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.conversion:tokenization_change_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tokenization_change_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "source_tokenization_paths",
+        "required": true
+      },
+      {
+        "name": "target_file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "056",
+    "name": "sentence_segmentation_change_plan",
+    "original_signature": "sentence_segmentation_change_plan(working_tree_path, source_segmentation_paths, target_file_paths, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.conversion:sentence_segmentation_change_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/sentence_segmentation_change_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "source_segmentation_paths",
+        "required": true
+      },
+      {
+        "name": "target_file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "057",
+    "name": "text_content_compare",
+    "original_signature": "text_content_compare(working_tree_path, left_path, left_format, right_path, right_format, ud_context_path)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.conversion:text_content_compare",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/text_content_compare.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "left_path",
+        "required": true
+      },
+      {
+        "name": "left_format",
+        "required": true
+      },
+      {
+        "name": "right_path",
+        "required": true
+      },
+      {
+        "name": "right_format",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "058",
+    "name": "sentence_batch_extract",
+    "original_signature": "sentence_batch_extract(working_tree_path, selection_path, output_dir_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.conversion:sentence_batch_extract",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/sentence_batch_extract.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "selection_path",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "059",
+    "name": "dataset_split_plan",
+    "original_signature": "dataset_split_plan(working_tree_path, file_paths, split_spec_path, seed, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.conversion:dataset_split_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/dataset_split_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "split_spec_path",
+        "required": true
+      },
+      {
+        "name": "seed",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "060",
+    "name": "format_convert",
+    "original_signature": "format_convert(working_tree_path, input_paths, target_format, output_dir_path, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.conversion:format_convert",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/format_convert.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "input_paths",
+        "required": true
+      },
+      {
+        "name": "target_format",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "061",
+    "name": "tagset_conversion_plan",
+    "original_signature": "tagset_conversion_plan(working_tree_path, file_paths, source_tagset, target_tagset, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.conversion:tagset_conversion_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tagset_conversion_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "source_tagset",
+        "required": true
+      },
+      {
+        "name": "target_tagset",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "062",
+    "name": "treebank_profile",
+    "original_signature": "treebank_profile(working_tree_path, file_paths, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.analysis:treebank_profile",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/treebank_profile.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "063",
+    "name": "lexeme_pos_report",
+    "original_signature": "lexeme_pos_report(working_tree_path, lexeme_filter, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.analysis:lexeme_pos_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/lexeme_pos_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "lexeme_filter",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "064",
+    "name": "observed_paradigms",
+    "original_signature": "observed_paradigms(working_tree_path, paradigm_filter, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.analysis:observed_paradigms",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/observed_paradigms.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "paradigm_filter",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "065",
+    "name": "relation_profile",
+    "original_signature": "relation_profile(working_tree_path, relation_filter, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.analysis:relation_profile",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/relation_profile.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "relation_filter",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "066",
+    "name": "feature_agreement_report",
+    "original_signature": "feature_agreement_report(working_tree_path, feature_name, relation_filter, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.analysis:feature_agreement_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/feature_agreement_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "feature_name",
+        "required": true
+      },
+      {
+        "name": "relation_filter",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "067",
+    "name": "dependency_order_profile",
+    "original_signature": "dependency_order_profile(working_tree_path, file_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.analysis:dependency_order_profile",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/dependency_order_profile.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "068",
+    "name": "multiword_token_patterns",
+    "original_signature": "multiword_token_patterns(working_tree_path, file_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.analysis:multiword_token_patterns",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/multiword_token_patterns.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "069",
+    "name": "proper_name_sequences",
+    "original_signature": "proper_name_sequences(working_tree_path, file_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.analysis:proper_name_sequences",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/proper_name_sequences.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "070",
+    "name": "script_composition_report",
+    "original_signature": "script_composition_report(working_tree_path, peer_treebank_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.analysis:script_composition_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/script_composition_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "peer_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "071",
+    "name": "english_relative_clause_classify",
+    "original_signature": "english_relative_clause_classify(working_tree_path, file_paths, output_dir_path, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.analysis:english_relative_clause_classify",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/english_relative_clause_classify.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "072",
+    "name": "conventions_compare",
+    "original_signature": "conventions_compare(working_tree_path, peer_treebank_paths, dimensions, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.comparison:conventions_compare",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/conventions_compare.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "peer_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "dimensions",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "073",
+    "name": "feature_value_report",
+    "original_signature": "feature_value_report(working_tree_path, feature_name, peer_treebank_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.comparison:feature_value_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/feature_value_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "feature_name",
+        "required": true
+      },
+      {
+        "name": "peer_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "074",
+    "name": "duplicate_report",
+    "original_signature": "duplicate_report(working_tree_path, file_paths, matching_options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.comparison:duplicate_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/duplicate_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "matching_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "075",
+    "name": "overlap_report",
+    "original_signature": "overlap_report(working_tree_path, peer_treebank_paths, split_spec_path, matching_options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.comparison:overlap_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/overlap_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "peer_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "split_spec_path",
+        "required": true
+      },
+      {
+        "name": "matching_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "076",
+    "name": "enhanced_graph_report",
+    "original_signature": "enhanced_graph_report(working_tree_path, file_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.enhanced:enhanced_graph_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/enhanced_graph_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "077",
+    "name": "enhanced_edge_explanations",
+    "original_signature": "enhanced_edge_explanations(working_tree_path, file_paths, output_dir_path, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.enhanced:enhanced_edge_explanations",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/enhanced_edge_explanations.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "078",
+    "name": "enhanced_empty_node_collapse_plan",
+    "original_signature": "enhanced_empty_node_collapse_plan(working_tree_path, file_paths, transformation_spec_path, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.enhanced:enhanced_empty_node_collapse_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/enhanced_empty_node_collapse_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "transformation_spec_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "079",
+    "name": "parallel_corpus_report",
+    "original_signature": "parallel_corpus_report(working_tree_path, peer_treebank_paths, alignment_spec_path, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.parallel:parallel_corpus_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/parallel_corpus_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "peer_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "alignment_spec_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "080",
+    "name": "bible_passage_concordance",
+    "original_signature": "bible_passage_concordance(working_tree_path, file_paths, peer_file_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.parallel:bible_passage_concordance",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/bible_passage_concordance.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "file_paths",
+        "required": true
+      },
+      {
+        "name": "peer_file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "081",
+    "name": "predictions_evaluate",
+    "original_signature": "predictions_evaluate(working_tree_path, gold_file_paths, prediction_file_paths, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.evaluation:predictions_evaluate",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/predictions_evaluate.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "gold_file_paths",
+        "required": true
+      },
+      {
+        "name": "prediction_file_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "082",
+    "name": "annotation_pair_scores",
+    "original_signature": "annotation_pair_scores(working_tree_path, reference_annotation_path, comparison_annotation_path, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.evaluation:annotation_pair_scores",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/annotation_pair_scores.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "reference_annotation_path",
+        "required": true
+      },
+      {
+        "name": "comparison_annotation_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "083",
+    "name": "changes_review",
+    "original_signature": "changes_review(working_tree_path, base_revision, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.review:changes_review",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/changes_review.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "base_revision",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "084",
+    "name": "contribution_plan",
+    "original_signature": "contribution_plan(working_tree_path, patch_path, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.review:contribution_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/contribution_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "patch_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "085",
+    "name": "language_rules_report",
+    "original_signature": "language_rules_report(working_tree_path, language_code, peer_treebank_paths, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.rules:language_rules_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/language_rules_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "language_code",
+        "required": true
+      },
+      {
+        "name": "peer_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "086",
+    "name": "language_rule_change_plan",
+    "original_signature": "language_rule_change_plan(working_tree_path, language_code, proposed_rules_path, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.rules:language_rule_change_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/language_rule_change_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "language_code",
+        "required": true
+      },
+      {
+        "name": "proposed_rules_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "087",
+    "name": "language_rule_impact_report",
+    "original_signature": "language_rule_impact_report(working_tree_path, proposed_rules_path, affected_treebank_paths, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.rules:language_rule_impact_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/language_rule_impact_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "proposed_rules_path",
+        "required": true
+      },
+      {
+        "name": "affected_treebank_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "088",
+    "name": "metadata_change_plan",
+    "original_signature": "metadata_change_plan(working_tree_path, proposed_metadata_path, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.metadata:metadata_change_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/metadata_change_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "proposed_metadata_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "089",
+    "name": "documentation_preview",
+    "original_signature": "documentation_preview(working_tree_path, ud_context_path, output_dir_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.rendering:documentation_preview",
+    "runtime_pack": "render",
+    "output_schema": "contracts/schema/results/documentation_preview.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "090",
+    "name": "guideline_example_preview",
+    "original_signature": "guideline_example_preview(working_tree_path, example_markup_path, output_dir_path, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.rendering:guideline_example_preview",
+    "runtime_pack": "render",
+    "output_schema": "contracts/schema/results/guideline_example_preview.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "example_markup_path",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "091",
+    "name": "sentence_render",
+    "original_signature": "sentence_render(working_tree_path, sentence_conllu, output_format, output_path, ud_context_path)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.rendering:sentence_render",
+    "runtime_pack": "render",
+    "output_schema": "contracts/schema/results/sentence_render.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "sentence_conllu",
+        "required": true
+      },
+      {
+        "name": "output_format",
+        "required": true
+      },
+      {
+        "name": "output_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "092",
+    "name": "release_plan",
+    "original_signature": "release_plan(working_tree_path, target_release, previous_release_path, ud_context_path, options)",
+    "upstream_provenance": "C",
+    "handler": "ud_agent.domain.release:release_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/release_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "target_release",
+        "required": true
+      },
+      {
+        "name": "previous_release_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "093",
+    "name": "release_candidate_build",
+    "original_signature": "release_candidate_build(working_tree_path, release_plan_path, ud_context_path, output_dir_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.release:release_candidate_build",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/release_candidate_build.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "release_plan_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "094",
+    "name": "release_deposit_prepare",
+    "original_signature": "release_deposit_prepare(working_tree_path, release_candidate_path, deposit_metadata_path, ud_context_path, output_dir_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.release:release_deposit_prepare",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/release_deposit_prepare.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "release_candidate_path",
+        "required": true
+      },
+      {
+        "name": "deposit_metadata_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "095",
+    "name": "maintenance_report",
+    "original_signature": "maintenance_report(working_tree_path, maintenance_policy_path, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.maintenance:maintenance_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/maintenance_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "maintenance_policy_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "096",
+    "name": "handover_package_build",
+    "original_signature": "handover_package_build(working_tree_path, ud_context_path, output_dir_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.maintenance:handover_package_build",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/handover_package_build.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": true,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "output_dir_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "097",
+    "name": "treebank_rename_plan",
+    "original_signature": "treebank_rename_plan(working_tree_path, new_identity_path, related_repository_paths, ud_context_path, options)",
+    "upstream_provenance": "O",
+    "handler": "ud_agent.domain.maintenance:treebank_rename_plan",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/treebank_rename_plan.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "new_identity_path",
+        "required": true
+      },
+      {
+        "name": "related_repository_paths",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "098",
+    "name": "star_rating_report",
+    "original_signature": "star_rating_report(working_tree_path, ud_context_path, options)",
+    "upstream_provenance": "D",
+    "handler": "ud_agent.domain.maintenance:star_rating_report",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/star_rating_report.schema.json",
+    "access": {
+      "writes_workspace": false,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "099",
+    "name": "token_split",
+    "original_signature": "token_split(working_tree_path, token_ref, replacement_words, annotation_map, ud_context_path, edit_options)",
+    "upstream_provenance": "N",
+    "handler": "ud_agent.domain.structural:token_split",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/token_split.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "token_ref",
+        "required": true
+      },
+      {
+        "name": "replacement_words",
+        "required": true
+      },
+      {
+        "name": "annotation_map",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "100",
+    "name": "tokens_merge",
+    "original_signature": "tokens_merge(working_tree_path, tree_ref, token_ids, merged_word, annotation_map, ud_context_path, edit_options)",
+    "upstream_provenance": "N",
+    "handler": "ud_agent.domain.structural:tokens_merge",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tokens_merge.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "token_ids",
+        "required": true
+      },
+      {
+        "name": "merged_word",
+        "required": true
+      },
+      {
+        "name": "annotation_map",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "101",
+    "name": "tree_split",
+    "original_signature": "tree_split(working_tree_path, tree_ref, split_boundaries, new_sent_ids, annotation_map, ud_context_path, edit_options)",
+    "upstream_provenance": "N",
+    "handler": "ud_agent.domain.structural:tree_split",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/tree_split.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_ref",
+        "required": true
+      },
+      {
+        "name": "split_boundaries",
+        "required": true
+      },
+      {
+        "name": "new_sent_ids",
+        "required": true
+      },
+      {
+        "name": "annotation_map",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "102",
+    "name": "trees_merge",
+    "original_signature": "trees_merge(working_tree_path, tree_refs, new_sent_id, annotation_map, ud_context_path, edit_options)",
+    "upstream_provenance": "N",
+    "handler": "ud_agent.domain.structural:trees_merge",
+    "runtime_pack": "core",
+    "output_schema": "contracts/schema/results/trees_merge.schema.json",
+    "access": {
+      "writes_workspace": true,
+      "writes_outputs": false,
+      "executes_project_code": false
+    },
+    "parameters": [
+      {
+        "name": "working_tree_path",
+        "required": true
+      },
+      {
+        "name": "tree_refs",
+        "required": true
+      },
+      {
+        "name": "new_sent_id",
+        "required": true
+      },
+      {
+        "name": "annotation_map",
+        "required": true
+      },
+      {
+        "name": "ud_context_path",
+        "required": true
+      },
+      {
+        "name": "edit_options",
+        "required": false
+      }
+    ]
+  }
+]

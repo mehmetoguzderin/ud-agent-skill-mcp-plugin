@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "qualification": "source-bound-previously-verified-guest-package-extraction-identities",
+  "scope": "Exact retained image/package/status/notice identities; no new extraction, binary reproduction, native acceptance or publisher entitlement.",
+  "image_lock": {
+    "path": "runtime/lima-guest.lock.json",
+    "sha256": "4fb57e5defa4f78c272eff7350ef527f8154cedbf7f0319c917e976d5e160ab3",
+    "size_bytes": 5731
+  },
+  "producer": {
+    "path": "scripts/release/extract-guest-materials.py",
+    "sha256": "53e9ee8ce9c2a89a075236e325ac3890e50702f035702fa4ae11de7f5e6f6c02",
+    "size_bytes": 14657
+  },
+  "tool_recipe": {
+    "path": "runtime/materials/lima-ubuntu/nsenter-extraction.json",
+    "sha256": "8d1e90fa0fe3daeee4c241e667b32085c29ab123d557eed80ff6ab6eed66a6e0",
+    "size_bytes": 4676
+  },
+  "images": {
+    "arm64": {
+      "image": {
+        "sha256": "8eb876c2ccc4b6ff89e4a65d511815923b285e04503ba465809bf587f763da24",
+        "size_bytes": 940373504,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-arm64.img"
+      },
+      "extraction_receipt": {
+        "path": ".artifacts/source-materials-data/ubuntu-arm64-v2/receipt.json",
+        "sha256": "0d07c001c05488a2cf5f336265632ba95bcc48f9de4d992664a5e6c570ebc488",
+        "size_bytes": 429250
+      },
+      "status": {
+        "path": ".artifacts/source-materials-data/ubuntu-arm64-v2/status",
+        "sha256": "2c0637c02fa245ac21e9fc0a66ee06554b92ef396cf37803a1e0163b4d381616",
+        "size_bytes": 674967
+      },
+      "publisher_manifest": {
+        "path": ".artifacts/lima-product/ubuntu/image-arm64.manifest",
+        "sha256": "830e68b0892d14e5e886048a2379a287f652c88ee3440e4aab0820f05cec8bd2",
+        "size_bytes": 20401,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-arm64.manifest"
+      },
+      "packages": 675,
+      "package_universe_sha256": "e7c756c98319a828cdfd40f93667c4d87c5e0e5d465f7b10917de7bbaf41a97e",
+      "notices_inventory_sha256": "aa6c6c6356f108e7c8fd1048c214b8e2a40a881c5583827cfec4fe06a38ee560",
+      "decoder": {
+        "sha256": "333cbd68c349beaa237f5a7a4781a908c853931b6f03f1a3ccef83a4dbc15616",
+        "version": "qemu-img version 11.1.1"
+      },
+      "extractor_image": "sha256:7cf0c248d11d5fa156acd3738965fe118ad686da273edb4891474b812eecd4c0"
+    },
+    "amd64": {
+      "image": {
+        "sha256": "5645d0318ad21f643ebb1ac4567514620e9893380b07b0201fda163baa5b7eb5",
+        "size_bytes": 859090944,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-amd64.img"
+      },
+      "extraction_receipt": {
+        "path": ".artifacts/source-materials-data/ubuntu-amd64/receipt.json",
+        "sha256": "79bec96a2a02be3408af1fd2d03dc1c11e509cba916561fc0ae2709eef95287c",
+        "size_bytes": 431116
+      },
+      "status": {
+        "path": ".artifacts/source-materials-data/ubuntu-amd64/status",
+        "sha256": "8ed5b25a304c9c8ed8a6c7faf470856c47eed89c606fcf44734fbe9b1ccfc8e9",
+        "size_bytes": 680611
+      },
+      "publisher_manifest": {
+        "path": ".artifacts/lima-product/ubuntu/image-amd64.manifest",
+        "sha256": "d52adb4ae5a731dcbed5ebe664757d248f6c0994dc6230c88891f1763a818083",
+        "size_bytes": 20531,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-amd64.manifest"
+      },
+      "packages": 678,
+      "package_universe_sha256": "13749b50bc5e0749d067bedab83f66e3ceb1a5be9b651f9ad1b6b241a62a9640",
+      "notices_inventory_sha256": "71c639178156eaf2847c1a5990f31f1976d98144e10eadc540f8df372eab67a7",
+      "decoder": {
+        "sha256": "333cbd68c349beaa237f5a7a4781a908c853931b6f03f1a3ccef83a4dbc15616",
+        "version": "qemu-img version 11.1.1"
+      },
+      "extractor_image": "sha256:7cf0c248d11d5fa156acd3738965fe118ad686da273edb4891474b812eecd4c0"
+    }
+  }
+}

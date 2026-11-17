@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "workspace_confinement",
+      "file": "packages/workspace/src/authorization.ts",
+      "find": "if (contains(canonicalRoot, canonical)) return canonical;",
+      "replace": "if (true) return canonical;",
+      "runner": "vitest",
+      "test": "tests/runtime/authorization.test.ts",
+      "assertion": "requires a trusted grant",
+      "language": "typescript",
+      "category": "workspace"
+    },
+    {
+      "id": "candidate_hash_verification",
+      "file": "packages/workspace/src/worker-candidates.ts",
+      "find": "sha256(bytes) !== change.after_sha256",
+      "replace": "false",
+      "runner": "vitest",
+      "test": "tests/runtime/worker-candidates.test.ts",
+      "assertion": "checks scope",
+      "language": "typescript",
+      "category": "integrity"
+    },
+    {
+      "id": "missing_worker_assets",
+      "file": "packages/runtime-manager/src/receipt.ts",
+      "find": "!selected || typeof selected !== 'object' || Array.isArray(selected)",
+      "replace": "false",
+      "runner": "vitest",
+      "test": "tests/runtime/command-receipt.test.ts",
+      "assertion": "requires frozen publisher-bound images",
+      "language": "typescript",
+      "category": "runtime"
+    },
+    {
+      "id": "independent_candidate_validation",
+      "file": "packages/workspace/src/worker-candidates.ts",
+      "find": "if (!options.validate) throw new Error('CANDIDATE_VALIDATION_UNAVAILABLE: apply requires independent validation.');",
+      "replace": "if (false && !options.validate) throw new Error('CANDIDATE_VALIDATION_UNAVAILABLE: apply requires independent validation.');",
+      "runner": "vitest",
+      "test": "tests/runtime/worker-candidates.test.ts",
+      "assertion": "does not commit",
+      "language": "typescript",
+      "category": "transactions"
+    },
+    {
+      "id": "stale_preconditions",
+      "file": "packages/workspace/src/transactions.ts",
+      "find": "(bytes === null ? null : sha256(bytes)) !== file.before",
+      "replace": "false",
+      "runner": "vitest",
+      "test": "tests/runtime/transactions.test.ts",
+      "assertion": "rejects stale apply before creating recovery evidence",
+      "language": "typescript",
+      "category": "transactions"
+    },
+    {
+      "id": "preserve_errors",
+      "file": "packages/runtime-manager/src/command.ts",
+      "find": "if (failure) return reject(failure);",
+      "replace": "if (false && failure) return reject(failure);",
+      "runner": "vitest",
+      "test": "tests/runtime/command-receipt.test.ts",
+      "assertion": "rejects relative executables",
+      "language": "typescript",
+      "category": "errors"
+    },
+    {
+      "id": "cancellation",
+      "file": "packages/runtime-manager/src/command.ts",
+      "find": "const onAbort = () => stop(new Error('COMMAND_CANCELLED'));",
+      "replace": "const onAbort = () => {};",
+      "runner": "vitest",
+      "test": "tests/runtime/command-receipt.test.ts",
+      "assertion": "honors cancellation",
+      "language": "typescript",
+      "category": "cancellation"
+    },
+    {
+      "id": "metric_units",
+      "file": "workers/ud/src/ud_agent/domain/evaluation.py",
+      "find": "2 * correct / (gold + system)",
+      "replace": "correct / (gold + system)",
+      "runner": "pytest",
+      "test": "tests/domain/worker/test_worker.py::CorpusTests::test_scoring_aggregates_counts_and_preserves_gold_roles",
+      "assertion": "test_scoring_aggregates_counts",
+      "language": "python",
+      "category": "evaluation"
+    },
+    {
+      "id": "schema_unknown_fields",
+      "file": "contracts/schema/operations/check_ud_environment.input.schema.json",
+      "find": "\"additionalProperties\": false",
+      "replace": "\"additionalProperties\": true",
+      "runner": "vitest",
+      "test": "tests/mutation/schema_canary.test.ts",
+      "assertion": "rejects unexpected fields",
+      "language": "data",
+      "category": "contracts"
+    },
+    {
+      "id": "nonroot_runtime_enforcement",
+      "file": "packages/runtime-manager/src/podman.ts",
+      "find": "user?.uid !== 10001 || user?.gid !== 10001",
+      "replace": "false",
+      "runner": "vitest",
+      "test": "tests/runtime/podman-policy.test.ts",
+      "assertion": "rejects root worker",
+      "language": "typescript",
+      "category": "isolation"
+    },
+    {
+      "id": "grader_rejection",
+      "file": "scripts/quality/workflow-grader.mjs",
+      "find": "if (actual.sha256 !== item.sha256) fail(`ARTIFACT_HASH_MISMATCH:${item.path}`);",
+      "replace": "if (false) fail(`ARTIFACT_HASH_MISMATCH:${item.path}`);",
+      "runner": "vitest",
+      "test": "tests/evals/workflow-grader.test.mjs",
+      "assertion": "rejects wrong artifact bytes",
+      "language": "typescript",
+      "category": "graders"
+    },
+    {
+      "id": "perl_bridge",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "find": "fail('duplicate_edge') if $seen{join(\"\\0\", $head, $dependent, $relation)}++;",
+      "replace": "fail('duplicate_edge') if 0 && $seen{join(\"\\0\", $head, $dependent, $relation)}++;",
+      "runner": "pytest",
+      "test": "tests/domain/perl/test_graph_bridge.py::GraphBridgeFixtureTests::test_rejects_bad_graphs_before_loading_dependencies",
+      "assertion": "test_rejects_bad_graphs_before_loading_dependencies",
+      "language": "perl",
+      "category": "bridge"
+    },
+    {
+      "id": "python_assertion_ancestry",
+      "file": "tests/mutation/pytest_evidence.py",
+      "find": "phase == 'call' and isinstance(exception_type, type) and issubclass(exception_type, (AssertionError, pytest.fail.Exception))",
+      "replace": "True",
+      "runner": "pytest",
+      "test": "tests/mutation/test_pytest_evidence.py::EvidenceTests::test_runtime_message_or_code_cannot_masquerade_as_an_assertion",
+      "assertion": "test_runtime_message_or_code_cannot_masquerade_as_an_assertion",
+      "language": "python",
+      "category": "assertions"
+    },
+    {
+      "id": "mutation_policy_threshold",
+      "file": "stryker.config.mjs",
+      "find": "thresholds: { high: 100, low: 100, break: 100 }",
+      "replace": "thresholds: { high: 100, low: 100, break: 0 }",
+      "runner": "vitest",
+      "test": "tests/mutation/stryker_policy.test.ts",
+      "assertion": "keeps mutation thresholds strict",
+      "language": "typescript",
+      "category": "policy"
+    },
+    {
+      "id": "rust_path_confinement",
+      "file": "packages/launcher/src/fs_guard.rs",
+      "find": "_ => return Err(fail(\"path must contain only relative normal components\")),",
+      "replace": "_ => continue,",
+      "runner": "rust",
+      "test": "packages/launcher/tests/fs_guard.rs::rejects_escaping_paths_and_oversized_files_without_output",
+      "assertion": "rejects_escaping_paths_and_oversized_files_without_output",
+      "language": "rust",
+      "category": "path-confinement"
+    },
+    {
+      "id": "rust_transfer_limits",
+      "file": "packages/launcher/src/fs_guard.rs",
+      "find": "if before.len() > max_bytes {\n        return Err(fail(\"input exceeds requested limit\"));",
+      "replace": "if before.len() >= max_bytes {\n        return Err(fail(\"input exceeds requested limit\"));",
+      "runner": "rust",
+      "test": "packages/launcher/tests/fs_guard.rs::native_transfer_limits_include_exact_boundaries_and_reject_invalid_fingerprints",
+      "assertion": "native_transfer_limits_include_exact_boundaries_and_reject_invalid_fingerprints",
+      "language": "rust",
+      "category": "transfer-limits"
+    },
+    {
+      "id": "generator_signature_contract",
+      "file": "scripts/generate/contracts.py",
+      "find": "if len(set(parameter_names)) != len(parameter_names) or parameter_names != [value.strip() for value in signature[1].split(\",\") if value.strip()]:",
+      "replace": "if False:",
+      "runner": "vitest",
+      "test": "tests/contracts/catalog-generation.test.mjs",
+      "assertion": "canonical catalogs generate all shared bindings",
+      "language": "python",
+      "category": "generators"
+    },
+    {
+      "id": "release_payload_integrity",
+      "file": "scripts/quality/installed-payload.mjs",
+      "find": "if (canonicalJson(actual) !== canonicalJson(platform === 'win32' ? { ...item, executable: actual.executable } : item)) throw new Error('Installed payload differs from its complete package inventory.');",
+      "replace": "if (false) throw new Error('Installed payload differs from its complete package inventory.');",
+      "runner": "vitest",
+      "test": "tests/release/installed-payload.test.mjs",
+      "assertion": "rejects missing, altered, duplicate and unlisted files",
+      "language": "typescript",
+      "category": "release"
+    }
+  ],
+  "profile": "bounded",
+  "policy": "bounded-reviewed-v1",
+  "qualification": "bounded-reviewed-corpus",
+  "exhaustive": false
+}

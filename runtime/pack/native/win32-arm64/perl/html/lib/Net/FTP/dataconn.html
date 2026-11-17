@@ -1,0 +1,141 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Net::FTP::dataconn - FTP Client data connection class</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Net::FTP::dataconn - FTP Client data connection class</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#EXPORTS">EXPORTS</a></li>
+  <li><a href="#KNOWN-BUGS">KNOWN BUGS</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+  <li><a href="#LICENCE">LICENCE</a></li>
+  <li><a href="#VERSION">VERSION</a></li>
+  <li><a href="#DATE">DATE</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Net::FTP::dataconn - FTP Client data connection class</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code># Perform IO operations on an FTP client data connection object:
+
+$num_bytes_read = $obj-&gt;read($buffer, $size);
+$num_bytes_read = $obj-&gt;read($buffer, $size, $timeout);
+
+$num_bytes_written = $obj-&gt;write($buffer, $size);
+$num_bytes_written = $obj-&gt;write($buffer, $size, $timeout);
+
+$num_bytes_read_so_far = $obj-&gt;bytes_read();
+
+$obj-&gt;abort();
+
+$closed_successfully = $obj-&gt;close();</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Some of the methods defined in <code>Net::FTP</code> return an object which will be derived from this class. The dataconn class itself is derived from the <code>IO::Socket::INET</code> class, so any normal IO operations can be performed. However the following methods are defined in the dataconn class and IO should be performed using these.</p>
+
+<dl>
+
+<dt id="read-buffer-size-timeout"><code>read($buffer, $size[, $timeout])</code></dt>
+<dd>
+
+<p>Read <code>$size</code> bytes of data from the server and place it into <code>$buffer</code>, also performing any &lt;CRLF&gt; translation necessary. <code>$timeout</code> is optional, if not given, the timeout value from the command connection will be used.</p>
+
+<p>Returns the number of bytes read before any &lt;CRLF&gt; translation.</p>
+
+</dd>
+<dt id="write-buffer-size-timeout"><code>write($buffer, $size[, $timeout])</code></dt>
+<dd>
+
+<p>Write <code>$size</code> bytes of data from <code>$buffer</code> to the server, also performing any &lt;CRLF&gt; translation necessary. <code>$timeout</code> is optional, if not given, the timeout value from the command connection will be used.</p>
+
+<p>Returns the number of bytes written before any &lt;CRLF&gt; translation.</p>
+
+</dd>
+<dt id="bytes_read"><code>bytes_read()</code></dt>
+<dd>
+
+<p>Returns the number of bytes read so far.</p>
+
+</dd>
+<dt id="abort"><code>abort()</code></dt>
+<dd>
+
+<p>Abort the current data transfer.</p>
+
+</dd>
+<dt id="close"><code>close()</code></dt>
+<dd>
+
+<p>Close the data connection and get a response from the FTP server. Returns <i>true</i> if the connection was closed successfully and the first digit of the response from the server was a &#39;2&#39;.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXPORTS">EXPORTS</h1>
+
+<p><i>None</i>.</p>
+
+<h1 id="KNOWN-BUGS">KNOWN BUGS</h1>
+
+<p><i>None</i>.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Graham Barr &lt;<a href="mailto:gbarr@pobox.com">gbarr@pobox.com</a>&gt;.</p>
+
+<p>Steve Hay &lt;<a href="mailto:shay@cpan.org">shay@cpan.org</a>&gt; is now maintaining libnet as of version 1.22_02.</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright (C) 1997-2010 Graham Barr. All rights reserved.</p>
+
+<p>Copyright (C) 2013-2014, 2020 Steve Hay. All rights reserved.</p>
+
+<h1 id="LICENCE">LICENCE</h1>
+
+<p>This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself, i.e. under the terms of either the GNU General Public License or the Artistic License, as specified in the <i>LICENCE</i> file.</p>
+
+<h1 id="VERSION">VERSION</h1>
+
+<p>Version 3.15</p>
+
+<h1 id="DATE">DATE</h1>
+
+<p>20 March 2023</p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>See the <i>Changes</i> file.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Net::FTP::dataconn - FTP Client data connection class</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

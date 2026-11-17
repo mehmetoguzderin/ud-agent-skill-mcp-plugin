@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "conventions_compare",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "empty_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {}
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "peer_treebank_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "upos",
+          "deprel",
+          "features"
+        ]
+      },
+      "minItems": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/$defs/empty_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "peer_treebank_paths",
+    "dimensions",
+    "ud_context_path"
+  ]
+}

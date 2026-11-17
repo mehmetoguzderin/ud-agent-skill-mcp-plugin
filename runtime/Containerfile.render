@@ -1,0 +1,20 @@
+# The caller must verify the immutable platform-specific core image identity.
+ARG CORE_IMAGE=scratch
+FROM ${CORE_IMAGE}
+ARG TARGETARCH
+USER 0:0
+RUN --network=none --mount=type=bind,source=render/debs,target=/tmp/ud-agent-render/debs,readonly set -eux; \
+    case "$TARGETARCH" in amd64|arm64) ;; *) exit 1 ;; esac; \
+    cd "/tmp/ud-agent-render/debs/$TARGETARCH"; \
+    sha256sum -c SHA256SUMS; \
+    DEBIAN_FRONTEND=noninteractive apt-get -y -o Dir::Etc::sourcelist=/dev/null -o Dir::Etc::sourceparts=/dev/null install "/tmp/ud-agent-render/debs/$TARGETARCH/"*.deb; \
+    test -x /usr/bin/chromium; \
+    test "$(stat -c '%u:%g' /input)" = 10001:10001; \
+    chromium --version; fc-match 'Noto Sans'
+COPY render_manifest.py /tmp/ud-agent-render-manifest.py
+COPY render/dependency-lock.json /opt/ud-agent/render/dependency-lock.json
+RUN --network=none python /tmp/ud-agent-render-manifest.py --output /opt/ud-agent/render/manifest.json \
+    && rm /tmp/ud-agent-render-manifest.py \
+    && chmod -R a-w /opt/ud-agent/render
+ENV UD_AGENT_RENDER_MANIFEST=/opt/ud-agent/render/manifest.json
+USER 10001:10001

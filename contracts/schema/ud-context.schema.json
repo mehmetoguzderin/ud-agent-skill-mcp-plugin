@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Immutable UD context",
+  "type": "object",
+  "required": [
+    "context_sha256",
+    "rule_dir",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "rule_dir": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "data.json",
+        "deprels.json",
+        "edeprels.json",
+        "feats.json",
+        "tospace.json",
+        "udeprels.json",
+        "upos.json"
+      ],
+      "properties": {
+        "data.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "deprels.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "edeprels.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "feats.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "tospace.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "udeprels.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "upos.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "tools_commit": {
+      "type": "string"
+    }
+  },
+  "$comment": "workers/ud/src/ud_agent/contexts.py resolves every path inside the verified snapshot and checks all seven rule byte hashes plus canonical context identity; schema validation alone is not admission. Legacy manifests without schema_version remain readable."
+}

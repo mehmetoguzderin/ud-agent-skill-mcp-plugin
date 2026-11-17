@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "state": "frozen-inputs",
+  "upstream_perl": "5.44.0",
+  "platforms": {
+    "arm64": {
+      "perl": {
+        "url": "https://conda.anaconda.org/anaconda/win-arm64/perl-5.44.0.1-0_h145397d_perl5.tar.bz2",
+        "sha256": "sha256:8ca733fae4d2aeb48737993418ab745e10287295a1a5071b01360f813c0d29dc",
+        "size_bytes": 24396400,
+        "filename": "perl-5.44.0.1-0_h145397d_perl5.tar.bz2",
+        "version": "5.44.0.1",
+        "license": "GPL-1.0-or-later OR Artistic-1.0-Perl"
+      },
+      "redistributables": [
+        {
+          "url": "https://conda.anaconda.org/conda-forge/win-arm64/vc14_runtime-14.51.36247-hc70ed48_42.conda",
+          "sha256": "sha256:6bd07dc3a588d8ca242bd89ae1b343722329c922c5bac86df90d6ed640d7367a",
+          "size_bytes": 15132469,
+          "filename": "vc14_runtime-14.51.36247-hc70ed48_42.conda",
+          "version": "14.51.36247",
+          "license": "LicenseRef-MicrosoftVisualCpp2015-2022Runtime"
+        }
+      ]
+    },
+    "x64": {
+      "perl": {
+        "url": "https://conda.anaconda.org/conda-forge/win-64/perl-5.44.0-1_hfd05255_perl5.conda",
+        "sha256": "sha256:2e28551266954e94daa3c8c90a56546727044df6223c5d2b499cf3f71bc2ac86",
+        "size_bytes": 15859114,
+        "filename": "perl-5.44.0-1_hfd05255_perl5.conda",
+        "version": "5.44.0",
+        "license": "GPL-1.0-or-later OR Artistic-1.0-Perl"
+      },
+      "redistributables": [
+        {
+          "url": "https://conda.anaconda.org/conda-forge/win-64/vc14_runtime-14.51.36247-habf1de7_42.conda",
+          "sha256": "sha256:8dfbfd68ebf53249d11e528cbb80ad5a2460b0c5b4636eed82ee0d3950827a3d",
+          "size_bytes": 767099,
+          "filename": "vc14_runtime-14.51.36247-habf1de7_42.conda",
+          "version": "14.51.36247",
+          "license": "LicenseRef-MicrosoftVisualCpp2015-2022Runtime"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "modules": {
+    "Clone": "Clone-0.51",
+    "PPI": "PPI-1.291",
+    "Params::Util": "Params-Util-1.102",
+    "Safe::Isa": "Safe-Isa-1.000010",
+    "Task::Weaken": "Task-Weaken-1.06",
+    "YAML::PP": "YAML-PP-v0.43.0"
+  },
+  "parser_release": "PPI-1.291",
+  "releases": {
+    "Clone-0.51": {
+      "dependencies": [],
+      "distribution": "Clone",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Clone-0.51",
+      "sha256": "f17f66fec97dacca67ac9585701d2d079cfc80539fe6e8160c201c4e55f67507",
+      "url": "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.51.tar.gz",
+      "version": "0.51"
+    },
+    "PPI-1.291": {
+      "dependencies": [
+        "Clone-0.51",
+        "Params-Util-1.102",
+        "Safe-Isa-1.000010",
+        "Task-Weaken-1.06",
+        "YAML-PP-v0.43.0"
+      ],
+      "distribution": "PPI",
+      "license": [
+        "perl_5"
+      ],
+      "name": "PPI-1.291",
+      "sha256": "74ac10bf66443ea813fb37d2ff5219c4d8e685379272d6699c812a39d91f3c1d",
+      "url": "https://cpan.metacpan.org/authors/id/M/MI/MITHALDU/PPI-1.291.tar.gz",
+      "version": "1.291"
+    },
+    "Params-Util-1.102": {
+      "dependencies": [],
+      "distribution": "Params-Util",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Params-Util-1.102",
+      "sha256": "499bb1b482db24fda277a51525596ad092c2bd51dd508fa8fec2e9f849097402",
+      "url": "https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Params-Util-1.102.tar.gz",
+      "version": "1.102"
+    },
+    "Safe-Isa-1.000010": {
+      "dependencies": [],
+      "distribution": "Safe-Isa",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Safe-Isa-1.000010",
+      "sha256": "87f4148aa0ff1d5e652723322eab7dafa3801c967d6f91ac9147a3c467b8a66a",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Safe-Isa-1.000010.tar.gz",
+      "version": "1.000010"
+    },
+    "Task-Weaken-1.06": {
+      "dependencies": [],
+      "distribution": "Task-Weaken",
+      "license": [
+        "perl_5"
+      ],
+      "name": "Task-Weaken-1.06",
+      "sha256": "2383fedb9dbaef646468ea824afbf7c801076720cfba0df2a7a074726dcd66be",
+      "url": "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Task-Weaken-1.06.tar.gz",
+      "version": "1.06"
+    },
+    "YAML-PP-v0.43.0": {
+      "dependencies": [],
+      "distribution": "YAML-PP",
+      "license": [
+        "perl_5"
+      ],
+      "name": "YAML-PP-v0.43.0",
+      "sha256": "f4a2a6d22b32a31e418debcbd04b843ba0997f9dea0fcc1f96b08b2f2ebcb2e7",
+      "url": "https://cpan.metacpan.org/authors/id/T/TI/TINITA/YAML-PP-v0.43.0.tar.gz",
+      "version": "v0.43.0"
+    }
+  },
+  "schema_version": 1,
+  "state": "frozen-inputs",
+  "tool": "PPI"
+}

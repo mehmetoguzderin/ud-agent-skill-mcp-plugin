@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "handover_package_build",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {},
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "output_dir_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "file_paths": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "output_conflict_policy": {
+              "enum": [
+                "error",
+                "replace",
+                "skip-identical"
+              ]
+            },
+            "idempotency_key": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "ud_context_path",
+    "output_dir_path"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "tree_list",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "read_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "description": "Reserved read options; current handlers preserve unfiltered results."
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "read_options": {
+      "$ref": "#/$defs/read_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "file_paths"
+  ]
+}

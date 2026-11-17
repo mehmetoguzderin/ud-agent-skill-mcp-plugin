@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "description": "Illustrative authorized paths; inspect returned fix/action IDs instead of assuming these example identities exist.",
+  "requests": [
+    {
+      "id": "selected-corpus",
+      "operation": "validation_report",
+      "arguments": {
+        "working_tree_path": "/absolute/treebank",
+        "ud_context_path": "",
+        "file_paths": [
+          "sample.conllu"
+        ],
+        "options": {
+          "language_code": "en",
+          "level": 2,
+          "check_families": [
+            "content"
+          ]
+        }
+      }
+    },
+    {
+      "id": "repository-and-docs",
+      "operation": "validation_report",
+      "arguments": {
+        "working_tree_path": "/absolute/treebank",
+        "ud_context_path": "",
+        "file_paths": [
+          "sample.conllu"
+        ],
+        "options": {
+          "language_code": "en",
+          "level": 2,
+          "check_families": [
+            "content",
+            "repository",
+            "documentation"
+          ],
+          "repository_name": "UD_English-Example"
+        }
+      }
+    },
+    {
+      "id": "pasted-sentence",
+      "operation": "sentence_validation_report",
+      "arguments": {
+        "working_tree_path": "/absolute/treebank",
+        "ud_context_path": "",
+        "sentence_conllu": "# sent_id = example\n# text = Birds fly\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\n\n",
+        "language_code": "en",
+        "options": {
+          "level": 2
+        }
+      }
+    },
+    {
+      "id": "requested-fix-plan",
+      "operation": "fix_plan",
+      "arguments": {
+        "working_tree_path": "/absolute/treebank",
+        "ud_context_path": "",
+        "file_paths": [
+          "sample.conllu"
+        ],
+        "fix_ids": [
+          "final_blank_line"
+        ],
+        "options": {}
+      }
+    },
+    {
+      "id": "preview-selected-actions",
+      "operation": "plan_apply",
+      "arguments": {
+        "working_tree_path": "/absolute/treebank",
+        "plan_path": "reviewed-plan.json",
+        "selected_action_ids": [
+          "fix-final-newline"
+        ],
+        "options": {
+          "mode": "preview",
+          "validation_options": {
+            "language_code": "en",
+            "level": 2
+          }
+        }
+      }
+    }
+  ]
+}

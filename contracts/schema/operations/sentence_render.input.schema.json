@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sentence_render",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {},
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sentence_conllu": {
+      "type": "string"
+    },
+    "output_format": {
+      "enum": [
+        "svg",
+        "html",
+        "png",
+        "pdf",
+        "jpeg",
+        "webp"
+      ],
+      "description": "SVG/HTML use offline built-in rendering. PNG/PDF require the verified render pack. JPEG/WebP return a prerequisite failure in the current profile."
+    },
+    "output_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "sentence_conllu",
+    "output_format",
+    "output_path",
+    "ud_context_path"
+  ]
+}

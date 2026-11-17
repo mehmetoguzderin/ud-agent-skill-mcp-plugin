@@ -1,0 +1,159 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Handle - Base class for Test2 handles used in V# bundles.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Handle - Base class for Test2 handles used in V# bundles.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a>
+    <ul>
+      <li><a href="#RECOMMENDED">RECOMMENDED</a></li>
+      <li><a href="#WITHOUT-SUGAR">WITHOUT SUGAR</a></li>
+    </ul>
+  </li>
+  <li><a href="#METHODS">METHODS</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Handle - Base class for Test2 handles used in V# bundles.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This is what you interact with when you use the <code>T2()</code> function in a test that uses <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a>.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<h2 id="RECOMMENDED">RECOMMENDED</h2>
+
+<pre><code>use Test2::V1;
+
+my $handle = T2();
+
+$handle-&gt;ok(1, &quot;Passing Test&quot;);</code></pre>
+
+<h2 id="WITHOUT-SUGAR">WITHOUT SUGAR</h2>
+
+<pre><code>use Test2::Handle();
+
+my $handle = Test2::Handle-&gt;new(base =&gt; &#39;Test2::V1::Base&#39;);
+
+$handle-&gt;ok(1, &quot;Passing test&quot;);</code></pre>
+
+<h1 id="METHODS">METHODS</h1>
+
+<p>Most methods are delegated to the base class provided at construction. There are however a few methods that are defined by this package itself.</p>
+
+<dl>
+
+<dt id="base-class_or_inst-DEFAULT_HANDLE_BASE">$base = $class_or_inst-&gt;DEFAULT_HANDLE_BASE</dt>
+<dd>
+
+<p>Get the default handle base. This throws an exception on the base handle class, you should override it in a subclass.</p>
+
+</dd>
+<dt id="base-inst-HANDLE_BASE">$base = $inst-&gt;HANDLE_BASE</dt>
+<dd>
+
+<p>In this base class this method always throws an exception. In a subclass it should return the default base class to use for that subclass.</p>
+
+</dd>
+<dt id="namespace-inst-HANDLE_NAMESPACE">$namespace = $inst-&gt;HANDLE_NAMESPACE</dt>
+<dd>
+
+<p>Get the namespace used to store function we wrap as methods.</p>
+
+</dd>
+<dt id="sub_names-inst-HANDLE_SUBS">@sub_names = $inst-&gt;HANDLE_SUBS</dt>
+<dd>
+
+<p>Get a list of all subs available in the handle namespace.</p>
+
+</dd>
+<dt id="inst-HANDLE_INCLUDE-package-subs">$inst-&gt;HANDLE_INCLUDE($package, @subs)</dt>
+<dd>
+
+<p>Import the specified subs from the specified package into our internal namespace.</p>
+
+</dd>
+<dt id="inst-class-import">$inst = $class-&gt;import()</dt>
+<dd>
+
+<p>Used to create a <code>T2()</code> sub in your namsepace at import.</p>
+
+</dd>
+<dt id="inst-init">$inst-&gt;init()</dt>
+<dd>
+
+<p>Internally used to intialize and validate the handle object.</p>
+
+</dd>
+<dt id="AUTOLOAD">AUTOLOAD</dt>
+<dd>
+
+<p>Internally used to wrap functions as methods.</p>
+
+</dd>
+</dl>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Suite can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Handle - Base class for Test2 handles used in V# bundles.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

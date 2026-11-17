@@ -1,0 +1,81 @@
+name: Publish an accepted immutable candidate
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_run_id:
+        description: Approved build run containing the accepted-release artifact
+        required: true
+        type: number
+permissions: {}
+concurrency:
+  group: ud-agent-release-0.1.0-beta.1
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      candidate_sha256: ${{ steps.digest.outputs.candidate_sha256 }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: accepted-release
+          path: .artifacts/accepted-release
+          run-id: ${{ inputs.candidate_run_id }}
+          github-token: ${{ github.token }}
+      - run: npm ci --ignore-scripts
+      - name: Verify exact source, artifacts, complete inventories and publisher authority
+        run: node scripts/release/verify.mjs --production .artifacts/accepted-release/accepted-candidate.json
+      - id: digest
+        name: Bind publication to the verified candidate
+        run: node -e 'const fs=require("node:fs"),c=require("node:crypto");fs.appendFileSync(process.env.GITHUB_OUTPUT,"candidate_sha256="+c.createHash("sha256").update(fs.readFileSync(".artifacts/accepted-release/accepted-candidate.json")).digest("hex")+"\n")'
+  publish:
+    needs: verify
+    environment: release-publishing
+    runs-on: ubuntu-26.04
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      packages: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14.10'
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: accepted-release
+          path: .artifacts/accepted-release
+          run-id: ${{ inputs.candidate_run_id }}
+          github-token: ${{ github.token }}
+      - run: npm ci --ignore-scripts
+      - run: python -I -m venv .venv
+      - name: Repeat production verification before granting transport credentials
+        run: node scripts/release/verify.mjs --production .artifacts/accepted-release/accepted-candidate.json
+      - name: Reconcile immutable targets, then promote verified channels
+        env:
+          UD_RELEASE_EXPECTED_CANDIDATE_SHA256: ${{ needs.verify.outputs.candidate_sha256 }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GHCR_TOKEN: ${{ github.token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          MCP_REGISTRY_TOKEN: ${{ secrets.MCP_REGISTRY_TOKEN }}
+        run: |
+          node scripts/release/publisher.mjs --reconcile .artifacts/accepted-release/accepted-candidate.json .artifacts/publication-journal
+          node scripts/release/publisher.mjs --promote .artifacts/accepted-release/accepted-candidate.json .artifacts/publication-journal

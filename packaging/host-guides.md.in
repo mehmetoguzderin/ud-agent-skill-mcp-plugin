@@ -1,0 +1,184 @@
+### ChatGPT Desktop
+
+Open your treebank folder in the desktop app. In **Plugins**, install `{{PLUGIN}}` from the owned `{{MARKETPLACE}}` marketplace. If the marketplace is not listed, add it through the desktop's Codex terminal:
+
+```sh
+codex plugin marketplace add {{OWNER_REPO}} --ref v{{VERSION}}
+codex plugin add {{PLUGIN}}@{{MARKETPLACE}}
+```
+
+Start a new local session and ask: **“Use ud-validate to validate this treebank, then show all errors.”** The first tool call prepares its worker automatically. The npm-backed catalog route needs Node 24 or 26. Native archives prepare Node automatically. The app stores local MCP settings in `~/.codex/config.toml`; folder grants are discovered from the selected project, with no JSON to type. Hosted ChatGPT chats cannot launch a local program.
+
+Upgrade through the plugin browser or refresh the marketplace and reinstall. Remove the plugin in **Plugins → Installed**. If tools are missing, restart the local session and inspect `/mcp`. For direct MCP, run `npx -y {{NPM}}@{{VERSION}} connect chatgpt-desktop` in the treebank folder. It merges the shared user `~/.codex/config.toml`, adds the six skills under `~/.agents/skills/`, and binds the selected folder grant. The same registration is visible to Codex desktop, CLI and IDE. Alternatively use **Settings → MCP servers → Add → STDIO**, enter the native coordinator with `mcp --allow-root /absolute/path/to/treebank`, save, and restart. Use `connect chatgpt-desktop --check` to inspect or `--remove` to undo the owned direct registration. Public directory availability requires separate desktop-only partner eligibility and approval. [Desktop plugins](https://developers.openai.com/plugins/deploy/desktop-only) · [Local MCP](https://learn.chatgpt.com/docs/extend/mcp)
+
+### Codex desktop, CLI, and IDE
+
+Open the treebank project. With current Codex and Node 24 or 26, install through Codex itself:
+
+```sh
+codex plugin marketplace add {{OWNER_REPO}} --ref v{{VERSION}}
+codex plugin add {{PLUGIN}}@{{MARKETPLACE}}
+```
+
+Start a new session and ask: **“Use ud-validate to validate this treebank, then show all errors.”** Skills and the MCP server arrive together; the first operation prepares its worker. Desktop and CLI can install plugins. The IDE uses the shared MCP configuration at `~/.codex/config.toml`; where its plugin surface is unavailable, run `npx -y {{NPM}}@{{VERSION}} connect codex` in the project terminal. Native archive users can run `ud-agent connect codex` without a separate Node installation. That direct command preserves the project `.codex/config.toml` route; use `connect codex-global` for the shared user configuration also used by ChatGPT Desktop.
+
+Check with `codex plugin list` and `/mcp`. Upgrade by refreshing the marketplace and reinstalling its new version; remove with `codex plugin remove {{PLUGIN}}@{{MARKETPLACE}}`. If the wrong folder is selected, run the direct connector in the intended treebank folder. [Codex plugins](https://developers.openai.com/plugins/build/plugins)
+
+### Claude Code
+
+In a trusted treebank project, use Claude Code's plugin manager:
+
+```sh
+claude plugin marketplace add '{{OWNER_REPO}}#v{{VERSION}}'
+claude plugin install {{PLUGIN}}@{{MARKETPLACE}}
+```
+
+The npm-backed plugin needs Node 24 or 26. Start a new session and ask: **“Use ud-validate to validate this treebank, then show all errors.”** It includes all six skills and prepares dependencies on first use. Claude owns the marketplace/plugin records; `/plugin` and `/mcp` show their status.
+
+Upgrade in `/plugin`; uninstall with `claude plugin uninstall {{PLUGIN}}@{{MARKETPLACE}}`. If a marketplace is blocked or Node is unavailable, use the native archive and run `ud-agent connect claude-code` in the treebank folder. The npm direct alternative is `npx -y {{NPM}}@{{VERSION}} connect claude-code`. Restart after changing a connection. [Claude plugin installation](https://code.claude.com/docs/en/discover-plugins)
+
+### Claude Desktop and Cowork
+
+For **Claude Desktop**, download the MCPB matching your computer from the [native downloads](#native-downloads). Open **Settings → Desktop app → Extensions → Manage → Advanced settings → Install Extension…**, select the bundle, and choose your treebank folder. Enable it, start a new conversation, and ask: **“Validate this treebank and show all errors.”** Worker setup happens on first use. The bundle's folder setting supplies its grant; no configuration file editing is needed.
+
+Desktop skill activation is separate from MCP registration: extract the [standalone skills](#skills), ZIP each of the six skill folders, then use **Customize → Skills → + → Create skill → Upload a skill** and enable them. `connect claude-desktop` also stages those folders and reports their location; it does not claim that Desktop reads Claude Code's skill directory. Skills require code execution to be enabled. [Claude skill installation](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
+
+For **Cowork**, use its plugin browser to add `{{OWNER_REPO}}`, choose `{{PLUGIN}}` from `{{MARKETPLACE}}`, and open the treebank folder. Its npm-backed plugin requires Node 24 or 26; activate `ud-validate` in a new task. Desktop extensions and Cowork plugins are separate installations.
+
+Upgrade by installing the new bundle or updating the Cowork plugin. Uninstall in the same Extensions/Plugins panel.
+
+For direct Desktop MCP, first launch Claude Desktop once, then run `npx -y {{NPM}}@{{VERSION}} connect claude-desktop` in the treebank folder. It merges `mcpServers.ud` in `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, `%APPDATA%\Claude\claude_desktop_config.json` on Windows, or `$XDG_CONFIG_HOME/Claude/claude_desktop_config.json` on Linux (default `~/.config`). Fully quit and reopen Desktop, then inspect its local MCP status and request validation. Rerun the new exact package version to upgrade this direct route; use `connect claude-desktop --check` or `--remove` for the owned registration. The npm route requires Node 24 or 26. Cowork does not load this Desktop JSON configuration; if its plugin route is unavailable, use the [Claude Code local route](#claude-code) for the same treebank. [Desktop local MCP configuration](https://py.sdk.modelcontextprotocol.io/get-started/real-host/) · [Cowork connection boundary](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) · [Desktop extensions](https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop) · [Cowork plugins](https://support.claude.com/en/articles/13837440-use-plugins-in-claude)
+
+### Grok Build
+
+Use the current **Grok Build local harness** in your treebank folder. Install through Grok's marketplace:
+
+```sh
+grok plugin marketplace add {{OWNER_REPO}}
+grok plugin install {{PLUGIN}} --trust
+```
+
+This grants Grok's normal plugin trust to the selected publisher. The npm-backed server requires Node 24 or 26. Open a new session and ask: **“Use ud-validate to validate this treebank, then show all errors.”** Grok loads the plugin's skills and MCP server; first use prepares the worker. Its owned catalog is `.grok-plugin/marketplace.json`, and user plugin state lives under `~/.grok/`.
+
+Inspect with `grok plugin list` and `grok inspect`. Update or uninstall in `/plugins` or the Marketplace tab. If native plugin loading is unavailable, use `npx -y {{NPM}}@{{VERSION}} connect grok`. Grok also reads Claude-compatible plugins. Grok.com and a cloud-only API client cannot start this local server. [Grok Build plugins](https://docs.x.ai/build/features/skills-plugins-marketplaces)
+
+### mini-swe-agent
+
+mini-swe-agent uses shell-accessible workflows. In its local treebank project, ask the agent to run:
+
+```sh
+npx -y {{NPM}}@{{VERSION}} connect mini-swe-agent
+```
+
+This installs six workflow instructions and `.ud-agent/WORKFLOW.md` for that project. The npm route needs Node 24 or 26. Ask: **“Read .ud-agent/WORKFLOW.md, follow ud-validate and validate this treebank with the installed CLI.”** This shell route does not require an MCP client. Setup and validation use the same runtime policy as MCP.
+
+Upgrade by rerunning the connector with the desired exact package version. Check with the same command plus `--check`; uninstall its owned integration with `--remove`. Project instructions and `.agents/skills/` supply skill activation. If the agent uses a remote shell, install and run the coordinator on that machine beside the treebank. [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent)
+
+### Kimi Code
+
+With current Kimi Code and Node 24 or 26, enter these commands **inside Kimi**:
+
+```text
+/plugins install {{REPOSITORY_URL}}/releases/tag/v{{VERSION}}
+/reload
+```
+
+The native Kimi manifest includes the MCP server and all six skills. Open your treebank folder and ask: **“Use ud-validate to validate this treebank, then show all errors.”** Kimi stores the managed plugin under `~/.kimi-code/plugins/`; its first operation prepares the worker.
+
+Upgrade in `/plugins` by selecting the plugin and pressing Enter; remove it with `/plugins remove {{PLUGIN}}`, then reload. Inspect `/plugins info {{PLUGIN}}` and `/mcp` if tools are missing. Direct alternative: `npx -y {{NPM}}@{{VERSION}} connect kimi` in the treebank folder; or run `ud-agent connect kimi` from the native archive. [Kimi plugins](https://moonshotai.github.io/kimi-code/en/customization/plugins.html)
+
+### Hermes Agent
+
+Use a current local Hermes installation with its native MCP support. In the treebank session, ask Hermes: **“Connect the published UD coordinator and its six skills to this folder using the command below, then use ud-validate to validate the treebank.”**
+
+```sh
+npx -y {{NPM}}@{{VERSION}} connect hermes
+```
+
+The connector merges the native MCP configuration in `~/.hermes/config.yaml` and installs owned skills under `~/.hermes/skills/`. The npm route needs Node 24 or 26. Restart Hermes or reload MCP, then request validation; the first tool call prepares the worker.
+
+Check with the connector's `--check` and Hermes' MCP panel. Upgrade by rerunning the exact new package version; uninstall the owned connection and skills with `connect hermes --remove`. If a gateway runs elsewhere, the coordinator and granted folder must exist on the gateway's machine. Hermes' curated MCP catalog requires separate Nous review; this custom connection does not claim catalog approval. [Hermes MCP](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp/)
+
+### Qwen Code
+
+Current Qwen Code can install this through its native extension manager:
+
+```sh
+qwen extensions install {{REPOSITORY_URL}}
+qwen extensions list
+```
+
+Its Claude/Gemini-compatible extension includes skills and the local MCP server. The npm-backed coordinator requires Node 24 or 26. Start Qwen in the treebank folder and ask: **“Use ud-validate to validate this treebank, then show all errors.”** First use prepares its worker. Qwen manages installed extensions under `~/.qwen/extensions/`.
+
+Update with `qwen extensions update {{PLUGIN}}`; uninstall with `qwen extensions uninstall {{PLUGIN}}`. Restart after either action. If extension conversion or workspace discovery fails, run `npx -y {{NPM}}@{{VERSION}} connect qwen` in the project, or use a native archive's `ud-agent connect qwen` to include Node. Inspect `/mcp` for connection errors. [Qwen extensions](https://qwenlm.github.io/qwen-code-docs/en/users/extension/introduction/)
+
+### DeepSeek Harness
+
+Use the official local developer-preview harness, pinned to `@deepseek-ai/dsh@0.2.2-rc.1`, with Node 24 or 26. In its treebank session, ask it to connect the published UD MCP client and six skills:
+
+```sh
+npx -y {{NPM}}@{{VERSION}} connect deepseek
+```
+
+The connector registers the official `@deepseek-ai/dsh-mcp-client` in the selected profile and copies skills into `.dsh/skills/`. Start a new session and ask: **“Use ud-validate to validate this treebank, then show all errors.”** Look for `mcp__ud__` tools; the first operation prepares its worker.
+
+Upgrade the UD integration by rerunning the connector with its exact new version; use `--check` for diagnostics and `--remove` to uninstall its owned entry. Keep the harness preview version pinned until its new configuration has been checked. Missing tools usually mean the wrong profile or a session created before the change. [Official MCP client](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md)
+
+### OpenClaw
+
+Use current OpenClaw on the machine holding your treebank. Install the compatible bundle through its own plugin manager:
+
+```sh
+openclaw plugins install {{PLUGIN}} --marketplace {{OWNER_REPO}}
+openclaw plugins list
+```
+
+The bundle maps its skills and MCP tools into eligible local agent runtimes. Its coordinator uses Node 24 or 26, already required for the npm-backed route. Start a new session in the treebank and ask: **“Use ud-validate to validate this treebank, then show all errors.”** Worker preparation is automatic on first use. OpenClaw owns the bundle registration; inspect it with `openclaw plugins inspect {{PLUGIN}}`.
+
+Upgrade or uninstall through OpenClaw's plugin manager. Direct alternative: ask the agent to run `npx -y {{NPM}}@{{VERSION}} connect openclaw`. That route merges `~/.openclaw/openclaw.json` at `mcp.servers.ud` and installs owned skills; use `--check` or `--remove` to manage it. ACP and remote runtimes have separate projection rules; inspect whether the selected runtime wires MCP tools before requesting work. [OpenClaw bundles](https://docs.openclaw.ai/plugins/bundles)
+
+### Pi harness
+
+Pi has native MCP support. In the treebank folder, register the pinned published coordinator:
+
+```sh
+pi mcp add ud -- npx -y {{NPM}}@{{VERSION}} mcp --discover-workspace
+pi mcp list
+```
+
+Node 24 or 26 is needed for this route. To install the six skills as well, ask Pi to run `npx -y {{NPM}}@{{VERSION}} connect pi`; native archive users can run `ud-agent connect pi`. Start a new session, or `/reload`, and ask: **“Use ud-validate to validate this treebank, then show all errors.”** First use prepares the worker. Pi stores MCP configuration in `~/.pi/agent/mcp.json` or project `.pi/mcp.json`.
+
+Upgrade by reconnecting with the new exact package version. Remove with `pi mcp remove ud`; use the connector's `--remove` for owned skills too. `/mcp` shows connection errors and configuration scope. [Pi MCP](https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/docs/mcp.md)
+
+### Gemini CLI
+
+Use Gemini's native extension installer in the treebank folder:
+
+```sh
+gemini extensions install {{REPOSITORY_URL}}
+gemini extensions list
+```
+
+The extension includes the MCP connection and six skills; its npm-backed coordinator requires Node 24 or 26. Restart Gemini and ask: **“Use ud-validate to validate this treebank, then show all errors.”** The first operation prepares its worker. Gemini owns extension state under `~/.gemini/extensions/`.
+
+Update through Gemini's extension manager; uninstall with `gemini extensions uninstall {{PLUGIN}}`. If extension loading is blocked, run `npx -y {{NPM}}@{{VERSION}} connect gemini` in the project; the native archive also provides `ud-agent connect gemini`. Inspect `/mcp` and restart after connection changes. [Gemini extensions](https://geminicli.com/docs/extensions/)
+
+### Cursor
+
+With current Cursor and Node 24 or 26, open the treebank project and ask Cursor's agent to register the published MCP server and six skills:
+
+```sh
+npx -y {{NPM}}@{{VERSION}} connect cursor
+```
+
+The connector merges Cursor's native MCP configuration and installs the skills for this workspace. Restart the agent session and ask: **“Use ud-validate to validate this treebank, then show all errors.”** First use prepares its worker. Cursor's MCP panel shows the connection; user/project configuration remains in `~/.cursor/mcp.json` or `.cursor/mcp.json`.
+
+Upgrade by rerunning the exact new package version. Use `connect cursor --check` to diagnose and `--remove` to remove only the owned integration. If the server appears in another workspace only, run the connector in the intended treebank project. [Cursor MCP](https://cursor.com/docs/context/model-context-protocol)
+
+### VS Code GitHub Copilot
+
+Use current VS Code with GitHub Copilot enabled. Open the treebank folder and select the **Copilot** harness. In **Agent Customizations → Browse → Configure Marketplaces → Add Marketplace**, enter `{{OWNER_REPO}}`. Return to Browse, select that marketplace, and install `{{PLUGIN}}`. Review the normal marketplace trust prompt. This npm-backed plugin needs Node 24 or 26.
+
+Start a new Copilot agent session and ask: **“Use ud-validate to validate this treebank, then show all errors.”** Skills and MCP arrive together; first use prepares its worker. Update or remove the plugin from the same Customizations editor. If plugins are disabled by your organization, ask Copilot to run `npx -y {{NPM}}@{{VERSION}} connect vscode` in the project.
+
+Inspect MCP status in the selected harness. Copilot Global stores MCP registrations in `~/.copilot/mcp-config.json`; VS Code Local uses `.vscode/mcp.json`. Use `connect vscode` (or `connect vscode-copilot`) for the project `.vscode/mcp.json` registration and `.github/skills/`. The legacy `connect copilot` route preserves its project `.mcp.json` registration; it does not edit Copilot Global's user file. Manage that separate global scope in its host UI. Portable skills can also use `~/.copilot/skills/` where supported. Use the connector's `--check` or `--remove` for its direct integration. [VS Code agent plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins)

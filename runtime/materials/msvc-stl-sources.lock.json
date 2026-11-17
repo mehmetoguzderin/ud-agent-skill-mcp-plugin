@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "repository": "microsoft/STL",
+  "commit": "edd1486e5fe753616b6fd3695da96f352b4092d2",
+  "source_root": "STL-edd1486e5fe753616b6fd3695da96f352b4092d2",
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "archive": {
+    "sha256": "146b945530b65c6fc954e05a55cfadab7348ff5842e1731ffff520d2de0922f0",
+    "size_bytes": 4930678,
+    "url": "https://codeload.github.com/microsoft/STL/tar.gz/edd1486e5fe753616b6fd3695da96f352b4092d2"
+  },
+  "metadata_reader": {
+    "sha256": "9d510a3ce089bfb035a997e5a2fa81012b0c805ce380ab318ad3cdd14a84f5c4",
+    "size_bytes": 1805104
+  }
+}

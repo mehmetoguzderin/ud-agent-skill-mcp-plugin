@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "default_test_mutation_profile": "bounded",
+  "mutation_profiles": {
+    "bounded": {"policy": "bounded-reviewed-v1", "suite": "mutation-bounded", "scheduled": 18, "exhaustive": false, "signing_profile": "publisher-beta"},
+    "exhaustive": {"exhaustive": true, "compatibility": "legacy-full-backend-verification"}
+  },
+  "publisher_beta_acceptance": {
+    "product_version": "0.1.0-beta.1",
+    "repository": "mehmetoguzderin/ud-agent-skill-mcp-plugin",
+    "workflow_path": ".github/workflows/ci.yml",
+    "jobs": [
+      "linux-x64", "linux-arm64",
+      "macos-arm64", "windows-x64", "windows-arm64", "npm compatibility on Node 24"
+    ],
+    "skipped_job": "Verify or prepare native ARM mutation SDK"
+  },
+  "required_suites": [
+    "contracts-104", "static", "unit", "protocol-modern", "protocol-legacy", "security",
+    "mutation-typescript", "mutation-python", "mutation-rust", "mutation-perl",
+    "mutation-policies", "mutation-generators", "mutation-release", "mutation-graders", "mutation-faults",
+    "worker-linux-amd64", "worker-linux-arm64",
+    "install-linux-amd64", "install-linux-arm64", "install-macos-arm64", "install-windows-amd64", "install-windows-arm64",
+    "runtime-linux-amd64", "runtime-linux-arm64", "runtime-macos-arm64", "runtime-windows-amd64", "runtime-windows-arm64",
+    "skills-hosts", "signing-macos", "signing-windows", "release-reconciliation"
+  ],
+  "required_artifacts": [
+    "native-linux-amd64", "native-linux-arm64", "native-macos-arm64", "native-windows-amd64", "native-windows-arm64",
+    "mcpb-linux-amd64", "mcpb-linux-arm64", "mcpb-macos-arm64", "mcpb-windows-amd64", "mcpb-windows-arm64",
+    "npm", "core-oci-index", "render-oci-index", "standalone-skills", "source-archive", "sbom"
+  ]
+}

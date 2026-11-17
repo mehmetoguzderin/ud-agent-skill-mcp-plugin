@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "scope": "catalog,actual protocol initialization/discovery,successful and rejected CLI behavior,state formats",
+  "protocol_revisions": [
+    "2026-07-28",
+    "2025-11-25"
+  ],
+  "files": [
+    "104-tools-v1.json",
+    "protocol-modern-v1.json",
+    "protocol-legacy-v1.json",
+    "cli-v1.json",
+    "state-formats-v1.json"
+  ],
+  "required_tests": [
+    "tests/contracts/catalog-compatibility.test.ts",
+    "tests/contracts/public-contracts.test.mjs",
+    "tests/protocol/stdio.test.ts",
+    "tests/runtime/selection-state.test.ts",
+    "tests/runtime/transactions.test.ts",
+    "tests/runtime/runtime-lock.test.ts"
+  ],
+  "qualification": "compatibility-fixtures-not-native-or-release-certification"
+}

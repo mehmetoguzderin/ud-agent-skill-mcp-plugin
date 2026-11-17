@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "host": "codex",
+  "configuration": ".codex/config.toml",
+  "format": "toml",
+  "server_key": "mcp_servers",
+  "skills": ".agents/skills",
+  "connect_host": "codex",
+  "model_execution": "external-not-run",
+  "activation": "Use $SKILL_NAME for the selected treebank."
+}

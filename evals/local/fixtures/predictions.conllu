@@ -1,0 +1,8 @@
+# sent_id = compare-1
+# text = Small birds see blue skies
+1	Small	small	ADJ	_	_	3	amod	_	_
+2	birds	bird	NOUN	_	_	3	obj	_	_
+3	see	see	VERB	_	_	0	root	_	_
+4	blue	blue	ADJ	_	_	5	amod	_	_
+5	skies	sky	NOUN	_	_	3	obj	_	_
+

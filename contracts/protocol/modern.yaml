@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "transport": "stdio",
+  "application_tools": 104,
+  "stdout": "protocol traffic only",
+  "resources": "contracts/resources.yaml",
+  "prompts": "contracts/prompts.yaml",
+  "long_operations": "negotiated Tasks, progress and request cancellation",
+  "implementation": [
+    "packages/coordinator/src/server.ts",
+    "packages/coordinator/src/task-transport.ts",
+    "packages/coordinator/src/continuations.ts"
+  ],
+  "behavior_tests": [
+    "tests/protocol/stdio.test.ts",
+    "tests/protocol/tasks-stdio.test.ts",
+    "tests/protocol/continuations.test.ts"
+  ]
+}

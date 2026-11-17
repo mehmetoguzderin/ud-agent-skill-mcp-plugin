@@ -1,0 +1,10 @@
+version = 1
+
+# Only project-authored sources. Runtime/vendor/source-material bytes retain
+# their original notices and are inventoried separately; this is not a runtime
+# relicensing declaration. Format: https://reuse.software/spec/#reusetoml
+[[annotations]]
+path = ["*.md", "*.toml", "*.json", "*.yaml", "contracts/**", "skills/**", "packaging/**", "packages/**/*.ts", "packages/**/*.rs", "packages/**/*.cjs", "scripts/**/*.py", "scripts/**/*.mjs", "scripts/**/*.rs", "workers/ud/src/ud_agent/**/*.py", "workers/ud/src/ud_agent/perl/*.pl", "tests/**/*.py", "tests/**/*.ts", "tests/**/*.mjs", ".github/**"]
+precedence = "closest"
+SPDX-FileCopyrightText = "2026 mehmetoguzderin"
+SPDX-License-Identifier = "MIT"

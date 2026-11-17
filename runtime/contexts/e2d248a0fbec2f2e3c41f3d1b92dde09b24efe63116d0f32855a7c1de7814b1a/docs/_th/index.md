@@ -1,0 +1,74 @@
+---
+layout: base
+title:  'Thai UD'
+udver: '2'
+---
+
+# UD for Thai <span class="flagspan"><img class="flag" src="../../flags/svg/TH.svg" /></span>
+
+## Tokenization and Word Segmentation
+
+* The Thai writing system does not have the concept of orthographic words. Longer text segments are occasionally
+  separated by whitespace but most words are not delimited this way. Therefore, in the annotation, `SpaceAfter=No`
+  is used even between letters. Multiword tokens are not used.
+
+## Morphology
+
+### Tags
+
+* The Thai treebank currently uses only 15 of the 17 universal POS categories, including particles ([PART]()).
+  There are no interjections and unknown words.
+* Ten words are currently annotated as auxiliaries ([AUX]()):
+  * The copula เป็น _pen_ “is”.
+  * Perfect มา _maː_.
+  * Perfect แล้ว _læ̂ːw_.
+  * Perfect ได้รับ _dạîrạb_.
+  * Past เคย _gʰeːy_.
+  * Progressive กำลัง _kãːlạŋ_.
+  * Future จะ _ča_.
+  * Passive ถูก _tʰuːk_.
+  * Necessitative ต้อง _tɔ̂ːŋ_ “must”.
+  * Potential ได้ _dạî_ “can”.
+
+### Features
+
+* There is one Thai-specific feature, [NounType](/th/feat/NounType.html).
+
+## Syntax
+
+### Core Arguments, Oblique Arguments and Adjuncts
+
+* Nominal subject ([nsubj]()) is a bare noun phrase (without adposition).
+  * A subordinate clause may serve as the subject and is labeled [csubj]().
+* Direct object ([obj]()) is a bare noun phrase.
+  * Nominal objects of some verbs alternate with finite clausal complements, which are labeled [ccomp]().
+
+### Non-verbal Clauses
+
+* The default copula is เป็น _pen_ “is”.
+
+### Relations Overview
+
+* Similarly to Chinese, Thai uses classifiers ([clf]()).
+* The following relation subtypes are used in Thai:
+  * [nsubj:pass]() for nominal subjects of passive verbs
+  * [csubj:pass]() for clausal subjects of passive verbs
+  * [aux:pass]() for passive auxiliaries
+  * [acl:relcl]() for relative clauses
+  * [compound:prt]() for verbal particles
+  * [nmod:poss]() for possessive/genitive modifiers
+  * [obl:poss]() for possessive modifiers when the parent is a verb (nominalized, but still tagged [VERB]())
+  * [obl:tmod]() for temporal modifiers (a nominal modifies a clause)
+  * [flat:name]() to connect parts of a personal name
+  * [cc:preconj]() for the first part of a multi-word coordinating conjunction _(both)_
+* The following main types are not used alone and must be subtyped:
+  [flat]()
+* The following relation types are not used in Thai at all:
+  [expl](), [orphan]()
+
+## Treebanks
+
+There are [2](../treebanks/th-comparison.html) Thai UD treebanks:
+
+  * [Thai-PUD](../treebanks/th_pud/index.html)
+  * [Thai-TUD](../treebanks/th_tud/index.html)

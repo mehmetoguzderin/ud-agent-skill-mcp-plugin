@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "qualification": "independent-verifier-runtime-origin-and-byte-closure-review",
+  "decision": "approved-for-release-verification",
+  "reviewer": "root-independent-of-verifier-runtime-implementation",
+  "inventory": {
+    "path": "release/verifier-runtimes/pbs-3.15.2-darwin-arm64.json",
+    "sha256": "ce8f3f0e3f280596dd5183702700f10e7f24df4c2b0c54a5ed94e55f832f5e89",
+    "size": 375896
+  },
+  "origin_archive_sha256": "1b1b03fca8aa351698403f3d100ee83db7a5d99748fc7707681ac31a6a846ad9",
+  "generator_sha256": "4074ad229534b2781c2fb81323f559776e2419585863c13ac31e52f0e3843cd5",
+  "release_receipt_sha256": "ca2bb7259a71dbd9192d6d251b5e96c7d8d0e5b1da4ff76434f89001da2a1080",
+  "independent_evidence": [
+    {
+      "path": ".artifacts/test-evidence/verifier-runtime-independent-review-3.json",
+      "sha256": "1a8a8640667ef56fa187fe9bac49b164784def275d3e862bd8bfc6c001357323",
+      "scope": "All 1758 original file identities and modes, nine resolved aliases, three excluded bytecode files, publisher receipt and all ten native architectures and dependency lists independently inspected."
+    },
+    {
+      "path": ".artifacts/test-evidence/verifier-private-prefix-independent-1.json",
+      "sha256": "e8360cdb2b72b4cec3539886e520b5b9f279ac33dc89c9761f741cd3c501a1c2",
+      "scope": "A newly staged native macOS arm64 prefix ran the pinned interpreter with isolated flags, no site initialization, an empty private bytecode cache and only private import paths."
+    }
+  ],
+  "limitations": [
+    "Archive identity is bound to the protected publisher release receipt; this is not a reproduced Python build.",
+    "Operating-system libraries are host prerequisites; this approval covers the exact reviewed macOS arm64 verifier runtime only.",
+    "Production verification still requires protected source ancestry, complete acceptance, physical source coverage and independent publisher authority."
+  ]
+}

@@ -1,0 +1,24 @@
+# sent_id = news-1
+# genre = news
+# text = Birds fly
+1	Birds	bird	NOUN	_	_	2	nsubj	_	_
+2	fly	fly	VERB	_	_	0	root	_	_
+
+# sent_id = news-2
+# genre = news
+# text = Comes spring
+1	Comes	come	VERB	_	_	0	root	_	_
+2	spring	spring	NOUN	_	_	1	nsubj	_	_
+
+# sent_id = news-3
+# genre = news
+# text = Children play
+1	Children	child	NOUN	_	_	2	nsubj	_	_
+2	play	play	VERB	_	_	0	root	_	_
+
+# sent_id = fiction-1
+# genre = fiction
+# text = Arrived winter
+1	Arrived	arrive	VERB	_	_	0	root	_	_
+2	winter	winter	NOUN	_	_	1	nsubj	_	_
+

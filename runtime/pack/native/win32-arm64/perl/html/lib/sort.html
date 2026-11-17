@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>sort - perl pragma to control sort() behaviour</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;sort - perl pragma to control sort() behaviour</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#CAVEATS">CAVEATS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>sort - perl pragma to control sort() behaviour</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p>The sort pragma is now a no-op, and its use is discouraged. These three operations are valid, but have no effect:</p>
+
+<pre><code>use sort &#39;stable&#39;;          # guarantee stability
+use sort &#39;defaults&#39;;        # revert to default behavior
+no  sort &#39;stable&#39;;          # stability not important</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Historically the <code>sort</code> pragma you can control the behaviour of the builtin <code>sort()</code> function.</p>
+
+<p>Prior to v5.28.0 there were two other options:</p>
+
+<pre><code>use sort &#39;_mergesort&#39;;
+use sort &#39;_qsort&#39;;          # or &#39;_quicksort&#39;</code></pre>
+
+<p>If you try and specify either of these in v5.28+ it will croak.</p>
+
+<p>The default sort has been stable since v5.8.0, and given this consistent behaviour for almost two decades, everyone has come to assume stability.</p>
+
+<p>Stability will remain the default - hence there is no need for a pragma for code to opt into stability &quot;just in case&quot; this changes - it won&#39;t.</p>
+
+<p>We do not foresee going back to offering multiple implementations of general purpose sorting - hence there is no future need to offer a pragma to choose between them.</p>
+
+<p>If you know that you care that much about performance of your sorting, and that for your use case and your data, it was worth investigating alternatives, possible to identify an alternative from our default that was better, and the cost of switching was worth it, then you know more than we do. Likely whatever choices we can give are not as good as implementing your own. (For example, a Radix sort can be faster than O(n log n), but can&#39;t be used for all keys and has larger overheads.)</p>
+
+<p>We are not averse to <b>changing</b> the sort algorithm, but we don&#39;t see the benefit in offering the choice of two general purpose implementations.</p>
+
+<h1 id="CAVEATS">CAVEATS</h1>
+
+<p>The function <code>sort::current()</code> was provided to report the current state of the sort pragmata. This function was not exported, and there is no code to call it on CPAN. It is now deprecated, and will warn by default.</p>
+
+<p>As we no longer store any sort &quot;state&quot;, it can no longer return the correct value, so it will always return the string <code>stable</code>, as this is consistent with what we actually have implemented.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;sort - perl pragma to control sort() behaviour</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

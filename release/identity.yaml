@@ -1,0 +1,8 @@
+github_owner: mehmetoguzderin
+repository: ud-agent-skill-mcp-plugin
+npm_scope: mehmetoguzderin
+npm_package: ud-agent-skill-mcp-plugin
+mcp_namespace: io.github.mehmetoguzderin
+ghcr_core: ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-core
+ghcr_render: ghcr.io/mehmetoguzderin/ud-agent-skill-mcp-plugin-render
+marketplace: ud-agent-skill-mcp-plugin

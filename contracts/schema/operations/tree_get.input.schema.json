@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "tree_get",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "read_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "description": "Reserved read options; current handlers preserve unfiltered results."
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tree_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sent_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "file_path"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "sent_id"
+          ],
+          "properties": {
+            "sent_id": {}
+          }
+        },
+        {
+          "required": [
+            "ordinal",
+            "fingerprint"
+          ],
+          "properties": {
+            "ordinal": {},
+            "fingerprint": {}
+          }
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tree_ref": {
+      "$ref": "#/$defs/tree_ref"
+    },
+    "read_options": {
+      "$ref": "#/$defs/read_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "tree_ref"
+  ]
+}

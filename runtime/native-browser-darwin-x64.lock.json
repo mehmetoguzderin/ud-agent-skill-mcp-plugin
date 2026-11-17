@@ -1,0 +1,10 @@
+{
+  "platform": "darwin/x64",
+  "publisher_metadata_sha256": "877e67b7f5fdf9051a27754101c6895d5542eabaa8bc18a4dd36bb37cd2cb50f",
+  "schema_version": 1,
+  "sha256": "79821745d0a72d2ba752d981284ed0a9e6fa320dad133596941a17dba6186de3",
+  "size_bytes": 110442262,
+  "state": "frozen-inputs",
+  "url": "https://storage.googleapis.com/chrome-for-testing-public/157.0.8103.38/mac-x64/chrome-headless-shell-mac-x64.zip",
+  "version": "157.0.8103.38"
+}

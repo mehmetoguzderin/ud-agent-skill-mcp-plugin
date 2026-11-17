@@ -1,0 +1,25 @@
+[package]
+name = "ud-agent-launcher"
+version = "0.1.0-beta.1"
+edition = "2024"
+license = "MIT"
+publish = false
+
+[[bin]]
+name = "ud-agent"
+path = "src/main.rs"
+
+[[bin]]
+name = "ud-agent-guard"
+path = "src/fs_guard.rs"
+
+[dependencies]
+cap-std = "=4.0.3"
+cap-fs-ext = "=4.0.3"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.154"
+sha2 = "=0.11.1"
+libc = "=0.2.191"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "=0.61.2", features = ["Wdk_Storage_FileSystem", "Win32_Foundation", "Win32_Networking_WinHttp", "Win32_Security", "Win32_Security_Authorization", "Win32_Storage_FileSystem", "Win32_System_Com", "Win32_System_Console", "Win32_System_IO", "Win32_System_JobObjects", "Win32_System_LibraryLoader", "Win32_System_Threading", "Win32_System_Pipes"] }

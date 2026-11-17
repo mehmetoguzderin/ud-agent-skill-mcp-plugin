@@ -1,0 +1,120 @@
+{
+  "distribution": "Ubuntu26.04resolute",
+  "guest": {
+    "home": "/home/udagent",
+    "network": "none",
+    "services": [
+      "containerd.service"
+    ],
+    "uid": 1001,
+    "user": "udagent"
+  },
+  "images": {
+    "amd64": {
+      "installed_dependencies": {
+        "dbus-user-session": "1.16.2-2ubuntu4",
+        "fuse3": "3.18.2-1",
+        "iptables": "1.8.11-2ubuntu3",
+        "libaudit1": "1:4.1.2-1ubuntu0.1",
+        "libc6": "2.43-2ubuntu2.4",
+        "libselinux1": "3.9-4build1",
+        "rsync": "3.4.1+ds1-7ubuntu0.3",
+        "systemd": "259.5-0ubuntu3.4"
+      },
+      "manifest": {
+        "sha256": "sha256:d52adb4ae5a731dcbed5ebe664757d248f6c0994dc6230c88891f1763a818083",
+        "size_bytes": 20531,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-amd64.manifest"
+      },
+      "sha256": "sha256:5645d0318ad21f643ebb1ac4567514620e9893380b07b0201fda163baa5b7eb5",
+      "size_bytes": 859090944,
+      "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-amd64.img"
+    },
+    "arm64": {
+      "installed_dependencies": {
+        "dbus-user-session": "1.16.2-2ubuntu4",
+        "fuse3": "3.18.2-1",
+        "iptables": "1.8.11-2ubuntu3",
+        "libaudit1": "1:4.1.2-1ubuntu0.1",
+        "libc6": "2.43-2ubuntu2.4",
+        "libselinux1": "3.9-4build1",
+        "rsync": "3.4.1+ds1-7ubuntu0.3",
+        "systemd": "259.5-0ubuntu3.4"
+      },
+      "manifest": {
+        "sha256": "sha256:830e68b0892d14e5e886048a2379a287f652c88ee3440e4aab0820f05cec8bd2",
+        "size_bytes": 20401,
+        "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-arm64.manifest"
+      },
+      "sha256": "sha256:8eb876c2ccc4b6ff89e4a65d511815923b285e04503ba465809bf587f763da24",
+      "size_bytes": 940373504,
+      "url": "https://cloud-images.ubuntu.com/releases/resolute/release-20261016/ubuntu-26.04-server-cloudimg-arm64.img"
+    }
+  },
+  "package_authentication": {
+    "indexes": {
+      "amd64": {
+        "sha256": "sha256:ed9ac41cb263efaecc5a06a0742dc56570e2fb5ff94c4f2e4b2fbdcddd73cf24",
+        "size_bytes": 1480032
+      },
+      "arm64": {
+        "sha256": "sha256:537715817d9ed77cc919f5123edb91a48d9ae97abf05588a8f18208cc7227e08",
+        "size_bytes": 1468492
+      }
+    },
+    "keyring_archive_sha256": "sha256:c377ccf26964f4c206c05c0bc7adb708e031beb919bb9a0ff63af983d064cd66",
+    "keyring_sha256": "sha256:80a36b0a6de2f69f49d2df75ef473ccde121e9e190b9ea01d20a4f63778d5c31",
+    "keyring_url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1build1_all.deb",
+    "release_sha256": "sha256:45f95ce276cdba3e41870516a130e03c58b8b7a79e9546b0efe9e526d255740c",
+    "release_url": "https://archive.ubuntu.com/ubuntu/dists/resolute/InRelease",
+    "signer_fingerprint": "F6ECB3762474EDA9D21B7022871920D1991BC93C"
+  },
+  "packages": {
+    "amd64": [
+      {
+        "architecture": "amd64",
+        "depends": "libaudit1 (>= 1:2.2.1), libc6 (>= 2.38), libselinux1 (>= 3.1~)",
+        "filename": "libsubid5_4.17.4-2ubuntu3_amd64.deb",
+        "name": "libsubid5",
+        "sha256": "sha256:d05f5f5bda0288dffa12f01f1edbc934c477e915f6cb6d85ee5f995c75947993",
+        "size_bytes": 27980,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shadow/libsubid5_4.17.4-2ubuntu3_amd64.deb",
+        "version": "1:4.17.4-2ubuntu3"
+      },
+      {
+        "architecture": "amd64",
+        "depends": "libaudit1 (>= 1:2.2.1), libc6 (>= 2.38), libselinux1 (>= 3.1~), libsubid5 (= 1:4.17.4-2ubuntu3)",
+        "filename": "uidmap_4.17.4-2ubuntu3_amd64.deb",
+        "name": "uidmap",
+        "sha256": "sha256:b4942df2976de17739887a170d51060c30ae5433fd7123b444c9ec5cef9490ff",
+        "size_bytes": 38958,
+        "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/shadow/uidmap_4.17.4-2ubuntu3_amd64.deb",
+        "version": "1:4.17.4-2ubuntu3"
+      }
+    ],
+    "arm64": [
+      {
+        "architecture": "arm64",
+        "depends": "libaudit1 (>= 1:2.2.1), libc6 (>= 2.38), libselinux1 (>= 3.1~)",
+        "filename": "libsubid5_4.17.4-2ubuntu3_arm64.deb",
+        "name": "libsubid5",
+        "sha256": "sha256:3acb10cf6840ff39a0b1e202d9fc5f2144482947cc88d27a3f060e5a96e8b844",
+        "size_bytes": 27886,
+        "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/s/shadow/libsubid5_4.17.4-2ubuntu3_arm64.deb",
+        "version": "1:4.17.4-2ubuntu3"
+      },
+      {
+        "architecture": "arm64",
+        "depends": "libaudit1 (>= 1:2.2.1), libc6 (>= 2.38), libselinux1 (>= 3.1~), libsubid5 (= 1:4.17.4-2ubuntu3)",
+        "filename": "uidmap_4.17.4-2ubuntu3_arm64.deb",
+        "name": "uidmap",
+        "sha256": "sha256:3ddb0a35548d850ce2210dc904b9cc9d2e2a067bc456675724345ca9b42a8baf",
+        "size_bytes": 39380,
+        "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/s/shadow/uidmap_4.17.4-2ubuntu3_arm64.deb",
+        "version": "1:4.17.4-2ubuntu3"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "state": "frozen"
+}

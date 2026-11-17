@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "prompts": [],
+  "policy": "Optional workflow prompts are intentionally not advertised. Six standalone skills and the 104 application tools retain explicit required inputs."
+}

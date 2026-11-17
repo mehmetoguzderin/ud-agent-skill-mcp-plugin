@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "repository": "astral-sh/python-build-standalone",
+  "tag": "20261026",
+  "commit": "fa506e0858ac9f2cc5b289c137b888a2aa24d1ee",
+  "source": {
+    "url": "https://codeload.github.com/astral-sh/python-build-standalone/tar.gz/fa506e0858ac9f2cc5b289c137b888a2aa24d1ee",
+    "sha256": "2d393784593531f14f1aad1e4e60c91fde242cfa87432c35ed31f4c18b3e89ff",
+    "size_bytes": 465507
+  },
+  "python_versions": {
+    "3.14": "3.14.10",
+    "3.15": "3.15.2"
+  }
+}

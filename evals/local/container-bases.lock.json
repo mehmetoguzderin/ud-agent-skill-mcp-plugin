@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-11-13",
+  "platform": "linux/arm64",
+  "qualification": "official-registry-arm64-manifest-identities-not-native-execution-evidence",
+  "images": {
+    "node": {
+      "version": "26.13.0",
+      "reference": "node:26.13.0-bookworm-slim@sha256:067b2d425f1204b5a898ae3d3145f7524c1425a4096a62b0f67dd4344a494440",
+      "config_digest": "sha256:97000ec2e6fe65be46c887c441bb83ac6cb03d46091429bb73914a75bce6991e",
+      "source": "https://github.com/nodejs/docker-node/tree/34e1b0030b415bdea959ccb15afda976a0761346/26/bookworm/slim"
+    },
+    "python": {
+      "version": "3.12.16",
+      "reference": "python:3.12-slim-bookworm@sha256:df540bfd30bd380e89a349611ce42aa67bcb542d58c047706616eb6ba2f86a1b",
+      "config_digest": "sha256:4703adf8fdd93b1441114e4f87ce2c62f7373fc5f88bda6a546c551625bcc71c",
+      "source": "https://github.com/docker-library/python/tree/3d7e95597e56a415d9e4abc0f15877e005d2cb2e/3.12/slim-bookworm"
+    }
+  }
+}

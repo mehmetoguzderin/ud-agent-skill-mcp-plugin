@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sentence_batch_extract",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {},
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selection_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output_dir_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "output_filename": {
+              "type": "string",
+              "minLength": 1
+            },
+            "output_conflict_policy": {
+              "enum": [
+                "error",
+                "replace",
+                "skip-identical"
+              ]
+            },
+            "idempotency_key": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "selection_path",
+    "output_dir_path"
+  ]
+}

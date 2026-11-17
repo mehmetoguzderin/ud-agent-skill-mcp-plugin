@@ -1,0 +1,10 @@
+{
+  "platform": "linux/x64",
+  "publisher_metadata_sha256": "877e67b7f5fdf9051a27754101c6895d5542eabaa8bc18a4dd36bb37cd2cb50f",
+  "schema_version": 1,
+  "sha256": "deafffa74660b34853a4119c361fd427ac8c9fcb62db51ddb8a797cd83a4ba2d",
+  "size_bytes": 128168542,
+  "state": "frozen-inputs",
+  "url": "https://storage.googleapis.com/chrome-for-testing-public/157.0.8103.38/linux64/chrome-headless-shell-linux64.zip",
+  "version": "157.0.8103.38"
+}

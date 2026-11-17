@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "qualification": "independent-verifier-runtime-origin-and-byte-closure-review",
+  "decision": "approved-for-release-verification",
+  "reviewer": "root-independent-of-verifier-runtime-implementation",
+  "inventory": {
+    "path": "release/verifier-runtimes/pbs-3.15.2-linux-arm64.json",
+    "sha256": "1e4a5445088881ffcf5fe70bacdaec14f1d6a88754ef4e651bb8ce8e5ea3075b",
+    "size": 903062
+  },
+  "origin_archive_sha256": "0f23351c03b39beb880de668976074fcc3c082d9c3b03d0b43185632b2b270a0",
+  "generator_sha256": "a8e2ab22fc7a36daaa4f8d2e314abe77ea4ede7bb2f1170f85f448b394df5b9c",
+  "release_receipt_sha256": "ca2bb7259a71dbd9192d6d251b5e96c7d8d0e5b1da4ff76434f89001da2a1080",
+  "independent_evidence": [
+    {
+      "path": ".artifacts/test-evidence/foreign-verifier-independent-1/review.json",
+      "sha256": "aaecd3a24496b4be7c858d984b48800fac28a160907c60aa036f1195567cb4e1",
+      "scope": "All original file/alias identities, actual native import closure and explicit optional exclusions independently replayed; private Linux ARM stdlib/archive smoke executed offline with UID10001 and verified cleanup."
+    }
+  ],
+  "limitations": [
+    "Approval covers only this exact Linux ARM verifier runtime and its named host system loader/library prerequisites.",
+    "Five source-bound optional Tcl/Tk GUI files are authenticated but omitted from private verifier staging; no retained native import requires them. Product Python distributions are unchanged.",
+    "This is not a reproduced Python build, complete installed-workflow acceptance, publisher authority or production release certification."
+  ]
+}

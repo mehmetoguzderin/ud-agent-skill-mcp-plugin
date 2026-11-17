@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "reviewer": "domain_completion",
+  "qualification": "independent static operator-validity review; no mutant execution or outcome/equivalence acceptance",
+  "registry_path": "quality/python-operator-repairs.json",
+  "registry_sha256": "15422561178ae04ccb1866ab4506ce38e91da36c8a2393e170af88723bdb668f",
+  "registry_version": "ud-python-typed-project-contracts-1",
+  "dependency_source_sha256": {
+    "workers/ud/src/ud_agent/project_rules.py": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+    "workers/ud/src/ud_agent/domain/validation.py": "ccc8eaf80d68aa08833ce5f71ce5a795fc95203baf7134505f2e945f36a2df98",
+    "workers/ud/src/ud_agent/domain/_common.py": "bf4bc43f1ea09986eeb3e2b0e06f2aca17a75010d9a31aae449ff179c20929db"
+  },
+  "rows": [
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_1",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "09fe0db1205f8e14354fb9fcc5b29646c1c37838d7628d142ad2e02efe37a795",
+      "repaired_function_sha256": "d4199716156e2cd1f26d0b87853a0f984ee735306e93b3606d25493079b7c9d9",
+      "before": "    root, files = None",
+      "after": "    root, files = (Path(\".\"), [])",
+      "decision": "valid_operator",
+      "reason": "The tuple contains an empty files list, so the next file-count guard always raises controlled InvalidInput before relative Path(\".\") can be observed."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_2",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "7e5726c2dda03bc12a8e6fe4a96ad19500f3d7e730728f72882865e0000014c3",
+      "repaired_function_sha256": "c8588b8236712fcd0096077d66657138a127437c0c290fce04a8eb8b235d2d62",
+      "before": "    root, files = files_for(None)",
+      "after": "    root, files = files_for({**args, \"file_paths\": []})",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_16",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "11098b77a813bd6e74db7dec97557664d40cfec68714846c1ebe580a5ccd9118",
+      "repaired_function_sha256": "04ff997079d2ef053dac4a9c85556703e6191fbb50afd8b024880f13eea7e5f1",
+      "before": "    if not isinstance(module_name, str) or not isinstance(class_name, str) and not class_name.isidentifier():",
+      "after": "    if not isinstance(module_name, str) or not isinstance(class_name, str) or not class_name.isidentifier() or class_name.startswith(\"_\"):",
+      "decision": "valid_operator",
+      "reason": "Original non-string/isidentifier short circuits dominate the added string predicate. Extra rejection of valid underscore/Unicode class identifiers is a type-safe behavioral mutation covered by independent successful fixtures."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_17",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "7872fa200a66b8d3687da25467866f657d8f8bdaf983c6f4ae31a37f099a3f9f",
+      "repaired_function_sha256": "3ced52fe498dff6e5d3ddfe999ee58569f1f9e4b0b365f6b6a1292e9057760f1",
+      "before": "    if not isinstance(module_name, str) and not isinstance(class_name, str) or not class_name.isidentifier():",
+      "after": "    if not isinstance(module_name, str) or not isinstance(class_name, str) or not class_name.isidentifier() or not class_name.isascii():",
+      "decision": "valid_operator",
+      "reason": "Original non-string/isidentifier short circuits dominate the added string predicate. Extra rejection of valid underscore/Unicode class identifiers is a type-safe behavioral mutation covered by independent successful fixtures."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_24",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "f9c35ac74241e59583c9ea8f4971cf3c9199aff15911368622b92b3eeb093252",
+      "repaired_function_sha256": "8e769569ebec42cd73e1c78740296c9840529b17fa99f67f7ffd651d8558a178",
+      "before": "    source_path = None",
+      "after": "    source_path = scoped_path(root, \"__ud_mutated_result__.py\")",
+      "decision": "valid_operator",
+      "reason": "scoped_path(root,fixed-relative-py-name) returns a confined ordinary file or controlled InvalidInput, preserving the original helper guarantee and keeping subsequent relative_to(root) safe. It no longer substitutes a directory."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_25",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "bd38f8bd843268f6e69170a64ace14e653894f36f63252593c8c74b7e2656d05",
+      "repaired_function_sha256": "662769e079d744d650f62556972ab5d0b14736decf40bb5d8ca7c03dae45cec3",
+      "before": "    source_path = scoped_path(None, module_name)",
+      "after": "    source_path = scoped_path(root / \"ud-mutated-subdir\", module_name)",
+      "decision": "valid_operator",
+      "reason": "The changed helper root is an original-root child, not its parent. scoped_path validates the selected ordinary file within that subset or raises controlled InvalidInput; successful paths remain relative_to(original root)."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_27",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "35a0b834f5d6e8f00fab3e1278d3b9101b2b51b3b5441c7a76e12320c23091b2",
+      "repaired_function_sha256": "5d2e984e99dc63670239ad573c4217fa1e54c5994cfa742c6a4f382c41058946",
+      "before": "    source_path = scoped_path(module_name)",
+      "after": "    source_path = scoped_path(root, module_name + \".ud-mutant-a.py\")",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_28",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "31623d461e86f98eb897e60557cc592ade0fcbccc03a46c6712b25a7ed84b1de",
+      "repaired_function_sha256": "a016696ea5d59e25e3daf2266d10d4a50239e4327c59f631b244e517008cc481",
+      "before": "    source_path = scoped_path(root, )",
+      "after": "    source_path = scoped_path(root, module_name + \".ud-mutant-b.py\")",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_40",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "9ac8ef2a9933e6ffb82e522214d86d8d577146564bbcd59060cf356d8ff9e848",
+      "repaired_function_sha256": "eb2810f65533d76b1bd0e6394eb97822418ba9ccdf553ed3a3a22c2b6a01a51d",
+      "before": "    source = None",
+      "after": "    source = b\"\"",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_46",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "41fc802af34d438774d41e40f0d2d9ddd36872447f1a1f3e046584c9c59630ee",
+      "repaired_function_sha256": "6975655bdb727d16c14ec81f05af53d14ce3e7f7f328d03e5563befa0eba9901",
+      "before": "    source_sha256 = hashlib.sha256(None).hexdigest()",
+      "after": "    source_sha256 = hashlib.sha256(b\"\").hexdigest()",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_47",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "71b08c666075c11a973ba38bd51e1b32fecccd36394b25d9d82ab90de5dc378a",
+      "repaired_function_sha256": "615a369e30d1b708396b4f6d58999dcf06080ff0ec1d17b2bba9816ffbe60711",
+      "before": "    settings, options = None",
+      "after": "    settings, options = ({}, {})",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_48",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "6dd995ed41126dbb10221301e92749639bd83ce8df63eff945b1da1e7a53a6dd",
+      "repaired_function_sha256": "37c2e5c5ae775f83b7fc6b8f4f03afac3f43a28f84257e38d4b5aab89429c53b",
+      "before": "    settings, options = _settings(None)",
+      "after": "    settings, options = _settings({})",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_52",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "b4aeb5dfb8b2dfa334b4d391d76633758b47b2ed30561e3180324280d71a547e",
+      "repaired_function_sha256": "d477cf748ccae958cd7d7e454b76d3323d5aa770a87a2a0342518c312dc9c4c4",
+      "before": "    module = None",
+      "after": "    module = types.ModuleType(\"__ud_mutated_result__\")",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_53",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "7f7a8592b2552afe3bba218878f69cfc82001b12c9bc2cc5486c3a1404ff1041",
+      "repaired_function_sha256": "65720e432c072436655e13240ab18299db5b78745ef21014026b381e5605aa22",
+      "before": "    module = types.ModuleType(None)",
+      "after": "    module = types.ModuleType(\"\")",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_58",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "01e2614d8a9a92c4d93bd1dfe1da95a45d15b64717c5b6f3536e6fb23edad8c5",
+      "repaired_function_sha256": "4721433a951ec533109b4c8b071d34d2d5cbc891e79ab8c718a4552b7a3552c4",
+      "before": "    sys.path.insert(None, str(root))",
+      "after": "    sys.path.insert(2, str(root))",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_60",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "9a1de3cc1ed4f8b3162b2935436db47a48cef68ee9d2afea3e38f1d48d699cc7",
+      "repaired_function_sha256": "4f4fb55e018034e8d97abf6b742a0325b9a945f14d20bb54e2ea0825fc01eba3",
+      "before": "    sys.path.insert(str(root))",
+      "after": "    sys.path.insert(0, str(root.parent))",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_61",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "b28302e85e73411ad36ca2c5fe5639e9278099315b1163309ea022929ac612df",
+      "repaired_function_sha256": "a9d40f1156a318dd680666e5853091979c71ae63390204074344cc2f1b84a379",
+      "before": "    sys.path.insert(0, )",
+      "after": "    sys.path.insert(3, str(root))",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_99",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "cbb586d265f29dc9dcf44a3a3f994b3aef8d19f2bf3285f3156107d0c50d16af",
+      "repaired_function_sha256": "6b2b3fcf58ea73d6ed002664c58a5e748086c1cae7f0a40c2d64a85223fe13ac",
+      "before": "            unsupported = None",
+      "after": "            unsupported = []",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_105",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "9a9e413b974990da937f353ea79a4c2b0c78a9c73d97c12ae5c0f4bda6ff2598",
+      "repaired_function_sha256": "106a996a6c59779ef7af5246d19970c8c78ef518509362f6181321055a4dedbe",
+      "before": "                raise InvalidInput(\"project validator does not support requested parameters: \" - \", \".join(unsupported))",
+      "after": "                raise InvalidInput(\"project validator unsupported parameters: \" + \", \".join(unsupported))",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_108",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "c29cb4fc5ef5966f7e293d8f88237acb0b52ad8755303f59a88f7d416ab4492d",
+      "repaired_function_sha256": "07efe3f65b9db25bb6cc920f67d6bf5722359e25455042e91d606eab2aebbd4d",
+      "before": "                raise InvalidInput(\"project validator does not support requested parameters: \" + \", \".join(None))",
+      "after": "                raise InvalidInput(\"project validator does not support requested parameters: \" + \":\".join(unsupported))",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_113",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "1a281f3c2270a829c0f0cefbc0e235a12e264b97dee432fb3a00e8577645ed03",
+      "repaired_function_sha256": "06430f5b28559bd69e393cb13952a6ad13e47c6a40ce4fe8e2fb0d822dfd3f19",
+      "before": "        report = None",
+      "after": "        report = {**_result(state, [file.relative_to(root).as_posix() for file in files], options, sentence_only=False), \"passed\": not state.passed()}",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_126",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "567d2f3b372f93fac9d630fe5c0d1585edc2925cd2fa05d48ca979211b9318af",
+      "repaired_function_sha256": "6bcf9eadcfbb82bf42b24a3f90186b26a7bdf7eb2057d03df313b66e8921255f",
+      "before": "        raise WorkerError(\"project validator could not complete\") from exc",
+      "after": "        raise WorkerError(\"PROJECT_VALIDATOR_MUTATED\", \"project validator could not complete\") from exc",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_127",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "f8b5da935f69adf3e4d73d746ceb1ec4abfb87457bd8314f6f1142e6d60bebe5",
+      "repaired_function_sha256": "d2e35e8c94c37e9495d9e4bac43657146816ef6b6d1148ebaf389978ec63e5ea",
+      "before": "        raise WorkerError(\"PROJECT_VALIDATOR_FAILED\", ) from exc",
+      "after": "        raise WorkerError(\"PROJECT_VALIDATOR_FAILED\", \"mutated project failure\") from exc",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_135",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "23d882ec02cca23c351301e2866f0b737bb20ee5e1d7a6a172c566594d0983a7",
+      "repaired_function_sha256": "c8c0f85685c0bc930297806e3133b77e791517ceb166eba312c12b913d1a1d5f",
+      "before": "    report[\"XXcoverageXX\"][\"content\"] = \"project_checks_only\"",
+      "after": "    report[\"scope\"][\"content\"] = \"project_checks_only\"",
+      "decision": "valid_operator",
+      "reason": "validation._result always includes mapping-valued scope on success. The repaired write targets that existing mapping and leaves the coverage slot semantically incorrect; there is no access to absent provenance or unknown parent keys."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_136",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "95587ebb0fb687445759b37755aa1d198b2c0e4519e47b317befd5715e807cc8",
+      "repaired_function_sha256": "ba151aee60bb047d6cabbbaecad35387880e0d0c24d9f62124c883d092ce7b49",
+      "before": "    report[\"COVERAGE\"][\"content\"] = \"project_checks_only\"",
+      "after": "    report[\"scope\"][\"mutated_content\"] = \"project_checks_only\"",
+      "decision": "valid_operator",
+      "reason": "validation._result always includes mapping-valued scope on success. The repaired write targets that existing mapping and leaves the coverage slot semantically incorrect; there is no access to absent provenance or unknown parent keys."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_142",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "a791c452b86ea54d10a34da47562635cbee184ac74b216165b48471d250b68fa",
+      "repaired_function_sha256": "2534122dd35cff8a055383f4d29b04b9bdd1fc1978c466671bd06f5a8b24a8e4",
+      "before": "    report[\"XXcoverageXX\"][\"project_rules\"] = \"completed\"",
+      "after": "    report[\"scope\"][\"project_rules\"] = \"completed\"",
+      "decision": "valid_operator",
+      "reason": "validation._result always includes mapping-valued scope on success. The repaired write targets that existing mapping and leaves the coverage slot semantically incorrect; there is no access to absent provenance or unknown parent keys."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_143",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "e8e73df23b30c51eefb38125883e0f82cc84e02c0fbdc85e3fbe9fcf97788d56",
+      "repaired_function_sha256": "1038f2aa0e429aa47e50226bb4be5237e29e823e068545f8923ceec84677c4aa",
+      "before": "    report[\"COVERAGE\"][\"project_rules\"] = \"completed\"",
+      "after": "    report[\"scope\"][\"mutated_project_rules\"] = \"completed\"",
+      "decision": "valid_operator",
+      "reason": "validation._result always includes mapping-valued scope on success. The repaired write targets that existing mapping and leaves the coverage slot semantically incorrect; there is no access to absent provenance or unknown parent keys."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_153",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "9a95a7884235bfec35ddca23da56827598cc129af30e7578da2ddf7e3b2e93e4",
+      "repaired_function_sha256": "aa48c40240f26ff243f7d99ac201d3443d1d824b35b7175b354ecc57e112df6c",
+      "before": "    report[\"provenance\"] = {\"validator_module_path\": source_path.relative_to(None).as_posix(),",
+      "after": "    report[\"provenance\"] = {\"validator_module_path\": source_path.relative_to(source_path).as_posix(),",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_159",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "30f8b918c5f56f1128731304e909b3c2f2279188dfbe06856221b913ff86a418",
+      "repaired_function_sha256": "2a22129ad78204d5172775a8cdaf6479b573ae1d5e370a94e2ba434f88c82be4",
+      "before": "    report[\"XXlimitationsXX\"].append(\"Project results are not official UD validation; the coordinator must run official validation independently.\")",
+      "after": "    report[\"limitations\"].extend([\"Project results are not official UD validation; the coordinator must run official validation independently.\"] * 2)",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    },
+    {
+      "id": "ud_agent.project_rules.x_run_project_rules__mutmut_160",
+      "source_sha256": "fae3988c2a671410c260bbdf2dcaf2f54cbba76141b9fdab66120d407cf039eb",
+      "upstream_definition_sha256": "ac716fe5a8f5048a7e1f91455ba3cd6d11d8beb8d6544b2100e195795e60dbd5",
+      "repaired_function_sha256": "d679f7a56320897a703e2f5922b6d539f80f4ec1e9978eabb293f04123815ac4",
+      "before": "    report[\"LIMITATIONS\"].append(\"Project results are not official UD validation; the coordinator must run official validation independently.\")",
+      "after": "    report[\"limitations\"].append(\"mutated project limitation\")",
+      "decision": "valid_operator",
+      "reason": "Preserves the operand/result types and guarded required operations at this location; changed control/result/path/diagnostic behavior remains a real scheduled mutant. Validity review only; a fresh protected run must establish its outcome."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# sent_id = duplicate
+# text = Fish swim
+1	Fish	fish	NOUN	_	_	9	nsubj	_	_
+2	swim	swim	VERB	_	_	0	root	_	_
+

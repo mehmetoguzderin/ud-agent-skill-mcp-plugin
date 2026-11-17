@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "qualification": "local-host-fixture-inputs",
+  "codex": {
+    "version": "0.166.0",
+    "acquisition": "preexisting installed native binary; no download or redistribution",
+    "documentation": "https://developers.openai.com/plugins/build/plugins",
+    "platforms": {
+      "darwin/arm64": {
+        "executable_sha256": "39acf979729dd290f9a24ee38b2914e036c91b65952872e28ae2a6b88a7db7c1",
+        "size_bytes": 268972064
+      }
+    }
+  },
+  "grok": {
+    "version": "1.0.77",
+    "license": "Apache-2.0",
+    "source_repository": "https://github.com/xai-org/grok-build",
+    "documented_source_commit": "2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8",
+    "reported_build_revision": "50ca579fa996",
+    "wrapper": {
+      "url": "https://registry.npmjs.org/@xai-official/grok/-/grok-1.0.77.tgz",
+      "integrity": "sha512-zNGi+PGXR/cxL3URtxEIHX91Lm06jOb28ra98FWEO9keIJOO83Pr67rpmLtwufp7A51NvMM4Nm0Kh77/9l9rQg=="
+    },
+    "platforms": {
+      "darwin/arm64": {
+        "url": "https://registry.npmjs.org/@xai-official/grok-darwin-arm64/-/grok-darwin-arm64-1.0.77.tgz",
+        "integrity": "sha512-84xJbu3gT5CdY1o3uSxRXtcZyoPLdn2KmrkODUHyzB45+DnlpZDzZK33dSM3nlxh6X9NSeqWoqtO4eQnACo0Wg==",
+        "executable_sha256": "197c66a63e5ac46e07450b0ca21d141ce665050a412180f185dadfae1c7a5b2a"
+      }
+    }
+  }
+}

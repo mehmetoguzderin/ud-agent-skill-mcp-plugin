@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "parser": "PPI-1.291",
+  "operator_replacements": {
+    "&&": "||",
+    "||": "&&",
+    "and": "or",
+    "or": "and",
+    "==": "!=",
+    "!=": "==",
+    "eq": "ne",
+    "ne": "eq",
+    "<": ">=",
+    ">": "<=",
+    "<=": ">",
+    ">=": "<",
+    "lt": "ge",
+    "gt": "le",
+    "le": "gt",
+    "ge": "lt",
+    "!~": "=~",
+    "=~": "!~",
+    "!": "",
+    "+": "-",
+    "-": "+",
+    "*": "/",
+    "/": "*",
+    "+=": "-=",
+    "-=": "+=",
+    ".=": "=",
+    "++": "--",
+    "--": "++",
+    "<=>": "<",
+    "cmp": "lt",
+    "-f": "-d",
+    "-s": "-z",
+    ".": "||"
+  },
+  "keyword_replacements": {
+    "if": "unless",
+    "unless": "if",
+    "while": "until",
+    "until": "while"
+  },
+  "integer_boundaries": [
+    -1,
+    1
+  ],
+  "string_replacement": "empty_or_nonempty",
+  "regex_mutations": [
+    "remove_start_anchor",
+    "remove_end_anchor",
+    "match_any"
+  ],
+  "context_rules": {
+    "exit_status_flip": "Protocol exit statuses are zero or one; flip zero to one or one to zero instead of producing an unexpected status two.",
+    "warning_category": "Replace a valid Perl warning category with another known category instead of generating a compilation error.",
+    "integer_literal_domain": "Decimal integer boundary replacements remain nonnegative; protocol exits zero/one use the separately declared status flip.",
+    "interpolated_string": "Whole quoted strings, including interpolated strings, use the declared empty-or-nonempty string replacement; interpolation is not silently omitted."
+  },
+  "ternary_replacements": {
+    "ternary_or_true": "|| 1 ?",
+    "ternary_and_false": "&& 0 ?"
+  },
+  "structural_operators": {
+    "=": "binding or assignment syntax; no type-independent literal replacement is declared",
+    "->": "dereference syntax",
+    "=>": "key/value list separator",
+    ",": "list separator",
+    ":": "paired conditional separator"
+  },
+  "regex_delimiters": {
+    "/": "/",
+    "{": "}",
+    "(": ")",
+    "[": "]",
+    "<": ">",
+    "!": "!",
+    "#": "#",
+    "~": "~",
+    "'": "'"
+  }
+}

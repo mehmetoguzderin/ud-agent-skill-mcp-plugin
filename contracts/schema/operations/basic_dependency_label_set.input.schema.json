@@ -1,0 +1,393 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "basic_dependency_label_set",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "edit_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "mode": {
+              "enum": [
+                "preview",
+                "apply"
+              ]
+            },
+            "expected_file_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "expected_fingerprint": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "expected_sentence_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "boundary_policy": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "transfer_to_next",
+                    "drop",
+                    "preserve",
+                    "move_with_sentence",
+                    "copy_with_sentence"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "action": {
+                      "enum": [
+                        "transfer_to_next",
+                        "drop",
+                        "preserve",
+                        "move_with_sentence",
+                        "copy_with_sentence"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "action"
+                  ]
+                }
+              ]
+            },
+            "validation_options": {
+              "$ref": "#/$defs/validation_options"
+            },
+            "idempotency_key": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "token_ref": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tree_ref": {
+              "$ref": "#/$defs/tree_ref"
+            },
+            "token_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "word_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            }
+          },
+          "required": [
+            "tree_ref"
+          ],
+          "anyOf": [
+            {
+              "required": [
+                "token_id"
+              ],
+              "properties": {
+                "token_id": {}
+              }
+            },
+            {
+              "required": [
+                "word_id"
+              ],
+              "properties": {
+                "word_id": {}
+              }
+            },
+            {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {}
+              }
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "token_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "word_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9][0-9]*$"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "file_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sent_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ordinal": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fingerprint": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "file_path"
+          ],
+          "allOf": [
+            {
+              "anyOf": [
+                {
+                  "required": [
+                    "sent_id"
+                  ],
+                  "properties": {
+                    "sent_id": {}
+                  }
+                },
+                {
+                  "required": [
+                    "ordinal",
+                    "fingerprint"
+                  ],
+                  "properties": {
+                    "ordinal": {},
+                    "fingerprint": {}
+                  }
+                }
+              ]
+            },
+            {
+              "anyOf": [
+                {
+                  "required": [
+                    "token_id"
+                  ],
+                  "properties": {
+                    "token_id": {}
+                  }
+                },
+                {
+                  "required": [
+                    "word_id"
+                  ],
+                  "properties": {
+                    "word_id": {}
+                  }
+                },
+                {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {}
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "tree_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sent_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "file_path"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "sent_id"
+          ],
+          "properties": {
+            "sent_id": {}
+          }
+        },
+        {
+          "required": [
+            "ordinal",
+            "fingerprint"
+          ],
+          "properties": {
+            "ordinal": {},
+            "fingerprint": {}
+          }
+        }
+      ]
+    },
+    "validation_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "language_code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "level": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "coref": {
+              "type": "boolean"
+            },
+            "test_filters": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "exclude_filters": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "check_families": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "content",
+                  "repository",
+                  "documentation"
+                ]
+              }
+            },
+            "repository_name": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "token_ref": {
+      "$ref": "#/$defs/token_ref"
+    },
+    "deprel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ud_context_path": {
+      "type": "string"
+    },
+    "edit_options": {
+      "$ref": "#/$defs/edit_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "token_ref",
+    "deprel",
+    "ud_context_path"
+  ]
+}

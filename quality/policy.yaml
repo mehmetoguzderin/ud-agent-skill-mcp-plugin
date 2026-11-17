@@ -1,0 +1,19 @@
+schema_version: 1
+application_tools: {domain: 102, environment: 2}
+mutation:
+  detection_percent: 100
+  survivors: 0
+  uncovered: 0
+  timeouts: 0
+  compilation_or_runtime_errors: 0
+  runner_failures: 0
+  missing_outcomes: 0
+  equivalent_authority: quality/mutation-equivalents.json
+  independently_reviewed_exact_definition_and_source: required
+  inactive_native_rows: source-and-compiler-cfg-proven pending-native, never kills or equivalents
+  execution: protected OCI, with sealed source/test inputs and independent outcome reconciliation
+required_test_discovery: scripts/release/discover-acceptance.mjs
+required_suite_and_artifact_inventory: quality/requirements.json
+strict_gate: scripts/quality/mutation-gate.mjs
+missing_empty_or_skipped_required_evidence: fail
+native_build_runtime_and_external_approval_are_separate: true

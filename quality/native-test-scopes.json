@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "scopes": [
+    {
+      "source": "tests/contracts/original-storage-archive.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Private immutable archive admission and ancestry reconciliation require POSIX ownership/mode evidence; portable tar/OCI parsing and record validation still execute on every host."
+    },
+    {
+      "source": "tests/evals/local-budget-setup.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native Unix socket permission failure and owned socket-directory cleanup."
+    },
+    {
+      "source": "tests/evals/local-budget.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native Unix socket authority, private POSIX socket ownership and independent-process budget accounting."
+    },
+    {
+      "source": "tests/evals/local-codex-observations.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Codex gateway continuation integrates the native POSIX budget authority."
+    },
+    {
+      "source": "tests/evals/local-container-preparation.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native Buildx discovery and private build configuration require the POSIX executable and owned-process route."
+    },
+    {
+      "source": "tests/evals/local-desktop.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native Unix socket-length profile aliases and symlink release lifecycle require POSIX paths; desktop configuration/transcript/driver policy remains portable."
+    },
+    {
+      "source": "tests/evals/local-gateway.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Integrated gateway accounting through an actual private POSIX budget authority."
+    },
+    {
+      "source": "tests/evals/local-generation-evidence.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Generation receipt ownership, no-follow file handles and immutable POSIX modes."
+    },
+    {
+      "source": "tests/evals/local-hermes-observations.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Configured Hermes observer executes native fcntl locking and no-follow POSIX receipt writes."
+    },
+    {
+      "source": "tests/evals/local-installed-cli.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Real installed CLI subprocess release requires the POSIX owned-process supervisor; scheduling, profile binding and Windows refusal remain applicable."
+    },
+    {
+      "source": "tests/evals/local-lifecycle.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Deferred native budget lifecycle uses an actual private Unix socket."
+    },
+    {
+      "source": "tests/evals/local-minicpm.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Private generation evidence requires POSIX owner and no-follow file authority."
+    },
+    {
+      "source": "tests/evals/local-native-observations.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Gemini gateway continuation integrates the native POSIX budget authority."
+    },
+    {
+      "source": "tests/evals/local-native-provider-metadata.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Integrated metadata gateway accounting requires the native POSIX budget authority; generated provider profile policy remains portable."
+    },
+    {
+      "source": "tests/evals/local-runtime-assets.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Exact private archive hardlink reconciliation requires verified POSIX0400 sealing; portable inventory/identity/release policy remains host-independent."
+    },
+    {
+      "source": "tests/evals/local-study-storage.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Owned fixture subprocess exit and cancellation require actual POSIX process-group cleanup evidence."
+    },
+    {
+      "source": "tests/evals/local-translation-namespace.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Namespace gateway accounting integrates the native POSIX budget authority."
+    },
+    {
+      "source": "tests/mutation/gate-provenance.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native source identity binds POSIX executable permission changes; exact byte provenance still executes on every host."
+    },
+    {
+      "source": "tests/mutation/node-dependencies.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Immutable image dependency closure requires POSIX executable modes and forward-slash relative symlink receipts; portable inventory and Windows link refusal remain applicable."
+    },
+    {
+      "source": "tests/mutation/stryker-dispose.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Graceful active controller cleanup uses POSIX SIGTERM delivery; Windows forced termination must remain a runner failure and cannot claim that cleanup completed."
+    },
+    {
+      "source": "tests/mutation/stryker-native-loader.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native assertion loader calibration requires the protected POSIX immutable-file authority; actual Windows metadata refusal preserves the loader and receipt bytes."
+    },
+    {
+      "source": "tests/mutation/stryker-opacity-integration.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Integrated protected assertion setup requires POSIX immutable-file authority; actual Windows setup refusal proves application test collection never begins."
+    },
+    {
+      "source": "tests/protocol/cli.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Generated POSIX shell alias execution requires /bin/sh; alias generation, preservation and direct command-refusal guidance remain portable."
+    },
+    {
+      "source": "tests/protocol/result-summary.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Executing generated shell aliases requires the native POSIX shell; alias bytes, argument quoting and invalid-name policy remain portable."
+    },
+    {
+      "source": "tests/release/acceptance-storage.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Graceful provider SIGTERM callbacks require native POSIX signal delivery; real forced termination preserves incomplete evidence and exercises stopped-owner scratch recovery on every host."
+    },
+    {
+      "source": "tests/release/available-candidate.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native source executable-mode deduplication and private material-stage recovery require POSIX permission authority; byte identity and actual Windows mode/recovery refusals remain applicable."
+    },
+    {
+      "source": "tests/release/component-preparation.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Retained cross-build binary closure requires POSIX executable-mode authority; portable component coverage and receipt policy remain applicable."
+    },
+    {
+      "source": "tests/release/cross-build-inputs.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native retention requires POSIX executable modes on all twelve original and content-addressed binary files."
+    },
+    {
+      "source": "tests/release/http-publication.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Durable release reconciliation requires the POSIX private publication journal; raw HTTP adapters and actual Windows journal refusal remain applicable."
+    },
+    {
+      "source": "tests/release/installed-storage.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Graceful installed-runner SIGTERM cleanup requires native POSIX signal delivery; real forced termination preserves incomplete evidence and exercises stopped-owner scratch recovery on every host."
+    },
+    {
+      "source": "tests/release/source-part-transfer.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Source-part move/recovery binds a POSIX-private rollback journal; optional copy-route policy and Windows recovery refusal preserve original bytes and aliases."
+    },
+    {
+      "source": "tests/release/verifier-runtime.test.mjs",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Approved verifier staging requires POSIX executable-mode authority from the frozen closure; portable byte closure and Windows pre-staging refusal remain applicable."
+    },
+    {
+      "source": "tests/runtime/git-snapshot.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native POSIX Git named-user home expansion requires the host account database; installation-prefix expansion remains portable and Windows verifies actual named-user expansion refusal before repository invocation."
+    },
+    {
+      "source": "tests/runtime/job-journal.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native legacy Podman journal ownership, transitions and durable directory synchronization require POSIX state authority."
+    },
+    {
+      "source": "tests/runtime/podman-authority.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Legacy Linux Podman capability admission requires trusted POSIX executable and policy files; malformed receipt and Windows executable-authority refusals remain portable."
+    },
+    {
+      "source": "tests/runtime/podman-no-pull.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native POSIX journal and strace no-pull probe retain ownership, interruption and network-refusal evidence."
+    },
+    {
+      "source": "tests/runtime/podman-rootful-staging.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Rootful Podman staging requires POSIX UID ownership and private native job state; Windows rejects the unsupported journal before staging."
+    },
+    {
+      "source": "tests/runtime/podman-runner.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Legacy Podman orchestration uses the POSIX-only job journal and Linux OCI authority; actual Windows journal refusal preserves empty state."
+    },
+    {
+      "source": "tests/runtime/podman-worker-integration.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Linux local Podman authority requires native POSIX executable ownership and rootless identity; Windows rejects this local authority while separate Podman VM fixtures remain applicable."
+    },
+    {
+      "source": "tests/runtime/provider-maintenance.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Admitting an upgraded external Lima CLI requires POSIX executable and private receipt authority; unupgraded provider cleanup, Windows WSL policy and actual Windows external-CLI refusal remain applicable."
+    },
+    {
+      "source": "tests/runtime/runtime-lock.test.ts",
+      "supported_os": [
+        "darwin",
+        "linux"
+      ],
+      "purpose": "Native helper writable-mode rejection requires POSIX permission evidence; exact helper byte and manifest checks remain portable."
+    }
+  ]
+}

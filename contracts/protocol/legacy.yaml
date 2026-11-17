@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "era": "legacy",
+  "protocol_version": "2025-11-25",
+  "transport": "stdio",
+  "application_tools": 104,
+  "stdout": "protocol traffic only",
+  "resources": "contracts/resources.yaml",
+  "prompts": "contracts/prompts.yaml",
+  "long_operations": "same-tool continuation with bound token; progress/cancellation when supported",
+  "implementation": [
+    "packages/coordinator/src/server.ts",
+    "packages/coordinator/src/task-transport.ts",
+    "packages/coordinator/src/continuations.ts"
+  ],
+  "behavior_tests": [
+    "tests/protocol/stdio.test.ts",
+    "tests/protocol/tasks-stdio.test.ts",
+    "tests/protocol/continuations.test.ts"
+  ]
+}

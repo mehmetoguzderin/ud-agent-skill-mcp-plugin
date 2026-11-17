@@ -1,0 +1,734 @@
+{
+  "schema_version": 1,
+  "routing_cases": [
+    {
+      "id": "ud-validate-explicit",
+      "kind": "explicit",
+      "prompt": "Use ud-validate on this treebank.",
+      "expected_skill": "ud-validate",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-validate-natural",
+      "kind": "natural",
+      "prompt": "Check these CoNLL-U files for all requested validation errors.",
+      "expected_skill": "ud-validate",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-validate-negative",
+      "kind": "negative",
+      "prompt": "Explain the Unix disk usage command du.",
+      "expected_skill": null,
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-validate-competition",
+      "kind": "competition",
+      "prompt": "Validate this treebank, without fixing annotations.",
+      "expected_skill": "ud-validate",
+      "competing_skill": "ud-edit",
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-edit-explicit",
+      "kind": "explicit",
+      "prompt": "Use ud-edit to set this token lemma.",
+      "expected_skill": "ud-edit",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-edit-natural",
+      "kind": "natural",
+      "prompt": "Preview splitting this annotated token and ask for missing decisions.",
+      "expected_skill": "ud-edit",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-edit-negative",
+      "kind": "negative",
+      "prompt": "Edit the wording of my project proposal.",
+      "expected_skill": null,
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-edit-competition",
+      "kind": "competition",
+      "prompt": "Change this dependency label, then validate the candidate.",
+      "expected_skill": "ud-edit",
+      "competing_skill": "ud-validate",
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-investigate-explicit",
+      "kind": "explicit",
+      "prompt": "Use ud-investigate to inspect dependency order.",
+      "expected_skill": "ud-investigate",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-investigate-natural",
+      "kind": "natural",
+      "prompt": "Show examples and denominators for feature agreement in this treebank.",
+      "expected_skill": "ud-investigate",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-investigate-negative",
+      "kind": "negative",
+      "prompt": "Investigate the cause of a web server crash.",
+      "expected_skill": null,
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-investigate-competition",
+      "kind": "competition",
+      "prompt": "Profile annotation patterns without scoring predictions.",
+      "expected_skill": "ud-investigate",
+      "competing_skill": "ud-compare",
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-compare-explicit",
+      "kind": "explicit",
+      "prompt": "Use ud-compare for gold and prediction scores.",
+      "expected_skill": "ud-compare",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-compare-natural",
+      "kind": "natural",
+      "prompt": "Find train/test overlap and explain the matching denominator.",
+      "expected_skill": "ud-compare",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-compare-negative",
+      "kind": "negative",
+      "prompt": "Compare prices for two laptops.",
+      "expected_skill": null,
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-compare-competition",
+      "kind": "competition",
+      "prompt": "Score these annotations against gold rather than merely profile them.",
+      "expected_skill": "ud-compare",
+      "competing_skill": "ud-investigate",
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-rules-docs-explicit",
+      "kind": "explicit",
+      "prompt": "Use ud-rules-docs for a local rule-impact report.",
+      "expected_skill": "ud-rules-docs",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-rules-docs-natural",
+      "kind": "natural",
+      "prompt": "Render an offline CoNLL-U sentence and preview these guideline examples.",
+      "expected_skill": "ud-rules-docs",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-rules-docs-negative",
+      "kind": "negative",
+      "prompt": "Proofread an ordinary business memo.",
+      "expected_skill": null,
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-rules-docs-competition",
+      "kind": "competition",
+      "prompt": "Inspect registered rules rather than infer them from observed counts.",
+      "expected_skill": "ud-rules-docs",
+      "competing_skill": "ud-investigate",
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-release-explicit",
+      "kind": "explicit",
+      "prompt": "Use ud-release to build a local treebank handover.",
+      "expected_skill": "ud-release",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-release-natural",
+      "kind": "natural",
+      "prompt": "Prepare a candidate and show which packaged bytes were validated.",
+      "expected_skill": "ud-release",
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-release-negative",
+      "kind": "negative",
+      "prompt": "Publish a new version of an unrelated npm package.",
+      "expected_skill": null,
+      "competing_skill": null,
+      "allowed_effects": []
+    },
+    {
+      "id": "ud-release-competition",
+      "kind": "competition",
+      "prompt": "Prepare release readiness with validation evidence, without uploading.",
+      "expected_skill": "ud-release",
+      "competing_skill": "ud-validate",
+      "allowed_effects": []
+    }
+  ],
+  "replay_cases": [
+    {
+      "id": "valid-current-bytes",
+      "skill": "ud-validate",
+      "prompt": "Validate the selected current files and show actual coverage.",
+      "files": {
+        "a.conllu": "# sent_id = one\n# text = Birds fly\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\n\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}"
+      },
+      "steps": [
+        {
+          "operation": "validation_report",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "file_paths": [
+              "a.conllu"
+            ],
+            "options": {
+              "language_code": "en",
+              "level": 2,
+              "check_families": [
+                "content"
+              ]
+            }
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/passed",
+                "value": true
+              },
+              {
+                "pointer": "/coverage/completed",
+                "value": [
+                  "content"
+                ]
+              }
+            ],
+            "passed": true
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "cross-file-duplicate",
+      "skill": "ud-validate",
+      "prompt": "Validate both files together, including cross-file identifiers.",
+      "files": {
+        "a.conllu": "# sent_id = one\n# text = Birds fly\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\n\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}",
+        "b.conllu": "# sent_id = one\n# text = Birds fly\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\n\n"
+      },
+      "steps": [
+        {
+          "operation": "validation_report",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "file_paths": [
+              "a.conllu",
+              "b.conllu"
+            ],
+            "options": {
+              "language_code": "en",
+              "level": 2
+            }
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/passed",
+                "value": false
+              },
+              {
+                "pointer": "/result/incidents/0/testid",
+                "value": "non-unique-sent-id"
+              }
+            ],
+            "passed": false
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "preview-preserves-bytes",
+      "skill": "ud-edit",
+      "prompt": "Preview changing this sentence text; preserve the original file.",
+      "files": {
+        "a.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}"
+      },
+      "steps": [
+        {
+          "operation": "validation_report",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "file_paths": [
+              "a.conllu"
+            ],
+            "options": {
+              "language_code": "en",
+              "level": 2,
+              "check_families": [
+                "content"
+              ]
+            }
+          },
+          "expected": {
+            "execution_status": "completed",
+            "passed": false,
+            "assertions": [
+              {
+                "pointer": "/result/passed",
+                "value": false
+              },
+              {
+                "pointer": "/result/incidents/0/testid",
+                "value": "non-unix-newline"
+              }
+            ]
+          }
+        },
+        {
+          "operation": "tree_text_set",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "tree_ref": {
+              "file_path": "a.conllu",
+              "sent_id": "one"
+            },
+            "text": "Swallows fly",
+            "edit_options": {
+              "mode": "preview"
+            }
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/status",
+                "value": "candidate"
+              },
+              {
+                "pointer": "/result/changes/0/content",
+                "value": "# sent_id = one\r\n# text = Swallows fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n"
+              }
+            ]
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "apply-and-response-loss-retry",
+      "skill": "ud-edit",
+      "prompt": "Apply the requested form/text edit and retry without repeating effects.",
+      "files": {
+        "a.conllu": "# sent_id = one\n# text = Birds fly\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\n\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}"
+      },
+      "steps": [
+        {
+          "operation": "treebank_edit",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "edit_batch": [
+              {
+                "operation": "token_form_set",
+                "arguments": {
+                  "token_ref": {
+                    "tree_ref": {
+                      "file_path": "a.conllu",
+                      "sent_id": "one"
+                    },
+                    "token_id": "1"
+                  },
+                  "form": "Swallows"
+                }
+              },
+              {
+                "operation": "tree_text_set",
+                "arguments": {
+                  "tree_ref": {
+                    "file_path": "a.conllu",
+                    "sent_id": "one"
+                  },
+                  "text": "Swallows fly"
+                }
+              }
+            ],
+            "edit_options": {
+              "mode": "apply",
+              "validation_options": {
+                "language_code": "en",
+                "level": 2
+              },
+              "idempotency_key": "canonical-eval-edit"
+            }
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/transaction/status",
+                "value": "completed"
+              },
+              {
+                "pointer": "/result/validation/passed",
+                "value": true
+              }
+            ]
+          }
+        },
+        {
+          "operation": "treebank_edit",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "edit_batch": [
+              {
+                "operation": "token_form_set",
+                "arguments": {
+                  "token_ref": {
+                    "tree_ref": {
+                      "file_path": "a.conllu",
+                      "sent_id": "one"
+                    },
+                    "token_id": "1"
+                  },
+                  "form": "Swallows"
+                }
+              },
+              {
+                "operation": "tree_text_set",
+                "arguments": {
+                  "tree_ref": {
+                    "file_path": "a.conllu",
+                    "sent_id": "one"
+                  },
+                  "text": "Swallows fly"
+                }
+              }
+            ],
+            "edit_options": {
+              "mode": "apply",
+              "validation_options": {
+                "language_code": "en",
+                "level": 2
+              },
+              "idempotency_key": "canonical-eval-edit"
+            }
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/transaction/status",
+                "value": "completed"
+              },
+              {
+                "pointer": "/result/validation/passed",
+                "value": true
+              },
+              {
+                "pointer": "/result/replayed",
+                "value": true
+              }
+            ]
+          }
+        }
+      ],
+      "allowed_writes": [
+        "a.conllu"
+      ],
+      "expected_files": {
+        "a.conllu": "# sent_id = one\n# text = Swallows fly\n1\tSwallows\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\n\n"
+      }
+    },
+    {
+      "id": "profile-denominators",
+      "skill": "ud-investigate",
+      "prompt": "Count sentences and ordinary words and state scope.",
+      "files": {
+        "a.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}"
+      },
+      "steps": [
+        {
+          "operation": "treebank_profile",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "file_paths": [
+              "a.conllu"
+            ],
+            "options": {}
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/sentence_count",
+                "value": 1
+              },
+              {
+                "pointer": "/result/word_count",
+                "value": 2
+              },
+              {
+                "pointer": "/scope/file_paths",
+                "value": [
+                  "a.conllu"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "pair-reference-roles",
+      "skill": "ud-compare",
+      "prompt": "Compare these identical annotations using explicit reference roles.",
+      "files": {
+        "a.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}",
+        "b.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n"
+      },
+      "steps": [
+        {
+          "operation": "annotation_pair_scores",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "reference_annotation_path": "a.conllu",
+            "comparison_annotation_path": "b.conllu",
+            "options": {}
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/scores/UAS/correct",
+                "value": 2
+              },
+              {
+                "pointer": "/result/scores/UAS/f1",
+                "value": 1
+              }
+            ]
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "registered-rule-snapshot",
+      "skill": "ud-rules-docs",
+      "prompt": "Inspect the local registered English rule snapshot.",
+      "files": {
+        "a.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}"
+      },
+      "steps": [
+        {
+          "operation": "language_rules_report",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "language_code": "en",
+            "peer_treebank_paths": [],
+            "options": {}
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/language_code",
+                "value": "en"
+              }
+            ]
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "local-maintenance",
+      "skill": "ud-release",
+      "prompt": "Check the supplied local maintenance policy without publishing.",
+      "files": {
+        "a.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}"
+      },
+      "steps": [
+        {
+          "operation": "maintenance_report",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "maintenance_policy_path": "maintenance.json",
+            "options": {}
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/status",
+                "value": "complete"
+              },
+              {
+                "pointer": "/result/passed",
+                "value": true
+              }
+            ],
+            "passed": true
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "structural-ambiguity",
+      "skill": "ud-edit",
+      "prompt": "Preview splitting Birds into Bird and s; identify missing annotations.",
+      "files": {
+        "a.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}"
+      },
+      "steps": [
+        {
+          "operation": "token_split",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "ud_context_path": "",
+            "token_ref": {
+              "tree_ref": {
+                "file_path": "a.conllu",
+                "sent_id": "one"
+              },
+              "token_id": "1"
+            },
+            "replacement_words": [
+              "Bird",
+              "s"
+            ],
+            "annotation_map": {},
+            "edit_options": {
+              "mode": "preview"
+            }
+          },
+          "expected": {
+            "execution_status": "completed",
+            "assertions": [
+              {
+                "pointer": "/result/status",
+                "value": "needs_annotation"
+              },
+              {
+                "pointer": "/result/changes",
+                "value": []
+              }
+            ]
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    },
+    {
+      "id": "stale-input-rejected",
+      "skill": "ud-edit",
+      "prompt": "Preview this stale plan and preserve current bytes.",
+      "files": {
+        "a.conllu": "# sent_id = one\r\n# text = Birds fly\r\n1\tBirds\tbird\tNOUN\t_\t_\t2\tnsubj\t_\t_\r\n2\tfly\tfly\tVERB\t_\t_\t0\troot\t_\t_\r\n\r\n",
+        "LICENSE": "MIT\n",
+        "maintenance.json": "{\"required_files\": [\"LICENSE\"]}",
+        "stale.json": "{\"schema_version\": \"ud-plan-v1\", \"actions\": [{\"id\": \"replace\", \"type\": \"replace_file\", \"file_path\": \"a.conllu\", \"before_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"after_sha256\": \"5eeea5ba6d9cf009235f273e139585ec83a2453f421a364a405e2ad676cf6cac\", \"content\": \"# sent_id = one\\r\\n# text = Swallows fly\\r\\n1\\tSwallows\\tbird\\tNOUN\\t_\\t_\\t2\\tnsubj\\t_\\t_\\r\\n2\\tfly\\tfly\\tVERB\\t_\\t_\\t0\\troot\\t_\\t_\\r\\n\\r\\n\", \"depends_on\": []}]}"
+      },
+      "steps": [
+        {
+          "operation": "plan_apply",
+          "arguments": {
+            "working_tree_path": "${WORKSPACE}",
+            "plan_path": "stale.json",
+            "selected_action_ids": [
+              "replace"
+            ],
+            "options": {
+              "mode": "preview"
+            }
+          },
+          "expected": {
+            "execution_status": "rejected",
+            "assertions": [
+              {
+                "pointer": "/result/status",
+                "value": "rejected"
+              }
+            ]
+          }
+        }
+      ],
+      "allowed_writes": [],
+      "expected_files": {}
+    }
+  ],
+  "shared_regressions": {
+    "missing_setup": "tests/protocol/userspace-integration.test.ts",
+    "cancellation": "tests/protocol/continuations.test.ts",
+    "cleanup": "tests/runtime/worker_image/test_oci_worker.py"
+  }
+}

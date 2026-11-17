@@ -1,0 +1,12 @@
+schema_version: 1
+qualification: pending
+targets:
+  - { os: linux, arch: amd64, coordinator: required, runtime: rootless-podman, native_execution: required }
+  - { os: linux, arch: arm64, coordinator: required, runtime: rootless-podman, native_execution: required }
+  - { os: macos, arch: amd64, coordinator: required, runtime: lima-nerdctl, native_execution: required }
+  - { os: macos, arch: arm64, coordinator: required, runtime: apple-container, native_execution: required }
+  - { os: windows, arch: amd64, coordinator: required, runtime: wslc, native_execution: required }
+  - { os: windows, arch: arm64, coordinator: required, runtime: wslc, native_execution: required }
+workers: [linux-amd64, linux-arm64]
+missing_or_skipped_required_evidence: fail
+cross_compilation_is_native_execution: false

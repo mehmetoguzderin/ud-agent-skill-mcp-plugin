@@ -1,0 +1,1249 @@
+{
+  "schema_version": 1,
+  "era": "legacy",
+  "protocol_version": "2025-11-25",
+  "server": {
+    "name": "ud-agent-skill-mcp-plugin",
+    "version": "0.1.0-beta.1"
+  },
+  "capabilities": {
+    "resources": {
+      "listChanged": true
+    },
+    "tools": {
+      "listChanged": true
+    },
+    "tasks": {
+      "list": {},
+      "cancel": {},
+      "requests": {
+        "tools": {
+          "call": {}
+        }
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "treebank_create",
+      "input_sha256": "bfe6ec27f8eb14db536a0824d61d5ab00b15e56557fb0269fa84e86f529381ad",
+      "output_sha256": "15fb4324ee761039649a802b3df63d5024a96b28b58cb0ee596bf6151e43088d",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "workspace_inspect",
+      "input_sha256": "669bebf968b6368ad6b5831cc34ecbc101fedffbbf9b8fe0afacd28d1588a92b",
+      "output_sha256": "9022b7bd916ffe01123bca7c32cc91c762667dc332c421e2e80dc939f0377b9f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "workspace_sync_plan",
+      "input_sha256": "f9fece5b0ac211148dec31eeac2d75707dc323846d9c3d66c7a8e3736c2a3f38",
+      "output_sha256": "4193f27975b95196a8fcdfa24ea47845dbc4ea575554c443a04f64c2fa7ff9c1",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "treebank_snapshot",
+      "input_sha256": "6cfac7dd21959cb64d90ad0560bfd859c40b02847ea777227439c4fb5ded0078",
+      "output_sha256": "9281d0fdace914665cd5713dde16ad544967c977432d379a305aa5efce702965",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "treebank_review",
+      "input_sha256": "6fdfeed55b3ffee9478d54984785a7af8b01f882f2beab640698ba4629334af8",
+      "output_sha256": "16eb24c921ee85415063ceb9d21abc554eed8be9c6cff69570b71332702f25c1",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "treebank_edit",
+      "input_sha256": "0e74083a1958c03398ca32d39c4f4105d8d1d46262c9954160e2dc81d23b39d5",
+      "output_sha256": "5d763e95f37aba789e0645735e1e9eed85ead7d3adebf49f4365b69fa083c512",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_edit",
+      "input_sha256": "f76f8ad7f2bef6f20423e26942438839d2f95f94a19b6f1995c7073a4fccaf54",
+      "output_sha256": "4a2b8e63609fc928ed3f753bdbcb061a565453ca12f7c96581f4146b68818098",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_edit",
+      "input_sha256": "0c5429458f224b0242e72dd2bac5b59a56181767cf7e3a1b5c104d97bf893e18",
+      "output_sha256": "57a004b95b6636c574a39b9aa5a01c4f0847334a795ae48308e5e434bfeed069",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_metadata_edit",
+      "input_sha256": "c97a3f80653fbc5544d3571ce25c504cdd30debd88fc27e362e4001d4054b8e1",
+      "output_sha256": "ea188c904ec6b67f93d25b5e0fe9b720fca0dcabaa8d8f4793dc892feb4fdcb3",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "enhanced_graph_edit",
+      "input_sha256": "b87b054f9d7c4de54142356dfe3eb5316a29d7bc4492b2dbf3bd2a071277067e",
+      "output_sha256": "ce25e4dfe659b8705ce8e6557b8501c8d17ef57431af8d03ef07618684f9cb01",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_list",
+      "input_sha256": "cb576b767c5cd941a28d793aa77e06089deceb65f0258ebd93f346255e94bbf3",
+      "output_sha256": "a97b8a75fc58df1fab48664ac9d22e9d3b8297905fa7ec6260742d0a6e624da5",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_get",
+      "input_sha256": "92785d14057ae91c6de0f84f0e96d2b9ddbc004c4830f5cb815eae069d8721ae",
+      "output_sha256": "49987308636f022e2963df4380493acd256d9f1f0691a502f8838cdcb9dd8525",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_add",
+      "input_sha256": "5c7ab581339d876f45a16df8c4e53792516f57aa52b58e0f7647546842bff430",
+      "output_sha256": "adddfc1ee2914221a94c52effb32744b2d53599910656eb8d11a81ec46200e20",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_replace",
+      "input_sha256": "4a56f1296da97f2fe5e1ea8ff720d7ec52c4c203919465a9e6928a740f186ad7",
+      "output_sha256": "449a69fde0742996ff20c9b8f4788963abf8ad2082e50abd8e604191b10576d0",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_remove",
+      "input_sha256": "c4ca23c612a56d579b25e6ee9790575dc6c9cbacf5855782959cdee736184fe7",
+      "output_sha256": "a71d7c6e3e9973ee2c292afa528da96b2d2a6c9214ba7063089c7f7a7c6a754f",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_copy",
+      "input_sha256": "9ad73f6ed49f96e37a833be7dea6d795bd9c0ac802341452dba9b89c2d6c9314",
+      "output_sha256": "3d20b6d514aa6300bee6521442d94899bd3de30cb166d94380f63df134e7993c",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_move",
+      "input_sha256": "28eb17f5eca07316033d2a584545030bd51f79063aba6050b1e0ac8feefe680e",
+      "output_sha256": "22ea322c87e65bc65ce7a355cb0206aa8d84dfa62f7c4632d76c6d2b01f7117a",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_id_set",
+      "input_sha256": "057cc0d601c5866a95703856f5ecffc2e629c801a12db29f50a7a63a4b7939c4",
+      "output_sha256": "ff7b7dff690d045ca226b0bf6e8c7af7c91ac434a8691945aa5b4f33c01616c7",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_text_set",
+      "input_sha256": "461fdff8b530fe2f25ddeef36980fdc2c8f655e4291f1f1856475836007e16d8",
+      "output_sha256": "fb829f65d1a7d1db4747bd51130666fe1310bb5b0b06a561b4bec0b5d313005e",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_comment_set",
+      "input_sha256": "ff4da098cb82b174939b85e0045135fffbafb02a67e43a8c01b0fadf1b999f74",
+      "output_sha256": "a760099331d89d1e43be39adcc608177ebc84d2f8e5627dd7e55ea6a002c758a",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_comment_remove",
+      "input_sha256": "6b94e528bac36fa97eef4751c627f24c6ab824a9cec546885c515fa83909b93e",
+      "output_sha256": "10d5de232f176f0f6cb2489d3009ec490e6daa3de5f6738bf5184d0bb6d3da58",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_list",
+      "input_sha256": "7753dc574acda115d0085a6b3f41f66256b6f3e96329835c9a34d15f462d549a",
+      "output_sha256": "b1f450cb0b8071e7c47d9c728b3d4379535a27ac1ca7d247a3d4f88954befb94",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_get",
+      "input_sha256": "cf7a5570d0c087c404b28d0031628352aa9b7ee0edecccd945e0eebe807e578b",
+      "output_sha256": "0a18f1aafad06dfd0f70268b762533e57d1fb57ae7f7c55f7bc1a11189809e78",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_add",
+      "input_sha256": "14e46d3a1c2f9040b9223c02b99dbd00dca0e0d97c6d3a3ac606f5c1fc4144c2",
+      "output_sha256": "38d8fe9b85d0e46e3a96a4e68022658dce26ec46e990ca9f5a59dfc283d7601d",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_remove",
+      "input_sha256": "da91ece0f0a441c0548d5ac3cedfdbf848867d602d01040f6c20628cb234a372",
+      "output_sha256": "5bdc27f27c5590da9875626e73cf95c69a4883e456788b5dc2e19edea34dc1fb",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_form_set",
+      "input_sha256": "b94bdcf448fc7a35f8cea5d4150ee5adf08c3f55ba37ff0dc78fd341b6cef27a",
+      "output_sha256": "9b42db7dda8b3d577c92bf845b090e68da6de48a2b6689148c7d45bd1f6d550f",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_lemma_set",
+      "input_sha256": "9b73b4e1c63a7b8988f9157e0190d3a17355270280cc9360f5d3871c84753486",
+      "output_sha256": "adc9f7923f263cf9042689d5264a4e57eef55a228a79fdcd6032e8bb068fcb1f",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_upos_set",
+      "input_sha256": "17cf36454d4ee27f2862e3c75d5a8b167f89bbc8283dcbb42494ca97df437d24",
+      "output_sha256": "a9b709c23d7502d6a433233633a11c1a15627c0ab252a6cbe5d6f664db3c9624",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_xpos_set",
+      "input_sha256": "ca44090548df0330d509d1f9d61306e4b5511cf05ff8baafa2e445d12959b40d",
+      "output_sha256": "4b5e82a957a83a61479e5fad97e5fd46dfb6ee880b4053d5fd10eeceabf64fd5",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_features_replace",
+      "input_sha256": "fef1b787a8dd74bfdea27104177abd54855f24829d1d35e5540dc061090304f3",
+      "output_sha256": "33daa797ea0f9af85a16ec2f07f123d19289588554aaf2a196c4586873f97e52",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_feature_set",
+      "input_sha256": "e3a8b2344a712fcbb6a272efff26b708841df21c9cb0389355e24312fc984d45",
+      "output_sha256": "da9adcf5e6825980845fa17fee7f211976c25b087dddaaa4441ccf121cabd745",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_feature_remove",
+      "input_sha256": "6b5ee0392b2013c3d77b536b0ed3675040c8c5f1444d7f15219b36908e22b045",
+      "output_sha256": "2174a58afeae6e5591a0dd30a45b7b2149cd0f41711ec5073525d869191baa5a",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_misc_replace",
+      "input_sha256": "007ed8c88c366e16df23ce3457220960e86f78eff2842e6428933f9abb4e622e",
+      "output_sha256": "067ac13d509b6802496d94e4605eb2fea9eb2260b9cd36a7f976b2e35292147e",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_misc_set",
+      "input_sha256": "eea4a5edd03882289c0560be862794982acbf6db07c9daefdee038efc44c1dd9",
+      "output_sha256": "b8d8c37eb2ca1504bc3fcd2aa62ff1bb4182a1523d765b7e8f01b7ae6dead1e1",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_misc_remove",
+      "input_sha256": "43bb6c942d0241b3a0daed38a4fe187ba1b2d9bc36639f49f12d981d5fc0c46c",
+      "output_sha256": "1663765a7d6730a94b7e4dc086fc649e88406957fe908c10a1d58faebac6d945",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "basic_dependency_set",
+      "input_sha256": "c38aa9bd5f76f102678d1e471f7847fcae8e9a9099a72f5c3b192ab2e874f815",
+      "output_sha256": "f5e82baa55bf55cf1a1c6f41ab482a5228d1fe67bef777849bb6477c3022fd3d",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "basic_dependency_label_set",
+      "input_sha256": "167c859c5d020eced84668e771562988cebd7a0ed70c3bd730ea4fc86c969aaf",
+      "output_sha256": "22fea928c8847b5550c1e8c5bb3d1dd7905c782cb1641cd1c1966a4dea9694e5",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "enhanced_edge_add",
+      "input_sha256": "ccc763357097d75a38b62f40313e1be608d8c1b81ead34131cc156db37403646",
+      "output_sha256": "0f76d03c6f3c1a8d7ee3970331970801927e0a6c9469d4e24d54dad05b0877c9",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "enhanced_edge_remove",
+      "input_sha256": "f4d41cea75a0c6eec31f9752f5de7f792b1e6913760112de7c4d863843ee6692",
+      "output_sha256": "0a0fde44c6d6369fc62c10c3993d8f82e655b51df6ed4a647857d3650ee15159",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "enhanced_dependencies_replace",
+      "input_sha256": "adbf3695d6c7de8fd926de14685b398662b4e7f5f9b561f4693e96fbe4e3532e",
+      "output_sha256": "2b60084b8724d09bbb9fcc751c2098257aa72d8772af01bbac41a2954e316cde",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "multiword_token_add",
+      "input_sha256": "89a6573f31553b76e8d0cc245d434bbb264245a8f4c3f8eb8cf198bf075d7475",
+      "output_sha256": "395248ddc7b55295582ed4336cf922f10018adfb7590107156b8d7933cf338a9",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "multiword_token_edit",
+      "input_sha256": "80ccef852ac61cbd849d293665013b914ecd6f77a5cd854970d79560f64a3aed",
+      "output_sha256": "3b07ad3ba93b03cbea524083d79a0d3d62c904b426e7b51a71d256cf7b51e511",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "multiword_token_remove",
+      "input_sha256": "bbf521ae36222093e2c2de7c457c690eb33732e427ac72be1d9023eb90791c4e",
+      "output_sha256": "3aff8e3f018dd5c3a9780dedd8e70f47df3bb575e39d81cfe003e369d27e5f92",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "empty_node_add",
+      "input_sha256": "436a2823b5f8eee974293f1ff1f76d2e6404c8e02ccc061ef1096632ae3535d3",
+      "output_sha256": "3df5965c3dcc9689a18b0a9e927471980a015e3498e36fd844dcb6bdd6e7e4c5",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "empty_node_edit",
+      "input_sha256": "0342644c0c6a2644e2a1ac6db92948f72b1b082423dc79e2f2c034a003d6a4f4",
+      "output_sha256": "b23dfdd6bea4ed709cce87faf97d05e97565ea92f7995f7f45aa0e2c4d23d117",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "empty_node_remove",
+      "input_sha256": "bf7b345c9a576d470bde1d79bac39cc4d7399f47b127f325ff344a6d532b8bac",
+      "output_sha256": "e15adc6f1c24e1ac96ed64ba99c50e5e58c95f4760c2613781d47114eb297ec9",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_reindex",
+      "input_sha256": "6c3e75bb0938c3bd65a368bc621979f949446b71bbe1f975836a139abbfa0e3c",
+      "output_sha256": "8478031b2ae33b94e4334d569acaeb082f03471313f1a6f0863a91471e6e5c2e",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "validation_report",
+      "input_sha256": "67b942cc5846634a83c2c4d5677c0ded79bdad3eb66ca5fee9a93900eeb518c9",
+      "output_sha256": "be54659039f91e6e15970966a03215b9114dbf2ca705b302525dea02c26b440c",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "sentence_validation_report",
+      "input_sha256": "76886cc3d16723fd386cd035d14073837165904c8e4914521bf519d81f1bb438",
+      "output_sha256": "6193d153448d03930906e57a8237dadbbcf7b8e2de1be239820884f19eccfab5",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "project_consistency_report",
+      "input_sha256": "4f605f6e764bc11c951d91bb7a21323396bc65ff6c7aebf89203c20f30b6a506",
+      "output_sha256": "346a6ba4ec1431b8dfe789bbb54453e4298133fa1b8502a9196759aeafbff15f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "fix_plan",
+      "input_sha256": "b927e7f32ca467eb3f3fc28b50af5b40c91e321aa6351c24277b3a38f56d7e88",
+      "output_sha256": "316a5e872f54d0515336ab1ac07c489a87001aa351de1ab8cd027cc1eeae401d",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "plan_apply",
+      "input_sha256": "1ca1489aeb2a9c06603faa516ccc6d6b379931926f0f45795460ee0e8e21044e",
+      "output_sha256": "1c9e2a4cfbec8c79dd5c518fc47604494ddc9e2503b87e1b0324ffe4286a0c61",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "annotation_import_plan",
+      "input_sha256": "019e4e29453cfc582754974c48d13fa7bf37100e9b49e9e24fd4e2cf2f0dc051",
+      "output_sha256": "b54018922b4b8d2b23b8509e7d97c6b272cce16f9b74704a319395bf032ac057",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_alignment_report",
+      "input_sha256": "73ace6cba4daf6bb9b05e514320d7419b96ff9928af7fdbe82984b52ba3ca7cf",
+      "output_sha256": "afc377b3877320ba515fabd7a511816dc15b4519b75d54675cc11bd9c76d1307",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tokenization_change_plan",
+      "input_sha256": "da6dd4ff3254ade0b9c7a0532eb6c1984b6cbad0f6565d400c9e767120d75ec7",
+      "output_sha256": "f45c9584c2808d9a5881556cc5d46492d1c62c9e7606841c1d16c53bfcd65389",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "sentence_segmentation_change_plan",
+      "input_sha256": "7ee5dbc16578aaa34bad491b198ee3c0bc7e25ffe39b760f89e2b8d2d82b78bd",
+      "output_sha256": "bf3e5806abc97a64bf2fed308d2d3c7d0b9385351b7bb0228b0ffbb99d332e83",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "text_content_compare",
+      "input_sha256": "176e20f69accc580f16664d5a5125dcb1d2ad5faf4cf6c44302c44609dd7921d",
+      "output_sha256": "4a3fa25fff5b1e4b864d5188b8a634dfa82ae796a15ef4e7cd3e991bfb53b98f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "sentence_batch_extract",
+      "input_sha256": "eae882ceb910685c18bd0e887e142e1b216e304de236d8cd4dfd12e8b5dd43b8",
+      "output_sha256": "238bc4b64b1c364847eab78887a9bbab15b0dc5811a85ad4f4efd9eeb8e3d98f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dataset_split_plan",
+      "input_sha256": "76a49f22d53eb2ef0d48ced74e5f9ef9bd982805d1dbc19ab651ae3e13242a38",
+      "output_sha256": "215bcc8f1b7f68eeec3fa13a52ad9ed186b2d983a06c7f5a48b52c6457aca1e9",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "format_convert",
+      "input_sha256": "733e4d4bd2c360ff3fbdbf4ad656895d762302e35471043728447d0aebdd5975",
+      "output_sha256": "ca44710756fd0489fccbd36bf88dea4efe6434d5f96cec6ff1c0133c4710b8d0",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tagset_conversion_plan",
+      "input_sha256": "72d933aa725d5df05175c556c1f58e822cebd7b7354edab75becc243cb65b3b5",
+      "output_sha256": "d7d250db9bb11aa3e19e033ecce80eed950a61d99495b5a5232bfc341d868c91",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "treebank_profile",
+      "input_sha256": "89b9b83a16dcb13d924742fd6dea7c76d58ace240d1787b73aaee436af1b12a1",
+      "output_sha256": "ec62cf1e376107913549f3c672ebaaf598a4e4d41e7f261d99aee75eb44a4039",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "lexeme_pos_report",
+      "input_sha256": "9804cb9ce1d0e3bf873cea98f2363e95329a5fbf54fe618337eeb34a83f425b9",
+      "output_sha256": "23ae1944ed59b6efacef713d62329c00a6033aadf9ee9a178d188282097eb392",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "observed_paradigms",
+      "input_sha256": "22923d4c5db31a192027a1e97de6b5e41ba558dce924d43f5de7bdeaff9b2352",
+      "output_sha256": "3d6de11047f2b5c6e50faf740f15b6a010ec04200f57baa3dca1c56cf21aa40f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "relation_profile",
+      "input_sha256": "952328013d877e01855de6c34eccb45cea50a3003defee285799919c994575fa",
+      "output_sha256": "ddd0be3d1b5d604b42e7d119d5625cb0d7413685deaafca5a0203c33a5ba0d1f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "feature_agreement_report",
+      "input_sha256": "b3556a16688d83504970eaff795e33bf748f5dc1c773885933c336592acda24c",
+      "output_sha256": "057da7b14d37da3dde9201f2b30babc65b7ac6f0888a7afd8b0ff50df5907f88",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dependency_order_profile",
+      "input_sha256": "8131c1fc3121e84a6bf06e03f71a1116d0144f8199a2d63a645d1bee3ef0e569",
+      "output_sha256": "ee61bd31affd83dac75c7caa7584dba321bf1fd5cfc045f008785871f3539f7a",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "multiword_token_patterns",
+      "input_sha256": "bb193743c1d78920dfc1d8df82bb04d852f084babc8ae4f3b7064d7ba50d372a",
+      "output_sha256": "c4e38a845d74735351daeeff8b10b1053d7684633b0873c17653fbbc372e2ca7",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "proper_name_sequences",
+      "input_sha256": "aa9c1a38ffa760de3d04dba52f1eb3603daf7a3b7e524c432178993435d4bb99",
+      "output_sha256": "db18ecb105fbd6e42dee93d407a82b8935750f89990c624d97259a46b69aae8f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "script_composition_report",
+      "input_sha256": "0c51084e031939740c9c8d8b0e4db173b7f36aa0895cd611a177bdcb9dcea54f",
+      "output_sha256": "b556f5b77a8410e16b605278dd79d701d1a14c9593b4180a5d1705d595af3478",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "english_relative_clause_classify",
+      "input_sha256": "3cc8fb5448ea85a8c4ed38ffa446c8779fe5aff66833f18c0422fd88a38025fd",
+      "output_sha256": "6b5da862fe7f9314290ff13bfa0cceebeb7f050f4be2d0bbf233ca407e1b9eec",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "conventions_compare",
+      "input_sha256": "09df6ff9c6951bf6fccad4eb274e08c32688902dacdb3a672c65187219a233f4",
+      "output_sha256": "50bd1029a20d853dde914b4429252dbdff570061b928420cfc2e12c06989b8e3",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "feature_value_report",
+      "input_sha256": "7c2cf9c8182de02d5774030ddaff77d511ca298d673e9ab5c1e36a3f76778b5c",
+      "output_sha256": "dcc403f9704cb9e621f451f74e95c060defa91aa6b47f1c858156928d6b43686",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "duplicate_report",
+      "input_sha256": "1816f9b0bf13d128281d14cd2cfae0fd1b841e879f07e88263de3fa5c26de9fe",
+      "output_sha256": "9dc4e41aa8f10d57f92ecae88643a0ce8674e34db93ff38fe36746247233716b",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "overlap_report",
+      "input_sha256": "eacdcf44ce37ba0bfe45dc711c8ea7bfe128d2bd948b28bbcf616d1edd5a991b",
+      "output_sha256": "a2bfeed4c8ada189b7f49e81621a22d0c27792beff818972939c5f3e8a2a55da",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "enhanced_graph_report",
+      "input_sha256": "ea86ee6cb82e8ef4251bb2fb8c2e8f5071135aeda2f969ae69a9a4effdf2bcaf",
+      "output_sha256": "9632778584812161ac920df784e973ebf6f7e2bfc5a6f9fb8167affb2c92a1d4",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "enhanced_edge_explanations",
+      "input_sha256": "651a096ba04aca07d0517e99c012815d196132f33701192a9f94235100dba62b",
+      "output_sha256": "3e630098155f138929d453bef42e5efbc19b709c53930aa01bbd16fbf372480c",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "enhanced_empty_node_collapse_plan",
+      "input_sha256": "0aec88f3e9ca0ebfd83bc87b6922973ea1dc152e79995a72efdfe0a7ede6ad91",
+      "output_sha256": "6fb292257bd636371722e59d8d8a1ac38e63d684775daa800ab8a5e6c67ac0f3",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "parallel_corpus_report",
+      "input_sha256": "3fc04eab5ba73dd3e2b7adb5a1a2d331bccd8f6f360713e477a6e2697b89a3e9",
+      "output_sha256": "49cfd5f6582df6c8eecbd6c1518670a169ec4067bf140ebdcca7a129ba5f342a",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "bible_passage_concordance",
+      "input_sha256": "904b65cb0584df2174288ed1aaf438f44fd6702095cb1572174de243b8866375",
+      "output_sha256": "abae0d9703129cf63498a6232ce515fec4aaccc0a9226aaa69c445039d1d5c7d",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "predictions_evaluate",
+      "input_sha256": "b7f2c4c76a3efc5fe616eb04c3c375263678945c5a5cd23d5931fe378c3cc9c4",
+      "output_sha256": "71cae2480b3f5b2124aae6664ec2b2d0b55ec09d0f330d9ae336f330698f8d00",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "annotation_pair_scores",
+      "input_sha256": "88e3d912a4da356708379cf8082ffa54f1baa1969dc37e94c4abd205c7992788",
+      "output_sha256": "6ca9755036a22492bd3716d7ff7b46ec6825c12dbd074b3c5f82bfbba8231a57",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "changes_review",
+      "input_sha256": "8be67df73caceb916d99956f0c0466c43673241762db653774e499708deb11a9",
+      "output_sha256": "755cf6725111cb2a6eca59157b2969ca9c57654155aee18f368b35e03cd7c113",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "contribution_plan",
+      "input_sha256": "23b3efae9e7fbee155483cca584f35365aa3399e691682b6d369c6f6fef4ad07",
+      "output_sha256": "be05a3cc2ffef0a69639dbe523d14d643f154964a789a8e95d6539dbee181571",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "language_rules_report",
+      "input_sha256": "b46807688fe1a6d95044d44ac83055025204423c298ff475148fec5bdf307719",
+      "output_sha256": "349fdb07aed087de5a3f53ac002248223ef2fba1d1a926410e56478de680c03b",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "language_rule_change_plan",
+      "input_sha256": "d0930ae8048886c91729b9fbacf58ef6848123d18aecf55640bfb1530333338b",
+      "output_sha256": "f172aadfb1502ead6b0aef782748676b5236e0211257166f72608203fb420c20",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "language_rule_impact_report",
+      "input_sha256": "d855e72b883d5acd10c8765859773c4eeeb306304abb7e2e50b8857577dd6dc2",
+      "output_sha256": "5c0bfc1c2b9ffc20d50fde21602e408a5f5c16ff6184a0893cdab5ceb8d8adbc",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "metadata_change_plan",
+      "input_sha256": "6816df04880fd9e926d043ca494b3f0fc6e1ba5dc29fa061355e556c79cccd9b",
+      "output_sha256": "016754aa0c641b7e2e32163d2725238788a4523fceca6d35142bb3e6041c6c8c",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "documentation_preview",
+      "input_sha256": "cee933f6d89507ad61463ff885dc94133603f2dcab4c620c0350acc31604e4ec",
+      "output_sha256": "a9041261bde04997cf7ff4d207e8ec8d5ed472e158b5da00b24b4895ec18107a",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "guideline_example_preview",
+      "input_sha256": "eed83bea24c83595706ed6de730b801b9e0af42a05c419c2028e4c7b84e65bb4",
+      "output_sha256": "c1f35fccf412a8fd87bbd78198a2443fe1a097385a3551aba448cda545add0da",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "sentence_render",
+      "input_sha256": "f5b12159d2bf5852494e4cd7fcfab698582fb5f2e56350a3511064770f967c11",
+      "output_sha256": "51a3ff35c91b296966c517b5583095bba41bfff77dc812fedcad2b545d60b8ba",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "release_plan",
+      "input_sha256": "34e8577f2cc2348b85c81c2ef8363025f753e179ff8a6ca00eaeff8d867a2b54",
+      "output_sha256": "78f109e295f4961d97f77cea3f80c433e2839d4f6f2a99bd15911c475a0d381e",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "release_candidate_build",
+      "input_sha256": "6c6d46cef4158f59af26cc42c321b04f14f2fd9e49fbc389f1cb7a3a032d9df6",
+      "output_sha256": "408e421a5397d578943ed24dd76d05f78d0d4885578ae47e3e96dececddc6c57",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "release_deposit_prepare",
+      "input_sha256": "fecf6ea3a4eaad477b868884a7953681369a1465265a3cee420c047f21d256f5",
+      "output_sha256": "0e3a48c1f7673016e6ff493388a380462c1eb933d80ce925a3b6a092fa9dbc83",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "maintenance_report",
+      "input_sha256": "4d2ef6b0de73779a152fd0ebbb990b3b3bdba42a46c0379239ddd4b6a0a1c4b4",
+      "output_sha256": "86984ec81f0087db5cfa5af3b0c33ddd0f090f0a2fd467b4f19169fab67d454f",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "handover_package_build",
+      "input_sha256": "5d097f93f7f0f2331c6de90c7448593ff9314e186975159a05769a328011d616",
+      "output_sha256": "44b706ca428f6570dcc804756ccd2ce470c235c52ca55ea200d9ce037e75a811",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "treebank_rename_plan",
+      "input_sha256": "894a221af6a02965957fc56e07fcc1a9859710f6361643c4553184c923f54c45",
+      "output_sha256": "5f41d4e565cb155425f11ca02b9ee3b15f6662152e7d09e24294048e518e4b01",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "star_rating_report",
+      "input_sha256": "4f61651c0a6b8f5f56123b41cc73db77b7de7390823b5e4a93d54872c626cb0a",
+      "output_sha256": "cc897111ce6b43369df6597507b032b1d02bbfafd09437b5705aa3a315901e95",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "token_split",
+      "input_sha256": "bc574e808b0874c9be5131655395a2d50a75cc2d020664c0a7dd5b79c39a8de4",
+      "output_sha256": "94b7be9b5dd682427d8856bdac2062bf8fcaaf94caa19a2966f771f8c83e38cc",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tokens_merge",
+      "input_sha256": "74cadcf346a08609439a51f009191ae8a20c1d456e5df28313055d8d52a65b85",
+      "output_sha256": "7c2ac1a57bc611a58c0aa359a01ebee3ac8f3d461de5b8b07747c0ac3a6766b8",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "tree_split",
+      "input_sha256": "61cb468c7aa7a4ac847869e0ce4fa8327402380ae777ff8c2ca5602246ed4eae",
+      "output_sha256": "0cc9140f275988014dbac9293a22c5da020f248a5ac77f560a8b2b52578d07b2",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "trees_merge",
+      "input_sha256": "f150fa5219df1dc66eb47f08353809d270fd55486f67c921f11a05a5b9ce02b9",
+      "output_sha256": "9a62fd6bd88249f764e1522d0bb8e4c6986eae2dec1af3d00d0ace1f9bbd17a7",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "check_ud_environment",
+      "input_sha256": "6fbe67a6dd7e67ff440d1cf51575eb650487b508c647a93f211f41e6a56c5d2f",
+      "output_sha256": "baae2e199c7821096eaf456cd987d381edaf57d3e37b05b641cd0c8b985a36ab",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "setup_ud_environment",
+      "input_sha256": "275ce6d1e0aa1f3d18966e02db74c1a17ca87f7b052be43d9cb142a195a97e69",
+      "output_sha256": "bf6751f20b01551743741a09ee2370d7b2098fe40e20676bcb9a2de4d2eca37e",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    }
+  ],
+  "resources": {
+    "resources": [
+      {
+        "name": "catalog",
+        "title": "Universal Dependencies operation catalog",
+        "uri": "ud://catalog/v1",
+        "description": "The installed domain and environment operation inventory.",
+        "mimeType": "application/json"
+      }
+    ]
+  },
+  "resource_templates": {
+    "resourceTemplates": [
+      {
+        "name": "reports",
+        "title": "Authorized reports",
+        "uriTemplate": "ud://reports/{id}{?cursor}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "reports-base",
+        "title": "Authorized reports",
+        "uriTemplate": "ud://reports/{id}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "plans",
+        "title": "Authorized plans",
+        "uriTemplate": "ud://plans/{id}{?cursor}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "plans-base",
+        "title": "Authorized plans",
+        "uriTemplate": "ud://plans/{id}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "contexts",
+        "title": "Authorized contexts",
+        "uriTemplate": "ud://contexts/{id}{?cursor}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "contexts-base",
+        "title": "Authorized contexts",
+        "uriTemplate": "ud://contexts/{id}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "operations",
+        "title": "Authorized operations",
+        "uriTemplate": "ud://operations/{id}{?cursor}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "operations-base",
+        "title": "Authorized operations",
+        "uriTemplate": "ud://operations/{id}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "artifacts",
+        "title": "Authorized artifacts",
+        "uriTemplate": "ud://artifacts/{id}{?cursor}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      },
+      {
+        "name": "artifacts-base",
+        "title": "Authorized artifacts",
+        "uriTemplate": "ud://artifacts/{id}",
+        "description": "Authorized product resource; immutable report cursors and workspace grants are verified."
+      }
+    ]
+  },
+  "prompts": "intentionally-not-advertised",
+  "protocol_stderr": ""
+}

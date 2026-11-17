@@ -1,0 +1,326 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Tools::Mock - Class/Instance mocking for Test2.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Tools::Mock - Class/Instance mocking for Test2.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#EXPORTS">EXPORTS</a>
+    <ul>
+      <li><a href="#DEFAULT">DEFAULT</a></li>
+      <li><a href="#BY-REQUEST">BY REQUEST</a>
+        <ul>
+          <li><a href="#DEFINING-MOCKS">DEFINING MOCKS</a></li>
+          <li><a href="#BUILDING-MOCKS">BUILDING MOCKS</a></li>
+          <li><a href="#METHOD-GENERATORS">METHOD GENERATORS</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#MOCK-CONTROL-OBJECTS">MOCK CONTROL OBJECTS</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Tools::Mock - Class/Instance mocking for Test2.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Mocking is often an essential part of testing. This library covers some of the most common mocking needs. This plugin is heavily influenced by <a>Mock::Quick</a>, but with an improved API. This plugin is also intended to play well with other plugins in ways <a>Mock::Quick</a> would be unable to.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>my $mock = mock &#39;Some::Class&#39; =&gt; (
+    track =&gt; $BOOL, # Enable/Disable tracking on subs defined below
+
+    add =&gt; [
+        new_method =&gt; sub { ... },
+    ],
+    override =&gt; [
+        replace_method =&gt; sub { ... },
+    ],
+    set =&gt; [
+        replace_or_inject =&gt; sub { ... },
+    ],
+
+    track =&gt; $bool, # enable/disable tracking again to affect mocks made after this point
+    ..., # Argument keys may be repeated
+);
+
+Some::Class-&gt;new_method();        # Calls the newly injected method
+Some::Class-&gt;replace_method();    # Calls our replacement method.
+
+$mock-&gt;override(...) # Override some more
+
+$mock = undef; # Undoes all the mocking, restoring all original methods.
+
+my $simple_mock = mock {} =&gt; (
+    add =&gt; [
+        is_active =&gt; sub { ... }
+    ]
+);
+
+$simple_mock-&gt;is_active();        # Calls our newly mocked method.</code></pre>
+
+<h1 id="EXPORTS">EXPORTS</h1>
+
+<h2 id="DEFAULT">DEFAULT</h2>
+
+<dl>
+
+<dt id="mock">mock</dt>
+<dd>
+
+<p>This is a one-stop shop function that delegates to one of the other methods depending on how it is used. If you are not comfortable with a function that has a lot of potential behaviors, you can use one of the other functions directly.</p>
+
+</dd>
+<dt id="mocks-mocked-object">@mocks = mocked($object)</dt>
+<dd>
+
+</dd>
+<dt id="mocks-mocked-class">@mocks = mocked($class)</dt>
+<dd>
+
+<p>Check if an object or class is mocked. If it is mocked the <code>$mock</code> object(s) (<a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Mock.html">Test2::Mock</a>) will be returned.</p>
+
+</dd>
+<dt id="mock-mock-class">$mock = mock $class =&gt; ( ... );</dt>
+<dd>
+
+</dd>
+<dt id="mock-mock-instance">$mock = mock $instance =&gt; ( ... )</dt>
+<dd>
+
+</dd>
+<dt id="mock-mock-class-class">$mock = mock &#39;class&#39;, $class =&gt; ( ... )</dt>
+<dd>
+
+<p>These forms delegate to <code>mock_class()</code> to mock a package. The third form is to be explicit about what type of mocking you want.</p>
+
+</dd>
+<dt id="obj-mock">$obj = mock()</dt>
+<dd>
+
+</dd>
+<dt id="obj-mock1">$obj = mock { ... }</dt>
+<dd>
+
+</dd>
+<dt id="obj-mock-obj">$obj = mock &#39;obj&#39;, ...;</dt>
+<dd>
+
+<p>These forms delegate to <code>mock_obj()</code> to create instances of anonymous packages where methods are vivified into existence as needed.</p>
+
+</dd>
+<dt id="mock-mock-sub">mock $mock =&gt; sub { ... }</dt>
+<dd>
+
+</dd>
+<dt id="mock-method">mock $method =&gt; ( ... )</dt>
+<dd>
+
+<p>These forms go together, the first form will set <code>$mock</code> as the current mock build, then run the sub. Within the sub you can declare mock specifications using the second form. The first form delegates to <code>mock_build()</code>.</p>
+
+<p>The second form calls the specified method on the current build. This second form delegates to <code>mock_do()</code>.</p>
+
+</dd>
+</dl>
+
+<h2 id="BY-REQUEST">BY REQUEST</h2>
+
+<h3 id="DEFINING-MOCKS">DEFINING MOCKS</h3>
+
+<dl>
+
+<dt id="obj-mock_obj">$obj = mock_obj( ... )</dt>
+<dd>
+
+</dd>
+<dt id="obj-mock_obj1">$obj = mock_obj { ... } =&gt; ( ... )</dt>
+<dd>
+
+</dd>
+<dt id="obj-mock_obj-sub">$obj = mock_obj sub { ... }</dt>
+<dd>
+
+</dd>
+<dt id="obj-mock_obj-...-sub">$obj = mock_obj { ... } =&gt; sub { ... }</dt>
+<dd>
+
+<p>This method lets you quickly generate a blessed object. The object will be an instance of a randomly generated package name. Methods will vivify as read/write accessors as needed.</p>
+
+<p>Arguments can be any method available to <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Mock.html">Test2::Mock</a> followed by an argument. If the very first argument is a hashref then it will be blessed as your new object.</p>
+
+<p>If you provide a coderef instead of key/value pairs, the coderef will be run to build the mock. (See the <a href="#BUILDING-MOCKS">&quot;BUILDING MOCKS&quot;</a> section).</p>
+
+</dd>
+<dt id="mock-mock_class-class">$mock = mock_class $class =&gt; ( ... )</dt>
+<dd>
+
+</dd>
+<dt id="mock-mock_class-instance">$mock = mock_class $instance =&gt; ( ... )</dt>
+<dd>
+
+</dd>
+<dt id="mock-mock_class-...-sub">$mock = mock_class ... =&gt; sub { ... }</dt>
+<dd>
+
+<p>This will create a new instance of <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Mock.html">Test2::Mock</a> to control the package specified. If you give it a blessed reference it will use the class of the instance.</p>
+
+<p>Arguments can be any method available to <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Mock.html">Test2::Mock</a> followed by an argument. If the very first argument is a hashref then it will be blessed as your new object.</p>
+
+<p>If you provide a coderef instead of key/value pairs, the coderef will be run to build the mock. (See the <a href="#BUILDING-MOCKS">&quot;BUILDING MOCKS&quot;</a> section).</p>
+
+</dd>
+</dl>
+
+<h3 id="BUILDING-MOCKS">BUILDING MOCKS</h3>
+
+<dl>
+
+<dt id="mock_build-mock-sub">mock_build $mock =&gt; sub { ... }</dt>
+<dd>
+
+<p>Set <code>$mock</code> as the current build, then run the specified code. <code>$mock</code> will no longer be the current build when the sub is complete.</p>
+
+</dd>
+<dt id="mock-mock_building">$mock = mock_building()</dt>
+<dd>
+
+<p>Get the current building <code>$mock</code> object.</p>
+
+</dd>
+<dt id="mock_do-method-args">mock_do $method =&gt; $args</dt>
+<dd>
+
+<p>Run the specified method on the currently building object.</p>
+
+</dd>
+</dl>
+
+<h3 id="METHOD-GENERATORS">METHOD GENERATORS</h3>
+
+<dl>
+
+<dt id="sub-mock_accessor-field">$sub = mock_accessor $field</dt>
+<dd>
+
+<p>Generate a read/write accessor for the specified field. This will generate a sub like the following:</p>
+
+<pre><code>$sub = sub {
+    my $self = shift;
+    ($self-&gt;{$field}) = @_ if @_;
+    return $self-&gt;{$field};
+};</code></pre>
+
+</dd>
+<dt id="sub-mock_getter-field">$sub = mock_getter $field</dt>
+<dd>
+
+<p>Generate a read only accessor for the specified field. This will generate a sub like the following:</p>
+
+<pre><code>$sub = sub {
+    my $self = shift;
+    return $self-&gt;{$field};
+};</code></pre>
+
+</dd>
+<dt id="sub-mock_setter-field">$sub = mock_setter $field</dt>
+<dd>
+
+<p>Generate a write accessor for the specified field. This will generate a sub like the following:</p>
+
+<pre><code>$sub = sub {
+    my $self = shift;
+    ($self-&gt;{$field}) = @_;
+};</code></pre>
+
+</dd>
+<dt id="pairs-mock_accessors-qw-name1-name2-name3">%pairs = mock_accessors(qw/name1 name2 name3/)</dt>
+<dd>
+
+<p>Generates several read/write accessors at once, returns key/value pairs where the key is the field name, and the value is the coderef.</p>
+
+</dd>
+<dt id="pairs-mock_getters-qw-name1-name2-name3">%pairs = mock_getters(qw/name1 name2 name3/)</dt>
+<dd>
+
+<p>Generates several read only accessors at once, returns key/value pairs where the key is the field name, and the value is the coderef.</p>
+
+</dd>
+<dt id="pairs-mock_setters-qw-name1-name2-name3">%pairs = mock_setters(qw/name1 name2 name3/)</dt>
+<dd>
+
+<p>Generates several write accessors at once, returns key/value pairs where the key is the field name, and the value is the coderef.</p>
+
+</dd>
+</dl>
+
+<h1 id="MOCK-CONTROL-OBJECTS">MOCK CONTROL OBJECTS</h1>
+
+<pre><code>my $mock = mock(...);</code></pre>
+
+<p>Mock objects are instances of <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Mock.html">Test2::Mock</a>. See it for their methods.</p>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Suite can be found at <a href="https://github.com/Test-More/test-more/">https://github.com/Test-More/test-more/</a>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <a href="https://dev.perl.org/licenses/">https://dev.perl.org/licenses/</a></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Tools::Mock - Class/Instance mocking for Test2.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

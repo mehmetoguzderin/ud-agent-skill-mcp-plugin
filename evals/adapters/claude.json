@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "host": "claude",
+  "configuration": ".mcp.json",
+  "format": "json",
+  "server_key": "mcpServers",
+  "skills": ".claude/skills",
+  "connect_host": "claude-code",
+  "model_execution": "external-not-run",
+  "activation": "Use /SKILL_NAME for the selected treebank."
+}

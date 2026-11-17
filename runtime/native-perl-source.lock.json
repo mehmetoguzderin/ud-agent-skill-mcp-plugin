@@ -1,0 +1,24 @@
+{
+  "configuration": [
+    "-des",
+    "-Duserelocatableinc",
+    "-Uuseshrplib",
+    "-Dman1dir=none",
+    "-Dman3dir=none"
+  ],
+  "license": [
+    "perl_5"
+  ],
+  "name": "perl-5.44.0",
+  "schema_version": 1,
+  "sha256": "3b855066b92491cb40e86affb1ca57d1a388aa43e51b91c7806a32c2f65f96c3",
+  "state": "frozen-inputs",
+  "url": "https://cpan.metacpan.org/authors/id/L/LE/LEONT/perl-5.44.0.tar.gz",
+  "version": "5.044000",
+  "windows_configuration": [
+    "CCTYPE=MSVC145",
+    "USE_NO_REGISTRY=define",
+    "DEFAULT_INC_EXCLUDES_DOT=define",
+    "USE_SITECUST=undef"
+  ]
+}

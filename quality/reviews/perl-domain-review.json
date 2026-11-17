@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent domain-completion agent /root/domain_completion",
+  "review_scope": "Fresh independent inspection of current graph bridge and exact mutation definitions after outer execution and read-budget hardening. Previous source proofs are superseded; this file accepts only the six listed definitions.",
+  "sources": {
+    "workers/ud/src/ud_agent/perl/graph_bridge.pl": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1"
+  },
+  "reviews": [
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#276:integer_boundary_1",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "9f126d47c01d4d6d4a1bc6ce9ba7cbaac89a9e15b07f8205acab2b3dc4dc6de8",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 276,
+        "end": 277,
+        "original": "0",
+        "replacement": "1"
+      },
+      "equivalent": true,
+      "reason": "JSON scalar acceptance changes only an intermediate decode: the next HASH-reference guard still returns exactly invalid_json for all non-object values. All bridge outputs remain objects, so response encoding is identical. The new outer warning handler does not alter this guard outcome."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1401:integer_boundary_-1",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "8cecedd45b57e56868f78abee80f105f83ad3960b1688612f2b2ee90bdc22871",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_-1",
+        "start": 1401,
+        "end": 1402,
+        "original": "1",
+        "replacement": "0"
+      },
+      "equivalent": true,
+      "reason": "Root node0 cannot enter the duplicate counter because requested IDs must begin1-9. Its hash value is observed only through exists and keys, never numeric truth. Values0,1,2 produce identical graph construction/output and fail codes."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1401:integer_boundary_1",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "dda694865c63ae937f21279de17ece481aa61be06128b67853b79394f83022e7",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 1401,
+        "end": 1402,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "Root node0 cannot enter the duplicate counter because requested IDs must begin1-9. Its hash value is observed only through exists and keys, never numeric truth. Values0,1,2 produce identical graph construction/output and fail codes."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1541:operator_++",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "2ea015da0936f39c6d56af12a7baa786c72d95d93bbf25833f86f5bec7a98a5f",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_++",
+        "start": 1541,
+        "end": 1543,
+        "original": "++",
+        "replacement": "--"
+      },
+      "equivalent": true,
+      "reason": "On a first valid node ID, postincrement and postdecrement each returnundef/0 as false without an uninitialized warning; the next duplicate returns+1 or-1 as true and exits immediately. Stored counts are thereafter observed only by exists/keys. Bound256 prevents arithmetic overflow; the new outer warning guard does not distinguish these operations."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#2252:operator_++",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "e603a3e08f6babbfe92dba33c9d5d66ccbe3bfe3a5c66fd20df53770c2534b78",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_++",
+        "start": 2252,
+        "end": 2254,
+        "original": "++",
+        "replacement": "--"
+      },
+      "equivalent": true,
+      "reason": "Each unique edge counter initially returnsundef/0 as false; the next identical edge returns+1 or-1 as true and exits with duplicate_edge. The numeric count has no other observer, and1024-edge bound excludes overflow. Neither operation warns on undefined hash counters."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#2518:integer_boundary_1",
+      "source_sha256": "f93d195629663f46f39f02a1320f37a747a33b45d0700a2e7a5b103d30e90ed1",
+      "definition_sha256": "ad4eb199fbd6c146d2aa8b997a559691e886d3915e60decd5ad3be862608aaf9",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 2518,
+        "end": 2519,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "The import eval return value is used only as Perl truth before or fail. Successful require operations followed by1 or2 are true; exceptions remain false/undef. The surrounding outer eval does not consume this numeric value."
+    }
+  ]
+}

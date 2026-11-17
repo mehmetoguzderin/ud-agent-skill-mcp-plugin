@@ -1,0 +1,573 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Time::Piece - Object Oriented time objects</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Time::Piece - Object Oriented time objects</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#Public-Methods">Public Methods</a>
+    <ul>
+      <li><a href="#Time-Components">Time Components</a></li>
+      <li><a href="#Date-Components">Date Components</a></li>
+      <li><a href="#Day-and-Month-Names">Day and Month Names</a></li>
+      <li><a href="#Formatted-Date-Time-Output">Formatted Date/Time Output</a>
+        <ul>
+          <li><a href="#strftime-Format-Flags">strftime Format Flags</a></li>
+        </ul>
+      </li>
+      <li><a href="#Epoch-and-Calendar-Calculations">Epoch and Calendar Calculations</a></li>
+      <li><a href="#Timezone-and-DST">Timezone and DST</a></li>
+      <li><a href="#Utility-Methods">Utility Methods</a></li>
+      <li><a href="#Global-Configuration">Global Configuration</a></li>
+      <li><a href="#Parsing">Parsing</a></li>
+    </ul>
+  </li>
+  <li><a href="#Date-Calculations">Date Calculations</a>
+    <ul>
+      <li><a href="#Adding-Months-and-Years">Adding Months and Years</a></li>
+    </ul>
+  </li>
+  <li><a href="#Truncation">Truncation</a></li>
+  <li><a href="#Date-Comparisons">Date Comparisons</a></li>
+  <li><a href="#Date-Parsing">Date Parsing</a>
+    <ul>
+      <li><a href="#Basic-Usage">Basic Usage</a></li>
+      <li><a href="#Supported-Format-Flags">Supported Format Flags</a></li>
+      <li><a href="#GMT-vs-Local-Time">GMT vs Local Time</a></li>
+      <li><a href="#Timezone-Parsing-with-z-and-Z">Timezone Parsing with %z and %Z</a>
+        <ul>
+          <li><a href="#Numeric-Offsets-z">Numeric Offsets (%z)</a></li>
+          <li><a href="#Timezone-Names-Z">Timezone Names (%Z)</a></li>
+        </ul>
+      </li>
+      <li><a href="#Handling-Partial-Dates">Handling Partial Dates</a></li>
+      <li><a href="#Locale-Considerations">Locale Considerations</a></li>
+    </ul>
+  </li>
+  <li><a href="#Global-Overriding">Global Overriding</a></li>
+  <li><a href="#CAVEATS">CAVEATS</a>
+    <ul>
+      <li><a href="#Setting-ENV-TZ-in-Threads-on-Win32">Setting $ENV{TZ} in Threads on Win32</a></li>
+      <li><a href="#Use-of-epoch-seconds">Use of epoch seconds</a></li>
+    </ul>
+  </li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#BUGS">BUGS</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Time::Piece - Object Oriented time objects</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use Time::Piece;
+
+my $t = localtime;
+print &quot;Time is $t\n&quot;;
+print &quot;Year is &quot;, $t-&gt;year, &quot;\n&quot;;</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This module replaces the standard <code>localtime</code> and <code>gmtime</code> functions with implementations that return objects. It does so in a backwards compatible manner, so that using localtime/gmtime in the way documented in perlfunc will still return what you expect.</p>
+
+<p>The module actually implements most of an interface described by Larry Wall on the perl5-porters mailing list here: <a href="https://www.nntp.perl.org/group/perl.perl5.porters/2000/01/msg5283.html">https://www.nntp.perl.org/group/perl.perl5.porters/2000/01/msg5283.html</a></p>
+
+<p>After importing this module, when you use <code>localtime</code> or <code>gmtime</code> in a scalar context, rather than getting an ordinary scalar string representing the date and time, you get a <code>Time::Piece</code> object, whose stringification happens to produce the same effect as the <code>localtime</code> and <code>gmtime</code> functions.</p>
+
+<p>The primary way to create Time::Piece objects is through the <code>localtime</code> and <code>gmtime</code> functions. There is also a <code>new()</code> constructor which is the same as <code>localtime()</code>, except when passed a Time::Piece object, in which case it&#39;s a copy constructor.</p>
+
+<h1 id="Public-Methods">Public Methods</h1>
+
+<p>The following methods are available on the object:</p>
+
+<h2 id="Time-Components">Time Components</h2>
+
+<pre><code>$t-&gt;sec                 # also available as $t-&gt;second
+$t-&gt;min                 # also available as $t-&gt;minute
+$t-&gt;hour                # 24 hour</code></pre>
+
+<h2 id="Date-Components">Date Components</h2>
+
+<pre><code>$t-&gt;mday                # also available as $t-&gt;day_of_month
+$t-&gt;mon                 # 1 = January
+$t-&gt;_mon                # 0 = January
+$t-&gt;year                # based at 0 (year 0 AD is, of course 1 BC)
+$t-&gt;_year               # year minus 1900
+$t-&gt;yy                  # 2 digit year</code></pre>
+
+<h2 id="Day-and-Month-Names">Day and Month Names</h2>
+
+<pre><code>$t-&gt;monname             # Feb
+$t-&gt;month               # same as $t-&gt;monname
+$t-&gt;fullmonth           # February
+$t-&gt;wday                # 1 = Sunday
+$t-&gt;_wday               # 0 = Sunday
+$t-&gt;day_of_week         # 0 = Sunday
+$t-&gt;wdayname            # Tue
+$t-&gt;day                 # same as wdayname
+$t-&gt;fullday             # Tuesday</code></pre>
+
+<h2 id="Formatted-Date-Time-Output">Formatted Date/Time Output</h2>
+
+<pre><code>$t-&gt;hms                 # 12:34:56
+$t-&gt;hms(&quot;.&quot;)            # 12.34.56
+$t-&gt;time                # same as $t-&gt;hms
+$t-&gt;ymd                 # 2000-02-29
+$t-&gt;date                # same as $t-&gt;ymd
+$t-&gt;mdy                 # 02-29-2000
+$t-&gt;mdy(&quot;/&quot;)            # 02/29/2000
+$t-&gt;dmy                 # 29-02-2000
+$t-&gt;dmy(&quot;.&quot;)            # 29.02.2000
+$t-&gt;datetime            # 2000-02-29T12:34:56 (ISO 8601)
+$t-&gt;cdate               # Tue Feb 29 12:34:56 2000
+&quot;$t&quot;                    # same as $t-&gt;cdate
+$t-&gt;strftime(FORMAT)    # same as POSIX::strftime (without the overhead
+                        # of the full POSIX extension)
+$t-&gt;strftime()          # &quot;Tue, 29 Feb 2000 12:34:56 GMT&quot;</code></pre>
+
+<h3 id="strftime-Format-Flags">strftime Format Flags</h3>
+
+<p>The <code>strftime</code> method calls your system&#39;s native <code>strftime()</code> implementation, so the supported format flags and their behavior will depend on your platform.</p>
+
+<p><b>Platform Variability:</b> Some format flags behave differently or may be missing entirely on certain platforms. The following flags are known to have platform-specific issues: <code>%e</code>, <code>%D</code>, <code>%F</code>, <code>%k</code>, <code>%l</code>, <code>%P</code>, <code>%r</code>, <code>%R</code>, <code>%s</code>, <code>%T</code>, <code>%u</code>, <code>%V</code>, <code>%z</code>, and <code>%Z</code>.</p>
+
+<p>To mitigate these differences, <code>Time::Piece</code> includes a special translation layer that attempts to unify behavior across platforms. For example, <code>%F</code> is not available on some Microsoft platforms, so it is automatically converted to <code>&quot;%Y-%m-%d&quot;</code> internally before calling the system&#39;s <code>strftime()</code>.</p>
+
+<p>For a complete list of format flags supported by your system, consult your platform&#39;s <code>strftime(3)</code> manual page (<code>man strftime</code> on Unix-like systems).</p>
+
+<h2 id="Epoch-and-Calendar-Calculations">Epoch and Calendar Calculations</h2>
+
+<pre><code>$t-&gt;epoch               # seconds since the epoch
+$t-&gt;julian_day          # number of days since Julian period began
+$t-&gt;mjd                 # modified Julian date (JD-2400000.5 days)
+$t-&gt;week                # week number (ISO 8601)
+$t-&gt;yday                # also available as $t-&gt;day_of_year, 0 = Jan 01</code></pre>
+
+<h2 id="Timezone-and-DST">Timezone and DST</h2>
+
+<pre><code>$t-&gt;tzoffset            # timezone offset in a Time::Seconds object
+$t-&gt;isdst               # also available as $t-&gt;daylight_savings
+$t-&gt;to_gmtime           # convert to GMT, preserving the epoch
+$t-&gt;to_localtime        # convert to local time, preserving the epoch</code></pre>
+
+<p>The <code>isdst</code> method returns:</p>
+
+<ul>
+
+<li><p>0 for GMT/UTC times (they never have DST)</p>
+
+</li>
+<li><p>0 or 1 for local times depending on whether DST is active</p>
+
+</li>
+<li><p>Automatically calculated if unknown</p>
+
+</li>
+</ul>
+
+<p>The <code>tzoffset</code> method returns the offset from UTC as a Time::Seconds object. For GMT/UTC times, this always returns 0. For local times, it calculates the actual offset including any DST adjustment.</p>
+
+<p>The <code>to_gmtime</code> and <code>to_localtime</code> methods convert between timezone contexts while preserving the same moment in time (epoch). They always return a new Time::Piece object.</p>
+
+<h2 id="Utility-Methods">Utility Methods</h2>
+
+<pre><code>$t-&gt;is_leap_year        # true if it&#39;s a leap year
+$t-&gt;month_last_day      # 28-31
+$t-&gt;add_days            # Add days
+$t-&gt;add_months          # Add months
+$t-&gt;add_years           # Add years</code></pre>
+
+<h2 id="Global-Configuration">Global Configuration</h2>
+
+<pre><code>$t-&gt;time_separator($s)     # set the default separator (default &quot;:&quot;)
+$t-&gt;date_separator($s)     # set the default separator (default &quot;-&quot;)
+$t-&gt;day_list(@days)        # set the names used by wdayname()
+$t-&gt;mon_list(@months)      # set the names used by month()
+$t-&gt;fullday_list(@days)    # set the names used by fullday()
+$t-&gt;fullmon_list(@months)  # set the names used by fullmonth()</code></pre>
+
+<h2 id="Parsing">Parsing</h2>
+
+<pre><code>Time::Piece-&gt;strptime(STRING, FORMAT)
+                        # see strptime man page. Creates a new
+                        # Time::Piece object</code></pre>
+
+<p><b>Note:</b> <code>localtime</code> and <code>gmtime</code> are not listed above. If called as methods on a Time::Piece object, they act as constructors, returning a new Time::Piece object for the current time. In other words: they&#39;re not useful as methods.</p>
+
+<h1 id="Date-Calculations">Date Calculations</h1>
+
+<p>It&#39;s possible to use simple addition and subtraction of objects:</p>
+
+<pre><code>use Time::Seconds;
+
+my $seconds = $t1 - $t2;
+$t1 += ONE_DAY; # add 1 day (constant from Time::Seconds)</code></pre>
+
+<p>The following are valid ($t1 and $t2 are Time::Piece objects):</p>
+
+<pre><code>$t1 - $t2; # returns Time::Seconds object
+$t1 - 42; # returns Time::Piece object
+$t1 + 533; # returns Time::Piece object
+$t1-&gt;add_days(2); # returns Time::Piece object</code></pre>
+
+<p><b>Note:</b> All arithmetic uses epoch seconds (UTC). When daylight saving time (DST) changes occur:</p>
+
+<ul>
+
+<li><p>Adding seconds works on UTC time, so adding 3600 seconds during DST transition from 1:30 AM gives 3:30 AM (not 2:30 AM, which doesn&#39;t exist during &quot;spring forward&quot;)</p>
+
+</li>
+<li><p>Subtracting across DST transitions may differ from wall-clock expectations due to skipped or repeated hours</p>
+
+</li>
+</ul>
+
+<h2 id="Adding-Months-and-Years">Adding Months and Years</h2>
+
+<p>Two methods handle calendar arithmetic differently than seconds-based math:</p>
+
+<pre><code>$t = $t-&gt;add_months(6);
+$t = $t-&gt;add_years(5);</code></pre>
+
+<p><b>Important behaviors:</b></p>
+
+<ul>
+
+<li><p>These preserve the day-of-month number, which can cause overflow (Jan 31 + 1 month = Mar 3, since &quot;Feb 31&quot; doesn&#39;t exist)</p>
+
+</li>
+<li><p>Wall-clock time is preserved across DST transitions</p>
+
+</li>
+<li><p>Order matters: <code>add_months(1)</code> then <code>+ 86400</code> gives different results than <code>+ 86400</code> then <code>add_months(1)</code></p>
+
+</li>
+</ul>
+
+<h1 id="Truncation">Truncation</h1>
+
+<p>Calling the <code>truncate</code> method returns a copy of the object but with the time truncated to the start of the supplied unit.</p>
+
+<pre><code>$t = $t-&gt;truncate(to =&gt; &#39;day&#39;);</code></pre>
+
+<p>This example will set the time to midnight on the same date which <code>$t</code> had previously. Allowed values for the &quot;to&quot; parameter are: &quot;year&quot;, &quot;quarter&quot;, &quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;minute&quot; and &quot;second&quot;.</p>
+
+<h1 id="Date-Comparisons">Date Comparisons</h1>
+
+<p>Date comparisons are also possible, using the full suite of &quot;&lt;&quot;, &quot;&gt;&quot;, &quot;&lt;=&quot;, &quot;&gt;=&quot;, &quot;&lt;=&gt;&quot;, &quot;==&quot; and &quot;!=&quot;.</p>
+
+<p>All comparisons use epoch seconds, so they work correctly across timezones:</p>
+
+<pre><code>my $t1 = localtime;
+my $t2 = gmtime;
+if ($t1 &gt; $t2) {  # Compares actual moments in time, not clock values
+    # ...
+}</code></pre>
+
+<p>Time::Piece objects can also be compared as strings using <code>cmp</code>:</p>
+
+<pre><code>if ($t1 cmp &quot;2024-01-15&quot;) {  # Compares against cdate format
+    # ...
+}</code></pre>
+
+<h1 id="Date-Parsing">Date Parsing</h1>
+
+<p>Time::Piece provides flexible date parsing via the built-in <code>strptime()</code> function (from FreeBSD).</p>
+
+<p>For more information on acceptible formats and flags for <code>strptime</code> see &quot;man strptime&quot; on unix systems. Alternatively look here: <a href="http://www.unix.com/man-page/FreeBSD/3/strftime/">http://www.unix.com/man-page/FreeBSD/3/strftime/</a></p>
+
+<h2 id="Basic-Usage">Basic Usage</h2>
+
+<pre><code>my $t = Time::Piece-&gt;strptime(&quot;Sunday 3rd Nov, 1943&quot;,
+                              &quot;%A %drd %b, %Y&quot;);
+
+print $t-&gt;strftime(&quot;%a, %d %b %Y&quot;);</code></pre>
+
+<p>Outputs:</p>
+
+<pre><code>Wed, 03 Nov 1943</code></pre>
+
+<p>The default format string is <code>&quot;%a, %d %b %Y %H:%M:%S %Z&quot;</code>, so these are equivalent:</p>
+
+<pre><code>my $t1 = Time::Piece-&gt;strptime($string);
+my $t2 = Time::Piece-&gt;strptime($string, &quot;%a, %d %b %Y %H:%M:%S %Z&quot;);</code></pre>
+
+<h2 id="Supported-Format-Flags">Supported Format Flags</h2>
+
+<p><code>Time::Piece</code> uses a custom <code>strptime()</code> implementation that supports the following format flags:</p>
+
+<pre><code>Flag  Description
+----  -----------
+%%    Literal &#39;%&#39; character
+%a    Abbreviated weekday name (Mon, Tue, etc.)
+%A    Full weekday name (Monday, Tuesday, etc.)
+%b    Abbreviated month name (Jan, Feb, etc.)
+%B    Full month name (January, February, etc.)
+%C    Century number (00-99)
+%d    Day of month (01-31)
+%D    Equivalent to %m/%d/%y
+%e    Day of month ( 1-31, space-padded)
+%f    Fractional seconds as microseconds (up to 6 digits, parsed but ignored)
+%F    Equivalent to %Y-%m-%d (ISO 8601 date format)
+%h    Abbreviated month name (same as %b)
+%H    Hour in 24-hour format (00-23)
+%I    Hour in 12-hour format (01-12)
+%j    Day of year (001-366)
+%k    Hour in 24-hour format ( 0-23, space-padded)
+%l    Hour in 12-hour format ( 1-12, space-padded)
+%m    Month number (01-12)
+%M    Minute (00-59)
+%n    Any whitespace
+%p    AM/PM indicator
+%P    Alt AM/PM indicator
+%r    Time in AM/PM format (%I:%M:%S %p, or %H:%M:%S if locale has no AM/PM)
+%R    Equivalent to %H:%M
+%s    Seconds since Unix epoch (1970-01-01 00:00:00 UTC)
+%S    Second (00-60, allowing for leap seconds)
+%t    Any whitespace (same as %n)
+%T    Equivalent to %H:%M:%S
+%u    Weekday as number (1-7, Monday = 1)
+%w    Weekday as number (0-6, Sunday = 0)
+%y    Year within century (00-99). Values 00-68 are 2000-2068, 69-99 are 1969-1999
+%Y    Year with century (e.g., 2024)
+%z    Timezone offset (+HHMM, -HHMM, +HH:MM, or -HH:MM)
+%Z    Timezone name (only GMT and UTC recognized; others parsed but ignored)</code></pre>
+
+<p><b>Unsupported Locale Flags:</b> The format flags <code>%c</code>, <code>%x</code>, and <code>%X</code> are <b>not</b> supported as they are highly locale-dependent and have inconsistent formats across systems. However, you can construct equivalent formats using the individual flags listed above. For example, <code>%c</code> is typically equivalent to something like:</p>
+
+<pre><code>&quot;%a %b %e %H:%M:%S %Y&quot;   # e.g., &quot;Tue Feb 29 12:34:56 2000&quot;</code></pre>
+
+<p><b>Note:</b> <code>%U</code>, <code>%V</code>, and <code>%W</code> (week number formats) are parsed but not fully implemented in the strptime logic, as they require additional date components to calculate the actual date.</p>
+
+<p><b>Note:</b> <code>%f</code> (fractional seconds) is only supported in <code>strptime</code> for parsing. It is not available in <code>strftime</code> for output formatting, as Time::Piece uses epoch seconds which do not store subsecond precision.</p>
+
+<h2 id="GMT-vs-Local-Time">GMT vs Local Time</h2>
+
+<p>By default, <code>strptime</code> returns GMT objects when called as a class method:</p>
+
+<pre><code># Returns GMT (c_islocal = 0)
+Time::Piece-&gt;strptime($string, $format)</code></pre>
+
+<p>To get local time objects, you can:</p>
+
+<pre><code># Call as instance method on localtime object
+localtime()-&gt;strptime($string, $format)
+
+# Use explicit islocal option
+Time::Piece-&gt;strptime($string, $format, { islocal =&gt; 1 })
+
+# Pass a local Time::Piece object as defaults
+my $local = localtime();
+Time::Piece-&gt;strptime($string, $format, { defaults =&gt; $local })</code></pre>
+
+<p>The islocal and defaults options were added in version 1.37; the instance method can be used for compatibility with previous versions.</p>
+
+<h2 id="Timezone-Parsing-with-z-and-Z">Timezone Parsing with %z and %Z</h2>
+
+<p>Time::Piece&#39;s <code>strptime()</code> function has some limited support for parsing timezone information through two format specifiers: <code>%z</code> and <code>%Z</code></p>
+
+<p>Added in version 1.38. Prior to that, these flags were mostly ignored. Consider the current implementation somewhat &quot;alpha&quot; and in need of feedback.</p>
+
+<h3 id="Numeric-Offsets-z">Numeric Offsets (%z)</h3>
+
+<p>The <code>%z</code> specifier parses numeric timezone offsets (format: <code>[+-]HHMM</code>, <code>[+-]HH:MM</code>, or <code>[+-]HH</code>):</p>
+
+<pre><code>my $t = Time::Piece-&gt;strptime(&quot;2024-01-15 15:30:00 +0500&quot;,
+                              &quot;%Y-%m-%d %H:%M:%S %z&quot;);
+print $t-&gt;hour;  # prints 10 (converted to UTC: 15:30 - 5:00)</code></pre>
+
+<p>Key behaviors:</p>
+
+<ul>
+
+<li><p>Offsets are applied to convert to UTC (<code>+0500</code> means &quot;5 hours ahead of UTC&quot;)</p>
+
+</li>
+<li><p>Valid range: <code>-1200</code> to <code>+1400</code> with minutes less than 60</p>
+
+</li>
+<li><p>For local objects (<code>islocal == 1</code>), the result is converted to system timezone</p>
+
+</li>
+</ul>
+
+<p>Times parsed with timezone information default to GMT. To convert to local time:</p>
+
+<pre><code># Parse and convert to local timezone
+my $t = Time::Piece-&gt;strptime(&quot;2024-01-15 15:30:00 +0500&quot;,
+                              &quot;%Y-%m-%d %H:%M:%S %z&quot;,
+                              { islocal =&gt; 1 });
+# Result: 10:30 UTC converted to your local timezone</code></pre>
+
+<h3 id="Timezone-Names-Z">Timezone Names (%Z)</h3>
+
+<p>The <code>%Z</code> specifier currently only recognizes &quot;GMT&quot; and &quot;UTC&quot; (case-sensitive). Other timezone names are parsed <b>but ignored</b>:</p>
+
+<pre><code># GMT/UTC recognized and handled
+my $t1 = Time::Piece-&gt;strptime(&quot;2024-01-15 10:30:00 GMT&quot;,
+                               &quot;%Y-%m-%d %H:%M:%S %Z&quot;);
+print $t1-&gt;hour;  # prints 10 (no adjustment)
+
+# Other timezones parsed but ignored
+my $t2 = Time::Piece-&gt;strptime(&quot;2024-01-15 10:30:00 PST&quot;,
+                               &quot;%Y-%m-%d %H:%M:%S %Z&quot;);
+print $t2-&gt;hour;  # prints 10 (PST ignored - no adjustment)
+
+# Parse and convert to local timezone
+my $t3 = Time::Piece-&gt;strptime(&quot;2024-01-15 15:30:00 UTC&quot;,
+                              &quot;%Y-%m-%d %H:%M:%S %Z&quot;,
+                              { islocal =&gt; 1 });
+print $t3-&gt;hour;  # prints 10:30 UTC converted to your local timezone</code></pre>
+
+<p><b>Note:</b> Full timezone name support is not currently implemented. For reliable timezone handling beyond GMT/UTC, consider using the <a>DateTime</a> module.</p>
+
+<h2 id="Handling-Partial-Dates">Handling Partial Dates</h2>
+
+<p>When parsing incomplete date strings, you can provide defaults for missing components in several ways:</p>
+
+<p><b>Array Reference</b> - Standard time components (as returned by localtime):</p>
+
+<pre><code>my @defaults = localtime();
+my $t = Time::Piece-&gt;strptime(&quot;15 Mar&quot;, &quot;%d %b&quot;,
+                              { defaults =&gt; \@defaults });</code></pre>
+
+<p><b>Hash Reference</b> - Specify only needed components:</p>
+
+<pre><code>my $t = Time::Piece-&gt;strptime(&quot;15 Mar&quot;, &quot;%d %b&quot;,
+                              { defaults =&gt; {
+                                  year =&gt; 2023,
+                                  hour =&gt; 14,
+                                  min  =&gt; 30
+                              } });</code></pre>
+
+<p>Valid keys: <code>sec</code>, <code>min</code>, <code>hour</code>, <code>mday</code>, <code>mon</code>, <code>year</code>, <code>wday</code>, <code>yday</code>, <code>isdst</code></p>
+
+<p><b>Note</b>: For the <code>year</code> parameter numbers less than 1000 are treated as an offset from 1900. Whereas numbers larger than 1000 are treated as the actual year.</p>
+
+<p><b>Time::Piece Object</b> - Uses all components from the object:</p>
+
+<pre><code>my $base = localtime();
+my $t = Time::Piece-&gt;strptime(&quot;15 Mar&quot;, &quot;%d %b&quot;,
+                              { defaults =&gt; $base });</code></pre>
+
+<p><b>Note:</b> In all cases, parsed values always override defaults. Only missing components use default values.</p>
+
+<h2 id="Locale-Considerations">Locale Considerations</h2>
+
+<p>By default, <code>strptime</code> only parses English day and month names, while <code>strftime</code> uses your system locale. This can cause parsing failures for non-English dates.</p>
+
+<p>To parse localized dates, call <code>Time::Piece-&gt;use_locale()</code> to build a list of your locale&#39;s day and month names:</p>
+
+<pre><code># Enable locale-aware parsing (global setting)
+Time::Piece-&gt;use_locale();
+
+# Now strptime can parse names in your system locale
+my $t = Time::Piece-&gt;strptime(&quot;15 Marzo 2024&quot;, &quot;%d %B %Y&quot;);</code></pre>
+
+<p><b>Note:</b> This is a global change affecting all Time::Piece instances.</p>
+
+<p>You can also override the day/month names manually:</p>
+
+<pre><code># Abbreviated day names
+my @days = qw( Dom Lun Mar Mie Jue Vie Sab );
+my $spanish_day = localtime-&gt;day(@days);
+
+# Full day names
+my @fulldays = qw( Domingo Lunes Martes Miercoles Jueves Viernes Sabado );
+my $spanish_fullday = localtime-&gt;fullday(@fulldays);
+
+# Abbreviated month names
+my @months = qw( Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic );
+print localtime-&gt;month(@months);
+
+# Full month names
+my @fullmonths = qw( Enero Febrero Marzo Abril Mayo Junio
+                     Julio Agosto Septiembre Octubre Noviembre Diciembre );
+print localtime-&gt;fullmonth(@fullmonths);</code></pre>
+
+<p>Set globally with:</p>
+
+<pre><code>Time::Piece::day_list(@days);
+Time::Piece::mon_list(@months);
+Time::Piece::fullday_list(@fulldays);
+Time::Piece::fullmon_list(@fullmonths);</code></pre>
+
+<h1 id="Global-Overriding">Global Overriding</h1>
+
+<p>To override localtime and gmtime everywhere:</p>
+
+<pre><code>use Time::Piece &#39;:override&#39;;</code></pre>
+
+<p>This replaces Perl&#39;s built-in functions with Time::Piece versions globally.</p>
+
+<h1 id="CAVEATS">CAVEATS</h1>
+
+<h2 id="Setting-ENV-TZ-in-Threads-on-Win32">Setting $ENV{TZ} in Threads on Win32</h2>
+
+<p>Note that when using perl in the default build configuration on Win32 (specifically, when perl is built with PERL_IMPLICIT_SYS), each perl interpreter maintains its own copy of the environment and only the main interpreter will update the process environment seen by strftime.</p>
+
+<p>Therefore, if you make changes to $ENV{TZ} from inside a thread other than the main thread then those changes will not be seen by <code>strftime</code> if you subsequently call that with the %Z formatting code. You must change $ENV{TZ} in the main thread to have the desired effect in this case (and you must also call <code>_tzset()</code> in the main thread to register the environment change).</p>
+
+<p>Furthermore, remember that this caveat also applies to fork(), which is emulated by threads on Win32.</p>
+
+<h2 id="Use-of-epoch-seconds">Use of epoch seconds</h2>
+
+<p>This module internally uses the epoch seconds system that is provided via the perl <code>time()</code> function and supported by <code>gmtime()</code> and <code>localtime()</code>.</p>
+
+<p>If your perl does not support times larger than <code>2^31</code> seconds (Perl versions &lt; 5.12) then this module is likely to fail at processing dates beyond the year 2038. If that is not an option, use the <a>DateTime</a> module which has support for years well into the future and past.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Matt Sergeant, matt@sergeant.org Jarkko Hietaniemi, jhi@iki.fi (while creating Time::Piece for core perl)</p>
+
+<h1 id="COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</h1>
+
+<p>Copyright 2001, Larry Wall.</p>
+
+<p>This module is free software, you may distribute it under the same terms as Perl.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p>The excellent Calendar FAQ at <a href="http://www.tondering.dk/claus/calendar.html">http://www.tondering.dk/claus/calendar.html</a></p>
+
+<h1 id="BUGS">BUGS</h1>
+
+<ul>
+
+<li><p>The test harness leaves much to be desired. Patches welcome.</p>
+
+</li>
+<li><p>Proper UTF8 support</p>
+
+</li>
+</ul>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Time::Piece - Object Oriented time objects</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

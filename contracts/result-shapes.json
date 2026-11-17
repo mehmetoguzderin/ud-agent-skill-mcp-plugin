@@ -1,0 +1,6256 @@
+{
+  "schema_version": 1,
+  "description": "Independently authored operation result contracts. Schemas describe successful domain results and explicit incomplete/annotation alternatives; execution failures use the coordinator error envelope.",
+  "definitions": {
+    "location": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string"
+        },
+        "sent_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "file_path",
+        "sent_id",
+        "ordinal"
+      ]
+    },
+    "occurrence": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/location"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "token_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "token_id"
+          ]
+        }
+      ]
+    },
+    "row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "form": {
+          "type": "string"
+        },
+        "lemma": {
+          "type": "string"
+        },
+        "upos": {
+          "type": "string"
+        },
+        "xpos": {
+          "type": "string"
+        },
+        "feats": {
+          "type": "string"
+        },
+        "head": {
+          "type": "string"
+        },
+        "deprel": {
+          "type": "string"
+        },
+        "deps": {
+          "type": "string"
+        },
+        "misc": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "form",
+        "lemma",
+        "upos",
+        "xpos",
+        "feats",
+        "head",
+        "deprel",
+        "deps",
+        "misc"
+      ]
+    },
+    "count": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "proportion": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "count",
+        "denominator",
+        "proportion"
+      ]
+    },
+    "manifest_entry": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "size_bytes",
+        "sha256"
+      ]
+    },
+    "artifact": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "relative_path": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content_base64": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "relative_path",
+            "mime_type",
+            "size_bytes",
+            "sha256",
+            "content_base64"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string"
+            },
+            "mime_type": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "filename",
+            "mime_type",
+            "size_bytes",
+            "sha256",
+            "content"
+          ]
+        }
+      ]
+    },
+    "change": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string"
+        },
+        "before_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "after_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "content": {
+          "type": "string"
+        },
+        "content_base64": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "file_path",
+        "before_sha256",
+        "after_sha256"
+      ]
+    },
+    "file_operation": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "const": "create"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "before_sha256": {
+              "type": "null"
+            },
+            "after_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "file_path",
+            "before_sha256",
+            "after_sha256",
+            "content"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "const": "delete"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "before_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "after_sha256": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "operation",
+            "file_path",
+            "before_sha256",
+            "after_sha256"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "const": "rename"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "target_file_path": {
+              "type": "string"
+            },
+            "before_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "target_before_sha256": {
+              "type": "null"
+            },
+            "after_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "content_base64": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation",
+            "file_path",
+            "target_file_path",
+            "before_sha256",
+            "target_before_sha256"
+          ]
+        }
+      ]
+    },
+    "check_state": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "incidents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "testid": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "level": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "check_family": {
+                "type": "string"
+              }
+            },
+            "required": []
+          }
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "file_paths": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sentence_only": {
+              "type": "boolean"
+            },
+            "filtered": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "file_paths",
+            "sentence_only"
+          ]
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "repository": {
+              "type": "string"
+            },
+            "documentation": {
+              "type": "string"
+            },
+            "project_rules": {
+              "type": "string"
+            },
+            "release_policy": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "content"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "repository_name": {
+              "type": "string"
+            },
+            "adapter": {
+              "type": "string"
+            },
+            "languages_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "validator_module_path": {
+              "type": "string"
+            },
+            "validator_class_name": {
+              "type": "string"
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "passed",
+        "incidents",
+        "scope",
+        "coverage",
+        "limitations"
+      ]
+    },
+    "annotation_needed": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "needs_annotation"
+        },
+        "missing_decisions": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "action_id": {
+                    "type": "string"
+                  },
+                  "required": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action_id",
+                  "required",
+                  "reason"
+                ]
+              }
+            ]
+          }
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/change"
+          }
+        },
+        "plan": {
+          "type": "object",
+          "properties": {
+            "complete": {
+              "const": false
+            },
+            "required_fields": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "complete",
+            "required_fields"
+          ]
+        },
+        "requires_host_commit": {
+          "type": "boolean"
+        },
+        "requested_mode": {
+          "enum": [
+            "preview",
+            "apply"
+          ]
+        },
+        "details": {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "type": "string"
+            },
+            "action_id": {
+              "type": "string"
+            },
+            "selected_action_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "completed_operations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "operation": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "object",
+                    "properties": {},
+                    "required": []
+                  }
+                },
+                "required": [
+                  "operation",
+                  "result"
+                ]
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "status",
+        "missing_decisions",
+        "changes"
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "candidate"
+        },
+        "requested_mode": {
+          "enum": [
+            "preview",
+            "apply"
+          ]
+        },
+        "requires_host_commit": {
+          "type": "boolean"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/change"
+          }
+        },
+        "details": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "validation": {
+          "$ref": "#/definitions/check_state"
+        },
+        "context_changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language_code": {
+                "type": "string"
+              },
+              "files": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "file_hashes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "base_hashes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "context_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "language_code",
+              "files",
+              "file_hashes",
+              "base_hashes",
+              "context_sha256"
+            ]
+          }
+        },
+        "file_operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/file_operation"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "requested_mode",
+        "requires_host_commit",
+        "changes",
+        "details",
+        "validation"
+      ]
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "replace_file",
+            "create_file",
+            "delete_file",
+            "rename_file",
+            "replace_text",
+            "prepare_context",
+            "token_split",
+            "tokens_merge",
+            "tree_split",
+            "trees_merge",
+            "tokenization_reconcile"
+          ]
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "input_fingerprints": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "file_path": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "target_file_path": {
+          "type": "string"
+        },
+        "before_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "after_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "target_before_sha256": {
+          "type": "null"
+        },
+        "content": {
+          "type": "string"
+        },
+        "diff": {
+          "type": "string"
+        },
+        "old_text": {
+          "type": "string"
+        },
+        "new_text": {
+          "type": "string"
+        },
+        "conflict": {
+          "type": "boolean"
+        },
+        "language_code": {
+          "type": "string"
+        },
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "file_hashes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "base_hashes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "context_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "arguments": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "annotation_map": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "requires_annotation_map": {
+          "type": "boolean"
+        },
+        "temporary_id": {
+          "type": "string"
+        },
+        "temporary_ids": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "temporary_tree_ids": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "source_tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "form": {
+                "type": "string"
+              },
+              "file_path": {
+                "type": "string"
+              },
+              "sent_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "token_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "form",
+              "file_path",
+              "sent_id",
+              "ordinal",
+              "token_id"
+            ]
+          }
+        },
+        "target_tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "form": {
+                "type": "string"
+              },
+              "file_path": {
+                "type": "string"
+              },
+              "sent_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "token_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "form",
+              "file_path",
+              "sent_id",
+              "ordinal",
+              "token_id"
+            ]
+          }
+        },
+        "character_offset": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "desired_after": {
+          "$ref": "#/definitions/location"
+        },
+        "current_after": {
+          "$ref": "#/definitions/location"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "depends_on"
+      ]
+    },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "ud-plan-v1"
+        },
+        "plan_type": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/action"
+          }
+        },
+        "validation": {
+          "$ref": "#/definitions/check_state"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "plan_type",
+        "actions"
+      ]
+    },
+    "export": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "candidate",
+            "complete",
+            "incomplete"
+          ]
+        },
+        "output_dir_path": {
+          "type": "string"
+        },
+        "requires_host_export": {
+          "type": "boolean"
+        },
+        "requires_broker_export": {
+          "type": "boolean"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/artifact"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "output_dir_path",
+        "artifacts"
+      ]
+    },
+    "release_validation": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "completed",
+            "incomplete"
+          ]
+        },
+        "passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "report": {
+          "$ref": "#/definitions/validation"
+        }
+      },
+      "required": [
+        "status",
+        "passed"
+      ]
+    },
+    "git_attestation": {
+      "type": "object",
+      "properties": {
+        "requested_revision": {
+          "type": "string"
+        },
+        "resolved_commit": {
+          "type": "string"
+        },
+        "tree_oid": {
+          "type": "string"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "method": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "requested_revision",
+        "resolved_commit",
+        "tree_oid",
+        "snapshot_sha256",
+        "method"
+      ]
+    },
+    "metric": {
+      "type": "object",
+      "properties": {
+        "correct": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gold_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "system_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "aligned_total": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "precision": {
+          "type": "number"
+        },
+        "recall": {
+          "type": "number"
+        },
+        "f1": {
+          "type": "number"
+        },
+        "aligned_accuracy": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "correct",
+        "gold_total",
+        "system_total",
+        "aligned_total",
+        "precision",
+        "recall",
+        "f1",
+        "aligned_accuracy"
+      ]
+    },
+    "scoring": {
+      "type": "object",
+      "properties": {
+        "scores": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/metric"
+          }
+        },
+        "pair_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "enhanced": {
+          "type": "boolean"
+        },
+        "treebank_type": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
+        "definition": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "gold": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "system": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "gold",
+            "system"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "scores",
+        "pair_count",
+        "enhanced",
+        "treebank_type",
+        "definition",
+        "roles"
+      ]
+    },
+    "structural_details": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "type": "string"
+        },
+        "id_mapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "target_sentence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "operation",
+        "id_mapping",
+        "target_sentence_ids"
+      ]
+    },
+    "json_value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/json_value"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/json_value"
+          }
+        }
+      ]
+    },
+    "portable_release_provenance": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "selected_files_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_identity_method": {
+          "type": "string"
+        },
+        "implementation": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "const": "ud-agent-skill-mcp-plugin"
+            },
+            "version": {
+              "const": "0.1.0-beta.1"
+            },
+            "new_code_license": {
+              "const": "MIT"
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "files": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/manifest_entry"
+                  }
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "files",
+                "sha256"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "version",
+            "new_code_license",
+            "source"
+          ]
+        },
+        "validator": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "identified"
+                },
+                "source": {
+                  "type": "object",
+                  "properties": {
+                    "files": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/manifest_entry"
+                      }
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  },
+                  "required": [
+                    "files",
+                    "sha256"
+                  ]
+                }
+              },
+              "required": [
+                "status",
+                "source"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "unavailable"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "status",
+                "reason"
+              ]
+            }
+          ]
+        },
+        "upstream_revision_declarations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "commit": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}(?:[a-f0-9]{24})?$"
+              },
+              "archive_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "evidence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "commit",
+              "evidence"
+            ]
+          }
+        },
+        "context": {
+          "type": "object",
+          "properties": {
+            "identity": {
+              "type": "string",
+              "pattern": "^urn:ud-agent:context:sha256:[a-f0-9]{64}$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "rules": {
+              "type": "array",
+              "minItems": 7,
+              "maxItems": 7,
+              "items": {
+                "$ref": "#/definitions/manifest_entry"
+              }
+            },
+            "manifest_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "identity",
+            "sha256",
+            "rules"
+          ]
+        },
+        "licenses": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "present",
+                "not_selected"
+              ]
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/manifest_entry"
+              }
+            },
+            "interpretation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "files",
+            "interpretation"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "selected_files_sha256",
+        "source_identity_method",
+        "implementation",
+        "validator",
+        "upstream_revision_declarations",
+        "context",
+        "licenses"
+      ]
+    }
+  },
+  "operations": {
+    "treebank_create": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "conflict"
+            },
+            "conflicts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "changes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/change"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "conflicts",
+            "changes"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "candidate"
+            },
+            "requires_host_commit": {
+              "type": "boolean"
+            },
+            "changes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/change"
+              }
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "treebank_name": {
+                  "type": "string"
+                },
+                "language_code": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "treebank_name",
+                "language_code"
+              ]
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "requires_host_commit",
+            "changes",
+            "metadata",
+            "limitations"
+          ]
+        }
+      ]
+    },
+    "workspace_inspect": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "file",
+                  "symlink",
+                  "special"
+                ]
+              },
+              "included": {
+                "type": "boolean"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "kind"
+            ]
+          }
+        },
+        "related_repository_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "files",
+        "related_repository_paths",
+        "limitations"
+      ]
+    },
+    "workspace_sync_plan": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "repositories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "local_revision": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "status": {
+                "enum": [
+                  "incomplete",
+                  "matching_snapshots",
+                  "comparison_required"
+                ]
+              },
+              "reason": {
+                "type": "string"
+              },
+              "remote_revision": {
+                "type": "string"
+              },
+              "retrieved_at": {
+                "type": "string"
+              },
+              "age_seconds": {
+                "type": "number"
+              },
+              "action": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "local_revision",
+              "status"
+            ]
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "repositories",
+        "limitations"
+      ]
+    },
+    "treebank_snapshot": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "manifest": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/manifest_entry"
+              }
+            },
+            "requires_broker_export": {
+              "const": true
+            }
+          },
+          "required": [
+            "manifest",
+            "requires_broker_export"
+          ]
+        }
+      ]
+    },
+    "treebank_review": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "base_revision": {
+          "type": "string"
+        },
+        "current_file_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "peers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "conllu_files": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "path",
+              "conllu_files"
+            ]
+          }
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file_path": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "added",
+                  "removed",
+                  "modified"
+                ]
+              },
+              "before_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "after_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "file_path",
+              "kind",
+              "before_sha256",
+              "after_sha256"
+            ]
+          }
+        },
+        "revision_attestation": {
+          "anyOf": [
+            {
+              "const": "unverified"
+            },
+            {
+              "$ref": "#/definitions/git_attestation"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "base_revision",
+        "peers"
+      ]
+    },
+    "treebank_edit": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/candidate"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "operations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operation": {
+                            "type": "string"
+                          },
+                          "result": {
+                            "type": "object",
+                            "properties": {},
+                            "required": []
+                          }
+                        },
+                        "required": [
+                          "operation",
+                          "result"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "operations"
+                  ]
+                }
+              },
+              "required": [
+                "details"
+              ]
+            }
+          ]
+        },
+        {
+          "$ref": "#/definitions/annotation_needed"
+        }
+      ]
+    },
+    "tree_edit": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/candidate"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "operations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "operation": {
+                            "type": "string"
+                          },
+                          "result": {
+                            "type": "object",
+                            "properties": {},
+                            "required": []
+                          }
+                        },
+                        "required": [
+                          "operation",
+                          "result"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "operations"
+                  ]
+                }
+              },
+              "required": [
+                "details"
+              ]
+            }
+          ]
+        },
+        {
+          "$ref": "#/definitions/annotation_needed"
+        }
+      ]
+    },
+    "token_edit": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                },
+                "head_id": {
+                  "type": "string"
+                },
+                "deprel": {
+                  "type": "string"
+                },
+                "dependent_id": {
+                  "type": "string"
+                },
+                "edges": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "head_id": {
+                        "type": "string"
+                      },
+                      "deprel": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "head_id",
+                      "deprel"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "token_id"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_metadata_edit": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "metadata_fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "metadata_fields"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "enhanced_graph_edit": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "edges": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "dependent_id": {
+                        "type": "string"
+                      },
+                      "edges": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "head_id": {
+                              "type": "string"
+                            },
+                            "deprel": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "head_id",
+                            "deprel"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "dependent_id",
+                      "edges"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "edges"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_list": {
+      "type": "object",
+      "properties": {
+        "trees": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file_path": {
+                "type": "string"
+              },
+              "sent_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "fingerprint": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "text": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "file_path",
+              "sent_id",
+              "ordinal",
+              "fingerprint",
+              "text"
+            ]
+          }
+        }
+      },
+      "required": [
+        "trees"
+      ]
+    },
+    "tree_get": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string"
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "conllu": {
+          "type": "string"
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "file_path",
+        "ordinal",
+        "conllu",
+        "fingerprint"
+      ]
+    },
+    "tree_add": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "inserted_ordinal": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "inserted_ordinal"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_replace": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "replaced_ordinal": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "replaced_ordinal"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "removed_ordinal": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "boundary_policy": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "removed_ordinal",
+                "boundary_policy"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_copy": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "source_ordinal": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "target_ordinal": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "boundary_policy": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "source_ordinal",
+                "target_ordinal",
+                "boundary_policy"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_move": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "source_ordinal": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "target_ordinal": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "boundary_policy": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "source_ordinal",
+                "target_ordinal",
+                "boundary_policy"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_id_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "sent_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "sent_id"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_text_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_comment_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_comment_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_list": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/row"
+          }
+        }
+      },
+      "required": [
+        "tokens"
+      ]
+    },
+    "token_get": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "$ref": "#/definitions/row"
+        }
+      },
+      "required": [
+        "token"
+      ]
+    },
+    "token_add": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "id_mapping": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "token_id",
+                "id_mapping"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "removed_token_id": {
+                  "type": "string"
+                },
+                "id_mapping": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "removed_token_id",
+                "id_mapping"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_form_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_lemma_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_upos_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_xpos_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_features_replace": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_feature_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_feature_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_misc_replace": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_misc_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "token_misc_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "token": {
+                  "$ref": "#/definitions/row"
+                }
+              },
+              "required": [
+                "token_id",
+                "token"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "basic_dependency_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "head_id": {
+                  "type": "string"
+                },
+                "deprel": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "token_id",
+                "head_id",
+                "deprel"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "basic_dependency_label_set": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "token_id": {
+                  "type": "string"
+                },
+                "head_id": {
+                  "type": "string"
+                },
+                "deprel": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "token_id",
+                "head_id",
+                "deprel"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "enhanced_edge_add": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "dependent_id": {
+                  "type": "string"
+                },
+                "edges": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "head_id": {
+                        "type": "string"
+                      },
+                      "deprel": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "head_id",
+                      "deprel"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "dependent_id",
+                "edges"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "enhanced_edge_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "dependent_id": {
+                  "type": "string"
+                },
+                "edges": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "head_id": {
+                        "type": "string"
+                      },
+                      "deprel": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "head_id",
+                      "deprel"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "dependent_id",
+                "edges"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "enhanced_dependencies_replace": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "dependent_id": {
+                  "type": "string"
+                },
+                "edges": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "head_id": {
+                        "type": "string"
+                      },
+                      "deprel": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "head_id",
+                      "deprel"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "dependent_id",
+                "edges"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "multiword_token_add": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "range_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "range_id"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "multiword_token_edit": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "range_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "range_id"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "multiword_token_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "removed_range_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "removed_range_id"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "empty_node_add": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "empty_node_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "empty_node_id"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "empty_node_edit": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "empty_node_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "empty_node_id"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "empty_node_remove": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "removed_empty_node_id": {
+                  "type": "string"
+                },
+                "removed_incident_edges": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "removed_empty_node_id",
+                "removed_incident_edges"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "tree_reindex": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "object",
+              "properties": {
+                "id_mapping": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id_mapping"
+              ]
+            }
+          },
+          "required": [
+            "details"
+          ]
+        }
+      ]
+    },
+    "validation_report": {
+      "$ref": "#/definitions/validation"
+    },
+    "sentence_validation_report": {
+      "$ref": "#/definitions/validation"
+    },
+    "project_consistency_report": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "official": {
+          "$ref": "#/definitions/validation"
+        },
+        "project": {
+          "$ref": "#/definitions/validation"
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "file_paths": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "file_paths"
+          ]
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "validator_module_path": {
+              "type": "string"
+            },
+            "validator_class_name": {
+              "type": "string"
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "validator_module_path",
+            "validator_class_name",
+            "source_sha256"
+          ]
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "project_rules": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "content",
+            "project_rules"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "passed",
+        "official",
+        "project",
+        "scope",
+        "provenance",
+        "coverage",
+        "limitations"
+      ]
+    },
+    "fix_plan": {
+      "$ref": "#/definitions/plan"
+    },
+    "plan_apply": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/candidate"
+        },
+        {
+          "$ref": "#/definitions/annotation_needed"
+        }
+      ]
+    },
+    "annotation_import_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "pairs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source_file": {
+                    "type": "string"
+                  },
+                  "target_file": {
+                    "type": "string"
+                  },
+                  "words": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": []
+              }
+            }
+          },
+          "required": [
+            "pairs"
+          ]
+        }
+      ]
+    },
+    "token_alignment_report": {
+      "type": "object",
+      "properties": {
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "enum": [
+                  "equal",
+                  "replace",
+                  "delete",
+                  "insert"
+                ]
+              },
+              "source": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "string"
+                    },
+                    "file_path": {
+                      "type": "string"
+                    },
+                    "sent_id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ordinal": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "token_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "form",
+                    "file_path",
+                    "sent_id",
+                    "ordinal",
+                    "token_id"
+                  ]
+                }
+              },
+              "target": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "string"
+                    },
+                    "file_path": {
+                      "type": "string"
+                    },
+                    "sent_id": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ordinal": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "token_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "form",
+                    "file_path",
+                    "sent_id",
+                    "ordinal",
+                    "token_id"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "kind",
+              "source",
+              "target"
+            ]
+          }
+        },
+        "source_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "target_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "exact_matches": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "method": {
+          "type": "string"
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "segments",
+        "source_count",
+        "target_count",
+        "exact_matches",
+        "method",
+        "complete"
+      ]
+    },
+    "tokenization_change_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "needs_annotation",
+                "ready",
+                "conflict"
+              ]
+            },
+            "source_fingerprints": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "target_fingerprints": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "source_fingerprints",
+            "target_fingerprints"
+          ]
+        }
+      ]
+    },
+    "sentence_segmentation_change_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "needs_annotation",
+                "ready",
+                "conflict"
+              ]
+            },
+            "source_fingerprints": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "target_fingerprints": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "source_fingerprints",
+            "target_fingerprints"
+          ]
+        }
+      ]
+    },
+    "text_content_compare": {
+      "type": "object",
+      "properties": {
+        "equal": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "left_length": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "right_length": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "left_missing_text": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/location"
+          }
+        },
+        "right_missing_text": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/location"
+          }
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "equal",
+        "left_length",
+        "right_length",
+        "left_missing_text",
+        "right_missing_text",
+        "complete",
+        "definition"
+      ]
+    },
+    "sentence_batch_extract": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "requires_host_export": {
+              "const": true
+            },
+            "selected": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "ordinal": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "sent_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "file_path",
+                  "ordinal",
+                  "sent_id"
+                ]
+              }
+            }
+          },
+          "required": [
+            "requires_host_export",
+            "selected"
+          ]
+        }
+      ]
+    },
+    "dataset_split_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "seed": {
+              "type": "integer"
+            },
+            "assignments": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "split": {
+                    "type": "string"
+                  },
+                  "source_file": {
+                    "type": "string"
+                  },
+                  "document_ordinal": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "sentences": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/location"
+                    }
+                  }
+                },
+                "required": [
+                  "split",
+                  "source_file",
+                  "document_ordinal",
+                  "sentences"
+                ]
+              }
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "source_fingerprints": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "seed",
+            "assignments",
+            "counts",
+            "source_fingerprints",
+            "limitations"
+          ]
+        }
+      ]
+    },
+    "format_convert": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "requires_host_export": {
+              "const": true
+            },
+            "losses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "requires_host_export",
+            "losses"
+          ]
+        }
+      ]
+    },
+    "tagset_conversion_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "needs_annotation",
+                "ready"
+              ]
+            },
+            "unmapped": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {},
+                "required": []
+              }
+            }
+          },
+          "required": [
+            "status",
+            "unmapped"
+          ]
+        }
+      ]
+    },
+    "treebank_profile": {
+      "type": "object",
+      "properties": {
+        "sentence_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "word_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "multiword_token_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "empty_node_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "upos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/count"
+          }
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sentence_count",
+        "word_count",
+        "multiword_token_count",
+        "empty_node_count",
+        "upos",
+        "scope",
+        "definition"
+      ]
+    },
+    "lexeme_pos_report": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lemma": {
+                "type": "string"
+              },
+              "upos": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "occurrences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/occurrence"
+                }
+              }
+            },
+            "required": [
+              "lemma",
+              "upos",
+              "count",
+              "occurrences"
+            ]
+          }
+        },
+        "filter": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "entries",
+        "filter"
+      ]
+    },
+    "observed_paradigms": {
+      "type": "object",
+      "properties": {
+        "forms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lemma": {
+                "type": "string"
+              },
+              "upos": {
+                "type": "string"
+              },
+              "features": {
+                "type": "string"
+              },
+              "form": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "occurrences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/occurrence"
+                }
+              }
+            },
+            "required": [
+              "lemma",
+              "upos",
+              "features",
+              "form",
+              "count",
+              "occurrences"
+            ]
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "forms",
+        "limitations"
+      ]
+    },
+    "relation_profile": {
+      "type": "object",
+      "properties": {
+        "denominator": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "relation": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "occurrences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/occurrence"
+                }
+              }
+            },
+            "required": [
+              "relation",
+              "count",
+              "occurrences"
+            ]
+          }
+        },
+        "filter": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "denominator",
+        "relations",
+        "filter"
+      ]
+    },
+    "feature_agreement_report": {
+      "type": "object",
+      "properties": {
+        "feature": {
+          "type": "string"
+        },
+        "comparisons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dependent": {
+                "$ref": "#/definitions/occurrence"
+              },
+              "head_id": {
+                "type": "string"
+              },
+              "relation": {
+                "type": "string"
+              },
+              "dependent_values": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "head_values": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "agrees": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "dependent",
+              "head_id",
+              "relation",
+              "dependent_values",
+              "head_values",
+              "agrees"
+            ]
+          }
+        },
+        "compared": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "agreeing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "disagreeing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "comparisons",
+        "compared",
+        "agreeing",
+        "disagreeing",
+        "skipped",
+        "definition"
+      ]
+    },
+    "dependency_order_profile": {
+      "type": "object",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/count"
+          }
+        },
+        "occurrences": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/occurrence"
+            }
+          }
+        },
+        "definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "orders",
+        "occurrences",
+        "definition"
+      ]
+    },
+    "multiword_token_patterns": {
+      "type": "object",
+      "properties": {
+        "patterns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "form": {
+                "type": "string"
+              },
+              "component_upos": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "occurrences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/occurrence"
+                }
+              }
+            },
+            "required": [
+              "form",
+              "component_upos",
+              "count",
+              "occurrences"
+            ]
+          }
+        }
+      },
+      "required": [
+        "patterns"
+      ]
+    },
+    "proper_name_sequences": {
+      "type": "object",
+      "properties": {
+        "sequences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "$ref": "#/definitions/location"
+              },
+              "token_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "forms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "location",
+              "token_ids",
+              "forms"
+            ]
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "sequences",
+        "limitations"
+      ]
+    },
+    "script_composition_report": {
+      "type": "object",
+      "properties": {
+        "corpora": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "treebank": {
+                "type": "string"
+              },
+              "scripts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/count"
+                }
+              }
+            },
+            "required": [
+              "treebank",
+              "scripts"
+            ]
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "corpora",
+        "limitations"
+      ]
+    },
+    "english_relative_clause_classify": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "requires_host_export": {
+              "const": true
+            },
+            "clause_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "definition": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "requires_host_export",
+            "clause_count",
+            "definition"
+          ]
+        }
+      ]
+    },
+    "conventions_compare": {
+      "type": "object",
+      "properties": {
+        "corpora": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "treebank": {
+                "type": "string"
+              },
+              "dimensions": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            "required": [
+              "treebank",
+              "dimensions"
+            ]
+          }
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "corpora",
+        "dimensions",
+        "limitations"
+      ]
+    },
+    "feature_value_report": {
+      "type": "object",
+      "properties": {
+        "feature": {
+          "type": "string"
+        },
+        "corpora": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "treebank": {
+                "type": "string"
+              },
+              "words": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "missing_feature": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "value",
+                    "count"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "treebank",
+              "words",
+              "missing_feature",
+              "values"
+            ]
+          }
+        },
+        "definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "corpora",
+        "definition"
+      ]
+    },
+    "duplicate_report": {
+      "type": "object",
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "occurrences": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/location"
+                }
+              }
+            },
+            "required": [
+              "text",
+              "occurrences"
+            ]
+          }
+        },
+        "missing_text": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/location"
+          }
+        },
+        "method": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string"
+            },
+            "casefold": {
+              "type": "boolean"
+            },
+            "normalize_whitespace": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "source",
+            "casefold",
+            "normalize_whitespace"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "groups",
+        "missing_text",
+        "method",
+        "limitations"
+      ]
+    },
+    "overlap_report": {
+      "type": "object",
+      "properties": {
+        "matches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "peer_treebank": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "left": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/location"
+                }
+              },
+              "right": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/location"
+                }
+              }
+            },
+            "required": [
+              "peer_treebank",
+              "text",
+              "left",
+              "right"
+            ]
+          }
+        },
+        "missing_text": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/location"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "treebank": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "treebank"
+                ]
+              }
+            ]
+          }
+        },
+        "method": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string"
+            },
+            "casefold": {
+              "type": "boolean"
+            },
+            "normalize_whitespace": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "source",
+            "casefold",
+            "normalize_whitespace"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "split_matches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "left_split",
+              "right_split",
+              "text",
+              "left",
+              "right"
+            ],
+            "properties": {
+              "left_split": {
+                "type": "string"
+              },
+              "right_split": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "left": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/location"
+                }
+              },
+              "right": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/location"
+                }
+              }
+            }
+          }
+        },
+        "splits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "sentence_count"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "sentence_count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "split_spec_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "matches",
+        "missing_text",
+        "method",
+        "limitations"
+      ]
+    },
+    "enhanced_graph_report": {
+      "type": "object",
+      "properties": {
+        "sentences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "$ref": "#/definitions/location"
+              },
+              "nodes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "edges": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "head_id": {
+                      "type": "string"
+                    },
+                    "dependent_id": {
+                      "type": "string"
+                    },
+                    "deprel": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "head_id",
+                    "dependent_id",
+                    "deprel"
+                  ]
+                }
+              },
+              "graph_present": {
+                "type": "boolean"
+              },
+              "unreachable_from_root": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "location",
+              "nodes",
+              "edges",
+              "graph_present",
+              "unreachable_from_root"
+            ]
+          }
+        },
+        "definition": {
+          "type": "string"
+        },
+        "backend": {
+          "type": "object",
+          "properties": {
+            "implementation": {
+              "const": "UDTools Graph/Node"
+            },
+            "protocol": {
+              "const": "partitioned-incidence-v1"
+            },
+            "partitions": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "executed": {
+              "type": "boolean"
+            },
+            "bridge_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "modules": {
+              "type": "object",
+              "properties": {
+                "Graph.pm": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "Node.pm": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "Graph.pm",
+                "Node.pm"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "implementation",
+            "protocol",
+            "partitions",
+            "executed"
+          ],
+          "anyOf": [
+            {
+              "properties": {
+                "executed": {
+                  "const": false
+                },
+                "partitions": {
+                  "const": 0
+                }
+              }
+            },
+            {
+              "properties": {
+                "executed": {
+                  "const": true
+                },
+                "partitions": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "bridge_sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "modules": {
+                  "type": "object",
+                  "properties": {
+                    "Graph.pm": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "Node.pm": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  },
+                  "required": [
+                    "Graph.pm",
+                    "Node.pm"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "bridge_sha256",
+                "modules"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "sentences",
+        "definition"
+      ]
+    },
+    "enhanced_edge_explanations": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "requires_host_export": {
+              "const": true
+            },
+            "edge_count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "requires_host_export",
+            "edge_count"
+          ]
+        }
+      ]
+    },
+    "enhanced_empty_node_collapse_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "losses": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "sentence_ordinal": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "empty_node_id": {
+                    "type": "string"
+                  },
+                  "lost_annotation": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "lost_edge": {
+                    "type": "object",
+                    "properties": {
+                      "head_id": {
+                        "type": "string"
+                      },
+                      "dependent_id": {
+                        "type": "string"
+                      },
+                      "deprel": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "head_id",
+                      "dependent_id",
+                      "deprel"
+                    ]
+                  }
+                },
+                "required": [
+                  "file_path",
+                  "sentence_ordinal"
+                ]
+              }
+            },
+            "transformation": {
+              "type": "object",
+              "properties": {
+                "mode": {
+                  "const": "drop"
+                },
+                "allow_information_loss": {
+                  "const": true
+                }
+              },
+              "required": [
+                "mode",
+                "allow_information_loss"
+              ]
+            }
+          },
+          "required": [
+            "losses",
+            "transformation"
+          ]
+        }
+      ]
+    },
+    "parallel_corpus_report": {
+      "type": "object",
+      "properties": {
+        "alignments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "reference": {
+                        "type": "object",
+                        "properties": {
+                          "treebank": {
+                            "type": "string"
+                          },
+                          "file_path": {
+                            "type": "string"
+                          },
+                          "sent_id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "treebank",
+                          "file_path",
+                          "sent_id"
+                        ]
+                      },
+                      "text": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "location": {
+                        "$ref": "#/definitions/location"
+                      }
+                    },
+                    "required": [
+                      "reference",
+                      "text",
+                      "location"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "targets": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "reference": {
+                          "type": "object",
+                          "properties": {
+                            "treebank": {
+                              "type": "string"
+                            },
+                            "file_path": {
+                              "type": "string"
+                            },
+                            "sent_id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "treebank",
+                            "file_path",
+                            "sent_id"
+                          ]
+                        },
+                        "text": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "location": {
+                          "$ref": "#/definitions/location"
+                        }
+                      },
+                      "required": [
+                        "reference",
+                        "text",
+                        "location"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "source",
+              "targets"
+            ]
+          }
+        },
+        "missing_references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "alignment": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reference": {
+                "type": "object",
+                "properties": {
+                  "treebank": {
+                    "type": "string"
+                  },
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "sent_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "treebank",
+                  "file_path",
+                  "sent_id"
+                ]
+              }
+            },
+            "required": [
+              "alignment",
+              "reference"
+            ]
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "requested": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "complete": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "requested",
+            "complete"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "alignments",
+        "missing_references",
+        "coverage",
+        "limitations"
+      ]
+    },
+    "bible_passage_concordance": {
+      "type": "object",
+      "properties": {
+        "passages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "book": {
+                "type": "string"
+              },
+              "chapter": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "verse": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "source": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/location"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "peer": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/location"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "text"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "correspondence_complete": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "book",
+              "chapter",
+              "verse",
+              "source",
+              "peer",
+              "correspondence_complete"
+            ]
+          }
+        },
+        "unparsed_references": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/location"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "enum": [
+                      "source",
+                      "peer"
+                    ]
+                  }
+                },
+                "required": [
+                  "role"
+                ]
+              }
+            ]
+          }
+        },
+        "definition": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "passages",
+        "unparsed_references",
+        "definition",
+        "limitations"
+      ]
+    },
+    "predictions_evaluate": {
+      "$ref": "#/definitions/scoring"
+    },
+    "annotation_pair_scores": {
+      "$ref": "#/definitions/scoring"
+    },
+    "changes_review": {
+      "type": "object",
+      "properties": {
+        "base_revision": {
+          "type": "string"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file_path": {
+                "type": "string"
+              },
+              "change": {
+                "enum": [
+                  "added",
+                  "deleted",
+                  "modified"
+                ]
+              },
+              "base_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "current_sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "diff": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "file_path",
+              "change",
+              "base_sha256",
+              "current_sha256",
+              "diff"
+            ]
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "type": "string"
+            },
+            "base_identity_verified": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "scope",
+            "base_identity_verified"
+          ]
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "base_snapshot_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "base_identity": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/definitions/git_attestation"
+                }
+              ]
+            }
+          },
+          "required": [
+            "base_snapshot_sha256",
+            "base_identity"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "base_revision",
+        "changes",
+        "coverage",
+        "provenance",
+        "limitations"
+      ]
+    },
+    "contribution_plan": {
+      "$ref": "#/definitions/plan"
+    },
+    "language_rules_report": {
+      "type": "object",
+      "properties": {
+        "language_code": {
+          "type": "string"
+        },
+        "rules": {
+          "type": "object",
+          "properties": {
+            "upos": {
+              "$ref": "#/definitions/json_value"
+            },
+            "features": {
+              "$ref": "#/definitions/json_value"
+            },
+            "udeprels": {
+              "$ref": "#/definitions/json_value"
+            },
+            "deprels": {
+              "$ref": "#/definitions/json_value"
+            },
+            "edeprels": {
+              "$ref": "#/definitions/json_value"
+            },
+            "auxiliaries": {
+              "$ref": "#/definitions/json_value"
+            },
+            "expressions": {
+              "$ref": "#/definitions/json_value"
+            }
+          },
+          "required": [
+            "upos",
+            "features",
+            "udeprels",
+            "deprels",
+            "edeprels",
+            "auxiliaries",
+            "expressions"
+          ]
+        },
+        "source_hashes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "observed_peer_counts": {
+          "type": "object",
+          "properties": {
+            "corpora": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "treebank": {
+                    "type": "string"
+                  },
+                  "dimensions": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "treebank",
+                  "dimensions"
+                ]
+              }
+            },
+            "dimensions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "corpora",
+            "dimensions",
+            "limitations"
+          ]
+        }
+      },
+      "required": [
+        "language_code",
+        "rules",
+        "source_hashes",
+        "limitations"
+      ]
+    },
+    "language_rule_change_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "changed_files": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "language_code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "changed_files",
+            "language_code"
+          ]
+        }
+      ]
+    },
+    "language_rule_impact_report": {
+      "type": "object",
+      "properties": {
+        "comparisons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "treebank": {
+                "type": "string"
+              },
+              "before": {
+                "$ref": "#/definitions/validation"
+              },
+              "after": {
+                "$ref": "#/definitions/validation"
+              }
+            },
+            "required": [
+              "treebank",
+              "before",
+              "after"
+            ]
+          }
+        },
+        "definition": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "comparisons",
+        "definition",
+        "limitations"
+      ]
+    },
+    "metadata_change_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "changes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "before": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "after": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "field",
+                  "before",
+                  "after"
+                ]
+              }
+            }
+          },
+          "required": [
+            "changes"
+          ]
+        }
+      ]
+    },
+    "documentation_preview": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "requires_broker_export": {
+              "const": true
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "examples": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "type": "string"
+                        },
+                        "word_count": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "coverage": {
+                          "type": "object",
+                          "properties": {
+                            "multiword_rows_not_drawn": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "empty_nodes_not_drawn": {
+                              "type": "integer",
+                              "minimum": 0
+                            },
+                            "enhanced_edges_not_drawn": {
+                              "type": "boolean"
+                            },
+                            "sent_id": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "multiword_rows_not_drawn",
+                            "empty_nodes_not_drawn",
+                            "enhanced_edges_not_drawn",
+                            "sent_id"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "word_count",
+                        "coverage"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "file_path",
+                  "sha256",
+                  "examples"
+                ]
+              }
+            },
+            "diagnostics": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file_path",
+                  "message"
+                ]
+              }
+            }
+          },
+          "required": [
+            "requires_broker_export",
+            "files",
+            "diagnostics"
+          ]
+        }
+      ]
+    },
+    "guideline_example_preview": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "requires_broker_export": {
+              "const": true
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "file_path": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "file_path",
+                "sha256"
+              ]
+            },
+            "examples": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string"
+                  },
+                  "word_count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "coverage": {
+                    "type": "object",
+                    "properties": {
+                      "multiword_rows_not_drawn": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "empty_nodes_not_drawn": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "enhanced_edges_not_drawn": {
+                        "type": "boolean"
+                      },
+                      "sent_id": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "multiword_rows_not_drawn",
+                      "empty_nodes_not_drawn",
+                      "enhanced_edges_not_drawn",
+                      "sent_id"
+                    ]
+                  },
+                  "line": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "html_example": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "kind",
+                  "word_count",
+                  "coverage"
+                ]
+              }
+            },
+            "diagnostics": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "requires_broker_export",
+            "source",
+            "examples",
+            "diagnostics"
+          ]
+        }
+      ]
+    },
+    "sentence_render": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "complete"
+        },
+        "output_path": {
+          "type": "string"
+        },
+        "requires_broker_export": {
+          "const": true
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/artifact"
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "basic_dependencies": {
+              "const": "drawn"
+            },
+            "multiword_rows_not_drawn": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "empty_nodes_not_drawn": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "enhanced_edges_not_drawn": {
+              "type": "boolean"
+            },
+            "sent_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "basic_dependencies",
+            "multiword_rows_not_drawn",
+            "empty_nodes_not_drawn",
+            "enhanced_edges_not_drawn",
+            "sent_id"
+          ]
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "render_manifest_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "render_manifest_sha256"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "output_path",
+        "requires_broker_export",
+        "artifacts",
+        "coverage",
+        "limitations"
+      ]
+    },
+    "release_plan": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1"
+        },
+        "target_release": {
+          "type": "string"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/manifest_entry"
+          }
+        },
+        "previous_release": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "language_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "validation": {
+          "$ref": "#/definitions/release_validation"
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "ready": {
+          "type": "boolean"
+        },
+        "external_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "$ref": "#/definitions/portable_release_provenance"
+        },
+        "context": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "target_release",
+        "files",
+        "previous_release",
+        "language_code",
+        "validation",
+        "status",
+        "ready",
+        "external_requirements",
+        "limitations"
+      ]
+    },
+    "release_candidate_build": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ready": {
+              "type": "boolean"
+            },
+            "validation": {
+              "$ref": "#/definitions/release_validation"
+            },
+            "manifest": {
+              "type": "object",
+              "properties": {
+                "schema_version": {
+                  "const": "1"
+                },
+                "target_release": {
+                  "type": "string"
+                },
+                "files": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/manifest_entry"
+                  }
+                },
+                "context": {
+                  "type": "string"
+                },
+                "language_code": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "provenance": {
+                  "$ref": "#/definitions/portable_release_provenance"
+                }
+              },
+              "required": [
+                "schema_version",
+                "target_release",
+                "files",
+                "context",
+                "language_code"
+              ]
+            },
+            "requires_broker_export": {
+              "const": true
+            }
+          },
+          "required": [
+            "ready",
+            "validation",
+            "manifest",
+            "requires_broker_export"
+          ]
+        }
+      ]
+    },
+    "release_deposit_prepare": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ready": {
+              "type": "boolean"
+            },
+            "validation": {
+              "$ref": "#/definitions/release_validation"
+            },
+            "requires_broker_export": {
+              "const": true
+            },
+            "candidate_manifest": {
+              "type": "object",
+              "properties": {
+                "provenance": {
+                  "$ref": "#/definitions/portable_release_provenance"
+                }
+              }
+            }
+          },
+          "required": [
+            "ready",
+            "validation",
+            "requires_broker_export"
+          ]
+        }
+      ]
+    },
+    "maintenance_report": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "check": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "passed": {
+                "type": "boolean"
+              },
+              "status": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "age_seconds": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "check"
+            ]
+          }
+        },
+        "policy_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "passed",
+        "checks",
+        "policy_sha256",
+        "limitations"
+      ]
+    },
+    "handover_package_build": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/export"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "requires_broker_export": {
+              "const": true
+            },
+            "manifest": {
+              "type": "object",
+              "properties": {
+                "schema_version": {
+                  "const": "1"
+                },
+                "files": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/manifest_entry"
+                  }
+                },
+                "context": {
+                  "type": "string"
+                },
+                "limitations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "provenance": {
+                  "$ref": "#/definitions/portable_release_provenance"
+                }
+              },
+              "required": [
+                "schema_version",
+                "files",
+                "context",
+                "limitations"
+              ]
+            }
+          },
+          "required": [
+            "requires_broker_export",
+            "manifest"
+          ]
+        }
+      ]
+    },
+    "treebank_rename_plan": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/plan"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "complete"
+            },
+            "old_name": {
+              "type": "string"
+            },
+            "new_name": {
+              "type": "string"
+            },
+            "external_requirements": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "old_name",
+            "new_name",
+            "external_requirements",
+            "limitations"
+          ]
+        }
+      ]
+    },
+    "star_rating_report": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stars": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "word_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "split_counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "weights": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "availability": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "validation": {
+          "$ref": "#/definitions/release_validation"
+        },
+        "missing_metadata": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "method": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "score",
+        "stars",
+        "word_count",
+        "split_counts",
+        "dimensions",
+        "weights",
+        "availability",
+        "validation",
+        "missing_metadata",
+        "method",
+        "limitations"
+      ]
+    },
+    "token_split": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/candidate"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "details": {
+                  "$ref": "#/definitions/structural_details"
+                }
+              },
+              "required": [
+                "details"
+              ]
+            }
+          ]
+        },
+        {
+          "$ref": "#/definitions/annotation_needed"
+        }
+      ]
+    },
+    "tokens_merge": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/candidate"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "details": {
+                  "$ref": "#/definitions/structural_details"
+                }
+              },
+              "required": [
+                "details"
+              ]
+            }
+          ]
+        },
+        {
+          "$ref": "#/definitions/annotation_needed"
+        }
+      ]
+    },
+    "tree_split": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/candidate"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "details": {
+                  "$ref": "#/definitions/structural_details"
+                }
+              },
+              "required": [
+                "details"
+              ]
+            }
+          ]
+        },
+        {
+          "$ref": "#/definitions/annotation_needed"
+        }
+      ]
+    },
+    "trees_merge": {
+      "anyOf": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/definitions/candidate"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "details": {
+                  "$ref": "#/definitions/structural_details"
+                }
+              },
+              "required": [
+                "details"
+              ]
+            }
+          ]
+        },
+        {
+          "$ref": "#/definitions/annotation_needed"
+        }
+      ]
+    }
+  }
+}

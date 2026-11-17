@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent root agent /root; mutation generator and Perl bridge author excluded",
+  "qualification": "Exact single-mutation static equivalence proofs; no runtime failure reclassification and no waiver for other definitions. Prior source fingerprints remain stale.",
+  "reviews": [
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1482:integer_boundary_-1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "b448d6771dbae25606de6f23d9ffed665fceb3c540b0897134701d3804c5164a",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_-1",
+        "start": 1482,
+        "end": 1483,
+        "original": "1",
+        "replacement": "0"
+      },
+      "equivalent": true,
+      "reason": "The virtual-root entry is created with key 0 before input nodes are processed. The node grammar excludes 0, so the postincrement duplicate detector never reads or modifies that entry. Every other observation of the nodes hash uses exists or keys; the scalar value of the virtual-root entry is never used or serialized. Initial values 0 and 1 therefore produce exactly the same accepted nodes, edges, root inclusion and output."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1482:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "8f7bfff9ad0c4b8bd8f43c2ba71352db791b117784450d619daf340a51efb696",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 1482,
+        "end": 1483,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "The virtual-root entry is created with key 0 before input nodes are processed. The node grammar excludes 0, so the postincrement duplicate detector never reads or modifies that entry. Every other observation of the nodes hash uses exists or keys; the scalar value of the virtual-root entry is never used or serialized. Initial values 1 and 2 therefore produce exactly the same accepted nodes, edges, root inclusion and output."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#1622:operator_++",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "949ee254d07c9cb4e141e11e84e46212a7ed3ddee2826e929b1b610ae80794e8",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_++",
+        "start": 1622,
+        "end": 1624,
+        "original": "++",
+        "replacement": "--"
+      },
+      "equivalent": true,
+      "reason": "For every valid nonzero node ID, the first visit observes an undefined hash value as numeric zero and inserts the key. Postincrement returns 0 then stores 1; postdecrement returns 0 then stores -1. Both accept the first visit and reject the next visit because both 1 and -1 are true. fail exits on that second visit, so no later counter value can affect the request. Outside this duplicate guard only exists and keys observe the hash, and counter values are never serialized. Root key 0 is excluded by the preceding node grammar."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#2333:operator_++",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "e17f798538e17924700ea3b1de588e4e4f7e0c7247d8406f57fc68beaadf30d8",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_++",
+        "start": 2333,
+        "end": 2335,
+        "original": "++",
+        "replacement": "--"
+      },
+      "equivalent": true,
+      "reason": "The seen hash starts empty and is used only by this duplicate-edge guard. The first occurrence returns numeric zero under either postincrement or postdecrement and is accepted. The next occurrence returns 1 or -1, both true, and fail terminates before another occurrence. Neither stored counter value is otherwise read or serialized. All edge-shape and identity validation precedes this guard unchanged."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#2599:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "8623819cd8eba098d1e424191e6e1404bea6a475c7d185d1aa0d56b546d91c3f",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 2599,
+        "end": 2600,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "The terminal require-eval sentinel is consumed only as the left operand of or fail. Both integer 1 and integer 2 are true and have no side effect. On require failure eval exits before either sentinel and the same prerequisite error is emitted. The sentinel does not enter Graph construction or any response."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3660:operator_||",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "cb53aef6f030346c557f5f05d936037dc8e3344b9d57c59b0ada697e0a360fdb",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_||",
+        "start": 3660,
+        "end": 3662,
+        "original": "||",
+        "replacement": "&&"
+      },
+      "equivalent": true,
+      "reason": "The inner eval has an unconditional defined hash-reference final expression. A successful eval clears the exception indicator and returns that reference, making both operands false. An ordinary exception returns undef with a true exception indicator, making both operands true. Both conjunction and disjunction therefore choose the same branch on reachable pinned-module paths. Even a false-overloaded exception object would reach encoding of undef only in the mutant; allow_nonref(0) rejects it before print, and the enclosing eval emits the identical fixed graph_execution_failed response. There is no successful undefined result path."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#3974:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "9381b8551aacd50fff438fc2de6211dfde7fa65c9eaa19ce7f86fe7781c9d4d6",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 3974,
+        "end": 3975,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "The loop condition changes from constant integer 1 to constant integer 2. Both are always true in Perl, neither evaluates a side effect, and every loop exit remains the unchanged explicit last or fail. No loop result is consumed."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4144:string_value",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "ec59bbe922c227ca0b9146923a3ddee39aee9b386e2c251eaad9bf76b9ede760",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "string_value",
+        "start": 4144,
+        "end": 4163,
+        "original": "'input_read_failed'",
+        "replacement": "''"
+      },
+      "equivalent": true,
+      "reason": "This exact fail message belongs to an unreachable guard. empty_reads starts at zero and is incremented only when count equals zero. On its first such observation it becomes 1, so the greater-than-1 test is false, and the very next statement exits the loop. Nonzero reads never increment it. Undefined reads already exit through the preceding fail. Thus the message is never evaluated with this single mutation; changing it cannot affect any response."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4183:operator_++",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "d7d37215b4888e2ec2bfa89819d365e22bd19107161c013ad5a635fc89b044c5",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "operator_++",
+        "start": 4183,
+        "end": 4185,
+        "original": "++",
+        "replacement": "--"
+      },
+      "equivalent": true,
+      "reason": "empty_reads starts at zero and is touched only on a zero-byte read. The first prefix increment yields 1 and the mutated prefix decrement yields -1; neither is greater than 1. The next unchanged statement immediately exits the loop on that same zero-byte read. Nonzero reads do not modify the counter and undefined reads fail earlier. Its value is never used afterward, so no second update or observable difference is reachable."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4200:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "fb9d899c2c9d5eb95ecc891c045eaa079f74a126d103d3a031cd7897a65a9d4e",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 4200,
+        "end": 4201,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "empty_reads starts at zero, increments only on a zero-byte read, and the loop exits immediately after that first zero-byte read. Its only compared value is therefore 1. Neither comparison 1>1 nor 1>2 can trigger the error; all other reads and the final stream checks are unchanged."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#4984:string_value",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "5bbd35d9e1713e6d2096e49da4ac46e91d26ab5fb91bb13b623c8bd88b2464b6",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "string_value",
+        "start": 4984,
+        "end": 5012,
+        "original": "\"bridge execution warning\\n\"",
+        "replacement": "\"\""
+      },
+      "equivalent": true,
+      "reason": "Only the private exception text raised by the warning handler changes. Perl die with an empty argument still raises an exception using the current exception or a source-location message. Both versions unwind the same eval and emit the fixed graph_execution_failed JSON and exit status. No exception detail from this handler is printed or serialized. The pinned Graph.pm and Node.pm closure contains no nested eval or exception-text observation that could expose this private text."
+    },
+    {
+      "id": "workers/ud/src/ud_agent/perl/graph_bridge.pl#5102:integer_boundary_1",
+      "file": "workers/ud/src/ud_agent/perl/graph_bridge.pl",
+      "source_sha256": "278ab018938947f825733d05be1a8c5b06123a5decd42f12d0c26e65b6c0774f",
+      "definition_sha256": "f87224d2bd5067cc4a7dc60fbf7387f58724b91ca58b14da9068b6266117d999",
+      "definition": {
+        "tool": "ppi-perl",
+        "version": "1.0.0",
+        "operator": "integer_boundary_1",
+        "start": 5102,
+        "end": 5103,
+        "original": "1",
+        "replacement": "2"
+      },
+      "equivalent": true,
+      "reason": "The terminal outer-eval sentinel changes from 1 to 2 after main or stream has already emitted its output. The only observation of completed is a truthiness test; both integers are true. Exceptional paths never reach the sentinel and retain the same failure response and exit status."
+    }
+  ],
+  "verified_upstream_file_sha256": {
+    "Graph.pm": "90cb1c8122921f7c55c4d0e8a503635c43257387c294e85c2eaa2bb8cee09fdb",
+    "Node.pm": "6da8c68d64d2a0ee745ebb4d4f086dbda41f5aa313123aabfd11ff6b5c23336b"
+  },
+  "unresolved": "All other current survivor definitions remain unresolved here, including actual size, frame and read limits, read errors, and suppression categories."
+}

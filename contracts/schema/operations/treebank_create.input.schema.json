@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "treebank_create",
+  "type": "object",
+  "additionalProperties": false,
+  "$defs": {
+    "compat_options": {
+      "anyOf": [
+        {
+          "type": "object",
+          "description": "Reserved options retain previously accepted successful inputs; no undocumented fields affect execution."
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "working_tree_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "template_path": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "metadata_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "options": {
+      "$ref": "#/$defs/compat_options"
+    }
+  },
+  "required": [
+    "working_tree_path",
+    "template_path",
+    "metadata_path"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "qualification": "exact-red-hat-node-linux-rust-source-provenance-input-lock",
+  "node_version": "26.13.0",
+  "rust_version": "1.88.0",
+  "rust_commit": "6b00bc3880198600130e1cf62b8f8a93494488cc",
+  "embedded_compiler_string": "rustc version 1.88.0 (6b00bc388 2025-06-23) (Red Hat 1.88.0-1.module+el8.10.0+23326+3c6ade25)",
+  "source_rpm": {
+    "path": ".artifacts/source-materials-data/redhat-rust-1.88-node-linux/exact-redhat.src.rpm",
+    "url": "https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi8/8/x86_64/appstream/source/SRPMS/Packages/r/rust-1.88.0-1.module+el8.10.0+23326+3c6ade25.src.rpm",
+    "sha256": "6b8e1a755cd565b6964451e84e451a9b863822c84381e8e7a227cd14b845a7f2",
+    "size_bytes": 284843922,
+    "signer_fingerprint": "567E347AD0044ADE55BA8A5F199E2F91FD431D51"
+  },
+  "redhat_key": {
+    "path": ".artifacts/source-materials-data/redhat-rust-1.88-node-linux/redhat-release-key.asc",
+    "sha256": "d4b2543626bee31d9438d4a31731aae712c072893c7aed8854f16c42fafc742b",
+    "size_bytes": 1855
+  },
+  "rust_key": {
+    "path": ".artifacts/source-materials-data/rust-runtime-sources-node-v4/rust-publisher-key.asc",
+    "sha256": "e54b09a439647e006b4831eec9785cbaaf3e07ab371c3a6ee6a68e1bdb9fbc6b",
+    "size_bytes": 5326,
+    "signer_fingerprint": "108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE"
+  },
+  "upstream_signature": {
+    "path": ".artifacts/source-materials-data/redhat-rust-1.88-node-linux/rustc-1.88.0-src.tar.xz.asc",
+    "sha256": "ab1b55fecf922ae89ae7a4625fd1d5db1ec8612ba2c320f8109113bc6449094b",
+    "size_bytes": 801,
+    "url": "https://static.rust-lang.org/dist/rustc-1.88.0-src.tar.xz.asc"
+  },
+  "source_rpm_members": [
+    {
+      "name": "0001-Let-environment-variables-override-some-default-CPUs.patch",
+      "sha256": "e3bbdd2600d391dd886ea397d7b80d4e4216a9ed344dbaa517cbea104f4af9ea",
+      "size_bytes": 2682
+    },
+    {
+      "name": "0001-Use-lld-provided-by-system.patch",
+      "sha256": "9aa90fc50f3e124817011988bba3373bf71d1648d44ed30d31391714cb3fed2e",
+      "size_bytes": 4145
+    },
+    {
+      "name": "0001-bootstrap-allow-disabling-target-self-contained.patch",
+      "sha256": "1afacabe144e073456bf656de92c612402d05134cda8899e395c110e260778bc",
+      "size_bytes": 4156
+    },
+    {
+      "name": "0002-set-an-external-library-path-for-wasm32-wasi.patch",
+      "sha256": "af81dcc49534c610caae296138812c215c313024c17cba8ddd0bcf5bccce1e6d",
+      "size_bytes": 5330
+    },
+    {
+      "name": "cargo_vendor.attr",
+      "sha256": "5720149d417ee1f5d228513f6a69c69072fc613959cd92643581b782881fa4b3",
+      "size_bytes": 135
+    },
+    {
+      "name": "cargo_vendor.prov",
+      "sha256": "92e86bddaeb83308f0b2482b88042fc58e6fd3dafcd34214df95ec4b788ec4f6",
+      "size_bytes": 3816
+    },
+    {
+      "name": "macros.rust-toolset",
+      "sha256": "4b4ed71194a43e989ed736d54b5754c18683b9fb9f60379bc2b03ac609c594e9",
+      "size_bytes": 10173
+    },
+    {
+      "name": "rust-pr142047.patch",
+      "sha256": "49673dd9a99d339e9d591ce41ed9b7fdefec9bd368cf0c70142253cd5a3d292b",
+      "size_bytes": 3362
+    },
+    {
+      "name": "rust.spec",
+      "sha256": "e0a433f5bbd720c6dbcd357697f9c7e5b06cf6f9bd837b671318a1b0f09e06b7",
+      "size_bytes": 50389
+    },
+    {
+      "name": "rustc-1.70.0-rust-gdb-substitute-path.patch",
+      "sha256": "b26d32ec661a0f33b1fbc8971ae9910512848da878b4507737615b596ca35a9d",
+      "size_bytes": 1005
+    },
+    {
+      "name": "rustc-1.88.0-disable-libssh2.patch",
+      "sha256": "39761a189da7c9a0f440729fa1844b3e705b0629a48437ee463ae97359455a71",
+      "size_bytes": 1636
+    },
+    {
+      "name": "rustc-1.88.0-src.tar.xz",
+      "sha256": "0c1dcbb4f762513d021e1a282c0ac58c0a423642b3a6bf581cafb5414df4193e",
+      "size_bytes": 283294344
+    },
+    {
+      "name": "rustc-1.88.0-unbundle-sqlite.patch",
+      "sha256": "c33b280c5d1eaa37f5e5310f3cde83f139accb5c2330d77393871b04800c229c",
+      "size_bytes": 1153
+    },
+    {
+      "name": "wasi-libc-640c0cfc19a96b099e0791824be5ef0105ce2084.tar.gz",
+      "sha256": "105d976cfadbf1b5ce43ad1799b0c1b0e85f2834c5921d3d0b5aba931690d6a9",
+      "size_bytes": 1438256
+    }
+  ]
+}

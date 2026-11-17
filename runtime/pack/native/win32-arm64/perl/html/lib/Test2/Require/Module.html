@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Require::Module - Skip tests if certain packages are not installed, or insufficient versions.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Require::Module - Skip tests if certain packages are not installed, or insufficient versions.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Require::Module - Skip tests if certain packages are not installed, or insufficient versions.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Sometimes you have tests that are nice to run, but depend on tools that may not be available. Instead of adding the tool as a dep, or making the test always skip, it is common to make the test run conditionally. This package helps make that possible.</p>
+
+<p>This module is modeled after <a>Test::Requires</a>. The difference is that this module is based on <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> directly, and does not go through <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/Builder.html">Test::Builder</a>. Another difference is that the packages you check for are not imported into your namespace for you. This is intentional.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code># The test will be skipped unless Some::Module is installed, any version.
+use Test2::Require::Module &#39;Some::Module&#39;;
+
+# The test will be skipped unless &#39;Other::Module&#39; is installed and at
+# version &#39;5.555&#39; or greater.
+use Test2::Require::Module &#39;Other::Module&#39; =&gt; &#39;5.555&#39;;
+
+# We now need to use them directly, Test2::Require::Module does not import
+# them for us.
+use Some::Module;
+use Other::Module;</code></pre>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Suite can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Require::Module - Skip tests if certain packages are not installed, or insufficient versions.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

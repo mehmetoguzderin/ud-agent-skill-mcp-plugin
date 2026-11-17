@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Net::Domain - Attempt to evaluate the current host's internet name and domain</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Net::Domain - Attempt to evaluate the current host's internet name and domain</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#Functions">Functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#EXPORTS">EXPORTS</a></li>
+  <li><a href="#KNOWN-BUGS">KNOWN BUGS</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+  <li><a href="#LICENCE">LICENCE</a></li>
+  <li><a href="#VERSION">VERSION</a></li>
+  <li><a href="#DATE">DATE</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Net::Domain - Attempt to evaluate the current host&#39;s internet name and domain</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>use Net::Domain qw(hostname hostfqdn hostdomain domainname);</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>Using various methods <b>attempt</b> to find the Fully Qualified Domain Name (FQDN) of the current host. From this determine the host-name and the host-domain.</p>
+
+<p>Each of the functions will return <i>undef</i> if the FQDN cannot be determined.</p>
+
+<h2 id="Functions">Functions</h2>
+
+<dl>
+
+<dt id="hostfqdn"><code>hostfqdn()</code></dt>
+<dd>
+
+<p>Identify and return the FQDN of the current host.</p>
+
+</dd>
+<dt id="domainname"><code>domainname()</code></dt>
+<dd>
+
+<p>An alias for hostfqdn().</p>
+
+</dd>
+<dt id="hostname"><code>hostname()</code></dt>
+<dd>
+
+<p>Returns the smallest part of the FQDN which can be used to identify the host.</p>
+
+</dd>
+<dt id="hostdomain"><code>hostdomain()</code></dt>
+<dd>
+
+<p>Returns the remainder of the FQDN after the <i>hostname</i> has been removed.</p>
+
+</dd>
+</dl>
+
+<h1 id="EXPORTS">EXPORTS</h1>
+
+<p>The following symbols are, or can be, exported by this module:</p>
+
+<dl>
+
+<dt id="Default-Exports">Default Exports</dt>
+<dd>
+
+<p><i>None</i>.</p>
+
+</dd>
+<dt id="Optional-Exports">Optional Exports</dt>
+<dd>
+
+<p><code>hostname</code>, <code>hostdomain</code>, <code>hostfqdn</code>, <code>domainname</code>.</p>
+
+</dd>
+<dt id="Export-Tags">Export Tags</dt>
+<dd>
+
+<p><i>None</i>.</p>
+
+</dd>
+</dl>
+
+<h1 id="KNOWN-BUGS">KNOWN BUGS</h1>
+
+<p>See <a href="https://rt.cpan.org/Dist/Display.html?Status=Active&amp;Queue=libnet">https://rt.cpan.org/Dist/Display.html?Status=Active&amp;Queue=libnet</a>.</p>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Graham Barr &lt;<a href="mailto:gbarr@pobox.com">gbarr@pobox.com</a>&gt;.</p>
+
+<p>Adapted from Sys::Hostname by David Sundstrom &lt;<a href="mailto:sunds@asictest.sc.ti.com">sunds@asictest.sc.ti.com</a>&gt;.</p>
+
+<p>Steve Hay &lt;<a href="mailto:shay@cpan.org">shay@cpan.org</a>&gt; is now maintaining libnet as of version 1.22_02.</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright (C) 1995-1998 Graham Barr. All rights reserved.</p>
+
+<p>Copyright (C) 2013-2014, 2020 Steve Hay. All rights reserved.</p>
+
+<h1 id="LICENCE">LICENCE</h1>
+
+<p>This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself, i.e. under the terms of either the GNU General Public License or the Artistic License, as specified in the <i>LICENCE</i> file.</p>
+
+<h1 id="VERSION">VERSION</h1>
+
+<p>Version 3.15</p>
+
+<h1 id="DATE">DATE</h1>
+
+<p>20 March 2023</p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>See the <i>Changes</i> file.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Net::Domain - Attempt to evaluate the current host's internet name and domain</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "render-assets-darwin-arm64",
+      "platform": "darwin-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-render-darwin-arm64.tar.gz",
+      "sha256": "sha256:366128552a3d043348f3461af6814705bf7ad1072ff89df08d16941040c637d1",
+      "size_bytes": 108645460,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-render-darwin-arm64.tar.gz"
+    },
+    {
+      "id": "render-assets-linux-arm64",
+      "platform": "linux-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-render-linux-arm64.tar.gz",
+      "sha256": "sha256:017c9b09cfda53be712764fa5a6a05ea45eaba20d0e9ebfc1962b0621fbab787",
+      "size_bytes": 116416166,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-render-linux-arm64.tar.gz"
+    },
+    {
+      "id": "render-assets-linux-x64",
+      "platform": "linux-x64",
+      "path": ".artifacts/release-inputs/ud-agent-render-linux-x64.tar.gz",
+      "sha256": "sha256:507fbfaace6bd5775af9baba53aa6e73a2a34808cf6c98d07dcaa17fe055097d",
+      "size_bytes": 116926626,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-render-linux-x64.tar.gz"
+    },
+    {
+      "id": "render-assets-win32-arm64",
+      "platform": "win32-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-render-win32-arm64.tar.gz",
+      "sha256": "sha256:da9081194d3d7db6e1610f7adffde46f0f3c9977030022e97148d6c91bb79326",
+      "size_bytes": 110839237,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-render-win32-arm64.tar.gz"
+    },
+    {
+      "id": "render-assets-win32-x64",
+      "platform": "win32-x64",
+      "path": ".artifacts/release-inputs/ud-agent-render-win32-x64.tar.gz",
+      "sha256": "sha256:e6454fa329dd51ef0a37f4abe0205d8356a6ccf02c4978ca0f803ce9ca2dfbac",
+      "size_bytes": 108729614,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-render-win32-x64.tar.gz"
+    },
+    {
+      "id": "userspace-core-darwin-arm64",
+      "platform": "darwin-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-userspace-darwin-arm64.tar.gz",
+      "sha256": "sha256:b8ad66009a9e289a55c19545910dbbd0aefb4e643dfdbfda9068905d4c7680dd",
+      "size_bytes": 21774373,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-userspace-darwin-arm64.tar.gz"
+    },
+    {
+      "id": "userspace-core-linux-arm64",
+      "platform": "linux-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-userspace-linux-arm64.tar.gz",
+      "sha256": "sha256:d0c3c8776d29a55cd862a75ebdb440a859fa021b9bbabe6c487055aa047f3511",
+      "size_bytes": 27356257,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-userspace-linux-arm64.tar.gz"
+    },
+    {
+      "id": "userspace-core-linux-x64",
+      "platform": "linux-x64",
+      "path": ".artifacts/release-inputs/ud-agent-userspace-linux-x64.tar.gz",
+      "sha256": "sha256:8832840bada3e5d9ddc673a6eab58d407c0bfee08c1080665fab8aaabae122b6",
+      "size_bytes": 27902372,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-userspace-linux-x64.tar.gz"
+    },
+    {
+      "id": "userspace-core-win32-arm64",
+      "platform": "win32-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-userspace-win32-arm64.tar.gz",
+      "sha256": "sha256:fdcf0157761d065c1bb918cefb3a940921f81f19ac9bb3defe5d997a0b1752a7",
+      "size_bytes": 22630865,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-userspace-win32-arm64.tar.gz"
+    },
+    {
+      "id": "userspace-core-win32-x64",
+      "platform": "win32-x64",
+      "path": ".artifacts/release-inputs/ud-agent-userspace-win32-x64.tar.gz",
+      "sha256": "sha256:d95b7a9898f771e11e957c4d58b8da5db92a49d3367c5da58eef1dd673123aad",
+      "size_bytes": 17386944,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-userspace-win32-x64.tar.gz"
+    },
+    {
+      "id": "provider-assets-apple-container-darwin-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-provider-apple-container-darwin-arm64.tar.gz",
+      "platform": "apple-container-darwin-arm64",
+      "sha256": "sha256:f90a55ce83814e659c3a4b5eb429e298c56cf64558492f4495d4a6d73678c68b",
+      "size_bytes": 247000863,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-provider-apple-container-darwin-arm64.tar.gz"
+    },
+    {
+      "id": "provider-assets-wslc-win32-arm64",
+      "path": ".artifacts/release-inputs/ud-agent-provider-wslc-win32-arm64.tar.gz",
+      "platform": "wslc-win32-arm64",
+      "sha256": "sha256:d8b4b68f018cab4a234f65d81d796c78037e9e2a492ac46d4f3b3f49ad9d8a40",
+      "size_bytes": 5266023,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-provider-wslc-win32-arm64.tar.gz"
+    },
+    {
+      "id": "provider-assets-wslc-win32-x64",
+      "path": ".artifacts/release-inputs/ud-agent-provider-wslc-win32-x64.tar.gz",
+      "platform": "wslc-win32-x64",
+      "sha256": "sha256:16cf46cafdaec612f64909d0d40601bc1201f4a7b0f7783a4ce914b137079813",
+      "size_bytes": 5203530,
+      "url": "https://github.com/mehmetoguzderin/ud-agent-skill-mcp-plugin/releases/download/v0.1.0-beta.1/ud-agent-provider-wslc-win32-x64.tar.gz"
+    }
+  ]
+}

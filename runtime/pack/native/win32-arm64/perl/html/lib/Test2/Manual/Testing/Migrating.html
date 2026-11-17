@@ -1,0 +1,597 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test2::Manual::Testing::Migrating - How to migrate existing tests from Test::More to Test2.</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Testing::Migrating - How to migrate existing tests from Test::More to Test2.</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#LEGACY-TEST">LEGACY TEST</a></li>
+  <li><a href="#BOILERPLATE">BOILERPLATE</a></li>
+  <li><a href="#SIMPLE-ASSERTIONS">SIMPLE ASSERTIONS</a></li>
+  <li><a href="#TODO">TODO</a></li>
+  <li><a href="#DEEP-COMPARISONS">DEEP COMPARISONS</a></li>
+  <li><a href="#COMPARING-REFERENCES">COMPARING REFERENCES</a></li>
+  <li><a href="#TOOLS-THAT-ARE-GONE">TOOLS THAT ARE GONE</a></li>
+  <li><a href="#TOOLS-THAT-HAVE-CHANGED">TOOLS THAT HAVE CHANGED</a></li>
+  <li><a href="#FINAL-VERSION">FINAL VERSION</a>
+    <ul>
+      <li><a href="#IMPORTS">IMPORTS</a></li>
+      <li><a href="#REDUCED-BOILERPLATE">REDUCED BOILERPLATE</a></li>
+      <li><a href="#CLEAN-NAMESPACE">CLEAN NAMESPACE</a></li>
+    </ul>
+  </li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#SOURCE">SOURCE</a></li>
+  <li><a href="#MAINTAINERS">MAINTAINERS</a></li>
+  <li><a href="#AUTHORS">AUTHORS</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>Test2::Manual::Testing::Migrating - How to migrate existing tests from Test::More to Test2.</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This tutorial covers the conversion of an existing test. This tutorial assumes you have a test written using <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/More.html">Test::More</a>.</p>
+
+<h1 id="LEGACY-TEST">LEGACY TEST</h1>
+
+<p>This tutorial will be converting this example test one section at a time:</p>
+
+<p><code>t/example.t</code>:</p>
+
+<pre><code>#####################
+# Boilerplate
+
+use strict;
+use warnings;
+
+use Test::More tests =&gt; 14;
+
+use_ok &#39;Scalar::Util&#39;;
+require_ok &#39;Exporter&#39;;
+
+#####################
+# Simple assertions (no changes)
+
+ok(1, &quot;pass&quot;);
+
+is(&quot;apple&quot;, &quot;apple&quot;, &quot;Simple string compare&quot;);
+
+like(&quot;foo bar baz&quot;, qr/bar/, &quot;Regex match&quot;);
+
+#####################
+# Todo
+
+{
+    local $TODO = &quot;These are todo&quot;;
+
+    ok(0, &quot;oops&quot;);
+}
+
+#####################
+# Deep comparisons
+
+is_deeply([1, 2, 3], [1, 2, 3], &quot;Deep comparison&quot;);
+
+#####################
+# Comparing references
+
+my $ref = [1];
+is($ref, $ref, &quot;Check that we have the same ref both times&quot;);
+
+#####################
+# Things that are gone
+
+ok(eq_array([1], [1]), &quot;array comparison&quot;);
+ok(eq_hash({a =&gt; 1}, {a =&gt; 1}), &quot;hash comparison&quot;);
+ok(eq_set([1, 3, 2], [1, 2, 3]), &quot;set comparison&quot;);
+
+note explain([1, 2, 3]);
+
+{
+    package THING;
+    sub new { bless({}, shift) }
+}
+
+my $thing = new_ok(&#39;THING&#39;);
+
+#####################
+# Tools that changed
+
+isa_ok($thing, &#39;THING&#39;, &#39;$thing&#39;);
+
+can_ok(__PACKAGE__, qw/ok is/);</code></pre>
+
+<h1 id="BOILERPLATE">BOILERPLATE</h1>
+
+<p>BEFORE:</p>
+
+<pre><code>use strict;
+use warnings;
+
+use Test::More tests =&gt; 14;
+
+use_ok &#39;Scalar::Util&#39;;
+require_ok &#39;Exporter&#39;;</code></pre>
+
+<p>AFTER:</p>
+
+<pre><code>use strict;
+use warnings;
+
+use Test2::V1 &#39;-import&#39;;
+plan(11);
+
+use Scalar::Util;
+require Exporter;</code></pre>
+
+<dl>
+
+<dt id="Replace-Test::More-with-Test2::V1">Replace Test::More with Test2::V1</dt>
+<dd>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a> is the recommended bundle. In a full migration you will want to replace <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/More.html">Test::More</a> with the <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a> bundle.</p>
+
+<p><b>Note:</b> You should always double check the latest <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> to see if there is a new recommended bundle. When writing a new test you should always use the newest Test::V# module. Higher numbers are newer version.</p>
+
+<p>You probably want the <code>-import</code> argument when using <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a> as it will populate your namespace with all the tools you expect from a test helper module. However if you want your namespace left clean you can omit the argument, in which case <code>T2()</code> is the only thing added to your namespace, and it can be used to access the tools:</p>
+
+<pre><code>use Test2::V1;
+
+T2-&gt;ok(1, &quot;pass&quot;);
+
+T2-&gt;done_testing;</code></pre>
+
+</dd>
+<dt id="NOTE:-srand">NOTE: srand</dt>
+<dd>
+
+<p>When srand is on (not default in V1, but Default in older V0) it can cause problems with things like <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/File/Temp.html">File::Temp</a> which will end up attempting the same &quot;random&quot; filenames for every test process started on a given day (or sharing the same seed).</p>
+
+<p>If this is a problem for you then please disable srand when loading</p>
+
+<p>For <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a>:</p>
+
+<pre><code>use Test2::V0 -no_srand =&gt; 1;</code></pre>
+
+<p>For <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a> simply do not use the <code>-P</code>, or <code>-Plugins</code> import option and it will not be loaded.</p>
+
+</dd>
+<dt id="Stop-using-use_ok">Stop using use_ok()</dt>
+<dd>
+
+<p><code>use_ok()</code> has been removed. a <code>use MODULE</code> statement will throw an exception on failure anyway preventing the test from passing.</p>
+
+<p>If you <i>REALLY</i> want/need to assert that the file loaded you can use the <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/ok.html">ok</a> module:</p>
+
+<pre><code>use ok &#39;Scalar::Util&#39;;</code></pre>
+
+<p>The main difference here is that there is a space instead of an underscore.</p>
+
+</dd>
+<dt id="Stop-using-require_ok">Stop using require_ok()</dt>
+<dd>
+
+<p><code>require_ok</code> has been removed just like <code>use_ok</code>. There is no <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/ok.html">ok</a> module equivalent here. Just use <code>require</code>.</p>
+
+</dd>
+<dt id="optional-remove-strict-warnings">(optional) remove strict/warnings</dt>
+<dd>
+
+<p>In the <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V0.html">Test2::V0</a> bundle turns strict and warnings on for you.</p>
+
+<p>In the <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/V1.html">Test2::V1</a> bundle you must ask for strict and warnings with one of the following import args: <code>-p</code>, <code>-pragmas</code>, <code>-strict</code>, <code>-warnings</code>.</p>
+
+</dd>
+<dt id="Change-where-the-plan-is-set">Change where the plan is set</dt>
+<dd>
+
+<p>Test2 does not allow you to set the plan at import. In the old code you would pass <code>tests =&gt; 11</code> as an import argument. In <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> you either need to use the <code>plan()</code> function to set the plan, or use <code>done_testing()</code> at the end of the test.</p>
+
+<p>If your test already uses <code>done_testing()</code> you can keep that and no plan changes are necessary.</p>
+
+<p><b>Note:</b> We are also changing the plan from 14 to 11, that is because we dropped <code>use_ok</code>, <code>require_ok</code>, and we will be dropping one more later on. This is why <code>done_testing()</code> is recommended over a set plan.</p>
+
+</dd>
+</dl>
+
+<h1 id="SIMPLE-ASSERTIONS">SIMPLE ASSERTIONS</h1>
+
+<p>The vast majority of assertions will not need any changes:</p>
+
+<pre><code>#####################
+# Simple assertions (no changes)
+
+ok(1, &quot;pass&quot;);
+
+is(&quot;apple&quot;, &quot;apple&quot;, &quot;Simple string compare&quot;);
+
+like(&quot;foo bar baz&quot;, qr/bar/, &quot;Regex match&quot;);</code></pre>
+
+<h1 id="TODO">TODO</h1>
+
+<pre><code>{
+    local $TODO = &quot;These are todo&quot;;
+
+    ok(0, &quot;oops&quot;);
+}</code></pre>
+
+<p>The <code>$TODO</code> package variable is gone. You now have a <code>todo()</code> function.</p>
+
+<p>There are 2 ways this can be used:</p>
+
+<dl>
+
+<dt id="todo-reason-sub">todo $reason =&gt; sub { ... }</dt>
+<dd>
+
+<pre><code>todo &quot;These are todo&quot; =&gt; sub {
+    ok(0, &quot;oops&quot;);
+};</code></pre>
+
+<p>This is the cleanest way to do a todo. This will make all assertions inside the codeblock into TODO assertions.</p>
+
+</dd>
+<dt id="my-TODO-todo-reason">{ my $TODO = todo $reason; ... }</dt>
+<dd>
+
+<pre><code>{
+    my $TODO = todo &quot;These are todo&quot;;
+
+    ok(0, &quot;oops&quot;);
+}</code></pre>
+
+<p>This is a system that emulates the old way. Instead of modifying a global <code>$TODO</code> variable you create a todo object with the <code>todo()</code> function and assign it to a lexical variable. Once the todo object falls out of scope the TODO ends.</p>
+
+</dd>
+</dl>
+
+<h1 id="DEEP-COMPARISONS">DEEP COMPARISONS</h1>
+
+<pre><code>is_deeply([1, 2, 3], [1, 2, 3], &quot;Deep comparison&quot;);</code></pre>
+
+<p>Deep comparisons are easy, simply replace <code>is_deeply()</code> with <code>is()</code>.</p>
+
+<pre><code>is([1, 2, 3], [1, 2, 3], &quot;Deep comparison&quot;);</code></pre>
+
+<h1 id="COMPARING-REFERENCES">COMPARING REFERENCES</h1>
+
+<pre><code>my $ref = [1];
+is($ref, $ref, &quot;Check that we have the same ref both times&quot;);</code></pre>
+
+<p>The <code>is()</code> function provided by <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/More.html">Test::More</a> forces both arguments into strings, which makes this a comparison of the reference addresses. <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a>&#39;s <code>is()</code> function is a deep comparison, so this will still pass, but fails to actually test what we want (that both references are the same exact ref, not just identical structures.)</p>
+
+<p>We now have the <code>ref_is()</code> function that does what we really want, it ensures both references are the same reference. This function does the job better than the original, which could be thrown off by string overloading.</p>
+
+<pre><code>my $ref = [1];
+ref_is($ref, $ref, &quot;Check that we have the same ref both times&quot;);</code></pre>
+
+<h1 id="TOOLS-THAT-ARE-GONE">TOOLS THAT ARE GONE</h1>
+
+<pre><code>ok(eq_array([1], [1]), &quot;array comparison&quot;);
+ok(eq_hash({a =&gt; 1}, {a =&gt; 1}), &quot;hash comparison&quot;);
+ok(eq_set([1, 3, 2], [1, 2, 3]), &quot;set comparison&quot;);
+
+note explain([1, 2, 3]);
+
+{
+    package THING;
+    sub new { bless({}, shift) }
+}
+
+my $thing = new_ok(&#39;THING&#39;);</code></pre>
+
+<p><code>eq_array</code>, <code>eq_hash</code> and <code>eq_set</code> have been considered deprecated for a very long time, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> does not provide them at all. Instead you can just use <code>is()</code>:</p>
+
+<pre><code>is([1], [1], &quot;array comparison&quot;);
+is({a =&gt; 1}, {a =&gt; 1}, &quot;hash comparison&quot;);</code></pre>
+
+<p><code>eq_set</code> is a tad more complicated, see <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Tools/Compare.html">Test2::Tools::Compare</a> for an explanation:</p>
+
+<pre><code>is([1, 3, 2], bag { item 1; item 2; item 3; end }, &quot;set comparison&quot;);</code></pre>
+
+<p><code>explain()</code> has a rocky history. There have been arguments about how it should work. <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> decided to simply not include <code>explain()</code> to avoid the arguments. You can instead directly use Data::Dumper:</p>
+
+<pre><code>use Data::Dumper;
+note Dumper([1, 2, 3]);</code></pre>
+
+<p><code>new_ok()</code> is gone. The implementation was complicated, and did not add much value:</p>
+
+<pre><code>{
+    package THING;
+    sub new { bless({}, shift) }
+}
+
+my $thing = THING-&gt;new;
+ok($thing, &quot;made a new thing&quot;);</code></pre>
+
+<p>The complete section after the conversion is:</p>
+
+<pre><code>is([1], [1], &quot;array comparison&quot;);
+is({a =&gt; 1}, {a =&gt; 1}, &quot;hash comparison&quot;);
+is([1, 3, 2], bag { item 1; item 2; item 3; end }, &quot;set comparison&quot;);
+
+use Data::Dumper;
+note Dumper([1, 2, 3]);
+
+{
+    package THING;
+    sub new { bless({}, shift) }
+}
+
+my $thing = THING-&gt;new;
+ok($thing, &quot;made a new thing&quot;);</code></pre>
+
+<h1 id="TOOLS-THAT-HAVE-CHANGED">TOOLS THAT HAVE CHANGED</h1>
+
+<pre><code>isa_ok($thing, &#39;THING&#39;, &#39;$thing&#39;);
+
+can_ok(__PACKAGE__, qw/ok is/);</code></pre>
+
+<p>In <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/More.html">Test::More</a> these functions are very confusing, and most people use them wrong!</p>
+
+<p><code>isa_ok()</code> from <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/More.html">Test::More</a> takes a thing, a class/reftype to check, and then uses the third argument as an alternative display name for the first argument (NOT a test name!).</p>
+
+<p><code>can_ok()</code> from <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test/More.html">Test::More</a> is not consistent with <code>isa_ok</code> as all arguments after the first are subroutine names.</p>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2.html">Test2</a> fixes this by making both functions consistent and obvious:</p>
+
+<pre><code>isa_ok($thing, [&#39;THING&#39;], &#39;got a THING&#39;);
+
+can_ok(__PACKAGE__, [qw/ok is/], &quot;have expected subs&quot;);</code></pre>
+
+<p>You will note that both functions take a thing, an arrayref as the second argument, then a test name as the third argument.</p>
+
+<h1 id="FINAL-VERSION">FINAL VERSION</h1>
+
+<h2 id="IMPORTS">IMPORTS</h2>
+
+<pre><code>#####################
+# Boilerplate
+
+use strict;
+use warnings;
+use Test2::V1 &#39;-import&#39;;
+plan(11);
+
+use Scalar::Util;
+require Exporter;
+
+#####################
+# Simple assertions (no changes)
+
+ok(1, &quot;pass&quot;);
+
+is(&quot;apple&quot;, &quot;apple&quot;, &quot;Simple string compare&quot;);
+
+like(&quot;foo bar baz&quot;, qr/bar/, &quot;Regex match&quot;);
+
+#####################
+# Todo
+
+todo &quot;These are todo&quot; =&gt; sub {
+    ok(0, &quot;oops&quot;);
+};
+
+#####################
+# Deep comparisons
+
+is([1, 2, 3], [1, 2, 3], &quot;Deep comparison&quot;);
+
+#####################
+# Comparing references
+
+my $ref = [1];
+ref_is($ref, $ref, &quot;Check that we have the same ref both times&quot;);
+
+#####################
+# Things that are gone
+
+is([1], [1], &quot;array comparison&quot;);
+is({a =&gt; 1}, {a =&gt; 1}, &quot;hash comparison&quot;);
+
+is([1, 3, 2], bag { item 1; item 2; item 3; end }, &quot;set comparison&quot;);
+
+use Data::Dumper;
+note Dumper([1, 2, 3]);
+
+{
+    package THING;
+    sub new { bless({}, shift) }
+}
+
+my $thing = THING-&gt;new;
+
+#####################
+# Tools that changed
+
+isa_ok($thing, [&#39;THING&#39;], &#39;got a THING&#39;);
+
+can_ok(__PACKAGE__, [qw/ok is/], &quot;have expected subs&quot;);</code></pre>
+
+<h2 id="REDUCED-BOILERPLATE">REDUCED BOILERPLATE</h2>
+
+<pre><code>#####################
+# Boilerplate
+
+use Test2::V1 &#39;-ipP&#39;;
+plan(11);
+
+use Scalar::Util;
+require Exporter;
+
+#####################
+# Simple assertions (no changes)
+
+ok(1, &quot;pass&quot;);
+
+is(&quot;apple&quot;, &quot;apple&quot;, &quot;Simple string compare&quot;);
+
+like(&quot;foo bar baz&quot;, qr/bar/, &quot;Regex match&quot;);
+
+#####################
+# Todo
+
+todo &quot;These are todo&quot; =&gt; sub {
+    ok(0, &quot;oops&quot;);
+};
+
+#####################
+# Deep comparisons
+
+is([1, 2, 3], [1, 2, 3], &quot;Deep comparison&quot;);
+
+#####################
+# Comparing references
+
+my $ref = [1];
+ref_is($ref, $ref, &quot;Check that we have the same ref both times&quot;);
+
+#####################
+# Things that are gone
+
+is([1], [1], &quot;array comparison&quot;);
+is({a =&gt; 1}, {a =&gt; 1}, &quot;hash comparison&quot;);
+
+is([1, 3, 2], bag { item 1; item 2; item 3; end }, &quot;set comparison&quot;);
+
+use Data::Dumper;
+note Dumper([1, 2, 3]);
+
+{
+    package THING;
+    sub new { bless({}, shift) }
+}
+
+my $thing = THING-&gt;new;
+
+#####################
+# Tools that changed
+
+isa_ok($thing, [&#39;THING&#39;], &#39;got a THING&#39;);
+
+can_ok(__PACKAGE__, [qw/ok is/], &quot;have expected subs&quot;);</code></pre>
+
+<h2 id="CLEAN-NAMESPACE">CLEAN NAMESPACE</h2>
+
+<pre><code>use Test2::V1;
+T2-&gt;plan(11);
+
+use Scalar::Util;
+require Exporter;
+
+#####################
+# Simple assertions (no changes)
+
+T2-&gt;ok(1, &quot;pass&quot;);
+
+T2-&gt;is(&quot;apple&quot;, &quot;apple&quot;, &quot;Simple string compare&quot;);
+
+T2-&gt;like(&quot;foo bar baz&quot;, qr/bar/, &quot;Regex match&quot;);
+
+#####################
+# Todo
+
+T2-&gt;todo(&quot;These are todo&quot; =&gt; sub {
+    ok(0, &quot;oops&quot;);
+});
+
+#####################
+# Deep comparisons
+
+T2-&gt;is([1, 2, 3], [1, 2, 3], &quot;Deep comparison&quot;);
+
+#####################
+# Comparing references
+
+my $ref = [1];
+T2-&gt;ref_is($ref, $ref, &quot;Check that we have the same ref both times&quot;);
+
+#####################
+# Things that are gone
+
+T2-&gt;is([1], [1], &quot;array comparison&quot;);
+T2-&gt;is({a =&gt; 1}, {a =&gt; 1}, &quot;hash comparison&quot;);
+
+T2-&gt;is([1, 3, 2], bag { item 1; item 2; item 3; end }, &quot;set comparison&quot;);
+
+use Data::Dumper;
+T2-&gt;note(Dumper([1, 2, 3]));
+
+{
+    package THING;
+    sub new { bless({}, shift) }
+}
+
+my $thing = THING-&gt;new;
+
+#####################
+# Tools that changed
+
+T2-&gt;isa_ok($thing, [&#39;THING&#39;], &#39;got a THING&#39;);
+
+T2-&gt;can_ok(__PACKAGE__, [qw/ok is/], &quot;have expected subs&quot;);</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Test2/Manual.html">Test2::Manual</a> - Primary index of the manual.</p>
+
+<h1 id="SOURCE">SOURCE</h1>
+
+<p>The source code repository for Test2-Manual can be found at <i>https://github.com/Test-More/test-more/</i>.</p>
+
+<h1 id="MAINTAINERS">MAINTAINERS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<dl>
+
+<dt id="Chad-Granum-exodist-cpan.org1">Chad Granum &lt;exodist@cpan.org&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright Chad Granum &lt;exodist@cpan.org&gt;.</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<p>See <i>http://dev.perl.org/licenses/</i></p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;Test2::Manual::Testing::Migrating - How to migrate existing tests from Test::More to Test2.</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

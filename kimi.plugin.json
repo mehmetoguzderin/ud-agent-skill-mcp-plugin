@@ -1,0 +1,19 @@
+{
+  "name": "ud-agent-skill-mcp-plugin",
+  "version": "0.1.0-beta.1",
+  "description": "Local Universal Dependencies (UD) and CONLL-U (conllu) validation, editing, and analysis with agentic skills, MCP, CLI, and plugin.",
+  "author": "mehmetoguzderin",
+  "license": "MIT",
+  "skills": "./skills/",
+  "mcpServers": {
+    "ud": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mehmetoguzderin/ud-agent-skill-mcp-plugin@0.1.0-beta.1",
+        "mcp",
+        "--discover-workspace"
+      ]
+    }
+  }
+}

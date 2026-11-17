@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "host": "gemini",
+  "configuration": ".gemini/settings.json",
+  "format": "json",
+  "server_key": "mcpServers",
+  "skills": ".gemini/skills",
+  "connect_host": "gemini",
+  "model_execution": "external-not-run",
+  "activation": "Use the SKILL_NAME skill for the selected treebank."
+}

@@ -1,0 +1,33 @@
+{
+  "decision": "approved-structured-total-boundary-assertion-only",
+  "definition_sha256": "55df7c3525897903f9a6f8936cf38dd510014b7097bbe4790407e54d12325454",
+  "negative_controls": {
+    "missing-record": {
+      "exit_code": 101,
+      "required_classification": "invalid-runtime-outcome"
+    },
+    "uncaught": {
+      "exit_code": 101,
+      "required_classification": "invalid-runtime-outcome"
+    },
+    "wrong-boundary": {
+      "exit_code": 101,
+      "required_classification": "invalid-runtime-outcome"
+    }
+  },
+  "proof_sha256": "220b2f893b6281fe7a3724554a27150c3de7468d51e93af8eb0041add8748c4a",
+  "qualification": "narrow-behavioral-assertion-classification-review; not-equivalence-or-suite-acceptance",
+  "reason": "The documented serialized-metadata API must return InvalidInput for hostile empty bytes without unwinding. The immutable test deliberately catches an unwind as an observation, emits exact bound evidence, and fails an explicit total-boundary assertion. The test process does not unexpectedly crash. This is a detected behavioral contract violation, not a runner runtime error counted as a kill. Baseline and negative controls were independently inspected.",
+  "required_constraints": [
+    "Only explicitly registered total public boundaries and exact immutable test definitions qualify.",
+    "Validate source hash, canonical mutation definition hash, exact test identity and boundary, and complete structured event against trusted scheduling metadata.",
+    "Every caught unwind must belong to that exact test and be followed by its explicit contract assertion; match failed test counts and reject additional/unmatched panics.",
+    "Uncaught panics, absent or wrong-boundary evidence, malformed records, compilation failures, timeouts and harness failures remain invalid outcomes.",
+    "No panic-hook suppression, general stderr allowlist, blanket runtime-error-to-kill conversion, mutant exclusion or equivalent-mutant waiver is authorized."
+  ],
+  "reviewer": "root-independent-of-proof-author",
+  "schema_version": 1,
+  "source": "packages/launcher/src/windows_metadata_policy.rs",
+  "source_sha256": "cad86bd7dc42fdf85c6abb6e1a9bf945fdcf6314a014dce54f2ddfc298bf33a1",
+  "test_sha256": "037a90da8671afade567c3d1357cb6838c47570ff8f472cb1980f98b9dc76f9a"
+}

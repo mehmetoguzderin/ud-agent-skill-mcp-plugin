@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "version": "20261104",
+  "archive": {
+    "filename": "llvm-mingw-20261104-ucrt-macos-universal.tar.xz",
+    "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20261104/llvm-mingw-20261104-ucrt-macos-universal.tar.xz",
+    "sha256": "66cbd5178c4a71b0d473e68ede172f8eb7d15d023e67f39201d0a69e21f6bf3c",
+    "size_bytes": 125261696
+  },
+  "notice": {
+    "path": "licenses/vendor/llvm-mingw-20261104/LICENSE.TXT",
+    "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee",
+    "size_bytes": 15141
+  },
+  "mingw_notice": {
+    "path": "licenses/vendor/llvm-mingw-20261104/MinGW-w64-runtime.txt",
+    "sha256": "1db8da07b436c68833c0673ffee3d9fcb2526047f3820b81661865dfedc79a1f",
+    "size_bytes": 12155
+  },
+  "sources": [
+    {
+      "filename": "llvm-mingw-70bc9a60eec2410124a9e3fe1611929705cb6574.tar.gz",
+      "url": "https://codeload.github.com/mstorsjo/llvm-mingw/tar.gz/70bc9a60eec2410124a9e3fe1611929705cb6574",
+      "sha256": "27eeaca0b07a0a3b7fb487e8e09209cc113391b20f4701b5a2541cbcdcf033cd",
+      "size_bytes": 71085
+    },
+    {
+      "filename": "llvm-project-23.1.5.src.tar.xz",
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.5/llvm-project-23.1.5.src.tar.xz",
+      "sha256": "fb50b1eac93ddeb3aa8dab4cfe324dff74f4a9c2bdee6160c9e36188f8d06a6e",
+      "size_bytes": 179220264
+    },
+    {
+      "filename": "mingw-w64-ee9bd87644156c41072a11ad957d1e11831a72df.tar.gz",
+      "url": "https://codeload.github.com/mingw-w64/mingw-w64/tar.gz/ee9bd87644156c41072a11ad957d1e11831a72df",
+      "sha256": "6a346a2e3eafa0e5ec8e30df89b16a05add8b50cb4cece8c47593799ca19e43b",
+      "size_bytes": 15862707
+    }
+  ]
+}

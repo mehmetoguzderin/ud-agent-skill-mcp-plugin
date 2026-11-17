@@ -1,0 +1,170 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>perl5401delta - what is new for perl v5.40.1</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perl5401delta - what is new for perl v5.40.1</span></strong></big>
+</td></tr>
+</table>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#Incompatible-Changes">Incompatible Changes</a></li>
+  <li><a href="#Modules-and-Pragmata">Modules and Pragmata</a>
+    <ul>
+      <li><a href="#Updated-Modules-and-Pragmata">Updated Modules and Pragmata</a></li>
+    </ul>
+  </li>
+  <li><a href="#Documentation">Documentation</a>
+    <ul>
+      <li><a href="#Changes-to-Existing-Documentation">Changes to Existing Documentation</a></li>
+    </ul>
+  </li>
+  <li><a href="#Configuration-and-Compilation">Configuration and Compilation</a></li>
+  <li><a href="#Testing">Testing</a></li>
+  <li><a href="#Selected-Bug-Fixes">Selected Bug Fixes</a></li>
+  <li><a href="#Acknowledgements">Acknowledgements</a></li>
+  <li><a href="#Reporting-Bugs">Reporting Bugs</a></li>
+  <li><a href="#Give-Thanks">Give Thanks</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>perl5401delta - what is new for perl v5.40.1</p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>This document describes differences between the 5.40.0 release and the 5.40.1 release.</p>
+
+<p>If you are upgrading from an earlier release such as 5.38.0, first read <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perl5400delta.html">perl5400delta</a>, which describes differences between 5.38.0 and 5.40.0.</p>
+
+<h1 id="Incompatible-Changes">Incompatible Changes</h1>
+
+<p>There are no changes intentionally incompatible with 5.40.0. If any exist, they are bugs, and we request that you submit a report. See <a href="#Reporting-Bugs">&quot;Reporting Bugs&quot;</a> below.</p>
+
+<h1 id="Modules-and-Pragmata">Modules and Pragmata</h1>
+
+<h2 id="Updated-Modules-and-Pragmata">Updated Modules and Pragmata</h2>
+
+<ul>
+
+<li><p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/File/Spec.html">File::Spec</a> has been upgraded from version 3.90 to 3.91.</p>
+
+</li>
+<li><p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Module/CoreList.html">Module::CoreList</a> has been upgraded from version 5.20240609 to 5.20250118_40.</p>
+
+</li>
+<li><p><a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/warnings.html">warnings</a> has been upgraded from version 1.69 to 1.70.</p>
+
+</li>
+</ul>
+
+<h1 id="Documentation">Documentation</h1>
+
+<h2 id="Changes-to-Existing-Documentation">Changes to Existing Documentation</h2>
+
+<p>We have attempted to update the documentation to reflect the changes listed in this document. If you find any we have missed, open an issue at <a href="https://github.com/Perl/perl5/issues">https://github.com/Perl/perl5/issues</a>.</p>
+
+<h1 id="Configuration-and-Compilation">Configuration and Compilation</h1>
+
+<ul>
+
+<li><p>Fixed compilation on platforms (e.g. &quot;Gentoo Prefix&quot;) with only a C locale. [<a href="https://github.com/Perl/perl5/issues/22569">GH #22569</a>] Bug first reported downstream at <a href="https://bugs.gentoo.org/939014">bugs.gentoo.org/939014</a>.</p>
+
+</li>
+<li><p>Fixed compilation error on some systems due to a typo in a printf() format. [<a href="https://github.com/Perl/perl5/issues/22793">GH #22793</a>]</p>
+
+</li>
+</ul>
+
+<h1 id="Testing">Testing</h1>
+
+<p>Tests were added and changed to reflect the other additions and changes in this release.</p>
+
+<h1 id="Selected-Bug-Fixes">Selected Bug Fixes</h1>
+
+<ul>
+
+<li><p>Starting in Perl 5.39.8, <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/POSIX.html#strftime">&quot;<code>strftime</code>&quot; in POSIX</a> would crash or produce odd errors (such as <code>Out of memory in perl:util:safesysmalloc</code>) when given a format string that wasn&#39;t actually a string, but a number, <code>undef</code>, or an object (even one with overloaded string conversion).</p>
+
+<p>Now <code>strftime</code> stringifies its first argument, as before. [<a href="https://github.com/Perl/perl5/issues/22498">GH #22498</a>]</p>
+
+</li>
+<li><p>Builds with <code>-msse</code> and quadmath on 32-bit x86 systems would crash with a misaligned access early in the build. [<a href="https://github.com/Perl/perl5/issues/22577">GH #22577</a>]</p>
+
+</li>
+<li><p>Using <code>goto</code> to tail call, or using the call_sv() and related APIs to call, any of trim(), refaddr(), reftype(), ceil(), floor() or stringify() in the <code>builtin::</code> package would crash or assert due to a <code>TARG</code> handling bug. [<a href="https://github.com/Perl/perl5/issues/22542">GH #22542</a>]</p>
+
+</li>
+<li><p>Fixed an issue where <code>utf8n_to_uvchr()</code> failed to correctly identify certain invalid UTF-8 sequences as invalid. Specifically, sequences that start with continuation bytes or unassigned bytes could cause unexpected behaviour or a panic. This fix ensures that such invalid sequences are now properly detected and handled. This correction also resolves related issues in modules that handle UTF-8 processing, such as <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/lib/Encode.html">Encode</a>.</p>
+
+</li>
+<li><p>Fixed a double free error or possible memory leak when failing to compile certain regexps. [<a href="https://github.com/Perl/perl5/issues/21661">GH #21661</a>]</p>
+
+</li>
+</ul>
+
+<h1 id="Acknowledgements">Acknowledgements</h1>
+
+<p>Perl 5.40.1 represents approximately 7 months of development since Perl 5.40.0 and contains approximately 5,600 lines of changes across 54 files from 15 authors.</p>
+
+<p>Excluding auto-generated files, documentation and release tools, there were approximately 1,800 lines of changes to 19 .pm, .t, .c and .h files.</p>
+
+<p>Perl continues to flourish into its fourth decade thanks to a vibrant community of users and developers. The following people are known to have contributed the improvements that became Perl 5.40.1:</p>
+
+<p>Andrei Horodniceanu, Chris &#39;BinGOs&#39; Williams, E. Choroba, Graham Knop, James E Keenan, Karen Etheridge, Karl Williamson, Lukas Mai, Masahiro Honma, Max Maischein, Philippe Bruhat (BooK), Richard Leach, Steve Hay, Thibault Duponchelle, Tony Cook.</p>
+
+<p>The list above is almost certainly incomplete as it is automatically generated from version control history. In particular, it does not include the names of the (very much appreciated) contributors who reported issues to the Perl bug tracker.</p>
+
+<p>Many of the changes included in this version originated in the CPAN modules included in Perl&#39;s core. We&#39;re grateful to the entire CPAN community for helping Perl to flourish.</p>
+
+<p>For a more complete list of all of Perl&#39;s historical contributors, please see the <i>AUTHORS</i> file in the Perl source distribution.</p>
+
+<h1 id="Reporting-Bugs">Reporting Bugs</h1>
+
+<p>If you find what you think is a bug, you might check the perl bug database at <a href="https://github.com/Perl/perl5/issues">https://github.com/Perl/perl5/issues</a>. There may also be information at <a href="https://www.perl.org/">https://www.perl.org/</a>, the Perl Home Page.</p>
+
+<p>If you believe you have an unreported bug, please open an issue at <a href="https://github.com/Perl/perl5/issues">https://github.com/Perl/perl5/issues</a>. Be sure to trim your bug down to a tiny but sufficient test case.</p>
+
+<p>If the bug you are reporting has security implications which make it inappropriate to send to a public issue tracker, then see <a href="file:/C|/Users/task_178926107590977/croot/perl_1789261357159/_h_env/Library/html/pod/perlsec.html#SECURITY-VULNERABILITY-CONTACT-INFORMATION">&quot;SECURITY VULNERABILITY CONTACT INFORMATION&quot; in perlsec</a> for details of how to report the issue.</p>
+
+<h1 id="Give-Thanks">Give Thanks</h1>
+
+<p>If you wish to thank the Perl 5 Porters for the work we had done in Perl 5, you can do so by running the <code>perlthanks</code> program:</p>
+
+<pre><code>perlthanks</code></pre>
+
+<p>This will send an email to the Perl 5 Porters list with your show of thanks.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p>The <i>Changes</i> file for an explanation of how to view exhaustive details on what changed.</p>
+
+<p>The <i>INSTALL</i> file for how to build Perl.</p>
+
+<p>The <i>README</i> file for general stuff.</p>
+
+<p>The <i>Artistic</i> and <i>Copying</i> files for copyright information.</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="_podblock_" style="background-color: #cccccc; color: #000" valign="middle">
+<big><strong><span class="_podblock_">&nbsp;perl5401delta - what is new for perl v5.40.1</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
+
+

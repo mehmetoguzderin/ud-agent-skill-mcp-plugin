@@ -1,0 +1,450 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sentence_validation_report result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "operation",
+    "operation_id",
+    "execution",
+    "scope",
+    "inputs",
+    "provenance",
+    "result",
+    "diagnostics",
+    "artifacts",
+    "coverage",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "operation": {
+      "const": "sentence_validation_report"
+    },
+    "operation_id": {
+      "const": "049"
+    },
+    "execution": {
+      "type": "object",
+      "required": [
+        "status",
+        "elapsed_ms"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "completed",
+            "rejected",
+            "incomplete"
+          ]
+        },
+        "elapsed_ms": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "scope": {
+      "type": "object"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "product_version"
+      ],
+      "properties": {
+        "product_version": {
+          "const": "0.1.0-beta.1"
+        }
+      }
+    },
+    "result": {
+      "type": "object"
+    },
+    "diagnostics": {
+      "type": "array"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "uri",
+          "mime_type",
+          "size_bytes",
+          "sha256",
+          "retention"
+        ],
+        "properties": {
+          "uri": {
+            "type": "string",
+            "pattern": "^ud://"
+          },
+          "mime_type": {
+            "type": "string"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "retention": {
+            "type": "object",
+            "required": [
+              "expires_at"
+            ],
+            "properties": {
+              "expires_at": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "validation": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "incidents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "testid": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "level": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "check_family": {
+                "type": "string"
+              }
+            },
+            "required": []
+          }
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "file_paths": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sentence_only": {
+              "type": "boolean"
+            },
+            "filtered": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "file_paths",
+            "sentence_only"
+          ]
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "repository": {
+              "type": "string"
+            },
+            "documentation": {
+              "type": "string"
+            },
+            "project_rules": {
+              "type": "string"
+            },
+            "release_policy": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "content"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "repository_name": {
+              "type": "string"
+            },
+            "adapter": {
+              "type": "string"
+            },
+            "languages_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "validator_module_path": {
+              "type": "string"
+            },
+            "validator_class_name": {
+              "type": "string"
+            },
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "passed",
+        "incidents",
+        "scope",
+        "coverage",
+        "limitations"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "execution": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "const": "completed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "execution"
+        ]
+      },
+      "then": {
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/validation"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "status",
+                  "report_resource",
+                  "summary"
+                ],
+                "properties": {
+                  "status": {
+                    "const": "resource"
+                  },
+                  "report_resource": {
+                    "type": "object",
+                    "required": [
+                      "uri",
+                      "mime_type",
+                      "size_bytes",
+                      "sha256",
+                      "retention"
+                    ],
+                    "properties": {
+                      "uri": {
+                        "type": "string",
+                        "pattern": "^ud://"
+                      },
+                      "mime_type": {
+                        "type": "string"
+                      },
+                      "size_bytes": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      },
+                      "retention": {
+                        "type": "object",
+                        "required": [
+                          "expires_at"
+                        ],
+                        "properties": {
+                          "expires_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "summary": {
+                    "type": "object"
+                  }
+                }
+              }
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "requires_host_export"
+                  ],
+                  "properties": {
+                    "requires_host_export": {
+                      "const": false
+                    }
+                  }
+                },
+                "then": {
+                  "type": "object",
+                  "required": [
+                    "exports",
+                    "export_transaction"
+                  ],
+                  "properties": {
+                    "exports": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "path",
+                          "sha256",
+                          "size_bytes"
+                        ],
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "size_bytes": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    },
+                    "export_transaction": {
+                      "type": "object",
+                      "required": [
+                        "status"
+                      ],
+                      "properties": {
+                        "status": {
+                          "const": "completed"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "requires_broker_export"
+                  ],
+                  "properties": {
+                    "requires_broker_export": {
+                      "const": false
+                    }
+                  }
+                },
+                "then": {
+                  "type": "object",
+                  "required": [
+                    "exports",
+                    "export_transaction"
+                  ],
+                  "properties": {
+                    "exports": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "path",
+                          "sha256",
+                          "size_bytes"
+                        ],
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "size_bytes": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    },
+                    "export_transaction": {
+                      "type": "object",
+                      "required": [
+                        "status"
+                      ],
+                      "properties": {
+                        "status": {
+                          "const": "completed"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

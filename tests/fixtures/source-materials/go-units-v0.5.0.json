@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "url": "https://proxy.golang.org/github.com/docker/go-units/@v/v0.5.0.zip",
+  "module": "github.com/docker/go-units",
+  "version": "v0.5.0",
+  "h1": "h1:69rxXcBk27SvSaaxTtLh/8llcHD8vYHT7WSdRZ/jvr4=",
+  "sha256": "039d53ebe64af1aefa0be94ce42c621a17a3052c58ad15e5b3f357529beeaff6",
+  "size_bytes": 14824,
+  "provenance": "Go module identity embedded in the verified nerdctl2.4.2ARM64binary; downloaded as data, never executed"
+}
